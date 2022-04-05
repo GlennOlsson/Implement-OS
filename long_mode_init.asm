@@ -13,9 +13,9 @@ long_mode_start:
 
     ; print `OKAY` to screen
     mov rax, 0x2f6e2f652f6c2f47
-    mov qword [0xb8000], rax
+    mov qword [0xb80a0], rax
     
  	mov rax, 0x2f212f532f4f2f6e
-    mov qword [0xb8008], rax
+    mov qword [0xb80a8], rax
     
 	hlt
