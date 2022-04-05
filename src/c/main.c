@@ -17,11 +17,7 @@ void kmain() {
 
 	ugly_sleep(5);
 
-	VGA_display_char('F');
-
-	ugly_sleep(5);
-
-	VGA_display_str("Hej hopp");
+	VGA_display_str("Hej hopp\nJag heter glenn :)");
 	
 	int j = 1;
 	while(j)

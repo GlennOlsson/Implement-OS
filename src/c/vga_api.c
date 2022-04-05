@@ -1,6 +1,13 @@
 #include "vga_api.h"
 
+#define MAX_COL 80
+#define MAX_ROW 25
+
 unsigned short* vgaBuff = (short*) 0xb8000;
+
+short vga_offset(unsigned char col, unsigned char row) {
+	return (row * MAX_COL) + col;
+}
 
 /**
  * @brief Write a short to a specific location in the VGA console
@@ -11,7 +18,7 @@ unsigned short* vgaBuff = (short*) 0xb8000;
  * @param s the short to write. First byte is the attributes, second is the character
  */
 void write_to(unsigned char col, unsigned char row, unsigned short s) {
-	unsigned short offset = (row * ((char) 80)) + col;
+	unsigned short offset = vga_offset(col, row);
 	vgaBuff[offset] = s;
 }
 
@@ -44,7 +51,7 @@ void write_str(unsigned char col, unsigned char row, const char* str) {
 		write_char(col + col_offset, row + row_offset, c);
 
 		col_offset += 1;
-		if(col_offset == 80) {
+		if(col_offset == MAX_COL) {
 			col_offset = 0;
 			row_offset += 1;
 		}
@@ -52,16 +59,45 @@ void write_str(unsigned char col, unsigned char row, const char* str) {
 	}
 }
 
-void VGA_clear(void) {
-	short limit = 25 * 80;
+void clear_row(unsigned char row) {
+	short offset = vga_offset(0, row);
+	for(char col = 0; col < MAX_COL; col++) {
+		vgaBuff[offset++] = 0x0000;
+	}
+}
+
+unsigned char current_row = 0;
+unsigned char current_col = 0;
+
+void VGA_clear() {
+	short limit = MAX_COL * MAX_ROW;
 	short index = 0;
 	while(index < limit) {
 		vgaBuff[index++] = 0x0000;
 	}
 }
+
 void VGA_display_char(char c) {
-	write_char(0, 0, c);
+	if(c == '\n') {
+		current_row++;
+		current_col = 0;
+		return;
+	}
+	// If first char of row, clear row
+	if(current_col == 0)
+		clear_row(current_row);
+
+	write_char(current_col++, current_row, c);
+	if(current_col >= MAX_COL) {
+		current_col = 0;
+		current_row++;
+	}
 }
+
 void VGA_display_str(const char * str) {
-	write_str(0, 0, str);
+	char c = *str;
+	while(c != '\0') {
+		VGA_display_char(c);
+		c = *(++str);
+	}
 }
