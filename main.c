@@ -9,20 +9,27 @@ void write_to(unsigned char col, unsigned short row, unsigned short s) {
 }
 
 void write_str(unsigned char col, unsigned char row, char* str) {
-	short offset = 0;
-	char c = str[0];
+	short col_offset = 0;
+	short row_offset = 0;
+
+	short str_index = 0;
+	char c = str[str_index];
 	while(c != '\0') {
 		short token = (0x2f << 8) | c;
-		write_to(col + offset, row, token);
+		write_to(col + col_offset, row + row_offset, token);
 
-		offset += 1;
-		c = str[offset];
+		col_offset += 1;
+		if(col_offset == 80) {
+			col_offset = 0;
+			row_offset += 1;
+		}
+		c = str[++str_index];
 	}
 }
 
 void kmain() {
 
-	write_str(0, 0, "Hello my name is Glenn!");
+	write_str(5, 0, "Hello my name is Glenn, and I am the absolute best skiier on this mf mountain!");
 
 	int j = 0;
 	while(!j)
