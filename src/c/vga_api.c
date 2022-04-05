@@ -90,7 +90,11 @@ void VGA_display_char(char c) {
 	write_char(current_col++, current_row, c);
 	if(current_col >= MAX_COL) {
 		current_col = 0;
-		current_row++;
+		if(current_row + 1 < MAX_ROW)
+			current_row++;
+		else {
+			//TODO: scroll up
+		}
 	}
 }
 
@@ -100,4 +104,5 @@ void VGA_display_str(const char * str) {
 		VGA_display_char(c);
 		c = *(++str);
 	}
+	VGA_display_char('\n');
 }

@@ -1,4 +1,5 @@
 #include "vga_api.h"
+#include "lib.h"
 
 //Sleeps for approximately sec seconds
 void ugly_sleep(int sec) {
@@ -17,8 +18,6 @@ void kmain() {
 
 	ugly_sleep(5);
 
-	VGA_display_str("Hej hopp\nJag heter glenn :)");
-	
 	int j = 1;
 	while(j)
 		asm("hlt");

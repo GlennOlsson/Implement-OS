@@ -11,6 +11,7 @@ asm:
 c:
 	x86_64-elf-gcc -c -g $(c_dir)/main.c -o $(out_dir)/main.o
 	x86_64-elf-gcc -c -g $(c_dir)/vga_api.c -o $(out_dir)/vga_api.o
+	x86_64-elf-gcc -c -g $(c_dir)/lib.c -o $(out_dir)/lib.o
 
 compile: asm c
 	ld -n -o out/kernel.bin -T linker.ld $(out_dir)/*.o
