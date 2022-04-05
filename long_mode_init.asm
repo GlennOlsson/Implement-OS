@@ -1,4 +1,5 @@
 global long_mode_start
+extern kmain
 
 section .text
 bits 64
@@ -17,5 +18,10 @@ long_mode_start:
     
  	mov rax, 0x2f212f532f4f2f6e
     mov qword [0xb80a8], rax
-    
+
+	mov rax, 0x2f212f532f070000
+    mov qword [0xb80b0], rax
+
+	call kmain
+
 	hlt
