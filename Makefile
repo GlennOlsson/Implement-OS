@@ -1,8 +1,9 @@
 elf:
 	nasm -f elf64 multiboot_header.asm
 	nasm -f elf64 boot.asm
-	ld -n -o out/kernel.bin -T linker.ld multiboot_header.o boot.o
-	rm multiboot_header.o boot.o 
+	nasm -f elf64 long_mode_init.asm
+	ld -n -o out/kernel.bin -T linker.ld multiboot_header.o boot.o long_mode_init.o
+	rm multiboot_header.o boot.o long_mode_init.o
 
 fat:
 	sh create_img.sh
