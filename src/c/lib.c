@@ -58,7 +58,7 @@ const char* strchr(const char* s, int c) {
 }
 
 // Convert integer to string in base
-void to_string(int i, char* s, size_t base) {
+void to_string(long i, char* s, long base) {
 	size_t index = 0;
 	if(i == 0) {
 		s[0] = '0';
@@ -70,7 +70,7 @@ void to_string(int i, char* s, size_t base) {
 		i *= -1;
 
 	while(i != 0) {
-		int remainder = i % base;
+		long remainder = i % base;
 		// If the remainder is bigger than 9, we don't want to choose ascii ;: etc. but rather
 		// abc etc.
 		s[index++] = remainder >= 10 ? (remainder - 10) + 'a' : remainder + '0';

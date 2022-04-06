@@ -18,7 +18,19 @@ void kmain() {
 
 	ugly_sleep(5);
 
-	int j = 1;
-	while(j)
+
+
+	int j = 30;
+
+	while(j--) {
+		ugly_sleep(1);
+		printk("Hello %s, my name is %s and I am %d years old", "Glenn", "Glenne", j);
+	}
+
+	VGA_display_char('\n');
+	VGA_display_char('\n');
+	VGA_display_char('\n');
+
+	while(!j)
 		asm("hlt");
 }
