@@ -89,14 +89,13 @@ void VGA_clear() {
 }
 
 void VGA_display_char(char c) {
-	if(c == '\n') {
-		if(current_row + 1 < MAX_ROW)
-			current_row++;
-		else {
+	if(current_row == MAX_ROW) {
 			scroll();
-			// will not be cleared by the statement below as we return
+			--current_row;
 			clear_row(current_row);
-		}
+	}
+	if(c == '\n') {
+		current_row += 1;
 		current_col = 0;
 		return;
 	}
