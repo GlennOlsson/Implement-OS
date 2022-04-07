@@ -197,11 +197,11 @@ int printk(const char* fmt, ... ) {
 				to_string((long) pt, s, 16);
 				VGA_display_str(s);
 
-			} else if (c == 'h') {
+			} else if (c == 'h') { // %h[dux]
 				
-			} else if (c == 'l') {
+			} else if (c == 'l') { // %l[dux]
 				
-			} else if (c == 'q') {
+			} else if (c == 'q') { // %q[dux]
 				
 			} else if (c == 's') { // string
 				char* str = va_arg(args, char*);

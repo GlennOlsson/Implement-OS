@@ -18,27 +18,22 @@ void kmain() {
 
 	ugly_sleep(5);
 
+	int j = 30;
 
+	while(j--) {
+		ugly_sleep(1);
+		printk("Hello %s, my name is Glenn and I am %d years old. Favourite letter is %c. -10 as unsigned is %u. 45 in hex is %x and j is at address %p %%", "Glenne", j, 'g', -10, 45, &j);
+	}
 
-	int j = 0;//30;
-
-	printk("Hello, ptr: %p", &j);
-
-	// while(j--) {
-	// 	ugly_sleep(1);
-	// 	printk("Hello %s, my name is %s and I am %d years old", "Glenn", "Glenne", j);
-	// }
-
-	// VGA_display_char('\n');
-	// VGA_display_char('\n');
-	// VGA_display_char('\n');
+	VGA_display_char('\n');
+	VGA_display_char('\n');
+	VGA_display_char('\n');
 	
-	// print_char('!');
-	// print_char(' ');
-	// print_str("Hej jag heter glenn ");
-	// print_short(-69);
-	// print_uchar(245);
-	// print_long_hex(0x69420);
+	print_char('!');
+	print_str(" Hej jag heter glenn ");
+	print_short(-79);
+	print_uchar(245);
+	print_long_hex(0x11111);
 
 	while(!j)
 		asm("hlt");
