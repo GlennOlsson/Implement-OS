@@ -157,10 +157,7 @@ void print_long_hex(long l) {
 	VGA_display_str(str);
 }
 
-
-int printk(const char* fmt, ... ) {
-    va_list args;
-    va_start(args, fmt);
+int _printk(const char* fmt, va_list* args) {
 
 	char c = *fmt;
 	while(c != '\0') {
@@ -171,29 +168,29 @@ int printk(const char* fmt, ... ) {
 			if(c == '%') { // literal %
 				VGA_display_char('%');
 			} else if (c == 'd') { // signed decimal
-				long i = va_arg(args, long);
+				long i = va_arg(*args, long);
 				char s[20]; // max 19 digits and a minus sign
 				to_string(i, s, 10);
 				VGA_display_str(s);
 
 			} else if (c == 'u') { // unsiged decimal
-				unsigned long i = va_arg(args, unsigned long);
+				unsigned long i = va_arg(*args, unsigned long);
 				char s[10]; // max 10 digits
 				to_string(i, s, 10);
 				VGA_display_str(s);
 
 			} else if (c == 'x') { // lowercase hex
-				long i = va_arg(args, long);
+				long i = va_arg(*args, long);
 				char s[11]; //
 				to_string(i, s, 16);
 				VGA_display_str(s);
 				
 			} else if (c == 'c') { // character
-				char c = va_arg(args, int);
+				char c = va_arg(*args, int);
 				VGA_display_char(c);
 
 			} else if (c == 'p') { // pointer
-				void* pt = va_arg(args, void*);
+				void* pt = va_arg(*args, void*);
 				char s[8];
 				to_string((long) pt, s, 16);
 				VGA_display_str(s);
@@ -202,19 +199,19 @@ int printk(const char* fmt, ... ) {
 				c = *(++fmt);
 
 				if(c == 'd') {
-					short int i = va_arg(args, int);
+					short int i = va_arg(*args, int);
 					char s[6]; // 5 digits and -
 					to_string(i, s, 10);
 					VGA_display_str(s);
 
 				} else if (c == 'u') { // unsigned
-					unsigned short int i = va_arg(args, unsigned int);
+					unsigned short int i = va_arg(*args, unsigned int);
 					char s[5]; // 5 digits
 					to_string(i, s, 10);
 					VGA_display_str(s);
 
 				} else if (c == 'x') { // hex
-					unsigned short int i = va_arg(args, unsigned int);
+					unsigned short int i = va_arg(*args, unsigned int);
 					char s[4]; // 4 hex digits
 					to_string(i, s, 16);
 					VGA_display_str(s);
@@ -228,18 +225,18 @@ int printk(const char* fmt, ... ) {
 				c = *(++fmt);
 				
 				if(c == 'd') {
-					long int i = va_arg(args, long int);
+					long int i = va_arg(*args, long int);
 					char s[21]; // 20 digits
 					to_string(i, s, 10);
 					VGA_display_str(s);
 				} else if (c == 'u') { // unsigned
-					unsigned long int i = va_arg(args, unsigned long int);
+					unsigned long int i = va_arg(*args, unsigned long int);
 					char s[20]; // 20 digits
 					to_string(i, s, 10);
 					VGA_display_str(s);
 					
 				} else if (c == 'x') { // hex
-					unsigned long int i = va_arg(args, unsigned long int);
+					unsigned long int i = va_arg(*args, unsigned long int);
 					char s[8]; // 8 hex values
 					to_string(i, s, 16);
 					VGA_display_str(s);
@@ -252,17 +249,17 @@ int printk(const char* fmt, ... ) {
 				c = *(++fmt);
 
 				if(c == 'd') {
-					char i = va_arg(args, int);
+					char i = va_arg(*args, int);
 					char s[4]; // 3 digits and a -
 					to_string(i, s, 10);
 					VGA_display_str(s);
 				} else if (c == 'u') {
-					unsigned char i = va_arg(args, int);
+					unsigned char i = va_arg(*args, int);
 					char s[3]; // 3 digits
 					to_string(i, s, 10);
 					VGA_display_str(s);
 				} else if (c == 'x') {
-					unsigned char i = va_arg(args, int);
+					unsigned char i = va_arg(*args, int);
 					char s[2]; // 3 digits
 					to_string(i, s, 16);
 					VGA_display_str(s);
@@ -272,7 +269,7 @@ int printk(const char* fmt, ... ) {
 					VGA_display_char(c);
 				}
 			} else if (c == 's') { // string
-				char* str = va_arg(args, char*);
+				char* str = va_arg(*args, char*);
 				VGA_display_str(str);
 
 			} else { // Just display the two characters in plain text
@@ -285,4 +282,19 @@ int printk(const char* fmt, ... ) {
 
 		c = *(++fmt);
 	}
+}
+
+int printk(const char* fmt, ...) {
+	va_list args;
+    va_start(args, fmt);
+	_printk(fmt, &args);
+	va_end(args);
+}
+
+int printkln(const char* fmt, ... ) {
+	va_list args;
+    va_start(args, fmt);
+	_printk(fmt, &args);
+	VGA_display_char('\n');
+	va_end(args);
 }
