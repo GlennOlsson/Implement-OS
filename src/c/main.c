@@ -20,23 +20,25 @@ void kmain() {
 
 
 
-	int j = 30;
+	int j = 0;//30;
+
+	printk("Hello, ptr: %p", &j);
 
 	// while(j--) {
 	// 	ugly_sleep(1);
 	// 	printk("Hello %s, my name is %s and I am %d years old", "Glenn", "Glenne", j);
 	// }
 
-	VGA_display_char('\n');
-	VGA_display_char('\n');
-	VGA_display_char('\n');
+	// VGA_display_char('\n');
+	// VGA_display_char('\n');
+	// VGA_display_char('\n');
 	
-	print_char('!');
-	print_char(' ');
-	print_str("Hej jag heter glenn ");
-	print_short(-69);
-	print_uchar(245);
-	print_long_hex(0x69420);
+	// print_char('!');
+	// print_char(' ');
+	// print_str("Hej jag heter glenn ");
+	// print_short(-69);
+	// print_uchar(245);
+	// print_long_hex(0x69420);
 
 	while(!j)
 		asm("hlt");

@@ -128,6 +128,35 @@ void VGA_display_line(const char * str) {
 	VGA_display_char('\n');
 }
 
+void print_char(char c) {
+	VGA_display_char(c);
+}
+
+void print_str(const char* str) {
+	VGA_display_str(str);
+}
+
+void print_uchar(unsigned char c) {
+	unsigned long l = (unsigned long) c;
+	char str[3]; // Max is 255 for uchar
+	to_string(l, str, 10);
+	VGA_display_str(str);
+}
+
+void print_short(short s) {
+	long l = (long) s;
+	char str[6]; // Max is "-32767" for uchar
+	to_string(l, str, 10);
+	VGA_display_str(str);
+}
+
+void print_long_hex(long l) {
+	char str[20]; // Min is "-9223372036854775808"
+	to_string(l, str, 16);
+	VGA_display_str(str);
+}
+
+
 int printk(const char* fmt, ... ) {
     va_list args;
     va_start(args, fmt);
@@ -142,7 +171,7 @@ int printk(const char* fmt, ... ) {
 				VGA_display_char('%');
 			} else if (c == 'd') { // signed decimal
 				long i = va_arg(args, long);
-				char s[11]; // max 10 digits and a minus sign
+				char s[20]; // max 19 digits and a minus sign
 				to_string(i, s, 10);
 				VGA_display_str(s);
 
@@ -189,32 +218,4 @@ int printk(const char* fmt, ... ) {
 		c = *(++fmt);
 	}
 	VGA_display_char('\n');
-}
-
-void print_char(char c) {
-	VGA_display_char(c);
-}
-
-void print_str(const char* str) {
-	VGA_display_str(str);
-}
-
-void print_uchar(unsigned char c) {
-	unsigned long l = (unsigned long) c;
-	char str[3]; // Max is 255 for uchar
-	to_string(l, str, 10);
-	VGA_display_str(str);
-}
-
-void print_short(short s) {
-	long l = (long) s;
-	char str[6]; // Max is "-32767" for uchar
-	to_string(l, str, 10);
-	VGA_display_str(str);
-}
-
-void print_long_hex(long l) {
-	char str[20]; // Min is "-9223372036854775808"
-	to_string(l, str, 16);
-	VGA_display_str(str);
 }
