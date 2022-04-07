@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"*.psql": "sql",
+		"*.pl": "prolog",
+		"stdint.h": "c"
+	}
+}

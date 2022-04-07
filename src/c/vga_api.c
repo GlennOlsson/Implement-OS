@@ -1,6 +1,7 @@
 #include "vga_api.h"
 #include "lib.h"
 #include <stdarg.h>
+#include <stdint-gcc.h>
 
 #define MAX_COL 80
 #define MAX_ROW 25
@@ -197,12 +198,79 @@ int printk(const char* fmt, ... ) {
 				to_string((long) pt, s, 16);
 				VGA_display_str(s);
 
-			} else if (c == 'h') { // %h[dux]
+			} else if (c == 'h') { // %h[dux] short int
+				c = *(++fmt);
+
+				if(c == 'd') {
+					short int i = va_arg(args, int);
+					char s[6]; // 5 digits and -
+					to_string(i, s, 10);
+					VGA_display_str(s);
+
+				} else if (c == 'u') { // unsigned
+					unsigned short int i = va_arg(args, unsigned int);
+					char s[5]; // 5 digits
+					to_string(i, s, 10);
+					VGA_display_str(s);
+
+				} else if (c == 'x') { // hex
+					unsigned short int i = va_arg(args, unsigned int);
+					char s[4]; // 4 hex digits
+					to_string(i, s, 16);
+					VGA_display_str(s);
+
+				} else { // just print the %, x and value of c
+					VGA_display_char('%');
+					VGA_display_char('x');
+					VGA_display_char(c);
+				}
+			} else if (c == 'l') { // %l[dux] long int
+				c = *(++fmt);
 				
-			} else if (c == 'l') { // %l[dux]
-				
-			} else if (c == 'q') { // %q[dux]
-				
+				if(c == 'd') {
+					long int i = va_arg(args, long int);
+					char s[21]; // 20 digits
+					to_string(i, s, 10);
+					VGA_display_str(s);
+				} else if (c == 'u') { // unsigned
+					unsigned long int i = va_arg(args, unsigned long int);
+					char s[20]; // 20 digits
+					to_string(i, s, 10);
+					VGA_display_str(s);
+					
+				} else if (c == 'x') { // hex
+					unsigned long int i = va_arg(args, unsigned long int);
+					char s[8]; // 8 hex values
+					to_string(i, s, 16);
+					VGA_display_str(s);
+				} else { // just print the %, l and value of c
+					VGA_display_char('%');
+					VGA_display_char('l');
+					VGA_display_char(c);
+				}
+			} else if (c == 'q') { // %q[dux], 8 bit integer
+				c = *(++fmt);
+
+				if(c == 'd') {
+					char i = va_arg(args, int);
+					char s[4]; // 3 digits and a -
+					to_string(i, s, 10);
+					VGA_display_str(s);
+				} else if (c == 'u') {
+					unsigned char i = va_arg(args, int);
+					char s[3]; // 3 digits
+					to_string(i, s, 10);
+					VGA_display_str(s);
+				} else if (c == 'x') {
+					unsigned char i = va_arg(args, int);
+					char s[2]; // 3 digits
+					to_string(i, s, 16);
+					VGA_display_str(s);
+				} else { // just print the %, q and value of c
+					VGA_display_char('%');
+					VGA_display_char('q');
+					VGA_display_char(c);
+				}
 			} else if (c == 's') { // string
 				char* str = va_arg(args, char*);
 				VGA_display_str(str);
@@ -217,5 +285,4 @@ int printk(const char* fmt, ... ) {
 
 		c = *(++fmt);
 	}
-	VGA_display_char('\n');
 }
