@@ -35,7 +35,9 @@ void kmain() {
 	print_uchar(245);
 	print_long_hex(0x11111);
 
-	printk("\nchar a == %qd == 0x%qx", 'a', 'a');
+	printk("\nshort int 50000 == %hd == 0x%hx == %hu\n", 50000, 50000, 50000);
+	printk("long int 10000 == %ld == 0x%lx == %lu\n", 10000, 10000, 10000);
+	printk("char a == %qd == 0x%qx == %qu\n", 'a', 'a', 'a');
 
 	while(!j)
 		asm("hlt");

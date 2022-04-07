@@ -146,7 +146,7 @@ void print_uchar(unsigned char c) {
 
 void print_short(short s) {
 	long l = (long) s;
-	char str[6]; // Max is "-32767" for uchar
+	char str[6]; // Min is "-32767" for uchar
 	to_string(l, str, 10);
 	VGA_display_str(str);
 }
