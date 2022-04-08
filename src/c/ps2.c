@@ -116,15 +116,15 @@ void setup_keyboard() {
 	outb(0xAE, PS2_COMMAND_REG); // Enable first port again
 
 	//Config keyboard
+	// wait_for_write();
+	// outb(0xFF, PS2_DATA_PORT);
+
+	// wait_for_read();
+	// printkln("test response: %x", inb(PS2_DATA_PORT));
+
+
 	wait_for_write();
-	outb(0xFF, PS2_DATA_PORT);
-
-	wait_for_read();
-	printkln("test response: %x", inb(PS2_DATA_PORT));
-
-
-	wait_for_write();
-	outb(0xEE, PS2_DATA_PORT);
+	outb(0xEE, PS2_DATA_PORT); // Send echo command
 
 	wait_for_read();
 	printkln("EE response: %x", inb(PS2_DATA_PORT));
@@ -133,17 +133,69 @@ void setup_keyboard() {
 	outb(0xF0, PS2_DATA_PORT);
 
 	wait_for_read();
-	printkln("F0 response: %x", inb(PS2_DATA_PORT));
-
+	printkln("Reading setting to F0 (ack?): %x", inb(PS2_DATA_PORT));
 
 	wait_for_write();
 	outb(0x2, PS2_DATA_PORT);
 
-	uint8_t s_r = inb(PS2_STATUS_REG);
-	const struct StatusRegister* status_reg = (struct StatusRegister*) &s_r;
-	
 	wait_for_read();
-	uint8_t data = inb(PS2_DATA_PORT);
+	printkln("Setting keyset response (ack): %x", inb(PS2_DATA_PORT));
 
-	printkln("from device? %s. Data: %x. Status reg: %b", status_reg->command == 1 ? "no" : "yes", data, s_r);
+	wait_for_write();
+	outb(0xF0, PS2_DATA_PORT);
+
+	wait_for_read();
+	printkln("Reading setting to F0 (ack?): %x", inb(PS2_DATA_PORT));
+	
+	wait_for_write();
+	outb(0x0, PS2_DATA_PORT);
+
+	wait_for_read();
+	printkln("Reading keyset response 1 (ack): %x", inb(PS2_DATA_PORT));
+
+	wait_for_read();
+	printkln("Reading keyset response 2: %x", inb(PS2_DATA_PORT));
+
+
+	// Enable keyboard
+	wait_for_write();
+	outb(0xF4, PS2_DATA_PORT);
+
+	wait_for_read();
+	printkln("Enable keyboard (ack): %x", inb(PS2_DATA_PORT));
+
+	while(1) {
+		wait_for_read();
+		printkln("Key pressed: %x ", inb(PS2_DATA_PORT));
+	}
+
+	// // uint8_t s_r = inb(PS2_STATUS_REG);
+	// // const struct StatusRegister* status_reg = (struct StatusRegister*) &s_r;
+	
+	// wait_for_read();
+	// // uint8_t data = inb(PS2_DATA_PORT);
+
+	// printkln("Keyset response (ack?): %x", inb(PS2_DATA_PORT));
+	// // printkln("from device? %s. Data: %x. Status reg: %b", status_reg->command == 1 ? "no" : "yes", data, s_r);
+
+	// wait_for_write();
+	// outb(0xF0, PS2_DATA_PORT);
+	// // wait_for_read();
+	// // printkln("F0 resp is: %x", inb(PS2_DATA_PORT));
+
+	// wait_for_write();
+	// outb(0x0, PS2_DATA_PORT);
+	// wait_for_read();
+	// printkln("1st resp is (ack): %x", inb(PS2_DATA_PORT));
+
+	// wait_for_read();
+	// printkln("0 resp is: %x", inb(PS2_DATA_PORT));
+
+	// wait_for_read();
+	// printkln("Keyset2 response: %x", inb(PS2_DATA_PORT));
+	// wait_for_read();
+	// printkln("Keyset is: %x", inb(PS2_DATA_PORT));
+
+	// wait_for_read();
+	// printkln("Keyset2 is: %x", inb(PS2_DATA_PORT));
 }
