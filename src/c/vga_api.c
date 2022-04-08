@@ -195,6 +195,12 @@ int _printk(const char* fmt, va_list* args) {
 				to_string((long) pt, s, 16);
 				VGA_display_str(s);
 
+			}  else if (c == 'b') { // binary
+				long i = va_arg(*args, long);
+				char s[64];
+				to_string((long) i, s, 2);
+				VGA_display_str(s);
+
 			} else if (c == 'h') { // %h[dux] short int
 				c = *(++fmt);
 

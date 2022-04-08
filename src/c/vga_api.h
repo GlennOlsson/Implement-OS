@@ -1,4 +1,6 @@
 
+#ifndef VGA_API_H
+#define VGA_API_H
 // Lowest level
 void write_to(unsigned char col, unsigned char row, unsigned short s);
 void write_str(unsigned char col, unsigned char row, const char* str);
@@ -17,3 +19,5 @@ void print_str(const char *);
 void print_uchar(unsigned char);
 void print_short(short);
 void print_long_hex(long);
+
+#endif

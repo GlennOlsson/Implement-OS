@@ -1,5 +1,6 @@
 #include "lib.h"
 #include "stddef.h"
+#include "vga_api.h"
 
 void* memset(void* dst, int i, size_t n) {
 	unsigned char c = (unsigned char) i;

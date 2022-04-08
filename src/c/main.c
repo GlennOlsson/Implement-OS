@@ -1,18 +1,14 @@
 #include "vga_api.h"
 #include "lib.h"
-
-//Sleeps for approximately sec seconds
-void ugly_sleep(int sec) {
-	int i = 0;
-	int limit = 100000000 * sec;
-	while(i < limit) {
-		i += 1;
-	}
-}
+#include "ps2.h"
 
 void kmain() {
 
-	printk("Hello, welcome to GlennOS!");
+	printk("Hello, welcome to GlennOS!\n");
+
+	setup_keyboard();
+
+	printk("Setup keyboard");
 
 	int j = 0;
 	while(!j)
