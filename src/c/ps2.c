@@ -30,6 +30,32 @@ struct ControllerByte {
 	uint8_t zero2: 1;
 };
 
+char pressed_keys[] = {0x1b /*esc*/,'1','2' ,
+'3' ,'4','5' ,'6',
+'7' ,'8','9' ,'0',
+'-' ,'=',0x8/*Backspace*/ ,0x9, /*tab*/
+'Q' ,'W','E' ,'R',
+'T' ,'Y','U' ,'I',
+'O' ,'P','[' ,']',
+'\n' , 0x0/*left control*/,'A' ,'S',
+'D' ,'F','G' ,'H',
+'J' ,'K','L' ,' ;',
+'\'' ,'`',0x0 /*left shift*/,'\\',
+'Z' ,'X','C' ,'V',
+'B' ,'N','M', ',',
+'.' ,'/',0x0 /*right shift*/ ,'*',
+0x0 /*left alt*/ ,' ', 0x0 /*CapsLock*/ ,0x0 /*F1*/,
+0x0 /*F2*/ ,0x0 /*F3*/,0x0 /*F4*/ ,0x0 /*F5*/,
+0x0 /*F6*/ ,0x0 /*F7*/,0x0 /*F8*/ ,0x0 /*F9*/,
+'F10' ,0x0 /*NumberLock*/,0x0 /*ScrollLock*/ ,'7',
+'8' ,'9','-' ,'4',
+'5' ,'6','+' ,'1',
+'2' ,'3','0' ,'.'};
+
+char is_capslock = 0;
+char is_left_shift = 0;
+char is_right_shift = 0;
+
 // Write to port
 static inline void outb(uint8_t val, uint16_t port) {
     asm volatile ( "outb %0, %1" : : "a"(val), "Nd"(port));
@@ -45,6 +71,11 @@ static inline uint8_t inb(uint16_t port) {
 	return ret; 
 }
 
+// Checks if the character is one of A-Z, uppercase
+char is_alpha(char c) {
+	return c >= 0x41 && c <= 0x5A;
+}
+
 // Wait until we can write to data port
 void wait_for_write() {
 	printkln("Waiting to write...");
@@ -57,13 +88,13 @@ void wait_for_write() {
 
 // Wait until we can read from data port
 void wait_for_read() {
-	printkln("Waiting to read...");
+	// printkln("Waiting to read...");
 	uint8_t o_buf_val = inb(PS2_STATUS_REG) & 0b1;
-	printkln("output buf val: %b", inb(PS2_STATUS_REG));
+	// printkln("output buf val: %b", inb(PS2_STATUS_REG));
 	while(o_buf_val != 1) {
 		o_buf_val = inb(PS2_STATUS_REG) & 0b1;
 	}
-	printkln("Can read!");
+	// printkln("Can read!");
 }
 
 
@@ -136,7 +167,7 @@ void setup_keyboard() {
 	printkln("Reading setting to F0 (ack?): %x", inb(PS2_DATA_PORT));
 
 	wait_for_write();
-	outb(0x2, PS2_DATA_PORT);
+	outb(0x2, PS2_DATA_PORT); // Set keyboard scancodes
 
 	wait_for_read();
 	printkln("Setting keyset response (ack): %x", inb(PS2_DATA_PORT));
@@ -156,7 +187,6 @@ void setup_keyboard() {
 	wait_for_read();
 	printkln("Reading keyset response 2: %x", inb(PS2_DATA_PORT));
 
-
 	// Enable keyboard
 	wait_for_write();
 	outb(0xF4, PS2_DATA_PORT);
@@ -166,36 +196,30 @@ void setup_keyboard() {
 
 	while(1) {
 		wait_for_read();
-		printkln("Key pressed: %x ", inb(PS2_DATA_PORT));
+		unsigned char scancode = inb(PS2_DATA_PORT);
+		// Key pressed
+		if(scancode > 0 && scancode <= 0x58) {
+			unsigned char c = pressed_keys[scancode-1];
+			// printkln("\nScan code: %x", scancode);
+			if(c) { // if not 0x0
+				if(!is_alpha(c) || is_left_shift || is_right_shift || is_capslock)
+					VGA_display_char(c);
+				else
+					VGA_display_char(c + 32);
+				continue;
+			}
+		
+			// Else, special character
+			if(scancode == 0x2A) //lshift
+				is_left_shift = 1;
+			else if (scancode == 0x36) //rshift
+				is_right_shift = 1;
+			else if (scancode == 0x3A) // capslock
+				is_capslock ^= 1;
+
+		} else if(scancode == 0xAA) //lshift
+			is_left_shift = 0;
+		else if(scancode == 0xB6) //rshift
+			is_right_shift = 0;
 	}
-
-	// // uint8_t s_r = inb(PS2_STATUS_REG);
-	// // const struct StatusRegister* status_reg = (struct StatusRegister*) &s_r;
-	
-	// wait_for_read();
-	// // uint8_t data = inb(PS2_DATA_PORT);
-
-	// printkln("Keyset response (ack?): %x", inb(PS2_DATA_PORT));
-	// // printkln("from device? %s. Data: %x. Status reg: %b", status_reg->command == 1 ? "no" : "yes", data, s_r);
-
-	// wait_for_write();
-	// outb(0xF0, PS2_DATA_PORT);
-	// // wait_for_read();
-	// // printkln("F0 resp is: %x", inb(PS2_DATA_PORT));
-
-	// wait_for_write();
-	// outb(0x0, PS2_DATA_PORT);
-	// wait_for_read();
-	// printkln("1st resp is (ack): %x", inb(PS2_DATA_PORT));
-
-	// wait_for_read();
-	// printkln("0 resp is: %x", inb(PS2_DATA_PORT));
-
-	// wait_for_read();
-	// printkln("Keyset2 response: %x", inb(PS2_DATA_PORT));
-	// wait_for_read();
-	// printkln("Keyset is: %x", inb(PS2_DATA_PORT));
-
-	// wait_for_read();
-	// printkln("Keyset2 is: %x", inb(PS2_DATA_PORT));
 }
