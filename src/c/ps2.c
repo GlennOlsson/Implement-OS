@@ -7,6 +7,8 @@
 #define PS2_STATUS_REG 0x64
 #define PS2_COMMAND_REG 0x64
 
+const char* prompt = "> ";
+
 // https://wiki.osdev.org/%228042%22_PS/2_Controller#Status_Register
 struct StatusRegister {
 	uint8_t o_buf_status: 1;
@@ -37,7 +39,7 @@ char pressed_keys[] = {0x1b /*esc*/,'1','2' ,
 'Q' ,'W','E' ,'R',
 'T' ,'Y','U' ,'I',
 'O' ,'P','[' ,']',
-'\n' , 0x0/*left control*/,'A' ,'S',
+'\n' /*New line*/ , 0x0/*left control*/,'A' ,'S',
 'D' ,'F','G' ,'H',
 'J' ,'K','L' ,' ;',
 '\'' ,'`',0x0 /*left shift*/,'\\',
@@ -194,6 +196,7 @@ void setup_keyboard() {
 	wait_for_read();
 	printkln("Enable keyboard (ack): %x", inb(PS2_DATA_PORT));
 
+	VGA_display_str(prompt);
 	while(1) {
 		wait_for_read();
 		unsigned char scancode = inb(PS2_DATA_PORT);
@@ -202,8 +205,12 @@ void setup_keyboard() {
 			unsigned char c = pressed_keys[scancode-1];
 			// printkln("\nScan code: %x", scancode);
 			if(c) { // if not 0x0
-				if(!is_alpha(c) || is_left_shift || is_right_shift || is_capslock)
+				if(!is_alpha(c) || is_left_shift || is_right_shift || is_capslock) {
 					VGA_display_char(c);
+					if(c == '\n') { // Line break char, print prompt again
+						VGA_display_str(prompt);
+					}
+				}
 				else
 					VGA_display_char(c + 32);
 				continue;

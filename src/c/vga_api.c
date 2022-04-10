@@ -91,9 +91,9 @@ void VGA_clear() {
 
 void VGA_display_char(char c) {
 	if(current_row == MAX_ROW) {
-			scroll();
-			--current_row;
-			clear_row(current_row);
+		scroll();
+		--current_row;
+		clear_row(current_row);
 	}
 	if(c == '\n') {
 		current_row += 1;
