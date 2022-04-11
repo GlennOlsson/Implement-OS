@@ -120,8 +120,6 @@ void ugly_sleep(int sec) {
 // Polls the keyboard for events. Actions are sent to the argument function
 void poll_keyboard(void (*key_action_func)(unsigned char)) {
 	while(1) {
-		printkln("polling charcode ");
-
 		wait_for_read();
 		unsigned char scancode = read_data();
 
@@ -167,39 +165,6 @@ void* setup_keyboard() {
 	wait_for_write();
 	write_command(0xAE);// Enable first port again
 
-	// wait_for_write();
-	// outb(0xAD, PS2_COMMAND_REG); // Dissable port 1
-	// wait_for_write();
-	// outb(0xA7, PS2_COMMAND_REG); // Dissable port 2
-	// wait_for_write();
-	// outb(0x20, PS2_COMMAND_REG); // Read config
-
-	// wait_for_read();
-	// uint8_t c_b = inb(PS2_DATA_PORT);
-	// struct ControllerByte* controller_b = (struct ControllerByte*) &c_b;
-
-	// controller_b->port_1_interrupt = 1;
-	// controller_b->port_2_interrupt = 0;
-	// controller_b->port_1_clock = 1;
-	// controller_b->port_2_clock = 0;
-
-	// printkln("Writing %b as controller config", c_b);
-	
-	// wait_for_write();
-	// outb(0x60, PS2_COMMAND_REG); // Write config
-
-	// wait_for_write();
-	// outb(c_b, PS2_DATA_PORT);
-
-	// wait_for_write();
-	// outb(0xAA, PS2_COMMAND_REG);
-
-	// wait_for_read();
-	// printkln("Replied with %x", inb(PS2_DATA_PORT));
-
-	// wait_for_write();
-	// outb(0xAE, PS2_COMMAND_REG); // Enable first port again
-
 	printkln("Configed PS/2");
 	//PS/2 controller should be configed
 
@@ -208,101 +173,21 @@ void* setup_keyboard() {
 	wait_for_write();
 	write_data(0xF0); // Prepare for setting scancode
 
-	wait_for_read(); // Read ACK
-	resp = read_data();
-	printkln("Prepare scancode, ACK=%x", resp);
-
 	wait_for_write();
 	write_data(0x2); // Set keyboard scancodes
-
-	wait_for_read(); // Read ack
-	resp = read_data();
-	printkln("Set scancode, ACK=%x", resp);
 
 	// Enable keyboard
 	wait_for_write();
 	write_data(0xF4);
 
-	wait_for_read();
-	resp = read_data();
-	printkln("Enable kboard, ACK=%x", resp);
-
 	printkln("keyboard setup done");
-	// ugly_sleep(5);
-
 
 	//Check scancode set
 	wait_for_write();
 	write_data(0xF0);
 
-	wait_for_read();
-	resp = read_data();
-	printkln("Scan code command, ACK=%x", resp);
-
 	wait_for_write();
 	write_data(0x0);
 
-	wait_for_read();
-	resp = read_data();
-	printkln("Scan code read, ACK=%x", resp);
-
-	wait_for_read();
-	resp = read_data();
-	printkln("Scan code value, set=%x", resp);
-
-	// ugly_sleep(5);
-
-
-	// wait_for_write();
-	// outb(0xEE, PS2_DATA_PORT); // Send echo command
-
-	// wait_for_read();
-	// printkln("EE response: %x", inb(PS2_DATA_PORT));
-
-	// wait_for_write();
-	// outb(0xF0, PS2_DATA_PORT);
-
-	// wait_for_read();
-	// printkln("Reading setting to F0 (ack?): %x", inb(PS2_DATA_PORT));
-
-	// wait_for_write();
-	// outb(0x2, PS2_DATA_PORT); // Set keyboard scancodes
-
-	// wait_for_read();
-	// printkln("Setting keyset response (ack): %x", inb(PS2_DATA_PORT));
-
-	// wait_for_write();
-	// outb(0xF0, PS2_DATA_PORT);
-
-	// wait_for_read();
-	// printkln("Reading setting to F0 (ack?): %x", inb(PS2_DATA_PORT));
-	
-	// wait_for_write();
-	// outb(0x0, PS2_DATA_PORT);
-
-	// wait_for_read();
-	// printkln("Reading keyset response 1 (ack): %x", inb(PS2_DATA_PORT));
-
-	// wait_for_read();
-	// printkln("Reading keyset response 2: %x", inb(PS2_DATA_PORT));
-
-	// // Enable keyboard
-	// wait_for_write();
-	// outb(0xF4, PS2_DATA_PORT);
-
-	// wait_for_read();
-	// printkln("Enable keyboard (ack): %x", inb(PS2_DATA_PORT));
-
-	// return &poll_keyboard;
-	while(1) {
-		printkln("polling charcode ");
-
-		wait_for_read();
-		// unsigned char scancode = inb(PS2_DATA_PORT);
-		unsigned char scancode = read_data();
-
-		printkln("SCancode %x", scancode);
-
-		// key_action_func(scancode);
-	}
+	return &poll_keyboard;
 }
