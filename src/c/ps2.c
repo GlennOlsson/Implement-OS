@@ -51,40 +51,6 @@ uint8_t read_status() {
 	return inb(PS2_STATUS_REG);
 }
 
-uint8_t read_data() {
-	return inb(PS2_DATA_PORT);
-}
-
-void write_command(uint8_t command) {
-	return outb(command, PS2_COMMAND_REG);
-}
-
-void write_data(uint8_t data) {
-	return outb(data, PS2_DATA_PORT);
-}
-
-
-// Wait until we can write to data port
-// void wait_for_write() {
-// 	// printkln("Waiting to write...");
-// 	uint8_t i_buf_val = ((inb(PS2_STATUS_REG) & 0b10) >> 1);
-// 	while(i_buf_val == 1)
-// 		i_buf_val = ((inb(PS2_STATUS_REG) & 0b10) >> 1);
-	
-// 	// printkln("Can write!");
-// }
-
-// Wait until we can read from data port
-// void wait_for_read() {
-// 	// printkln("Waiting to read...");
-// 	uint8_t o_buf_val = inb(PS2_STATUS_REG) & 0b1;
-// 	// printkln("output buf val: %b", inb(PS2_STATUS_REG));
-// 	while(o_buf_val != 1) {
-// 		o_buf_val = inb(PS2_STATUS_REG) & 0b1;
-// 	}
-// 	// printkln("Can read!");
-// }
-
 // Wait until we can write to data port
 void wait_for_write() {
 	uint8_t port_content = read_status();
@@ -107,6 +73,21 @@ void wait_for_read() {
 	}
 }
 
+uint8_t read_data() {
+	wait_for_read();
+	return inb(PS2_DATA_PORT);
+}
+
+void write_command(uint8_t command) {
+	wait_for_write();
+	return outb(command, PS2_COMMAND_REG);
+}
+
+void write_data(uint8_t data) {
+	wait_for_write();
+	return outb(data, PS2_DATA_PORT);
+}
+
 //Sleeps for approximately sec seconds
 void ugly_sleep(int sec) {
 	int i = 0;
@@ -120,7 +101,6 @@ void ugly_sleep(int sec) {
 // Polls the keyboard for events. Actions are sent to the argument function
 void poll_keyboard(void (*key_action_func)(unsigned char)) {
 	while(1) {
-		wait_for_read();
 		unsigned char scancode = read_data();
 
 		key_action_func(scancode);
@@ -129,14 +109,10 @@ void poll_keyboard(void (*key_action_func)(unsigned char)) {
 
 // Returns a pointer to a function which polls the keyboard
 void* setup_keyboard() {
-	wait_for_write();
 	write_command(0xAD);// Dissable port 1
-	wait_for_write();
 	write_command(0xA7);// Dissable port 2
-	wait_for_write();
 	write_command(0x20);// Read config
 
-	wait_for_read();
 	uint8_t c_b = read_data();
 	struct ControllerByte* controller_b = (struct ControllerByte*) &c_b;
 
@@ -144,49 +120,36 @@ void* setup_keyboard() {
 	controller_b->port_2_interrupt = 0;
 	controller_b->port_1_clock = 1;
 	controller_b->port_2_clock = 0;
-
-	printkln("Writing %b as controller config", c_b);
 	
-	wait_for_write();
-	write_command(0x60);// Write config
+	write_command(0x60);// Write config command
 
-	wait_for_write();
-	write_data(c_b);
+	write_data(c_b); // Write config
 
-	wait_for_write();
 	write_command(0xAA); // Send test start
 
-	wait_for_read();
 	uint8_t resp = read_data();
 	if(resp != 0x55) {
 		printkln("PS/2 test failed");
 	}
 
-	wait_for_write();
 	write_command(0xAE);// Enable first port again
 
 	printkln("Configed PS/2");
 	//PS/2 controller should be configed
 
 	//Config keyboard
-	
-	wait_for_write();
 	write_data(0xF0); // Prepare for setting scancode
 
-	wait_for_write();
 	write_data(0x2); // Set keyboard scancodes
 
 	// Enable keyboard
-	wait_for_write();
 	write_data(0xF4);
 
 	printkln("keyboard setup done");
 
 	//Check scancode set
-	wait_for_write();
 	write_data(0xF0);
 
-	wait_for_write();
 	write_data(0x0);
 
 	return &poll_keyboard;
