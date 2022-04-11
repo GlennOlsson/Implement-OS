@@ -95,6 +95,11 @@ void to_string(long i, char* s, long base) {
 	}
 }
 
+// Checks if the character is one of A-Z, uppercase
+char is_alpha(char c) {
+	return c >= 0x41 && c <= 0x5A;
+}
+
 // Don't have malloc so won't implement this now
 // char* strdup(const char* s) {
 // 	size_t len = strlen(s);

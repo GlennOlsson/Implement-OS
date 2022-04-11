@@ -69,6 +69,11 @@ void clear_row(unsigned char row) {
 	}
 }
 
+void clear_at(unsigned char col, unsigned char row) {
+	short offset = vga_offset(col, row);
+	vga_buff[offset] = 0x0000;
+}
+
 // Scroll the console one line up
 void scroll() {
 	for(short row = 1; row < MAX_ROW; ++row) {
@@ -81,12 +86,21 @@ void scroll() {
 unsigned char current_row = 0;
 unsigned char current_col = 0;
 
+// Does not erase first two characters due to prompt
+void VGA_erase() {
+	if(current_col - 1 >= 2)
+		--current_col;
+	clear_at(current_col, current_row);
+}
+
 void VGA_clear() {
 	short limit = MAX_COL * MAX_ROW;
 	short index = 0;
 	while(index < limit) {
 		vga_buff[index++] = 0x0000;
 	}
+	current_col = 0;
+	current_row = 0;
 }
 
 void VGA_display_char(char c) {

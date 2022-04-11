@@ -13,6 +13,7 @@ c:
 	x86_64-elf-gcc -c -g $(c_dir)/vga_api.c -o $(out_dir)/vga_api.o
 	x86_64-elf-gcc -c -g $(c_dir)/lib.c -o $(out_dir)/lib.o
 	x86_64-elf-gcc -c -g $(c_dir)/ps2.c -o $(out_dir)/ps2.o
+	x86_64-elf-gcc -c -g $(c_dir)/console.c -o $(out_dir)/console.o
 
 compile: asm c
 	ld -n -o out/kernel.bin -T linker.ld $(out_dir)/*.o
