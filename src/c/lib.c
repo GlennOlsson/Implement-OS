@@ -17,6 +17,8 @@ void* memcpy(void* dest, const void* src, size_t n) {
 	while(n-- > 0) {
 		*(d++) = *(s++);
 	}
+
+	return dest;
 }
 
 size_t strlen(const char* s) {
@@ -35,6 +37,8 @@ char* strcpy(char* dest, const char* src) {
 		index++;
 		c = src[index];
 	}
+
+	return dest;
 }
 
 int strcmp(const char* s1, const char* s2) {
