@@ -12,6 +12,7 @@ void kmain() {
 	void (*poll_keyboard_func)(void (*key_action_func)(unsigned char)) = setup_keyboard();
 	setup_console();
 
+	// key_action comes from console.h
 	poll_keyboard_func(&key_action);
 
 	int j = 0;
