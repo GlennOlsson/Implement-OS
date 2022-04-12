@@ -104,6 +104,16 @@ char is_alpha(char c) {
 	return c >= 0x41 && c <= 0x5A;
 }
 
+//Sleeps for approximately sec seconds
+void ugly_sleep(int ms) {
+	int i = 0;
+	int limit = 100000 * ms;
+	while(i < limit) {
+		i += 1;
+	}
+	i = i;
+}
+
 // Don't have malloc so won't implement this now
 // char* strdup(const char* s) {
 // 	size_t len = strlen(s);

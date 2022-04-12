@@ -5,7 +5,7 @@
 
 void kmain() {
 
-	printk("Hello, welcome to GlennOS!\n");
+	slow_print("Hello, welcome to GlennOS!\n");
 
 	// setup_keyboard returns a pointer to a function which polls the keyboard. This function
 	// takes a function which is called with each key action

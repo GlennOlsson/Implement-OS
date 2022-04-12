@@ -88,16 +88,6 @@ void write_data(uint8_t data) {
 	return outb(data, PS2_DATA_PORT);
 }
 
-//Sleeps for approximately sec seconds
-void ugly_sleep(int sec) {
-	int i = 0;
-	int limit = 100000000 * sec;
-	while(i < limit) {
-		i += 1;
-	}
-	i = i;
-}
-
 // Polls the keyboard for events. Actions are sent to the argument function
 void poll_keyboard(void (*key_action_func)(unsigned char)) {
 	while(1) {

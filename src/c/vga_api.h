@@ -21,4 +21,6 @@ void print_uchar(unsigned char);
 void print_short(short);
 void print_long_hex(long);
 
+void slow_print(char*);
+
 #endif

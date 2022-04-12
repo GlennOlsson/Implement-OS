@@ -14,6 +14,8 @@ void to_string(long i, char* s, long base);
 
 char is_alpha(char c);
 
+void ugly_sleep(int sec);
+
 // Reasoning in lib.c
 // char *strdup(const char *s);
 

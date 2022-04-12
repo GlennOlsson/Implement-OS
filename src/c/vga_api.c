@@ -335,3 +335,10 @@ int printkln(const char* fmt, ... ) {
 	va_end(args);
 	return c_count + 1; // +1 for \n
 }
+
+void slow_print(char* str) {
+	while(*str != '\0') {
+		VGA_display_char(*(str++));
+		ugly_sleep(100);
+	}
+}
