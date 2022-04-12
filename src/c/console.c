@@ -49,9 +49,11 @@ void key_action(unsigned char scancode) {
 				}
 				VGA_display_char(c);
 				if(c == '\n') { // Line break char, print prompt again
+					//TODO: Output string somehow. Need strdup() and therefore malloc
 					VGA_display_str(prompt);
 				}
 			}
+			
 			else
 				VGA_display_char(c + 32);
 			return;
