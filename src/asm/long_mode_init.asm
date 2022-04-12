@@ -1,4 +1,5 @@
 global long_mode_start
+extern init_ints
 extern kmain
 
 section .text
@@ -11,6 +12,8 @@ long_mode_start:
     mov es, ax
     mov fs, ax
     mov gs, ax
+
+    call init_ints
 
 	call kmain
 

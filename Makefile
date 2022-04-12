@@ -9,6 +9,7 @@ asm:
 	nasm -f elf64 $(asm_dir)/multiboot_header.asm -o $(out_dir)/multiboot_header.o
 	nasm -f elf64 $(asm_dir)/boot.asm -o $(out_dir)/boot.o
 	nasm -f elf64 $(asm_dir)/long_mode_init.asm -o $(out_dir)/long_mode_init.o
+	nasm -f elf64 $(asm_dir)/interrupt_init.asm -o $(out_dir)/interrupt_init.o
 
 c:
 	x86_64-elf-gcc $(c_flags) $(c_dir)/main.c -o $(out_dir)/main.o
