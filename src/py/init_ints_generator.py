@@ -5,6 +5,7 @@ content = """extern setup_idt
 extern generic_interrupt_handler
 extern print_long_hex
 extern ugly_sleep
+extern VGA_display_char
 
 global init_ints
 
@@ -25,19 +26,10 @@ init_ints:
 	mov RSI, [isr1] ; Load code segment address into 2nd arg
 	call setup_idt ; Setup IDT in C
 
-	push RBP
+	lidt [RAX]
 
-	mov RBP, [RAX]
-	mov RDI, [RAX]
-	call print_long_hex
-
-
-	lidt [RBP]
-
-	pop RBP
-
-	mov RDI, 2000
-	call ugly_sleep
+	;mov RDI, 10000
+	;call ugly_sleep
 	
 	sti ; TODO: enable interrupts
 
@@ -64,6 +56,36 @@ isr{i}:
 	iretq
 """
 	content += code
+
+# content += """
+# section .rodata
+# idt:
+# .entries: equ $ - idt
+# 	;isr0
+# 	; Set 0-15 bits of isr0 to RCX
+# 	;mov RAX, 0xFFFF
+# 	;and RAX, isr0
+# 	;mov RCX, RAX 
+
+# 	dw isr0
+# 	dw 0b1000
+
+# 	; Set segment selector to RDX
+# 	;mov RDX, (0b1000 << 16)
+	
+# 	; Combine both segment selector and 16 first bits of isr0
+# 	;or RDX, RCX
+
+# 	;dq RDX
+
+
+#     ;dq (1<<43) | (1<<44) | (1<<47) | (1<<53) ; idt entry segment
+# .pointer:
+#     dw $ - idt - 1
+#     dq idt
+
+
+# """
 
 with open(out_file, "w") as f:
 	f.write(content)

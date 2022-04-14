@@ -22,6 +22,8 @@
 #define ICW4_BUF_MASTER	0x0C		/* Buffered mode/master */
 #define ICW4_SFNM	0x10		/* Special fully nested (not) */
 
+extern void isr0(void);
+
 typedef void (*irq_handler_t)(int, int, void *);
 static struct {
 	void* arg;
@@ -48,8 +50,8 @@ static struct {
 } interrupt_desc_table[256];
 
 static struct {
-	uint64_t idt_address;
 	uint16_t size;
+	uint64_t idt_address;
 } load_idt_struct;
 
 void map_PIC() {
@@ -84,8 +86,13 @@ void* setup_idt(int64_t first_ist_address, int64_t second_ist_address) {
 	printkln("Secon address: 0x%lx", second_ist_address);
 	printkln("Diff: 0x%x", ist_offset);
 
+	printkln("asm address: 0x%lx", first_ist_address);
+	printkln("c   address: 0x%p", &isr0);
+
+	// ugly_sleep(5000);
+
 	while(ist_index < 256) {
-		int64_t ist_address = first_ist_address; //+ (ist_index * ist_offset);
+		int64_t ist_address = (uint64_t) &isr0; //first_ist_address; //+ (ist_index * ist_offset);
 
 		int16_t offset_1 = ist_address & 0xFFFF;
 		int16_t offset_2 = (ist_address >> 16) & 0xFFFF;
@@ -97,30 +104,44 @@ void* setup_idt(int64_t first_ist_address, int64_t second_ist_address) {
 		
 		interrupt_desc_table[ist_index].target_selector = segment_selector;
 
+		interrupt_desc_table[ist_index].ist = 0;
 		interrupt_desc_table[ist_index].present = 1;
 		interrupt_desc_table[ist_index].zero = 0;
 		interrupt_desc_table[ist_index].gate_type = 0xF;
 		interrupt_desc_table[ist_index].dpl = 0x0; // Kernel privilege
 
 		++ist_index;
-		printkln("index %d has address %p", ist_index, (void*)ist_address);
+		//printkln("index %d has address %p", ist_index, (void*)ist_address);
 		// ugly_sleep(1000);
 	}
 
 	load_idt_struct.idt_address = (uint64_t) interrupt_desc_table;
-	load_idt_struct.size = 0x4000; // 0x4000 == 256 * 64, 64 bit per descriptor and 256 entries
+	load_idt_struct.size = (256 * 16) - 1; // 0x4000 == 256 * 64, 64 bit per descriptor and 256 entries
 
-	printkln("load idt at %p, first 64 bit: %lx, hoping to be %p, next 16 bits = %lx", &load_idt_struct, *((uint64_t*) &load_idt_struct), interrupt_desc_table, (*(((uint64_t*) &load_idt_struct) + 1)));
+	// printkln("desc table pt:    %p", interrupt_desc_table);
+	// printkln("load_idt bit 0-15:%x", *((uint16_t*) &load_idt_struct));
+	// printkln("load_idt bit 16-24:%x", *(((uint16_t*) &load_idt_struct) + 1));
+	// printkln("load_idt bit 24-31:%x", *(((uint16_t*) &load_idt_struct) + 2));
+	// printkln("load_idt bit 32-47:%x", *(((uint16_t*) &load_idt_struct) + 3));
+	// printkln("load_idt bit 47-64:%x", *(((uint16_t*) &load_idt_struct) + 4));
+	// printkln("load_idt bit 64-79:%x", *(((uint16_t*) &load_idt_struct) + 5));
+	// printkln("load_idt bit 16-79:%lx", *((uint64_t*)(((uint16_t*) &load_idt_struct))));
 
-	print_long_hex((unsigned long) &load_idt_struct);
-	print_char('\n');
+	printkln("Calling isr0");
+	isr0();
+	printkln("Called isr0");
+	ugly_sleep(20000);
+
+	// print_long_hex((unsigned long) &load_idt_struct);
+	// print_char('\n');
 
 	return &load_idt_struct;
 }
 
 void generic_interrupt_handler(int isr_code, int error_code, void* arg) {
-	ugly_sleep(10000);
+	ugly_sleep(5000);
 
 	printkln("Interrupt! Code=%d, error=%d, arg=%p", isr_code, error_code, arg);
+	ugly_sleep(10000);
 	irq_table[0].handler(isr_code, error_code, arg); //TODO: Remove, just as to not get compile error
 }

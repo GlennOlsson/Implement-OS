@@ -2,6 +2,7 @@ extern setup_idt
 extern generic_interrupt_handler
 extern print_long_hex
 extern ugly_sleep
+extern VGA_display_char
 
 global init_ints
 
@@ -273,24 +274,13 @@ init_ints:
 	mov RSI, [isr1] ; Load code segment address into 2nd arg
 	call setup_idt ; Setup IDT in C
 
-	push RBP
+	lidt [RAX]
 
-	mov RBP, [RAX]
-	mov RDI, [RAX]
-	call print_long_hex
-
-
-	lidt [RBP]
-
-	pop RBP
-
-	mov RDI, 2000
-	call ugly_sleep
+	;mov RDI, 10000
+	;call ugly_sleep
 	
 	sti ; TODO: enable interrupts
 
-	mov RDI, 5000
-	
 	ret
 
 isr0:
