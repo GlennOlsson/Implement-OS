@@ -170,7 +170,7 @@ void print_short(short s) {
 	VGA_display_str(str);
 }
 
-void print_long_hex(long l) {
+void print_long_hex(unsigned long l) {
 	char str[20]; // Min is "-9223372036854775808"
 	to_string(l, str, 16);
 	VGA_display_str(str);

@@ -19,7 +19,7 @@ void print_char(char);
 void print_str(const char *);
 void print_uchar(unsigned char);
 void print_short(short);
-void print_long_hex(long);
+void print_long_hex(unsigned long);
 
 void slow_print(char*);
 

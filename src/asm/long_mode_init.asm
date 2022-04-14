@@ -1,6 +1,8 @@
 global long_mode_start
 extern init_ints
 extern kmain
+extern print_char
+extern print_long_hex
 
 section .text
 bits 64
