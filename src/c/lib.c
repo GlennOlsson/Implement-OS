@@ -117,6 +117,21 @@ void ugly_sleep(int ms) {
 	i = i;
 }
 
+// Write to port
+inline void outb(uint8_t val, uint16_t port) {
+    asm volatile ( "outb %0, %1" : : "a"(val), "Nd"(port));
+}
+
+// Read from port
+inline uint8_t inb(uint16_t port) {
+	uint8_t ret;
+	asm volatile ("inb %1, %0"
+					: "=a"(ret)
+                    : "Nd"(port)
+				);
+	return ret; 
+}
+
 // Don't have malloc so won't implement this now
 // char* strdup(const char* s) {
 // 	size_t len = strlen(s);

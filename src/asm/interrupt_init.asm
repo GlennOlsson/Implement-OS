@@ -1,5 +1,8 @@
 extern setup_idt
 extern generic_interrupt_handler
+extern print_long_hex
+extern ugly_sleep
+
 global init_ints
 
 global isr0
@@ -259,24 +262,41 @@ global isr253
 global isr254
 global isr255
 
-
+section .text
 init_ints:
 	cli ; dissable interrupts
-
 
 	; TODO: Remap PIC
 	; TODO: Create global IDT (in C?)
 
 	mov RDI, [isr0] ; Load first isr address into 1st arg
+	mov RSI, [isr1] ; Load code segment address into 2nd arg
 	call setup_idt ; Setup IDT in C
 
-	lidt [RAX]
+	push RBP
 
-	;sti ; TODO: enable interrupts
+	mov RBP, [RAX]
+	mov RDI, [RAX]
+	call print_long_hex
 
+
+	lidt [RBP]
+
+	pop RBP
+
+	mov RDI, 2000
+	call ugly_sleep
+	
+	sti ; TODO: enable interrupts
+
+	mov RDI, 5000
+	
 	ret
 
 isr0:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -291,6 +311,9 @@ isr0:
 	iretq
 
 isr1:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -305,6 +328,9 @@ isr1:
 	iretq
 
 isr2:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -319,6 +345,9 @@ isr2:
 	iretq
 
 isr3:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -333,6 +362,9 @@ isr3:
 	iretq
 
 isr4:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -347,6 +379,9 @@ isr4:
 	iretq
 
 isr5:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -361,6 +396,9 @@ isr5:
 	iretq
 
 isr6:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -375,6 +413,9 @@ isr6:
 	iretq
 
 isr7:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -389,6 +430,9 @@ isr7:
 	iretq
 
 isr8:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -403,6 +447,9 @@ isr8:
 	iretq
 
 isr9:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -417,6 +464,9 @@ isr9:
 	iretq
 
 isr10:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -431,6 +481,9 @@ isr10:
 	iretq
 
 isr11:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -445,6 +498,9 @@ isr11:
 	iretq
 
 isr12:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -459,6 +515,9 @@ isr12:
 	iretq
 
 isr13:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -473,6 +532,9 @@ isr13:
 	iretq
 
 isr14:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -487,6 +549,9 @@ isr14:
 	iretq
 
 isr15:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -501,6 +566,9 @@ isr15:
 	iretq
 
 isr16:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -515,6 +583,9 @@ isr16:
 	iretq
 
 isr17:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -529,6 +600,9 @@ isr17:
 	iretq
 
 isr18:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -543,6 +617,9 @@ isr18:
 	iretq
 
 isr19:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -557,6 +634,9 @@ isr19:
 	iretq
 
 isr20:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -571,6 +651,9 @@ isr20:
 	iretq
 
 isr21:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -585,6 +668,9 @@ isr21:
 	iretq
 
 isr22:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -599,6 +685,9 @@ isr22:
 	iretq
 
 isr23:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -613,6 +702,9 @@ isr23:
 	iretq
 
 isr24:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -627,6 +719,9 @@ isr24:
 	iretq
 
 isr25:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -641,6 +736,9 @@ isr25:
 	iretq
 
 isr26:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -655,6 +753,9 @@ isr26:
 	iretq
 
 isr27:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -669,6 +770,9 @@ isr27:
 	iretq
 
 isr28:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -683,6 +787,9 @@ isr28:
 	iretq
 
 isr29:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -697,6 +804,9 @@ isr29:
 	iretq
 
 isr30:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -711,6 +821,9 @@ isr30:
 	iretq
 
 isr31:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -725,6 +838,9 @@ isr31:
 	iretq
 
 isr32:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -739,6 +855,9 @@ isr32:
 	iretq
 
 isr33:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -753,6 +872,9 @@ isr33:
 	iretq
 
 isr34:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -767,6 +889,9 @@ isr34:
 	iretq
 
 isr35:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -781,6 +906,9 @@ isr35:
 	iretq
 
 isr36:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -795,6 +923,9 @@ isr36:
 	iretq
 
 isr37:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -809,6 +940,9 @@ isr37:
 	iretq
 
 isr38:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -823,6 +957,9 @@ isr38:
 	iretq
 
 isr39:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -837,6 +974,9 @@ isr39:
 	iretq
 
 isr40:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -851,6 +991,9 @@ isr40:
 	iretq
 
 isr41:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -865,6 +1008,9 @@ isr41:
 	iretq
 
 isr42:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -879,6 +1025,9 @@ isr42:
 	iretq
 
 isr43:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -893,6 +1042,9 @@ isr43:
 	iretq
 
 isr44:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -907,6 +1059,9 @@ isr44:
 	iretq
 
 isr45:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -921,6 +1076,9 @@ isr45:
 	iretq
 
 isr46:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -935,6 +1093,9 @@ isr46:
 	iretq
 
 isr47:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -949,6 +1110,9 @@ isr47:
 	iretq
 
 isr48:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -963,6 +1127,9 @@ isr48:
 	iretq
 
 isr49:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -977,6 +1144,9 @@ isr49:
 	iretq
 
 isr50:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -991,6 +1161,9 @@ isr50:
 	iretq
 
 isr51:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1005,6 +1178,9 @@ isr51:
 	iretq
 
 isr52:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1019,6 +1195,9 @@ isr52:
 	iretq
 
 isr53:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1033,6 +1212,9 @@ isr53:
 	iretq
 
 isr54:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1047,6 +1229,9 @@ isr54:
 	iretq
 
 isr55:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1061,6 +1246,9 @@ isr55:
 	iretq
 
 isr56:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1075,6 +1263,9 @@ isr56:
 	iretq
 
 isr57:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1089,6 +1280,9 @@ isr57:
 	iretq
 
 isr58:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1103,6 +1297,9 @@ isr58:
 	iretq
 
 isr59:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1117,6 +1314,9 @@ isr59:
 	iretq
 
 isr60:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1131,6 +1331,9 @@ isr60:
 	iretq
 
 isr61:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1145,6 +1348,9 @@ isr61:
 	iretq
 
 isr62:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1159,6 +1365,9 @@ isr62:
 	iretq
 
 isr63:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1173,6 +1382,9 @@ isr63:
 	iretq
 
 isr64:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1187,6 +1399,9 @@ isr64:
 	iretq
 
 isr65:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1201,6 +1416,9 @@ isr65:
 	iretq
 
 isr66:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1215,6 +1433,9 @@ isr66:
 	iretq
 
 isr67:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1229,6 +1450,9 @@ isr67:
 	iretq
 
 isr68:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1243,6 +1467,9 @@ isr68:
 	iretq
 
 isr69:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1257,6 +1484,9 @@ isr69:
 	iretq
 
 isr70:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1271,6 +1501,9 @@ isr70:
 	iretq
 
 isr71:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1285,6 +1518,9 @@ isr71:
 	iretq
 
 isr72:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1299,6 +1535,9 @@ isr72:
 	iretq
 
 isr73:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1313,6 +1552,9 @@ isr73:
 	iretq
 
 isr74:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1327,6 +1569,9 @@ isr74:
 	iretq
 
 isr75:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1341,6 +1586,9 @@ isr75:
 	iretq
 
 isr76:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1355,6 +1603,9 @@ isr76:
 	iretq
 
 isr77:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1369,6 +1620,9 @@ isr77:
 	iretq
 
 isr78:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1383,6 +1637,9 @@ isr78:
 	iretq
 
 isr79:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1397,6 +1654,9 @@ isr79:
 	iretq
 
 isr80:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1411,6 +1671,9 @@ isr80:
 	iretq
 
 isr81:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1425,6 +1688,9 @@ isr81:
 	iretq
 
 isr82:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1439,6 +1705,9 @@ isr82:
 	iretq
 
 isr83:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1453,6 +1722,9 @@ isr83:
 	iretq
 
 isr84:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1467,6 +1739,9 @@ isr84:
 	iretq
 
 isr85:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1481,6 +1756,9 @@ isr85:
 	iretq
 
 isr86:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1495,6 +1773,9 @@ isr86:
 	iretq
 
 isr87:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1509,6 +1790,9 @@ isr87:
 	iretq
 
 isr88:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1523,6 +1807,9 @@ isr88:
 	iretq
 
 isr89:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1537,6 +1824,9 @@ isr89:
 	iretq
 
 isr90:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1551,6 +1841,9 @@ isr90:
 	iretq
 
 isr91:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1565,6 +1858,9 @@ isr91:
 	iretq
 
 isr92:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1579,6 +1875,9 @@ isr92:
 	iretq
 
 isr93:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1593,6 +1892,9 @@ isr93:
 	iretq
 
 isr94:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1607,6 +1909,9 @@ isr94:
 	iretq
 
 isr95:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1621,6 +1926,9 @@ isr95:
 	iretq
 
 isr96:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1635,6 +1943,9 @@ isr96:
 	iretq
 
 isr97:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1649,6 +1960,9 @@ isr97:
 	iretq
 
 isr98:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1663,6 +1977,9 @@ isr98:
 	iretq
 
 isr99:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1677,6 +1994,9 @@ isr99:
 	iretq
 
 isr100:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1691,6 +2011,9 @@ isr100:
 	iretq
 
 isr101:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1705,6 +2028,9 @@ isr101:
 	iretq
 
 isr102:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1719,6 +2045,9 @@ isr102:
 	iretq
 
 isr103:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1733,6 +2062,9 @@ isr103:
 	iretq
 
 isr104:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1747,6 +2079,9 @@ isr104:
 	iretq
 
 isr105:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1761,6 +2096,9 @@ isr105:
 	iretq
 
 isr106:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1775,6 +2113,9 @@ isr106:
 	iretq
 
 isr107:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1789,6 +2130,9 @@ isr107:
 	iretq
 
 isr108:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1803,6 +2147,9 @@ isr108:
 	iretq
 
 isr109:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1817,6 +2164,9 @@ isr109:
 	iretq
 
 isr110:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1831,6 +2181,9 @@ isr110:
 	iretq
 
 isr111:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1845,6 +2198,9 @@ isr111:
 	iretq
 
 isr112:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1859,6 +2215,9 @@ isr112:
 	iretq
 
 isr113:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1873,6 +2232,9 @@ isr113:
 	iretq
 
 isr114:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1887,6 +2249,9 @@ isr114:
 	iretq
 
 isr115:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1901,6 +2266,9 @@ isr115:
 	iretq
 
 isr116:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1915,6 +2283,9 @@ isr116:
 	iretq
 
 isr117:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1929,6 +2300,9 @@ isr117:
 	iretq
 
 isr118:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1943,6 +2317,9 @@ isr118:
 	iretq
 
 isr119:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1957,6 +2334,9 @@ isr119:
 	iretq
 
 isr120:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1971,6 +2351,9 @@ isr120:
 	iretq
 
 isr121:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1985,6 +2368,9 @@ isr121:
 	iretq
 
 isr122:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -1999,6 +2385,9 @@ isr122:
 	iretq
 
 isr123:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2013,6 +2402,9 @@ isr123:
 	iretq
 
 isr124:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2027,6 +2419,9 @@ isr124:
 	iretq
 
 isr125:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2041,6 +2436,9 @@ isr125:
 	iretq
 
 isr126:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2055,6 +2453,9 @@ isr126:
 	iretq
 
 isr127:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2069,6 +2470,9 @@ isr127:
 	iretq
 
 isr128:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2083,6 +2487,9 @@ isr128:
 	iretq
 
 isr129:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2097,6 +2504,9 @@ isr129:
 	iretq
 
 isr130:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2111,6 +2521,9 @@ isr130:
 	iretq
 
 isr131:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2125,6 +2538,9 @@ isr131:
 	iretq
 
 isr132:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2139,6 +2555,9 @@ isr132:
 	iretq
 
 isr133:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2153,6 +2572,9 @@ isr133:
 	iretq
 
 isr134:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2167,6 +2589,9 @@ isr134:
 	iretq
 
 isr135:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2181,6 +2606,9 @@ isr135:
 	iretq
 
 isr136:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2195,6 +2623,9 @@ isr136:
 	iretq
 
 isr137:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2209,6 +2640,9 @@ isr137:
 	iretq
 
 isr138:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2223,6 +2657,9 @@ isr138:
 	iretq
 
 isr139:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2237,6 +2674,9 @@ isr139:
 	iretq
 
 isr140:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2251,6 +2691,9 @@ isr140:
 	iretq
 
 isr141:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2265,6 +2708,9 @@ isr141:
 	iretq
 
 isr142:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2279,6 +2725,9 @@ isr142:
 	iretq
 
 isr143:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2293,6 +2742,9 @@ isr143:
 	iretq
 
 isr144:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2307,6 +2759,9 @@ isr144:
 	iretq
 
 isr145:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2321,6 +2776,9 @@ isr145:
 	iretq
 
 isr146:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2335,6 +2793,9 @@ isr146:
 	iretq
 
 isr147:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2349,6 +2810,9 @@ isr147:
 	iretq
 
 isr148:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2363,6 +2827,9 @@ isr148:
 	iretq
 
 isr149:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2377,6 +2844,9 @@ isr149:
 	iretq
 
 isr150:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2391,6 +2861,9 @@ isr150:
 	iretq
 
 isr151:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2405,6 +2878,9 @@ isr151:
 	iretq
 
 isr152:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2419,6 +2895,9 @@ isr152:
 	iretq
 
 isr153:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2433,6 +2912,9 @@ isr153:
 	iretq
 
 isr154:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2447,6 +2929,9 @@ isr154:
 	iretq
 
 isr155:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2461,6 +2946,9 @@ isr155:
 	iretq
 
 isr156:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2475,6 +2963,9 @@ isr156:
 	iretq
 
 isr157:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2489,6 +2980,9 @@ isr157:
 	iretq
 
 isr158:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2503,6 +2997,9 @@ isr158:
 	iretq
 
 isr159:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2517,6 +3014,9 @@ isr159:
 	iretq
 
 isr160:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2531,6 +3031,9 @@ isr160:
 	iretq
 
 isr161:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2545,6 +3048,9 @@ isr161:
 	iretq
 
 isr162:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2559,6 +3065,9 @@ isr162:
 	iretq
 
 isr163:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2573,6 +3082,9 @@ isr163:
 	iretq
 
 isr164:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2587,6 +3099,9 @@ isr164:
 	iretq
 
 isr165:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2601,6 +3116,9 @@ isr165:
 	iretq
 
 isr166:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2615,6 +3133,9 @@ isr166:
 	iretq
 
 isr167:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2629,6 +3150,9 @@ isr167:
 	iretq
 
 isr168:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2643,6 +3167,9 @@ isr168:
 	iretq
 
 isr169:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2657,6 +3184,9 @@ isr169:
 	iretq
 
 isr170:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2671,6 +3201,9 @@ isr170:
 	iretq
 
 isr171:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2685,6 +3218,9 @@ isr171:
 	iretq
 
 isr172:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2699,6 +3235,9 @@ isr172:
 	iretq
 
 isr173:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2713,6 +3252,9 @@ isr173:
 	iretq
 
 isr174:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2727,6 +3269,9 @@ isr174:
 	iretq
 
 isr175:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2741,6 +3286,9 @@ isr175:
 	iretq
 
 isr176:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2755,6 +3303,9 @@ isr176:
 	iretq
 
 isr177:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2769,6 +3320,9 @@ isr177:
 	iretq
 
 isr178:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2783,6 +3337,9 @@ isr178:
 	iretq
 
 isr179:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2797,6 +3354,9 @@ isr179:
 	iretq
 
 isr180:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2811,6 +3371,9 @@ isr180:
 	iretq
 
 isr181:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2825,6 +3388,9 @@ isr181:
 	iretq
 
 isr182:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2839,6 +3405,9 @@ isr182:
 	iretq
 
 isr183:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2853,6 +3422,9 @@ isr183:
 	iretq
 
 isr184:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2867,6 +3439,9 @@ isr184:
 	iretq
 
 isr185:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2881,6 +3456,9 @@ isr185:
 	iretq
 
 isr186:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2895,6 +3473,9 @@ isr186:
 	iretq
 
 isr187:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2909,6 +3490,9 @@ isr187:
 	iretq
 
 isr188:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2923,6 +3507,9 @@ isr188:
 	iretq
 
 isr189:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2937,6 +3524,9 @@ isr189:
 	iretq
 
 isr190:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2951,6 +3541,9 @@ isr190:
 	iretq
 
 isr191:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2965,6 +3558,9 @@ isr191:
 	iretq
 
 isr192:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2979,6 +3575,9 @@ isr192:
 	iretq
 
 isr193:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -2993,6 +3592,9 @@ isr193:
 	iretq
 
 isr194:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3007,6 +3609,9 @@ isr194:
 	iretq
 
 isr195:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3021,6 +3626,9 @@ isr195:
 	iretq
 
 isr196:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3035,6 +3643,9 @@ isr196:
 	iretq
 
 isr197:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3049,6 +3660,9 @@ isr197:
 	iretq
 
 isr198:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3063,6 +3677,9 @@ isr198:
 	iretq
 
 isr199:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3077,6 +3694,9 @@ isr199:
 	iretq
 
 isr200:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3091,6 +3711,9 @@ isr200:
 	iretq
 
 isr201:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3105,6 +3728,9 @@ isr201:
 	iretq
 
 isr202:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3119,6 +3745,9 @@ isr202:
 	iretq
 
 isr203:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3133,6 +3762,9 @@ isr203:
 	iretq
 
 isr204:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3147,6 +3779,9 @@ isr204:
 	iretq
 
 isr205:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3161,6 +3796,9 @@ isr205:
 	iretq
 
 isr206:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3175,6 +3813,9 @@ isr206:
 	iretq
 
 isr207:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3189,6 +3830,9 @@ isr207:
 	iretq
 
 isr208:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3203,6 +3847,9 @@ isr208:
 	iretq
 
 isr209:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3217,6 +3864,9 @@ isr209:
 	iretq
 
 isr210:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3231,6 +3881,9 @@ isr210:
 	iretq
 
 isr211:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3245,6 +3898,9 @@ isr211:
 	iretq
 
 isr212:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3259,6 +3915,9 @@ isr212:
 	iretq
 
 isr213:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3273,6 +3932,9 @@ isr213:
 	iretq
 
 isr214:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3287,6 +3949,9 @@ isr214:
 	iretq
 
 isr215:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3301,6 +3966,9 @@ isr215:
 	iretq
 
 isr216:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3315,6 +3983,9 @@ isr216:
 	iretq
 
 isr217:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3329,6 +4000,9 @@ isr217:
 	iretq
 
 isr218:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3343,6 +4017,9 @@ isr218:
 	iretq
 
 isr219:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3357,6 +4034,9 @@ isr219:
 	iretq
 
 isr220:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3371,6 +4051,9 @@ isr220:
 	iretq
 
 isr221:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3385,6 +4068,9 @@ isr221:
 	iretq
 
 isr222:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3399,6 +4085,9 @@ isr222:
 	iretq
 
 isr223:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3413,6 +4102,9 @@ isr223:
 	iretq
 
 isr224:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3427,6 +4119,9 @@ isr224:
 	iretq
 
 isr225:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3441,6 +4136,9 @@ isr225:
 	iretq
 
 isr226:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3455,6 +4153,9 @@ isr226:
 	iretq
 
 isr227:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3469,6 +4170,9 @@ isr227:
 	iretq
 
 isr228:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3483,6 +4187,9 @@ isr228:
 	iretq
 
 isr229:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3497,6 +4204,9 @@ isr229:
 	iretq
 
 isr230:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3511,6 +4221,9 @@ isr230:
 	iretq
 
 isr231:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3525,6 +4238,9 @@ isr231:
 	iretq
 
 isr232:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3539,6 +4255,9 @@ isr232:
 	iretq
 
 isr233:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3553,6 +4272,9 @@ isr233:
 	iretq
 
 isr234:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3567,6 +4289,9 @@ isr234:
 	iretq
 
 isr235:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3581,6 +4306,9 @@ isr235:
 	iretq
 
 isr236:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3595,6 +4323,9 @@ isr236:
 	iretq
 
 isr237:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3609,6 +4340,9 @@ isr237:
 	iretq
 
 isr238:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3623,6 +4357,9 @@ isr238:
 	iretq
 
 isr239:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3637,6 +4374,9 @@ isr239:
 	iretq
 
 isr240:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3651,6 +4391,9 @@ isr240:
 	iretq
 
 isr241:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3665,6 +4408,9 @@ isr241:
 	iretq
 
 isr242:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3679,6 +4425,9 @@ isr242:
 	iretq
 
 isr243:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3693,6 +4442,9 @@ isr243:
 	iretq
 
 isr244:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3707,6 +4459,9 @@ isr244:
 	iretq
 
 isr245:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3721,6 +4476,9 @@ isr245:
 	iretq
 
 isr246:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3735,6 +4493,9 @@ isr246:
 	iretq
 
 isr247:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3749,6 +4510,9 @@ isr247:
 	iretq
 
 isr248:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3763,6 +4527,9 @@ isr248:
 	iretq
 
 isr249:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3777,6 +4544,9 @@ isr249:
 	iretq
 
 isr250:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3791,6 +4561,9 @@ isr250:
 	iretq
 
 isr251:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3805,6 +4578,9 @@ isr251:
 	iretq
 
 isr252:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3819,6 +4595,9 @@ isr252:
 	iretq
 
 isr253:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3833,6 +4612,9 @@ isr253:
 	iretq
 
 isr254:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
@@ -3847,6 +4629,9 @@ isr254:
 	iretq
 
 isr255:
+	mov RDI, 10000
+	call ugly_sleep
+
 	push RAX
 	push RBX
 
