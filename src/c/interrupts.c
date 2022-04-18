@@ -2,6 +2,7 @@
 #include "vga_api.h"
 #include "stdint-gcc.h"
 #include "lib.h"
+#include "isr.h"
 
 #define PIC1		0x20		/* IO base address for master PIC */
 #define PIC2		0xA0		/* IO base address for slave PIC */
@@ -21,8 +22,6 @@
 #define ICW4_BUF_SLAVE	0x08		/* Buffered mode/slave */
 #define ICW4_BUF_MASTER	0x0C		/* Buffered mode/master */
 #define ICW4_SFNM	0x10		/* Special fully nested (not) */
-
-extern void isr0(void);
 
 typedef void (*irq_handler_t)(int, int, void *);
 static struct {
@@ -92,7 +91,7 @@ void* setup_idt(int64_t first_ist_address, int64_t second_ist_address) {
 	ugly_sleep(5000);
 
 	while(ist_index < 256) {
-		int64_t ist_address = (uint64_t) &isr0; //first_ist_address; //+ (ist_index * ist_offset);
+		int64_t ist_address = (uint64_t) isr_func_table[ist_index];
 
 		int16_t offset_1 = ist_address & 0xFFFF;
 		int16_t offset_2 = (ist_address >> 16) & 0xFFFF;
@@ -116,7 +115,7 @@ void* setup_idt(int64_t first_ist_address, int64_t second_ist_address) {
 	}
 
 	load_idt_struct.idt_address = (uint64_t) interrupt_desc_table;
-	load_idt_struct.size = (255 * 16);
+	load_idt_struct.size = (256 * 16) - 1;
 
 	// printkln("desc table pt:    %p", interrupt_desc_table);
 	// printkln("load_idt bit 0-15:%x", *((uint16_t*) &load_idt_struct));
