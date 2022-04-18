@@ -31,28 +31,28 @@ static struct {
 } irq_table[256];
 
 
-static struct {
+static struct idt_t {
 	uint16_t target_offset_1;
 
 	uint16_t target_selector;
 
-	uint8_t ist: 3;
-	uint8_t res1: 5;
-	uint8_t gate_type: 4;
-	uint8_t zero: 1;
-	uint8_t dpl: 2;
-	uint8_t present: 1;
+	uint16_t ist: 3;
+	uint16_t res1: 5;
+	uint16_t gate_type: 4;
+	uint16_t zero: 1;
+	uint16_t dpl: 2;
+	uint16_t present: 1;
 
 	uint16_t target_offset_2;
 	uint32_t target_offset_3;
 
 	uint32_t res2;	
-} interrupt_desc_table[256];
+} __attribute__((packed)) interrupt_desc_table[256];
 
 static struct {
 	uint16_t size;
 	uint64_t idt_address;
-} load_idt_struct;
+} __attribute__((packed)) load_idt_struct;
 
 void map_PIC() {
 	unsigned char a1 = inb(PIC1_DATA);                        // save masks
@@ -77,19 +77,19 @@ void* setup_idt(int64_t first_ist_address, int64_t second_ist_address) {
 
 	map_PIC();
 
-	int ist_offset = second_ist_address - first_ist_address;
+	// int ist_offset = second_ist_address - first_ist_address;
 	int ist_index = 0;
 
 	uint16_t segment_selector = 0b1000; // Using GDT (0), privilige level == kernel (00)
 
-	printkln("First address: 0x%lx", first_ist_address);
-	printkln("Secon address: 0x%lx", second_ist_address);
-	printkln("Diff: 0x%x", ist_offset);
-
-	printkln("asm address: 0x%lx", first_ist_address);
-	printkln("c   address: 0x%p", &isr0);
-
-	// ugly_sleep(5000);
+	printkln("sizeof(struct idt_t)==%ld", sizeof(struct idt_t));
+	printkln("\toffset of to_1:  %ld", (int64_t)&interrupt_desc_table->target_offset_1 - (int64_t)&interrupt_desc_table->target_offset_1);
+	printkln("\toffset of t_s:  %ld", (int64_t)&interrupt_desc_table->target_selector - (int64_t)&interrupt_desc_table->target_offset_1);
+	// printkln("\toffset of ist:  %ld", (int64_t)&interrupt_desc_table->ist - (int64_t)&interrupt_desc_table->target_offset_1);
+	printkln("\toffset of to_2:  %ld", (int64_t)&interrupt_desc_table->target_offset_2 - (int64_t)&interrupt_desc_table->target_offset_1);
+	printkln("\toffset of to_3:  %ld", (int64_t)&interrupt_desc_table->target_offset_3 - (int64_t)&interrupt_desc_table->target_offset_1);
+	printkln("\toffset of res2:  %ld", (int64_t)&interrupt_desc_table->res2 - (int64_t)&interrupt_desc_table->target_offset_1);
+	ugly_sleep(5000);
 
 	while(ist_index < 256) {
 		int64_t ist_address = (uint64_t) &isr0; //first_ist_address; //+ (ist_index * ist_offset);
@@ -116,7 +116,7 @@ void* setup_idt(int64_t first_ist_address, int64_t second_ist_address) {
 	}
 
 	load_idt_struct.idt_address = (uint64_t) interrupt_desc_table;
-	load_idt_struct.size = (256 * 16) - 1; // 0x4000 == 256 * 64, 64 bit per descriptor and 256 entries
+	load_idt_struct.size = (255 * 16);
 
 	// printkln("desc table pt:    %p", interrupt_desc_table);
 	// printkln("load_idt bit 0-15:%x", *((uint16_t*) &load_idt_struct));
@@ -127,10 +127,10 @@ void* setup_idt(int64_t first_ist_address, int64_t second_ist_address) {
 	// printkln("load_idt bit 64-79:%x", *(((uint16_t*) &load_idt_struct) + 5));
 	// printkln("load_idt bit 16-79:%lx", *((uint64_t*)(((uint16_t*) &load_idt_struct))));
 
-	printkln("Calling isr0");
-	isr0();
-	printkln("Called isr0");
-	ugly_sleep(20000);
+	// printkln("Calling isr0");
+	// isr0();
+	// printkln("Called isr0");
+	// ugly_sleep(20000);
 
 	// print_long_hex((unsigned long) &load_idt_struct);
 	// print_char('\n');
@@ -139,9 +139,9 @@ void* setup_idt(int64_t first_ist_address, int64_t second_ist_address) {
 }
 
 void generic_interrupt_handler(int isr_code, int error_code, void* arg) {
-	ugly_sleep(5000);
+	ugly_sleep(1000);
 
-	printkln("Interrupt! Code=%d, error=%d, arg=%p", isr_code, error_code, arg);
-	ugly_sleep(10000);
-	irq_table[0].handler(isr_code, error_code, arg); //TODO: Remove, just as to not get compile error
+	printkln("Interrupt! Code=%d, error=%d, arg=%p, irq[0].arg: %p", isr_code, error_code, arg, irq_table[0].arg);
+
+	ugly_sleep(1000);
 }

@@ -284,16 +284,20 @@ init_ints:
 	ret
 
 isr0:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 0 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -301,16 +305,20 @@ isr0:
 	iretq
 
 isr1:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 1 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -318,16 +326,20 @@ isr1:
 	iretq
 
 isr2:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 2 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -335,16 +347,20 @@ isr2:
 	iretq
 
 isr3:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 3 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -352,16 +368,20 @@ isr3:
 	iretq
 
 isr4:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 4 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -369,16 +389,20 @@ isr4:
 	iretq
 
 isr5:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 5 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -386,16 +410,20 @@ isr5:
 	iretq
 
 isr6:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 6 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -403,16 +431,20 @@ isr6:
 	iretq
 
 isr7:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 7 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -420,16 +452,20 @@ isr7:
 	iretq
 
 isr8:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 8 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -437,16 +473,20 @@ isr8:
 	iretq
 
 isr9:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 9 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -454,16 +494,20 @@ isr9:
 	iretq
 
 isr10:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 10 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -471,16 +515,20 @@ isr10:
 	iretq
 
 isr11:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 11 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -488,16 +536,20 @@ isr11:
 	iretq
 
 isr12:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 12 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -505,16 +557,20 @@ isr12:
 	iretq
 
 isr13:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 13 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -522,16 +578,20 @@ isr13:
 	iretq
 
 isr14:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 14 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -539,16 +599,20 @@ isr14:
 	iretq
 
 isr15:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 15 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -556,16 +620,20 @@ isr15:
 	iretq
 
 isr16:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 16 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -573,16 +641,20 @@ isr16:
 	iretq
 
 isr17:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 17 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -590,16 +662,20 @@ isr17:
 	iretq
 
 isr18:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 18 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -607,16 +683,20 @@ isr18:
 	iretq
 
 isr19:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 19 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -624,16 +704,20 @@ isr19:
 	iretq
 
 isr20:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 20 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -641,16 +725,20 @@ isr20:
 	iretq
 
 isr21:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 21 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -658,16 +746,20 @@ isr21:
 	iretq
 
 isr22:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 22 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -675,16 +767,20 @@ isr22:
 	iretq
 
 isr23:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 23 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -692,16 +788,20 @@ isr23:
 	iretq
 
 isr24:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 24 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -709,16 +809,20 @@ isr24:
 	iretq
 
 isr25:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 25 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -726,16 +830,20 @@ isr25:
 	iretq
 
 isr26:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 26 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -743,16 +851,20 @@ isr26:
 	iretq
 
 isr27:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 27 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -760,16 +872,20 @@ isr27:
 	iretq
 
 isr28:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 28 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -777,16 +893,20 @@ isr28:
 	iretq
 
 isr29:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 29 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -794,16 +914,20 @@ isr29:
 	iretq
 
 isr30:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 30 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -811,16 +935,20 @@ isr30:
 	iretq
 
 isr31:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 31 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -828,16 +956,20 @@ isr31:
 	iretq
 
 isr32:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 32 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -845,16 +977,20 @@ isr32:
 	iretq
 
 isr33:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 33 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -862,16 +998,20 @@ isr33:
 	iretq
 
 isr34:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 34 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -879,16 +1019,20 @@ isr34:
 	iretq
 
 isr35:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 35 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -896,16 +1040,20 @@ isr35:
 	iretq
 
 isr36:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 36 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -913,16 +1061,20 @@ isr36:
 	iretq
 
 isr37:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 37 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -930,16 +1082,20 @@ isr37:
 	iretq
 
 isr38:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 38 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -947,16 +1103,20 @@ isr38:
 	iretq
 
 isr39:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 39 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -964,16 +1124,20 @@ isr39:
 	iretq
 
 isr40:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 40 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -981,16 +1145,20 @@ isr40:
 	iretq
 
 isr41:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 41 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -998,16 +1166,20 @@ isr41:
 	iretq
 
 isr42:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 42 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1015,16 +1187,20 @@ isr42:
 	iretq
 
 isr43:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 43 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1032,16 +1208,20 @@ isr43:
 	iretq
 
 isr44:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 44 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1049,16 +1229,20 @@ isr44:
 	iretq
 
 isr45:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 45 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1066,16 +1250,20 @@ isr45:
 	iretq
 
 isr46:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 46 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1083,16 +1271,20 @@ isr46:
 	iretq
 
 isr47:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 47 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1100,16 +1292,20 @@ isr47:
 	iretq
 
 isr48:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 48 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1117,16 +1313,20 @@ isr48:
 	iretq
 
 isr49:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 49 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1134,16 +1334,20 @@ isr49:
 	iretq
 
 isr50:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 50 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1151,16 +1355,20 @@ isr50:
 	iretq
 
 isr51:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 51 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1168,16 +1376,20 @@ isr51:
 	iretq
 
 isr52:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 52 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1185,16 +1397,20 @@ isr52:
 	iretq
 
 isr53:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 53 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1202,16 +1418,20 @@ isr53:
 	iretq
 
 isr54:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 54 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1219,16 +1439,20 @@ isr54:
 	iretq
 
 isr55:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 55 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1236,16 +1460,20 @@ isr55:
 	iretq
 
 isr56:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 56 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1253,16 +1481,20 @@ isr56:
 	iretq
 
 isr57:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 57 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1270,16 +1502,20 @@ isr57:
 	iretq
 
 isr58:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 58 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1287,16 +1523,20 @@ isr58:
 	iretq
 
 isr59:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 59 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1304,16 +1544,20 @@ isr59:
 	iretq
 
 isr60:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 60 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1321,16 +1565,20 @@ isr60:
 	iretq
 
 isr61:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 61 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1338,16 +1586,20 @@ isr61:
 	iretq
 
 isr62:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 62 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1355,16 +1607,20 @@ isr62:
 	iretq
 
 isr63:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 63 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1372,16 +1628,20 @@ isr63:
 	iretq
 
 isr64:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 64 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1389,16 +1649,20 @@ isr64:
 	iretq
 
 isr65:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 65 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1406,16 +1670,20 @@ isr65:
 	iretq
 
 isr66:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 66 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1423,16 +1691,20 @@ isr66:
 	iretq
 
 isr67:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 67 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1440,16 +1712,20 @@ isr67:
 	iretq
 
 isr68:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 68 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1457,16 +1733,20 @@ isr68:
 	iretq
 
 isr69:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 69 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1474,16 +1754,20 @@ isr69:
 	iretq
 
 isr70:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 70 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1491,16 +1775,20 @@ isr70:
 	iretq
 
 isr71:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 71 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1508,16 +1796,20 @@ isr71:
 	iretq
 
 isr72:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 72 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1525,16 +1817,20 @@ isr72:
 	iretq
 
 isr73:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 73 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1542,16 +1838,20 @@ isr73:
 	iretq
 
 isr74:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 74 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1559,16 +1859,20 @@ isr74:
 	iretq
 
 isr75:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 75 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1576,16 +1880,20 @@ isr75:
 	iretq
 
 isr76:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 76 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1593,16 +1901,20 @@ isr76:
 	iretq
 
 isr77:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 77 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1610,16 +1922,20 @@ isr77:
 	iretq
 
 isr78:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 78 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1627,16 +1943,20 @@ isr78:
 	iretq
 
 isr79:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 79 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1644,16 +1964,20 @@ isr79:
 	iretq
 
 isr80:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 80 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1661,16 +1985,20 @@ isr80:
 	iretq
 
 isr81:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 81 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1678,16 +2006,20 @@ isr81:
 	iretq
 
 isr82:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 82 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1695,16 +2027,20 @@ isr82:
 	iretq
 
 isr83:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 83 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1712,16 +2048,20 @@ isr83:
 	iretq
 
 isr84:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 84 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1729,16 +2069,20 @@ isr84:
 	iretq
 
 isr85:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 85 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1746,16 +2090,20 @@ isr85:
 	iretq
 
 isr86:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 86 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1763,16 +2111,20 @@ isr86:
 	iretq
 
 isr87:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 87 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1780,16 +2132,20 @@ isr87:
 	iretq
 
 isr88:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 88 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1797,16 +2153,20 @@ isr88:
 	iretq
 
 isr89:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 89 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1814,16 +2174,20 @@ isr89:
 	iretq
 
 isr90:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 90 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1831,16 +2195,20 @@ isr90:
 	iretq
 
 isr91:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 91 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1848,16 +2216,20 @@ isr91:
 	iretq
 
 isr92:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 92 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1865,16 +2237,20 @@ isr92:
 	iretq
 
 isr93:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 93 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1882,16 +2258,20 @@ isr93:
 	iretq
 
 isr94:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 94 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1899,16 +2279,20 @@ isr94:
 	iretq
 
 isr95:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 95 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1916,16 +2300,20 @@ isr95:
 	iretq
 
 isr96:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 96 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1933,16 +2321,20 @@ isr96:
 	iretq
 
 isr97:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 97 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1950,16 +2342,20 @@ isr97:
 	iretq
 
 isr98:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 98 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1967,16 +2363,20 @@ isr98:
 	iretq
 
 isr99:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 99 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -1984,16 +2384,20 @@ isr99:
 	iretq
 
 isr100:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 100 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2001,16 +2405,20 @@ isr100:
 	iretq
 
 isr101:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 101 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2018,16 +2426,20 @@ isr101:
 	iretq
 
 isr102:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 102 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2035,16 +2447,20 @@ isr102:
 	iretq
 
 isr103:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 103 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2052,16 +2468,20 @@ isr103:
 	iretq
 
 isr104:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 104 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2069,16 +2489,20 @@ isr104:
 	iretq
 
 isr105:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 105 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2086,16 +2510,20 @@ isr105:
 	iretq
 
 isr106:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 106 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2103,16 +2531,20 @@ isr106:
 	iretq
 
 isr107:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 107 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2120,16 +2552,20 @@ isr107:
 	iretq
 
 isr108:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 108 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2137,16 +2573,20 @@ isr108:
 	iretq
 
 isr109:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 109 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2154,16 +2594,20 @@ isr109:
 	iretq
 
 isr110:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 110 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2171,16 +2615,20 @@ isr110:
 	iretq
 
 isr111:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 111 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2188,16 +2636,20 @@ isr111:
 	iretq
 
 isr112:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 112 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2205,16 +2657,20 @@ isr112:
 	iretq
 
 isr113:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 113 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2222,16 +2678,20 @@ isr113:
 	iretq
 
 isr114:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 114 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2239,16 +2699,20 @@ isr114:
 	iretq
 
 isr115:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 115 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2256,16 +2720,20 @@ isr115:
 	iretq
 
 isr116:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 116 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2273,16 +2741,20 @@ isr116:
 	iretq
 
 isr117:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 117 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2290,16 +2762,20 @@ isr117:
 	iretq
 
 isr118:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 118 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2307,16 +2783,20 @@ isr118:
 	iretq
 
 isr119:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 119 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2324,16 +2804,20 @@ isr119:
 	iretq
 
 isr120:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 120 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2341,16 +2825,20 @@ isr120:
 	iretq
 
 isr121:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 121 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2358,16 +2846,20 @@ isr121:
 	iretq
 
 isr122:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 122 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2375,16 +2867,20 @@ isr122:
 	iretq
 
 isr123:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 123 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2392,16 +2888,20 @@ isr123:
 	iretq
 
 isr124:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 124 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2409,16 +2909,20 @@ isr124:
 	iretq
 
 isr125:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 125 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2426,16 +2930,20 @@ isr125:
 	iretq
 
 isr126:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 126 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2443,16 +2951,20 @@ isr126:
 	iretq
 
 isr127:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 127 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2460,16 +2972,20 @@ isr127:
 	iretq
 
 isr128:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 128 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2477,16 +2993,20 @@ isr128:
 	iretq
 
 isr129:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 129 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2494,16 +3014,20 @@ isr129:
 	iretq
 
 isr130:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 130 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2511,16 +3035,20 @@ isr130:
 	iretq
 
 isr131:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 131 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2528,16 +3056,20 @@ isr131:
 	iretq
 
 isr132:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 132 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2545,16 +3077,20 @@ isr132:
 	iretq
 
 isr133:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 133 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2562,16 +3098,20 @@ isr133:
 	iretq
 
 isr134:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 134 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2579,16 +3119,20 @@ isr134:
 	iretq
 
 isr135:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 135 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2596,16 +3140,20 @@ isr135:
 	iretq
 
 isr136:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 136 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2613,16 +3161,20 @@ isr136:
 	iretq
 
 isr137:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 137 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2630,16 +3182,20 @@ isr137:
 	iretq
 
 isr138:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 138 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2647,16 +3203,20 @@ isr138:
 	iretq
 
 isr139:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 139 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2664,16 +3224,20 @@ isr139:
 	iretq
 
 isr140:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 140 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2681,16 +3245,20 @@ isr140:
 	iretq
 
 isr141:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 141 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2698,16 +3266,20 @@ isr141:
 	iretq
 
 isr142:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 142 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2715,16 +3287,20 @@ isr142:
 	iretq
 
 isr143:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 143 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2732,16 +3308,20 @@ isr143:
 	iretq
 
 isr144:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 144 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2749,16 +3329,20 @@ isr144:
 	iretq
 
 isr145:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 145 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2766,16 +3350,20 @@ isr145:
 	iretq
 
 isr146:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 146 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2783,16 +3371,20 @@ isr146:
 	iretq
 
 isr147:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 147 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2800,16 +3392,20 @@ isr147:
 	iretq
 
 isr148:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 148 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2817,16 +3413,20 @@ isr148:
 	iretq
 
 isr149:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 149 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2834,16 +3434,20 @@ isr149:
 	iretq
 
 isr150:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 150 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2851,16 +3455,20 @@ isr150:
 	iretq
 
 isr151:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 151 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2868,16 +3476,20 @@ isr151:
 	iretq
 
 isr152:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 152 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2885,16 +3497,20 @@ isr152:
 	iretq
 
 isr153:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 153 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2902,16 +3518,20 @@ isr153:
 	iretq
 
 isr154:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 154 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2919,16 +3539,20 @@ isr154:
 	iretq
 
 isr155:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 155 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2936,16 +3560,20 @@ isr155:
 	iretq
 
 isr156:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 156 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2953,16 +3581,20 @@ isr156:
 	iretq
 
 isr157:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 157 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2970,16 +3602,20 @@ isr157:
 	iretq
 
 isr158:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 158 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -2987,16 +3623,20 @@ isr158:
 	iretq
 
 isr159:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 159 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3004,16 +3644,20 @@ isr159:
 	iretq
 
 isr160:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 160 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3021,16 +3665,20 @@ isr160:
 	iretq
 
 isr161:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 161 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3038,16 +3686,20 @@ isr161:
 	iretq
 
 isr162:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 162 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3055,16 +3707,20 @@ isr162:
 	iretq
 
 isr163:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 163 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3072,16 +3728,20 @@ isr163:
 	iretq
 
 isr164:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 164 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3089,16 +3749,20 @@ isr164:
 	iretq
 
 isr165:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 165 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3106,16 +3770,20 @@ isr165:
 	iretq
 
 isr166:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 166 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3123,16 +3791,20 @@ isr166:
 	iretq
 
 isr167:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 167 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3140,16 +3812,20 @@ isr167:
 	iretq
 
 isr168:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 168 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3157,16 +3833,20 @@ isr168:
 	iretq
 
 isr169:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 169 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3174,16 +3854,20 @@ isr169:
 	iretq
 
 isr170:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 170 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3191,16 +3875,20 @@ isr170:
 	iretq
 
 isr171:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 171 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3208,16 +3896,20 @@ isr171:
 	iretq
 
 isr172:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 172 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3225,16 +3917,20 @@ isr172:
 	iretq
 
 isr173:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 173 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3242,16 +3938,20 @@ isr173:
 	iretq
 
 isr174:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 174 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3259,16 +3959,20 @@ isr174:
 	iretq
 
 isr175:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 175 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3276,16 +3980,20 @@ isr175:
 	iretq
 
 isr176:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 176 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3293,16 +4001,20 @@ isr176:
 	iretq
 
 isr177:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 177 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3310,16 +4022,20 @@ isr177:
 	iretq
 
 isr178:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 178 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3327,16 +4043,20 @@ isr178:
 	iretq
 
 isr179:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 179 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3344,16 +4064,20 @@ isr179:
 	iretq
 
 isr180:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 180 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3361,16 +4085,20 @@ isr180:
 	iretq
 
 isr181:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 181 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3378,16 +4106,20 @@ isr181:
 	iretq
 
 isr182:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 182 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3395,16 +4127,20 @@ isr182:
 	iretq
 
 isr183:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 183 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3412,16 +4148,20 @@ isr183:
 	iretq
 
 isr184:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 184 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3429,16 +4169,20 @@ isr184:
 	iretq
 
 isr185:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 185 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3446,16 +4190,20 @@ isr185:
 	iretq
 
 isr186:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 186 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3463,16 +4211,20 @@ isr186:
 	iretq
 
 isr187:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 187 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3480,16 +4232,20 @@ isr187:
 	iretq
 
 isr188:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 188 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3497,16 +4253,20 @@ isr188:
 	iretq
 
 isr189:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 189 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3514,16 +4274,20 @@ isr189:
 	iretq
 
 isr190:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 190 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3531,16 +4295,20 @@ isr190:
 	iretq
 
 isr191:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 191 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3548,16 +4316,20 @@ isr191:
 	iretq
 
 isr192:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 192 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3565,16 +4337,20 @@ isr192:
 	iretq
 
 isr193:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 193 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3582,16 +4358,20 @@ isr193:
 	iretq
 
 isr194:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 194 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3599,16 +4379,20 @@ isr194:
 	iretq
 
 isr195:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 195 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3616,16 +4400,20 @@ isr195:
 	iretq
 
 isr196:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 196 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3633,16 +4421,20 @@ isr196:
 	iretq
 
 isr197:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 197 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3650,16 +4442,20 @@ isr197:
 	iretq
 
 isr198:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 198 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3667,16 +4463,20 @@ isr198:
 	iretq
 
 isr199:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 199 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3684,16 +4484,20 @@ isr199:
 	iretq
 
 isr200:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 200 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3701,16 +4505,20 @@ isr200:
 	iretq
 
 isr201:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 201 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3718,16 +4526,20 @@ isr201:
 	iretq
 
 isr202:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 202 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3735,16 +4547,20 @@ isr202:
 	iretq
 
 isr203:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 203 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3752,16 +4568,20 @@ isr203:
 	iretq
 
 isr204:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 204 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3769,16 +4589,20 @@ isr204:
 	iretq
 
 isr205:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 205 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3786,16 +4610,20 @@ isr205:
 	iretq
 
 isr206:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 206 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3803,16 +4631,20 @@ isr206:
 	iretq
 
 isr207:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 207 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3820,16 +4652,20 @@ isr207:
 	iretq
 
 isr208:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 208 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3837,16 +4673,20 @@ isr208:
 	iretq
 
 isr209:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 209 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3854,16 +4694,20 @@ isr209:
 	iretq
 
 isr210:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 210 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3871,16 +4715,20 @@ isr210:
 	iretq
 
 isr211:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 211 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3888,16 +4736,20 @@ isr211:
 	iretq
 
 isr212:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 212 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3905,16 +4757,20 @@ isr212:
 	iretq
 
 isr213:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 213 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3922,16 +4778,20 @@ isr213:
 	iretq
 
 isr214:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 214 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3939,16 +4799,20 @@ isr214:
 	iretq
 
 isr215:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 215 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3956,16 +4820,20 @@ isr215:
 	iretq
 
 isr216:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 216 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3973,16 +4841,20 @@ isr216:
 	iretq
 
 isr217:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 217 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -3990,16 +4862,20 @@ isr217:
 	iretq
 
 isr218:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 218 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4007,16 +4883,20 @@ isr218:
 	iretq
 
 isr219:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 219 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4024,16 +4904,20 @@ isr219:
 	iretq
 
 isr220:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 220 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4041,16 +4925,20 @@ isr220:
 	iretq
 
 isr221:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 221 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4058,16 +4946,20 @@ isr221:
 	iretq
 
 isr222:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 222 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4075,16 +4967,20 @@ isr222:
 	iretq
 
 isr223:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 223 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4092,16 +4988,20 @@ isr223:
 	iretq
 
 isr224:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 224 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4109,16 +5009,20 @@ isr224:
 	iretq
 
 isr225:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 225 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4126,16 +5030,20 @@ isr225:
 	iretq
 
 isr226:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 226 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4143,16 +5051,20 @@ isr226:
 	iretq
 
 isr227:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 227 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4160,16 +5072,20 @@ isr227:
 	iretq
 
 isr228:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 228 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4177,16 +5093,20 @@ isr228:
 	iretq
 
 isr229:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 229 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4194,16 +5114,20 @@ isr229:
 	iretq
 
 isr230:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 230 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4211,16 +5135,20 @@ isr230:
 	iretq
 
 isr231:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 231 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4228,16 +5156,20 @@ isr231:
 	iretq
 
 isr232:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 232 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4245,16 +5177,20 @@ isr232:
 	iretq
 
 isr233:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 233 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4262,16 +5198,20 @@ isr233:
 	iretq
 
 isr234:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 234 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4279,16 +5219,20 @@ isr234:
 	iretq
 
 isr235:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 235 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4296,16 +5240,20 @@ isr235:
 	iretq
 
 isr236:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 236 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4313,16 +5261,20 @@ isr236:
 	iretq
 
 isr237:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 237 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4330,16 +5282,20 @@ isr237:
 	iretq
 
 isr238:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 238 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4347,16 +5303,20 @@ isr238:
 	iretq
 
 isr239:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 239 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4364,16 +5324,20 @@ isr239:
 	iretq
 
 isr240:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 240 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4381,16 +5345,20 @@ isr240:
 	iretq
 
 isr241:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 241 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4398,16 +5366,20 @@ isr241:
 	iretq
 
 isr242:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 242 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4415,16 +5387,20 @@ isr242:
 	iretq
 
 isr243:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 243 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4432,16 +5408,20 @@ isr243:
 	iretq
 
 isr244:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 244 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4449,16 +5429,20 @@ isr244:
 	iretq
 
 isr245:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 245 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4466,16 +5450,20 @@ isr245:
 	iretq
 
 isr246:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 246 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4483,16 +5471,20 @@ isr246:
 	iretq
 
 isr247:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 247 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4500,16 +5492,20 @@ isr247:
 	iretq
 
 isr248:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 248 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4517,16 +5513,20 @@ isr248:
 	iretq
 
 isr249:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 249 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4534,16 +5534,20 @@ isr249:
 	iretq
 
 isr250:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 250 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4551,16 +5555,20 @@ isr250:
 	iretq
 
 isr251:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 251 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4568,16 +5576,20 @@ isr251:
 	iretq
 
 isr252:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 252 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4585,16 +5597,20 @@ isr252:
 	iretq
 
 isr253:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 253 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4602,16 +5618,20 @@ isr253:
 	iretq
 
 isr254:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 254 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
@@ -4619,16 +5639,20 @@ isr254:
 	iretq
 
 isr255:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, 255 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX

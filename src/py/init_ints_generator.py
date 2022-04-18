@@ -39,16 +39,20 @@ init_ints:
 for i in range(256):
 	code = f"""
 isr{i}:
-	mov RDI, 10000
-	call ugly_sleep
 
 	push RAX
 	push RBX
+	
+	mov RDI, 10000
+	call ugly_sleep
 
 	mov RDI, {i} ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
+
+	mov RDI, 4000
+	call ugly_sleep
 
 	pop RBX
 	pop RAX
