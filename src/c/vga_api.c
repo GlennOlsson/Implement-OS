@@ -88,12 +88,18 @@ unsigned char current_col = 0;
 
 // Does not erase first two characters due to prompt
 void VGA_erase() {
+	char int_on = cli();
+
 	if(current_col - 1 >= 2)
 		--current_col;
 	clear_at(current_col, current_row);
+
+	sti(int_on);
 }
 
 void VGA_clear() {
+	char int_on = cli();
+
 	short limit = MAX_COL * MAX_ROW;
 	short index = 0;
 	while(index < limit) {
@@ -101,9 +107,12 @@ void VGA_clear() {
 	}
 	current_col = 0;
 	current_row = 0;
+
+	sti(int_on);
 }
 
 void VGA_display_char(char c) {
+	char int_on = cli();
 	if(current_row == MAX_ROW) {
 		scroll();
 		--current_row;
@@ -112,6 +121,18 @@ void VGA_display_char(char c) {
 	if(c == '\n') {
 		current_row += 1;
 		current_col = 0;
+		
+		sti(int_on);
+		return;
+	}
+	if(c == '\t') {
+		// Display 4 spaces
+		VGA_display_char(' ');
+		VGA_display_char(' ');
+		VGA_display_char(' ');
+		VGA_display_char(' ');
+
+		sti(int_on);
 		return;
 	}
 	// If first char of row, clear row
@@ -126,34 +147,53 @@ void VGA_display_char(char c) {
 		else
 			scroll();
 	}
+
+	sti(int_on);
 }
 
 // Does not break line after string
 // Returns amount of characters written
 int VGA_display_str(const char * str) {
+	char int_on = cli();
+
 	int offset = 0;
 	char c = str[offset];
 	while(c != '\0') {
 		VGA_display_char(c);
 		c = str[++offset];
 	}
+
+	sti(int_on);
+
 	return offset;
 }
 
 // Breaks line after the string
 int VGA_display_line(const char * str) {
+	char int_on = cli();
+
 	int chars = VGA_display_str(str);
 	VGA_display_char('\n');
 	
+	sti(int_on);
+
 	return chars + 1; // +1 for \n
 }
 
 void print_char(char c) {
+	char int_on = cli();
+
 	VGA_display_char(c);
+
+	sti(int_on);
 }
 
 void print_str(const char* str) {
+	char int_on = cli();
+
 	VGA_display_str(str);
+
+	sti(int_on);
 }
 
 void print_uchar(unsigned char c) {
@@ -319,26 +359,37 @@ int _printk(const char* fmt, va_list* args) {
 }
 
 int printk(const char* fmt, ...) {
+	char int_on = cli();
+
 	va_list args;
     va_start(args, fmt);
 	int c_count = _printk(fmt, &args);
 	va_end(args);
+
+	sti(int_on);
 
 	return c_count;
 }
 
 int printkln(const char* fmt, ... ) {
+	char int_on = cli();
+
 	va_list args;
     va_start(args, fmt);
 	int c_count = _printk(fmt, &args);
 	VGA_display_char('\n');
 	va_end(args);
+
+	sti(int_on);
+
 	return c_count + 1; // +1 for \n
 }
 
 void slow_print(char* str) {
+	char int_on = cli();
 	while(*str != '\0') {
 		VGA_display_char(*(str++));
 		ugly_sleep(100);
 	}
+	sti(int_on);
 }

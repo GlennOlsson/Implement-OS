@@ -14,7 +14,7 @@ start:
     call enable_paging    
 
 	; load the 64-bit GDT
-    lgdt [gdt64.pointer]
+    lgdt [gdt64.code_pointer]
 
     jmp gdt64.code:long_mode_start
 
@@ -161,11 +161,19 @@ stack_bottom:
     resb 64
 stack_top:
 
-section .rodata
+;section .rodata
+section .data
 gdt64:
     dq 0 ; zero entry
 .code: equ $ - gdt64
+    ;  eq bit   desc. type  present  long mode flag
+    ;   |           |         |          |
     dq (1<<43) | (1<<44) | (1<<47) | (1<<53) ; code segment
-.pointer:
+.code_pointer:
     dw $ - gdt64 - 1
     dq gdt64
+
+section .bss
+; 26 x 4 bytes of entries = 104 bits
+tss:
+    resb 104

@@ -20,6 +20,11 @@ void ugly_sleep(int sec);
 void outb(uint8_t val, uint16_t port);
 uint8_t inb(uint16_t port);
 
+// Returns the current interrupt flags
+char cli();
+// Set the interrupt flag
+void sti(char);
+
 // Reasoning in lib.c
 // char *strdup(const char *s);
 

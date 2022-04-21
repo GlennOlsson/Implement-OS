@@ -24,6 +24,7 @@ c: create_isr_h
 	x86_64-elf-gcc $(c_flags) $(c_dir)/ps2.c -o $(out_dir)/ps2.o
 	x86_64-elf-gcc $(c_flags) $(c_dir)/console.c -o $(out_dir)/console.o
 	x86_64-elf-gcc $(c_flags) $(c_dir)/interrupts.c -o $(out_dir)/interrupts.o
+	x86_64-elf-gcc $(c_flags) $(c_dir)/gdt.c -o $(out_dir)/gdt.o
 
 compile: asm c
 	ld -n -o out/kernel.bin -T linker.ld $(out_dir)/*.o

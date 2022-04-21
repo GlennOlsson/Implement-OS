@@ -2,6 +2,7 @@
 #include "lib.h"
 #include "ps2.h"
 #include "console.h"
+#include "interrupts.h"
 
 void kmain() {
 
@@ -15,7 +16,11 @@ void kmain() {
 
 	// poll_keyboard_func(&key_action);
 
-	int j = 0;
+	uint16_t mask = IRQ_get_mask(1);
+	printkln("Mask for keyboard: %d", mask);
+
+	volatile int j = 0;
+
 	while(!j)
 		asm("hlt");
 }

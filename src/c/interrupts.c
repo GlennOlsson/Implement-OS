@@ -4,31 +4,17 @@
 #include "lib.h"
 #include "isr.h"
 
-#define PIC1		0x20		/* IO base address for master PIC */
-#define PIC2		0xA0		/* IO base address for slave PIC */
+#define PIC1			0x20		/* IO base address for master PIC */
+#define PIC2			0xA0		/* IO base address for slave PIC */
 #define PIC1_COMMAND	PIC1
-#define PIC1_DATA	(PIC1+1)
+#define PIC1_DATA		(PIC1+1)
 #define PIC2_COMMAND	PIC2
-#define PIC2_DATA	(PIC2+1)
+#define PIC2_DATA		(PIC2+1)
 
-#define ICW1_ICW4	0x01		/* ICW4 (not) needed */
-#define ICW1_SINGLE	0x02		/* Single (cascade) mode */
-#define ICW1_INTERVAL4	0x04		/* Call address interval 4 (8) */
-#define ICW1_LEVEL	0x08		/* Level triggered (edge) mode */
-#define ICW1_INIT	0x10		/* Initialization - required! */
+#define ICW1_ICW4		0x01		/* ICW4 (not) needed */
+#define ICW1_INIT		0x10		/* Initialization - required! */
  
-#define ICW4_8086	0x01		/* 8086/88 (MCS-80/85) mode */
-#define ICW4_AUTO	0x02		/* Auto (normal) EOI */
-#define ICW4_BUF_SLAVE	0x08		/* Buffered mode/slave */
-#define ICW4_BUF_MASTER	0x0C		/* Buffered mode/master */
-#define ICW4_SFNM	0x10		/* Special fully nested (not) */
-
-typedef void (*irq_handler_t)(int, int, void *);
-static struct {
-	void* arg;
-	irq_handler_t handler;
-} irq_table[256];
-
+#define ICW4_8086		0x01		/* 8086/88 (MCS-80/85) mode */
 
 static struct idt_t {
 	uint16_t target_offset_1;
@@ -53,42 +39,97 @@ static struct {
 	uint64_t idt_address;
 } __attribute__((packed)) load_idt_struct;
 
+void IRQ_set_mask(unsigned char irq_num) {
+    uint16_t port;
+ 
+    if(irq_num < 8)
+        port = PIC1_DATA;
+    else {
+        port = PIC2_DATA;
+        irq_num -= 8;
+    }
+	uint8_t curr_val = inb(port);
+    uint8_t val = curr_val | (1 << irq_num);
+    outb(val, port);
+}
+ 
+void IRQ_clear_mask(unsigned char irq_num) {
+    uint16_t port;
+
+    if(irq_num < 8) {
+        port = PIC1_DATA;
+    } else {
+        port = PIC2_DATA;
+        irq_num -= 8;
+    }
+	uint8_t curr_val = inb(port);
+    uint8_t val = curr_val & ~(1 << irq_num);
+    outb(val, port);        
+}
+
+int IRQ_get_mask(int irq_num) {
+	uint16_t port;
+
+	if(irq_num < 8)
+        port = PIC1_DATA;
+    else {
+        port = PIC2_DATA;
+        irq_num -= 8;
+    }
+
+	uint8_t full_mask = inb(port);
+    int irq_num_mask = (full_mask >> irq_num) & 1;
+	
+	return irq_num_mask;
+}
+
+uint16_t IRQ_get_full_mask() {
+	uint8_t pic1_mask = inb(PIC1_DATA);
+	uint8_t pic2_mask = inb(PIC1_DATA);
+	uint16_t full_mask = (pic1_mask << 8) | pic2_mask;
+
+	return full_mask;
+}
+
+void IRQ_end_of_interrupt(int irq) {
+	// ACK interrupt
+	outb(0x20, irq < 8 ? PIC1_DATA : PIC2_DATA);
+}
+
 void map_PIC() {
-	unsigned char a1 = inb(PIC1_DATA);                        // save masks
+	// save masks
+	unsigned char a1 = inb(PIC1_DATA);
 	unsigned char a2 = inb(PIC2_DATA);
  
-	outb(PIC1_COMMAND, ICW1_INIT | ICW1_ICW4);  // starts the initialization sequence (in cascade mode)
-	outb(PIC2_COMMAND, ICW1_INIT | ICW1_ICW4);
-	outb(PIC1_DATA, 0x20);                 // ICW2: Master PIC vector offset
-	outb(PIC2_DATA, 0x28);                 // ICW2: Slave PIC vector offset
-	outb(PIC1_DATA, 4);                       // ICW3: tell Master PIC that there is a slave PIC at IRQ2 (0000 0100)
-	outb(PIC2_DATA, 2);                       // ICW3: tell Slave PIC its cascade identity (0000 0010)
+	// starts the initialization sequence (in cascade mode)
+	outb(ICW1_INIT | ICW1_ICW4, PIC1_COMMAND);
+	outb(ICW1_INIT | ICW1_ICW4, PIC2_COMMAND);
+	
+	// Offset PIC1 to 0x20 and PIC2 to 0x28
+	outb(0x20, PIC1_DATA);
+	outb(0x28, PIC2_DATA);
+
+	// ICW3: tell Master PIC that there is a slave PIC at IRQ2 (0000 0100)
+	outb(4, PIC1_DATA);
+	// ICW3: tell Slave PIC its cascade identity (0000 0010)
+	outb(2, PIC2_DATA);
+
+	outb(ICW4_8086, PIC1_DATA);
+	outb(ICW4_8086, PIC2_DATA);
  
-	outb(PIC1_DATA, ICW4_8086);
-	outb(PIC2_DATA, ICW4_8086);
- 
-	outb(PIC1_DATA, a1);   // restore saved masks.
-	outb(PIC2_DATA, a2);
+	// restore saved masks.
+	outb(a1, PIC1_DATA);
+	outb(a2, PIC2_DATA);
 }
 
 // Returns the address of the idt load struct
-void* setup_idt(int64_t first_ist_address, int64_t second_ist_address) {
-
+void* setup_idt() {
 	map_PIC();
 
-	// int ist_offset = second_ist_address - first_ist_address;
+ 	// Using GDT (0), privilige level == kernel (00)
+	uint16_t segment_selector = 0b1000;
+
 	int ist_index = 0;
-
-	uint16_t segment_selector = 0b1000; // Using GDT (0), privilige level == kernel (00)
-
-	printkln("sizeof(struct idt_t)==%ld", sizeof(struct idt_t));
-	printkln("\toffset of to_1:  %ld", (int64_t)&interrupt_desc_table->target_offset_1 - (int64_t)&interrupt_desc_table->target_offset_1);
-	printkln("\toffset of t_s:  %ld", (int64_t)&interrupt_desc_table->target_selector - (int64_t)&interrupt_desc_table->target_offset_1);
-	// printkln("\toffset of ist:  %ld", (int64_t)&interrupt_desc_table->ist - (int64_t)&interrupt_desc_table->target_offset_1);
-	printkln("\toffset of to_2:  %ld", (int64_t)&interrupt_desc_table->target_offset_2 - (int64_t)&interrupt_desc_table->target_offset_1);
-	printkln("\toffset of to_3:  %ld", (int64_t)&interrupt_desc_table->target_offset_3 - (int64_t)&interrupt_desc_table->target_offset_1);
-	printkln("\toffset of res2:  %ld", (int64_t)&interrupt_desc_table->res2 - (int64_t)&interrupt_desc_table->target_offset_1);
-	ugly_sleep(5000);
 
 	while(ist_index < 256) {
 		int64_t ist_address = (uint64_t) isr_func_table[ist_index];
@@ -106,41 +147,109 @@ void* setup_idt(int64_t first_ist_address, int64_t second_ist_address) {
 		interrupt_desc_table[ist_index].ist = 0;
 		interrupt_desc_table[ist_index].present = 1;
 		interrupt_desc_table[ist_index].zero = 0;
-		interrupt_desc_table[ist_index].gate_type = 0xF;
+		interrupt_desc_table[ist_index].gate_type = 0xE; // Interrup gate, disables intrerupt when they occur
 		interrupt_desc_table[ist_index].dpl = 0x0; // Kernel privilege
 
 		++ist_index;
-		//printkln("index %d has address %p", ist_index, (void*)ist_address);
-		// ugly_sleep(1000);
 	}
 
 	load_idt_struct.idt_address = (uint64_t) interrupt_desc_table;
-	load_idt_struct.size = (256 * 16) - 1;
-
-	// printkln("desc table pt:    %p", interrupt_desc_table);
-	// printkln("load_idt bit 0-15:%x", *((uint16_t*) &load_idt_struct));
-	// printkln("load_idt bit 16-24:%x", *(((uint16_t*) &load_idt_struct) + 1));
-	// printkln("load_idt bit 24-31:%x", *(((uint16_t*) &load_idt_struct) + 2));
-	// printkln("load_idt bit 32-47:%x", *(((uint16_t*) &load_idt_struct) + 3));
-	// printkln("load_idt bit 47-64:%x", *(((uint16_t*) &load_idt_struct) + 4));
-	// printkln("load_idt bit 64-79:%x", *(((uint16_t*) &load_idt_struct) + 5));
-	// printkln("load_idt bit 16-79:%lx", *((uint64_t*)(((uint16_t*) &load_idt_struct))));
-
-	// printkln("Calling isr0");
-	// isr0();
-	// printkln("Called isr0");
-	// ugly_sleep(20000);
-
-	// print_long_hex((unsigned long) &load_idt_struct);
-	// print_char('\n');
+	load_idt_struct.size = (256 * 16) - 1; // 256 entries with 16 bytes a piece. -1 for convention
 
 	return &load_idt_struct;
 }
 
-void generic_interrupt_handler(int isr_code, int error_code, void* arg) {
-	ugly_sleep(1000);
+void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg) {
 
-	printkln("Interrupt! Code=%d, error=%d, arg=%p, irq[0].arg: %p", isr_code, error_code, arg, irq_table[0].arg);
+	// Vectors: http://www.brokenthorn.com/Resources/OSDevPic.html 
 
-	ugly_sleep(1000);
+	if(isr_code > 255) { // can't be negative as unsigned
+		printkln("INTERRUPT WITH BAD CODE: %d", isr_code);
+	} else {
+		// handle specific isr_codes and call their function, or perform generic action
+		switch (isr_code) {
+		case 0: 
+			printkln("Divide by 0, error code: %d", error_code);
+			break;
+			
+		case 1: 
+			printkln("Single step (Debugger), error code: %d", error_code);
+			break;
+			
+		case 2: 
+			printkln("Non Maskable Interrupt (NMI) Pin, error code: %d", error_code);
+			break;
+			
+		case 3: 
+			printkln("Breakpoint (Debugger), error code: %d", error_code);
+			break;
+			
+		case 4: 
+			printkln("Overflow, error code: %d", error_code);
+			break;
+			
+		case 5: 
+			printkln("Bounds check, error code: %d", error_code);
+			break;
+			
+		case 6: 
+			printkln("Undefined Operation Code (OPCode) instruction, error code: %d", error_code);
+			break;
+			
+		case 7: 
+			printkln("No coprocessor, error code: %d", error_code);
+			break;
+			
+		case 8: 
+			printkln("Double Fault, error code: %d", error_code);
+			break;
+			
+		case 9: 
+			printkln("Coprocessor Segment Overrun, error code: %d", error_code);
+			break;
+			
+		case 10: 
+			printkln("Invalid Task State Segment (TSS), error code: %d", error_code);
+			break;
+			
+		case 11: 
+			printkln("Segment Not Present, error code: %d", error_code);
+			break;
+			
+		case 12: 
+			printkln("Stack Segment Overrun, error code: %d", error_code);
+			break;
+			
+		case 13: 
+			printkln("General Protection Fault (GPF), error code: %d", error_code);
+			break;
+			
+		case 14: 
+			printkln("Page Fault, error code: %d", error_code);
+			break;
+			
+		case 15: 
+			printkln("Unassigned, error code: %d", error_code);
+			break;
+			
+		case 16: 
+			printkln("Coprocessor error, error code: %d", error_code);
+			break;
+			
+		case 17: 
+			printkln("Alignment Check (486+ Only), error code: %d", error_code);
+			break;
+			
+		case 18: 
+			printkln("Machine Check (Pentium/586+ Only), error code: %d", error_code);
+			break;
+
+		default: // Generic action for unhandeled ISRs
+			printkln("Unhandeled interrupt. ISR Code: %d, error code: %d", isr_code, error_code);;
+			break;
+		}
+	}
+
+	// outb(0x20, 0x20);
+	// outb(0x20, 0xA0);
 }

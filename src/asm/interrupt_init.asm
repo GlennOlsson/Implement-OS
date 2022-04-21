@@ -4,9 +4,6 @@
 
 extern setup_idt
 extern generic_interrupt_handler
-extern print_long_hex
-extern ugly_sleep
-extern VGA_display_char
 
 global init_ints
 
@@ -271,5394 +268,12042 @@ section .text
 init_ints:
 	cli ; dissable interrupts
 
-	; TODO: Remap PIC
-	; TODO: Create global IDT (in C?)
-
-	mov RDI, [isr0] ; Load first isr address into 1st arg
-	mov RSI, [isr1] ; Load code segment address into 2nd arg
 	call setup_idt ; Setup IDT in C
 
-	lidt [RAX]
-
-	;mov RDI, 10000
-	;call ugly_sleep
+	lidt [RAX] ; return value from c
 	
-	sti ; TODO: enable interrupts
+	sti ; enable interrupts
 
 	ret
 
 isr0:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 0 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr1:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 1 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr2:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 2 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr3:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 3 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr4:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 4 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr5:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 5 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr6:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 6 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr7:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 7 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr8:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 8 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr9:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 9 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr10:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 10 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr11:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 11 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr12:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 12 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr13:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 13 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr14:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 14 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr15:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 15 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr16:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 16 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr17:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 17 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr18:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 18 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr19:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 19 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr20:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 20 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr21:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 21 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr22:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 22 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr23:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 23 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr24:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 24 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr25:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 25 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr26:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 26 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr27:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 27 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr28:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 28 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr29:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 29 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr30:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 30 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr31:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 31 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr32:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 32 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr33:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 33 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr34:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 34 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr35:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 35 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr36:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 36 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr37:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 37 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr38:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 38 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr39:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 39 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr40:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 40 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr41:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 41 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr42:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 42 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr43:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 43 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr44:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 44 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr45:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 45 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr46:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 46 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr47:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 47 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr48:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 48 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr49:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 49 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr50:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 50 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr51:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 51 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr52:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 52 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr53:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 53 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr54:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 54 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr55:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 55 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr56:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 56 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr57:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 57 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr58:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 58 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr59:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 59 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr60:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 60 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr61:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 61 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr62:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 62 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr63:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 63 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr64:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 64 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr65:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 65 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr66:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 66 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr67:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 67 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr68:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 68 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr69:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 69 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr70:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 70 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr71:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 71 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr72:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 72 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr73:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 73 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr74:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 74 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr75:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 75 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr76:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 76 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr77:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 77 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr78:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 78 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr79:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 79 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr80:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 80 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr81:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 81 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr82:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 82 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr83:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 83 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr84:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 84 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr85:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 85 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr86:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 86 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr87:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 87 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr88:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 88 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr89:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 89 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr90:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 90 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr91:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 91 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr92:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 92 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr93:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 93 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr94:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 94 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr95:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 95 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr96:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 96 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr97:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 97 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr98:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 98 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr99:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 99 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr100:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 100 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr101:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 101 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr102:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 102 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr103:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 103 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr104:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 104 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr105:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 105 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr106:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 106 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr107:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 107 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr108:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 108 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr109:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 109 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr110:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 110 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr111:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 111 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr112:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 112 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr113:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 113 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr114:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 114 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr115:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 115 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr116:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 116 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr117:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 117 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr118:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 118 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr119:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 119 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr120:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 120 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr121:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 121 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr122:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 122 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr123:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 123 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr124:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 124 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr125:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 125 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr126:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 126 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr127:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 127 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr128:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 128 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr129:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 129 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr130:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 130 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr131:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 131 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr132:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 132 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr133:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 133 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr134:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 134 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr135:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 135 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr136:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 136 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr137:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 137 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr138:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 138 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr139:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 139 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr140:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 140 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr141:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 141 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr142:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 142 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr143:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 143 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr144:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 144 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr145:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 145 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr146:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 146 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr147:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 147 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr148:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 148 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr149:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 149 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr150:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 150 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr151:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 151 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr152:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 152 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr153:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 153 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr154:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 154 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr155:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 155 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr156:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 156 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr157:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 157 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr158:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 158 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr159:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 159 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr160:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 160 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr161:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 161 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr162:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 162 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr163:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 163 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr164:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 164 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr165:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 165 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr166:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 166 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr167:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 167 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr168:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 168 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr169:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 169 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr170:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 170 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr171:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 171 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr172:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 172 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr173:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 173 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr174:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 174 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr175:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 175 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr176:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 176 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr177:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 177 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr178:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 178 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr179:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 179 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr180:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 180 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr181:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 181 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr182:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 182 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr183:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 183 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr184:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 184 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr185:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 185 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr186:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 186 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr187:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 187 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr188:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 188 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr189:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 189 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr190:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 190 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr191:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 191 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr192:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 192 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr193:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 193 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr194:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 194 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr195:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 195 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr196:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 196 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr197:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 197 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr198:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 198 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr199:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 199 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr200:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 200 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr201:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 201 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr202:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 202 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr203:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 203 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr204:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 204 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr205:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 205 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr206:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 206 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr207:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 207 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr208:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 208 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr209:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 209 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr210:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 210 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr211:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 211 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr212:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 212 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr213:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 213 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr214:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 214 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr215:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 215 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr216:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 216 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr217:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 217 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr218:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 218 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr219:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 219 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr220:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 220 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr221:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 221 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr222:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 222 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr223:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 223 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr224:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 224 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr225:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 225 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr226:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 226 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr227:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 227 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr228:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 228 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr229:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 229 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr230:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 230 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr231:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 231 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr232:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 232 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr233:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 233 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr234:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 234 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr235:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 235 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr236:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 236 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr237:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 237 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr238:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 238 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr239:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 239 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr240:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 240 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr241:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 241 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr242:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 242 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr243:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 243 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr244:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 244 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr245:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 245 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr246:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 246 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr247:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 247 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr248:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 248 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr249:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 249 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr250:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 250 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr251:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 251 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr252:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 252 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr253:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 253 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr254:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 254 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 
 isr255:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, 255 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq

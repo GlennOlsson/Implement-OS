@@ -132,6 +132,24 @@ inline uint8_t inb(uint16_t port) {
 	return ret; 
 }
 
+// Returns the current interrupt flags
+char cli() {
+	uint16_t eflags;
+	asm("pushf; pop %0" : "=a"(eflags));
+
+	char int_enabled = (eflags >> 9) & 1;
+
+	asm("cli");
+
+	return int_enabled;
+}
+
+// Set the interrupt flag
+void sti(char c) {
+	if(c) // only if interrupts were on should we turn it on again
+		asm("sti");
+}
+
 // Don't have malloc so won't implement this now
 // char* strdup(const char* s) {
 // 	size_t len = strlen(s);

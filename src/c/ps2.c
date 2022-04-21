@@ -18,7 +18,7 @@ struct StatusRegister {
 	uint8_t unknown_2: 1;
 	uint8_t time_out_error: 1;
 	uint8_t parity_error: 1;
-};
+}__attribute__((packed));
 
 // Packed bitfield struct
 struct ControllerByte {
@@ -30,7 +30,7 @@ struct ControllerByte {
 	uint8_t port_2_clock: 1;
 	uint8_t port_1_translation: 1;
 	uint8_t zero2: 1;
-};
+}__attribute__((packed));
 
 uint8_t read_status() {
 	return inb(PS2_STATUS_REG);

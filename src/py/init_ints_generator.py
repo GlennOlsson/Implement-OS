@@ -7,9 +7,6 @@ content = """
 
 extern setup_idt
 extern generic_interrupt_handler
-extern print_long_hex
-extern ugly_sleep
-extern VGA_display_char
 
 global init_ints
 
@@ -23,19 +20,11 @@ section .text
 init_ints:
 	cli ; dissable interrupts
 
-	; TODO: Remap PIC
-	; TODO: Create global IDT (in C?)
-
-	mov RDI, [isr0] ; Load first isr address into 1st arg
-	mov RSI, [isr1] ; Load code segment address into 2nd arg
 	call setup_idt ; Setup IDT in C
 
-	lidt [RAX]
-
-	;mov RDI, 10000
-	;call ugly_sleep
+	lidt [RAX] ; return value from c
 	
-	sti ; TODO: enable interrupts
+	sti ; enable interrupts
 
 	ret
 """
@@ -43,57 +32,53 @@ init_ints:
 for i in range(256):
 	code = f"""
 isr{i}:
-
-	push RAX
+	; Push all register for safety
+	push RBP
 	push RBX
-	
-	;mov RDI, 10000
-	;call ugly_sleep
+	push RSP
+	push R12
+	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 
+	mov	al, 0x20
+	out	0x20, al
+	
 	mov RDI, {i} ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
-	mov RDI, 4000
-	call ugly_sleep
-
-	pop RBX
+	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
 	pop RAX
+	pop R15
+	pop R14
+	pop R13
+	pop R12
+	pop RSP
+	pop RBX
+	pop RBP
 
 	iretq
 """
 	content += code
-
-# content += """
-# section .rodata
-# idt:
-# .entries: equ $ - idt
-# 	;isr0
-# 	; Set 0-15 bits of isr0 to RCX
-# 	;mov RAX, 0xFFFF
-# 	;and RAX, isr0
-# 	;mov RCX, RAX 
-
-# 	dw isr0
-# 	dw 0b1000
-
-# 	; Set segment selector to RDX
-# 	;mov RDX, (0b1000 << 16)
-	
-# 	; Combine both segment selector and 16 first bits of isr0
-# 	;or RDX, RCX
-
-# 	;dq RDX
-
-
-#     ;dq (1<<43) | (1<<44) | (1<<47) | (1<<53) ; idt entry segment
-# .pointer:
-#     dw $ - idt - 1
-#     dq idt
-
-
-# """
 
 with open(out_file, "w") as f:
 	f.write(content)
