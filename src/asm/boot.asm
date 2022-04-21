@@ -1,6 +1,11 @@
 global start
 extern long_mode_start
 
+extern ugly_sleep
+
+global gdt64
+global gdt64.code_pointer
+
 section .text
 bits 32
 start:
@@ -170,7 +175,7 @@ gdt64:
     ;   |           |         |          |
     dq (1<<43) | (1<<44) | (1<<47) | (1<<53) ; code segment
 .code_pointer:
-    dw $ - gdt64 - 1
+    dw $ - gdt64 - 1 ; == 15
     dq gdt64
 
 section .bss

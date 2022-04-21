@@ -3,8 +3,11 @@
 #include "ps2.h"
 #include "console.h"
 #include "interrupts.h"
+#include "gdt.h"
 
 void kmain() {
+	setup_gdt();
+	load_gdt();
 
 	slow_print("Hello, welcome to GlennOS!\n");
 

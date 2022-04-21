@@ -272,7 +272,7 @@ init_ints:
 
 	lidt [RAX] ; return value from c
 	
-	sti ; enable interrupts
+	; sti ; enable interrupts
 
 	ret
 

@@ -16,6 +16,7 @@ asm: create_interrupt_asm
 	nasm -f elf64 $(asm_dir)/boot.asm -o $(out_dir)/boot.o
 	nasm -f elf64 $(asm_dir)/long_mode_init.asm -o $(out_dir)/long_mode_init.o
 	nasm -f elf64 $(asm_dir)/interrupt_init.asm -o $(out_dir)/interrupt_init.o
+	nasm -f elf64 $(asm_dir)/gdt_loader.asm -o $(out_dir)/gdt_loader.o
 
 c: create_isr_h
 	x86_64-elf-gcc $(c_flags) $(c_dir)/main.c -o $(out_dir)/main.o

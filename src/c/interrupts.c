@@ -250,6 +250,8 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 		}
 	}
 
+	ugly_sleep(2000);
+
 	// outb(0x20, 0x20);
 	// outb(0x20, 0xA0);
 }
