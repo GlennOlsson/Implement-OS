@@ -37,6 +37,11 @@ struct SegmentDescriptor {
 
 uint64_t gdt[GDT_ENTRIES]; 
 
+struct {
+	uint16_t size;
+	uint64_t address;
+} __attribute__((packed)) load_gdt_struct;
+
 typedef uint32_t TSS_Entry;
 TSS_Entry tss[TSS_ENTRIES]; // 26 entries in the table
 
@@ -107,8 +112,13 @@ void setup_gdt() {
 void load_gdt() {
 	char curr_int = cli();
 
+	load_gdt_struct.size = (GDT_ENTRIES * 8) - 1;
+	load_gdt_struct.address = (uint64_t) gdt;
+
+	asm("lgdt (%0)": : "Nd"(&load_gdt_struct));
+
 	// GDT Size and location
-	set_gdt((GDT_ENTRIES * 8) - 1, (uint64_t*) gdt);
+	// set_gdt((GDT_ENTRIES * 8) - 1, (uint64_t*) gdt);
 	reload_segments();
 
 	print_char('\n');
