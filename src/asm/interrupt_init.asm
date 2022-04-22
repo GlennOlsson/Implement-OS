@@ -318,7 +318,7 @@ isr0:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -365,7 +365,7 @@ isr1:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -412,7 +412,7 @@ isr2:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -459,7 +459,7 @@ isr3:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -506,7 +506,7 @@ isr4:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -553,7 +553,7 @@ isr5:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -600,7 +600,7 @@ isr6:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -647,7 +647,7 @@ isr7:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -694,7 +694,7 @@ isr8:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -741,7 +741,7 @@ isr9:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -788,7 +788,7 @@ isr10:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -835,7 +835,7 @@ isr11:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -882,7 +882,7 @@ isr12:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -929,7 +929,7 @@ isr13:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -976,7 +976,7 @@ isr14:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1023,7 +1023,7 @@ isr15:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1070,7 +1070,7 @@ isr16:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1117,7 +1117,7 @@ isr17:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1164,7 +1164,7 @@ isr18:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1211,7 +1211,7 @@ isr19:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1258,7 +1258,7 @@ isr20:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1305,7 +1305,7 @@ isr21:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1352,7 +1352,7 @@ isr22:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1399,7 +1399,7 @@ isr23:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1446,7 +1446,7 @@ isr24:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1493,7 +1493,7 @@ isr25:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1540,7 +1540,7 @@ isr26:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1587,7 +1587,7 @@ isr27:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1634,7 +1634,7 @@ isr28:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1681,7 +1681,7 @@ isr29:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1728,7 +1728,7 @@ isr30:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1775,7 +1775,7 @@ isr31:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1822,7 +1822,7 @@ isr32:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1869,7 +1869,7 @@ isr33:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1916,7 +1916,7 @@ isr34:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -1963,7 +1963,7 @@ isr35:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2010,7 +2010,7 @@ isr36:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2057,7 +2057,7 @@ isr37:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2104,7 +2104,7 @@ isr38:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2151,7 +2151,7 @@ isr39:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2198,7 +2198,7 @@ isr40:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2245,7 +2245,7 @@ isr41:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2292,7 +2292,7 @@ isr42:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2339,7 +2339,7 @@ isr43:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2386,7 +2386,7 @@ isr44:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2433,7 +2433,7 @@ isr45:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2480,7 +2480,7 @@ isr46:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2527,7 +2527,7 @@ isr47:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2574,7 +2574,7 @@ isr48:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2621,7 +2621,7 @@ isr49:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2668,7 +2668,7 @@ isr50:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2715,7 +2715,7 @@ isr51:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2762,7 +2762,7 @@ isr52:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2809,7 +2809,7 @@ isr53:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2856,7 +2856,7 @@ isr54:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2903,7 +2903,7 @@ isr55:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2950,7 +2950,7 @@ isr56:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -2997,7 +2997,7 @@ isr57:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3044,7 +3044,7 @@ isr58:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3091,7 +3091,7 @@ isr59:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3138,7 +3138,7 @@ isr60:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3185,7 +3185,7 @@ isr61:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3232,7 +3232,7 @@ isr62:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3279,7 +3279,7 @@ isr63:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3326,7 +3326,7 @@ isr64:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3373,7 +3373,7 @@ isr65:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3420,7 +3420,7 @@ isr66:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3467,7 +3467,7 @@ isr67:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3514,7 +3514,7 @@ isr68:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3561,7 +3561,7 @@ isr69:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3608,7 +3608,7 @@ isr70:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3655,7 +3655,7 @@ isr71:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3702,7 +3702,7 @@ isr72:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3749,7 +3749,7 @@ isr73:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3796,7 +3796,7 @@ isr74:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3843,7 +3843,7 @@ isr75:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3890,7 +3890,7 @@ isr76:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3937,7 +3937,7 @@ isr77:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -3984,7 +3984,7 @@ isr78:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4031,7 +4031,7 @@ isr79:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4078,7 +4078,7 @@ isr80:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4125,7 +4125,7 @@ isr81:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4172,7 +4172,7 @@ isr82:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4219,7 +4219,7 @@ isr83:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4266,7 +4266,7 @@ isr84:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4313,7 +4313,7 @@ isr85:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4360,7 +4360,7 @@ isr86:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4407,7 +4407,7 @@ isr87:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4454,7 +4454,7 @@ isr88:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4501,7 +4501,7 @@ isr89:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4548,7 +4548,7 @@ isr90:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4595,7 +4595,7 @@ isr91:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4642,7 +4642,7 @@ isr92:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4689,7 +4689,7 @@ isr93:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4736,7 +4736,7 @@ isr94:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4783,7 +4783,7 @@ isr95:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4830,7 +4830,7 @@ isr96:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4877,7 +4877,7 @@ isr97:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4924,7 +4924,7 @@ isr98:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -4971,7 +4971,7 @@ isr99:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5018,7 +5018,7 @@ isr100:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5065,7 +5065,7 @@ isr101:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5112,7 +5112,7 @@ isr102:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5159,7 +5159,7 @@ isr103:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5206,7 +5206,7 @@ isr104:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5253,7 +5253,7 @@ isr105:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5300,7 +5300,7 @@ isr106:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5347,7 +5347,7 @@ isr107:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5394,7 +5394,7 @@ isr108:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5441,7 +5441,7 @@ isr109:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5488,7 +5488,7 @@ isr110:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5535,7 +5535,7 @@ isr111:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5582,7 +5582,7 @@ isr112:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5629,7 +5629,7 @@ isr113:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5676,7 +5676,7 @@ isr114:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5723,7 +5723,7 @@ isr115:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5770,7 +5770,7 @@ isr116:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5817,7 +5817,7 @@ isr117:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5864,7 +5864,7 @@ isr118:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5911,7 +5911,7 @@ isr119:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -5958,7 +5958,7 @@ isr120:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6005,7 +6005,7 @@ isr121:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6052,7 +6052,7 @@ isr122:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6099,7 +6099,7 @@ isr123:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6146,7 +6146,7 @@ isr124:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6193,7 +6193,7 @@ isr125:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6240,7 +6240,7 @@ isr126:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6287,7 +6287,7 @@ isr127:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6334,7 +6334,7 @@ isr128:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6381,7 +6381,7 @@ isr129:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6428,7 +6428,7 @@ isr130:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6475,7 +6475,7 @@ isr131:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6522,7 +6522,7 @@ isr132:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6569,7 +6569,7 @@ isr133:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6616,7 +6616,7 @@ isr134:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6663,7 +6663,7 @@ isr135:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6710,7 +6710,7 @@ isr136:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6757,7 +6757,7 @@ isr137:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6804,7 +6804,7 @@ isr138:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6851,7 +6851,7 @@ isr139:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6898,7 +6898,7 @@ isr140:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6945,7 +6945,7 @@ isr141:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -6992,7 +6992,7 @@ isr142:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7039,7 +7039,7 @@ isr143:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7086,7 +7086,7 @@ isr144:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7133,7 +7133,7 @@ isr145:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7180,7 +7180,7 @@ isr146:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7227,7 +7227,7 @@ isr147:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7274,7 +7274,7 @@ isr148:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7321,7 +7321,7 @@ isr149:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7368,7 +7368,7 @@ isr150:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7415,7 +7415,7 @@ isr151:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7462,7 +7462,7 @@ isr152:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7509,7 +7509,7 @@ isr153:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7556,7 +7556,7 @@ isr154:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7603,7 +7603,7 @@ isr155:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7650,7 +7650,7 @@ isr156:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7697,7 +7697,7 @@ isr157:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7744,7 +7744,7 @@ isr158:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7791,7 +7791,7 @@ isr159:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7838,7 +7838,7 @@ isr160:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7885,7 +7885,7 @@ isr161:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7932,7 +7932,7 @@ isr162:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -7979,7 +7979,7 @@ isr163:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8026,7 +8026,7 @@ isr164:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8073,7 +8073,7 @@ isr165:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8120,7 +8120,7 @@ isr166:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8167,7 +8167,7 @@ isr167:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8214,7 +8214,7 @@ isr168:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8261,7 +8261,7 @@ isr169:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8308,7 +8308,7 @@ isr170:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8355,7 +8355,7 @@ isr171:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8402,7 +8402,7 @@ isr172:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8449,7 +8449,7 @@ isr173:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8496,7 +8496,7 @@ isr174:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8543,7 +8543,7 @@ isr175:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8590,7 +8590,7 @@ isr176:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8637,7 +8637,7 @@ isr177:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8684,7 +8684,7 @@ isr178:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8731,7 +8731,7 @@ isr179:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8778,7 +8778,7 @@ isr180:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8825,7 +8825,7 @@ isr181:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8872,7 +8872,7 @@ isr182:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8919,7 +8919,7 @@ isr183:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -8966,7 +8966,7 @@ isr184:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9013,7 +9013,7 @@ isr185:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9060,7 +9060,7 @@ isr186:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9107,7 +9107,7 @@ isr187:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9154,7 +9154,7 @@ isr188:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9201,7 +9201,7 @@ isr189:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9248,7 +9248,7 @@ isr190:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9295,7 +9295,7 @@ isr191:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9342,7 +9342,7 @@ isr192:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9389,7 +9389,7 @@ isr193:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9436,7 +9436,7 @@ isr194:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9483,7 +9483,7 @@ isr195:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9530,7 +9530,7 @@ isr196:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9577,7 +9577,7 @@ isr197:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9624,7 +9624,7 @@ isr198:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9671,7 +9671,7 @@ isr199:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9718,7 +9718,7 @@ isr200:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9765,7 +9765,7 @@ isr201:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9812,7 +9812,7 @@ isr202:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9859,7 +9859,7 @@ isr203:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9906,7 +9906,7 @@ isr204:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -9953,7 +9953,7 @@ isr205:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10000,7 +10000,7 @@ isr206:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10047,7 +10047,7 @@ isr207:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10094,7 +10094,7 @@ isr208:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10141,7 +10141,7 @@ isr209:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10188,7 +10188,7 @@ isr210:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10235,7 +10235,7 @@ isr211:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10282,7 +10282,7 @@ isr212:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10329,7 +10329,7 @@ isr213:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10376,7 +10376,7 @@ isr214:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10423,7 +10423,7 @@ isr215:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10470,7 +10470,7 @@ isr216:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10517,7 +10517,7 @@ isr217:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10564,7 +10564,7 @@ isr218:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10611,7 +10611,7 @@ isr219:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10658,7 +10658,7 @@ isr220:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10705,7 +10705,7 @@ isr221:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10752,7 +10752,7 @@ isr222:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10799,7 +10799,7 @@ isr223:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10846,7 +10846,7 @@ isr224:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10893,7 +10893,7 @@ isr225:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10940,7 +10940,7 @@ isr226:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -10987,7 +10987,7 @@ isr227:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11034,7 +11034,7 @@ isr228:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11081,7 +11081,7 @@ isr229:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11128,7 +11128,7 @@ isr230:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11175,7 +11175,7 @@ isr231:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11222,7 +11222,7 @@ isr232:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11269,7 +11269,7 @@ isr233:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11316,7 +11316,7 @@ isr234:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11363,7 +11363,7 @@ isr235:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11410,7 +11410,7 @@ isr236:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11457,7 +11457,7 @@ isr237:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11504,7 +11504,7 @@ isr238:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11551,7 +11551,7 @@ isr239:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11598,7 +11598,7 @@ isr240:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11645,7 +11645,7 @@ isr241:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11692,7 +11692,7 @@ isr242:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11739,7 +11739,7 @@ isr243:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11786,7 +11786,7 @@ isr244:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11833,7 +11833,7 @@ isr245:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11880,7 +11880,7 @@ isr246:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11927,7 +11927,7 @@ isr247:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -11974,7 +11974,7 @@ isr248:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -12021,7 +12021,7 @@ isr249:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -12068,7 +12068,7 @@ isr250:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -12115,7 +12115,7 @@ isr251:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -12162,7 +12162,7 @@ isr252:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -12209,7 +12209,7 @@ isr253:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -12256,7 +12256,7 @@ isr254:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq
@@ -12303,7 +12303,7 @@ isr255:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq

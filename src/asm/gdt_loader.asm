@@ -1,20 +1,8 @@
-global set_gdt
 global reload_segments
-
-global print_add
+global _load_tss
 
 extern print_long_hex
 extern print_char
-
-gdtr dw 0 ; store limit (size)
-     dq 0 ; store pointer to gdt
- 
-set_gdt:
-     mov [gdtr], DI
-     mov [gdtr+2], RSI
-
-     lgdt [gdtr]
-     ret
 
 reload_segments:
      ; Reload data segment register:
@@ -34,15 +22,8 @@ reload_segments:
      
      ret
 
-print_add:
+_load_tss:
      mov [RAX], DI
-     mov [RDI], RAX
-     call print_long_hex
-
-     mov RDI, 0xA
-     call print_char
-
-     lea RDI, [rel RAX]
-     call print_long_hex
+     ltr [RAX]
 
      ret

@@ -3,6 +3,7 @@
 #include "stdint-gcc.h"
 #include "lib.h"
 #include "isr.h"
+#include "console.h"
 
 #define PIC1			0x20		/* IO base address for master PIC */
 #define PIC2			0xA0		/* IO base address for slave PIC */
@@ -168,80 +169,148 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 	} else {
 		// handle specific isr_codes and call their function, or perform generic action
 		switch (isr_code) {
-		case 0 + 32: 
-			printkln("Divide by 0, error code: %d", error_code);
+		// Reserved ISRs from IVT
+		case 0: 
+			printkln("Divide by 0");
 			break;
 			
-		case 1 + 32: 
-			printkln("Single step (Debugger), error code: %d", error_code);
+		case 1: 
+			printkln("Single step (Debugger)");
 			break;
 			
-		case 2 + 32: 
-			printkln("Non Maskable Interrupt (NMI) Pin, error code: %d", error_code);
+		case 2: 
+			printkln("Non Maskable Interrupt (NMI) Pin");
 			break;
 			
-		case 3 + 32: 
-			printkln("Breakpoint (Debugger), error code: %d", error_code);
+		case 3: 
+			printkln("Breakpoint (Debugger)");
 			break;
 			
-		case 4 + 32: 
-			printkln("Overflow, error code: %d", error_code);
+		case 4: 
+			printkln("Overflow");
 			break;
 			
-		case 5 + 32: 
-			printkln("Bounds check, error code: %d", error_code);
+		case 5: 
+			printkln("Bounds check");
 			break;
 			
-		case 6 + 32: 
-			printkln("Undefined Operation Code (OPCode) instruction, error code: %d", error_code);
+		case 6: 
+			printkln("Undefined Operation Code (OPCode) instruction");
 			break;
 			
-		case 7 + 32: 
-			printkln("No coprocessor, error code: %d", error_code);
+		case 7: 
+			printkln("No coprocessor");
 			break;
 			
-		case 8 + 32: 
-			printkln("Double Fault, error code: %d", error_code);
+		case 8: 
+			printkln("Double Fault");
 			break;
 			
-		case 9 + 32: 
-			printkln("Coprocessor Segment Overrun, error code: %d", error_code);
+		case 9: 
+			printkln("Coprocessor Segment Overrun");
 			break;
 			
-		case 10 + 32: 
-			printkln("Invalid Task State Segment (TSS), error code: %d", error_code);
+		case 10: 
+			printkln("Invalid Task State Segment (TSS)");
 			break;
 			
-		case 11 + 32: 
-			printkln("Segment Not Present, error code: %d", error_code);
+		case 11: 
+			printkln("Segment Not Present");
 			break;
 			
-		case 12 + 32: 
-			printkln("Stack Segment Overrun, error code: %d", error_code);
+		case 12: 
+			printkln("Stack Segment Overrun");
 			break;
 			
-		case 13 + 32: 
-			printkln("General Protection Fault (GPF), error code: %d", error_code);
+		case 13: 
+			printkln("General Protection Fault (GPF)");
 			break;
 			
-		case 14 + 32: 
-			printkln("Page Fault, error code: %d", error_code);
+		case 14: 
+			printkln("Page Fault");
 			break;
 			
-		case 15 + 32: 
-			printkln("Unassigned, error code: %d", error_code);
+		case 15: 
+			printkln("Unassigned");
 			break;
 			
-		case 16 + 32: 
-			printkln("Coprocessor error, error code: %d", error_code);
+		case 16: 
+			printkln("Coprocessor error");
 			break;
 			
-		case 17 + 32: 
-			printkln("Alignment Check (486+ Only), error code: %d", error_code);
+		case 17: 
+			printkln("Alignment Check (486+ Only)");
 			break;
 			
-		case 18 + 32: 
-			printkln("Machine Check (Pentium/586+ Only), error code: %d", error_code);
+		case 18: 
+			printkln("Machine Check (Pentium/586+ Only)");
+			break;
+			
+		// IRQ interrupts
+		case 32:
+			printkln("IRQ Interrupt: Timer");
+			break;
+			
+		case 33:
+			key_action(inb(0x60));
+			// printkln("IRQ Interrupt: Keyboard");
+			// printkln("Key: %c", c);
+			break;
+			
+		case 34:
+			printkln("IRQ Interrupt: Cascade for 8259A Slave controller");
+			break;
+			
+		case 35:
+			printkln("IRQ Interrupt: Serial port 2");
+			break;
+			
+		case 36:
+			printkln("IRQ Interrupt: Serial port 1");
+			break;
+			
+		case 37:
+			printkln("IRQ Interrupt: AT systems: Parallel Port 2. PS/2 systems: reserved");
+			break;
+			
+		case 38:
+			printkln("IRQ Interrupt: Diskette drive");
+			break;
+			
+		case 39:
+			printkln("IRQ Interrupt: Parallel Port 1");
+			break;
+			
+		case 40:
+			printkln("IRQ Interrupt: CMOS Real time clock");
+			break;
+			
+		case 41:
+			printkln("IRQ Interrupt: CGA vertical retrace");
+			break;
+			
+		case 42:
+			printkln("IRQ Interrupt: Reserved");
+			break;
+			
+		case 43:
+			printkln("IRQ Interrupt: Reserved");
+			break;
+			
+		case 44:
+			printkln("IRQ Interrupt: AT systems: reserved. PS/2: auxiliary device");
+			break;
+			
+		case 45:
+			printkln("IRQ Interrupt: FPU");
+			break;
+			
+		case 46:
+			printkln("IRQ Interrupt: Hard disk controller");
+			break;
+			
+		case 47:
+			printkln("IRQ Interrupt: Reserved");
 			break;
 
 		default: // Generic action for unhandeled ISRs

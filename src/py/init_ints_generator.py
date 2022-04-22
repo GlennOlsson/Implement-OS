@@ -73,7 +73,7 @@ isr{i}:
 	pop RBX
 	pop RBP
 
-	mov	al, 0x20
+	mov	al, 0x20 ; Ack the interrupt
 	out	0x20, al
 
 	iretq

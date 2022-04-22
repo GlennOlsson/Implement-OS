@@ -177,8 +177,3 @@ gdt64:
 .code_pointer:
     dw $ - gdt64 - 1 ; == 15
     dq gdt64
-
-section .bss
-; 26 x 4 bytes of entries = 104 bits
-tss:
-    resb 104

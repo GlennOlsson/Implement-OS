@@ -11,6 +11,11 @@ void kmain() {
 	setup_gdt();
 	load_gdt();
 
+	// outb(0xFF, 0x21);
+	// outb(0xFF, 0xA1);
+	IRQ_set_mask(0);
+	IRQ_set_mask(1);
+
 	// ugly_sleep(20000);
 
 	// while(!j)
@@ -23,6 +28,7 @@ void kmain() {
 	// void (*poll_keyboard_func)(void (*key_action_func)(unsigned char)) = setup_keyboard();
 	setup_keyboard();
 	setup_console();
+
 
 	// poll_keyboard_func(&key_action);
 

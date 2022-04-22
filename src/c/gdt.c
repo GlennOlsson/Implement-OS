@@ -7,7 +7,7 @@
 #define TSS_ENTRIES 26
 
 // From gdt_loader.asm
-extern void set_gdt(uint16_t size, uint64_t* address);
+extern void _load_tss(uint16_t size);
 extern void reload_segments();
 
 struct SegmentDescriptor {
@@ -35,7 +35,7 @@ struct SegmentDescriptor {
 
 } __attribute__((packed));
 
-uint64_t gdt[GDT_ENTRIES]; 
+uint64_t gdt[GDT_ENTRIES]; // 8 bytes per entry
 
 struct {
 	uint16_t size;
@@ -45,19 +45,18 @@ struct {
 typedef uint32_t TSS_Entry;
 TSS_Entry tss[TSS_ENTRIES]; // 26 entries in the table
 
+uint64_t ist_1[8]; // Stack of 8x8-bytes
+
 // Set to 0
-void _setup_gdt_0(uint64_t* _gdt) {
-	struct SegmentDescriptor* gdt_entry = (struct SegmentDescriptor*) _gdt;
-
-	uint32_t* uint_ptr;
-	uint_ptr = (uint32_t*) gdt_entry;
-
-	*uint_ptr = 0;
+void _setup_gdt_0(uint64_t* gdt) {
+	*gdt = 0;
 }
 
 // The code segment
 void _setup_gdt_1(uint64_t* _gdt) {
 	struct SegmentDescriptor* gdt_entry = (struct SegmentDescriptor*) _gdt;
+
+	*_gdt = 0;
 
 	gdt_entry->exec = 1;
 	gdt_entry->desc = 1;
@@ -69,6 +68,9 @@ void _setup_gdt_1(uint64_t* _gdt) {
 void _setup_gdt_2(uint64_t* _gdt) {
 	struct SegmentDescriptor* lower_gdt_entry = (struct SegmentDescriptor*) _gdt;
 	uint64_t* upper_bytes = _gdt + 1; // The part of SSD of 32 bit Base + Reserved
+
+	*_gdt = 0;
+	*upper_bytes = 0;
 
 	uint64_t address = (uint64_t) tss;
 
@@ -82,7 +84,7 @@ void _setup_gdt_2(uint64_t* _gdt) {
 	lower_gdt_entry->base_3 = base_3;
 	*upper_bytes = base_4;
 
-	uint32_t limit = (4 * 26) - 1; // 26 rows with 4 bytes each
+	uint32_t limit = (4 * TSS_ENTRIES) - 1; // 26 rows with 4 bytes each
 	uint16_t limit_1 = limit & 0xFFFF;
 	uint8_t limit_2 = (limit >> 16) & 0xF; // only last 4 bits
 	lower_gdt_entry->limit_1 = limit_1;
@@ -96,10 +98,14 @@ void _setup_gdt_2(uint64_t* _gdt) {
 
 	// Set all entries to 0
 	for(int i = 0; i < TSS_ENTRIES; ++i) {
-		if(i != TSS_ENTRIES - 1)
-			tss[i] = 0;
+		if(i == 9)
+			tss[i] = ((uint64_t) ist_1) & 0xFFFFFFFF;
+		else if(i == 10)
+			tss[i] = (((uint64_t) ist_1) >> 32) & 0xFFFFFFFF;
+		else if(i == TSS_ENTRIES - 1)
+			tss[i] = 0x680000; // Sets IOPB, First 16 bits unused (reserved), then 104 (size of table)
 		else 
-			tss[i] = 0x680000; // First 16 bits unused (reserved), then 104 (size of table). Sets IOPB
+			tss[i] = 0;
 	}
 }
 
@@ -115,17 +121,15 @@ void load_gdt() {
 	load_gdt_struct.size = (GDT_ENTRIES * 8) - 1;
 	load_gdt_struct.address = (uint64_t) gdt;
 
-	asm("lgdt (%0)": : "Nd"(&load_gdt_struct));
-
-	// GDT Size and location
-	// set_gdt((GDT_ENTRIES * 8) - 1, (uint64_t*) gdt);
-	reload_segments();
-
-	print_char('\n');
+	asm(
+		"lgdt (%0); "
+		"call reload_segments"
+			: 
+			: "Nd"(&load_gdt_struct));
 
 	sti(curr_int);
 }
 
 void load_tss() {
-	asm("ltr 24"); // 3 * 8 - 1, offset in GDT
+	_load_tss(2*8); // offset in GDT, should be 16 as there are 2 x 8-byte selectors before
 }
