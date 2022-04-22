@@ -2,6 +2,7 @@
 #include "stdint-gcc.h"
 #include "vga_api.h"
 #include "lib.h"
+#include "console.h"
 
 #define PS2_DATA_PORT 0x60
 #define PS2_STATUS_REG 0x64
@@ -71,6 +72,12 @@ void write_command(uint8_t command) {
 void write_data(uint8_t data) {
 	wait_for_write();
 	return outb(data, PS2_DATA_PORT);
+}
+
+void keyboard_interrupt() {
+	uint8_t scancode = read_data();
+
+	key_action(scancode);
 }
 
 // Polls the keyboard for events. Actions are sent to the argument function

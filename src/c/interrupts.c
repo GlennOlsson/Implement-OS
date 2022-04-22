@@ -3,7 +3,7 @@
 #include "stdint-gcc.h"
 #include "lib.h"
 #include "isr.h"
-#include "console.h"
+#include "ps2.h"
 
 #define PIC1			0x20		/* IO base address for master PIC */
 #define PIC2			0xA0		/* IO base address for slave PIC */
@@ -161,8 +161,9 @@ void* setup_idt() {
 }
 
 void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg) {
-
 	// Vectors: http://www.brokenthorn.com/Resources/OSDevPic.html 
+
+	// Could use a list with function pointers instead, but to init that list we would to similar things to below
 
 	if(isr_code > 255) { // can't be negative as unsigned
 		printkln("INTERRUPT WITH BAD CODE: %d", isr_code);
@@ -251,10 +252,8 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			printkln("IRQ Interrupt: Timer");
 			break;
 			
-		case 33:
-			key_action(inb(0x60));
-			// printkln("IRQ Interrupt: Keyboard");
-			// printkln("Key: %c", c);
+		case 33: // Keyboard
+			keyboard_interrupt();
 			break;
 			
 		case 34:
@@ -318,9 +317,4 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			break;
 		}
 	}
-
-	ugly_sleep(2000);
-
-	// outb(0x20, 0x20);
-	// outb(0x20, 0xA0);
 }
