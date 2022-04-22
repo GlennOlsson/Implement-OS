@@ -94,7 +94,9 @@ uint16_t IRQ_get_full_mask() {
 
 void IRQ_end_of_interrupt(int irq) {
 	// ACK interrupt
-	outb(0x20, irq < 8 ? PIC1_DATA : PIC2_DATA);
+	outb(0x20, PIC1);
+	if(irq > 8)
+		outb(0x20, PIC2);
 }
 
 void map_PIC() {
@@ -250,66 +252,82 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 		// IRQ interrupts
 		case 32:
 			printkln("IRQ Interrupt: Timer");
+			IRQ_end_of_interrupt(0);
 			break;
 			
 		case 33: // Keyboard
 			keyboard_interrupt();
+			IRQ_end_of_interrupt(1);
 			break;
 			
 		case 34:
 			printkln("IRQ Interrupt: Cascade for 8259A Slave controller");
+			IRQ_end_of_interrupt(2);
 			break;
 			
 		case 35:
 			printkln("IRQ Interrupt: Serial port 2");
+			IRQ_end_of_interrupt(3);
 			break;
 			
 		case 36:
 			printkln("IRQ Interrupt: Serial port 1");
+			IRQ_end_of_interrupt(4);
 			break;
 			
 		case 37:
 			printkln("IRQ Interrupt: AT systems: Parallel Port 2. PS/2 systems: reserved");
+			IRQ_end_of_interrupt(5);
 			break;
 			
 		case 38:
 			printkln("IRQ Interrupt: Diskette drive");
+			IRQ_end_of_interrupt(6);
 			break;
 			
 		case 39:
 			printkln("IRQ Interrupt: Parallel Port 1");
+			IRQ_end_of_interrupt(7);
 			break;
 			
 		case 40:
 			printkln("IRQ Interrupt: CMOS Real time clock");
+			IRQ_end_of_interrupt(8);
 			break;
 			
 		case 41:
 			printkln("IRQ Interrupt: CGA vertical retrace");
+			IRQ_end_of_interrupt(9);
 			break;
 			
 		case 42:
 			printkln("IRQ Interrupt: Reserved");
+			IRQ_end_of_interrupt(10);
 			break;
 			
 		case 43:
 			printkln("IRQ Interrupt: Reserved");
+			IRQ_end_of_interrupt(11);
 			break;
 			
 		case 44:
 			printkln("IRQ Interrupt: AT systems: reserved. PS/2: auxiliary device");
+			IRQ_end_of_interrupt(12);
 			break;
 			
 		case 45:
 			printkln("IRQ Interrupt: FPU");
+			IRQ_end_of_interrupt(13);
 			break;
 			
 		case 46:
 			printkln("IRQ Interrupt: Hard disk controller");
+			IRQ_end_of_interrupt(14);
 			break;
 			
 		case 47:
 			printkln("IRQ Interrupt: Reserved");
+			IRQ_end_of_interrupt(15);
 			break;
 
 		default: // Generic action for unhandeled ISRs

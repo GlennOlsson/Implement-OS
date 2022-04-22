@@ -6,8 +6,6 @@
 #include "gdt.h"
 
 void kmain() {
-	char curr_int = cli();
-
 	VGA_clear();
 
 	setup_gdt(); // create and load new gdt from c
@@ -20,7 +18,8 @@ void kmain() {
 	slow_print("Hello, welcome to GlennOS!\n");
 	write_promtp();
 
-	sti(curr_int);
+	// Turn on interrupts just now
+	sti(1);
 
 	volatile int j = 0;
 	while(!j)

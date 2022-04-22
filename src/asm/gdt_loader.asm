@@ -1,9 +1,6 @@
 global reload_segments
 global _load_tss
 
-extern print_long_hex
-extern print_char
-
 reload_segments:
      ; Reload data segment register:
      push 0x08

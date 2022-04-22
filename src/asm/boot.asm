@@ -1,11 +1,6 @@
 global start
 extern long_mode_start
 
-extern ugly_sleep
-
-global gdt64
-global gdt64.code_pointer
-
 section .text
 bits 32
 start:
