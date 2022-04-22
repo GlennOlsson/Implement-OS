@@ -148,6 +148,15 @@ void* setup_idt() {
 		interrupt_desc_table[ist_index].target_selector = segment_selector;
 
 		interrupt_desc_table[ist_index].ist = 0;
+		if(ist_index == 8) // Double Fault #DF
+			interrupt_desc_table[ist_index].ist = 0;//1;
+		if(ist_index == 13) // General protection #GP
+			interrupt_desc_table[ist_index].ist = 0;//2;
+		if(ist_index == 14) // Page fault #PF
+			interrupt_desc_table[ist_index].ist = 0;//3;
+		if(ist_index == 33) // Keyboard
+			interrupt_desc_table[ist_index].ist = 0;
+
 		interrupt_desc_table[ist_index].present = 1;
 		interrupt_desc_table[ist_index].zero = 0;
 		interrupt_desc_table[ist_index].gate_type = 0xE; // Interrup gate, disables intrerupt when they occur
@@ -162,10 +171,14 @@ void* setup_idt() {
 	return &load_idt_struct;
 }
 
+extern void read_cr2(uint64_t);
+
 void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg) {
 	// Vectors: http://www.brokenthorn.com/Resources/OSDevPic.html 
 
 	// Could use a list with function pointers instead, but to init that list we would to similar things to below
+
+	uint64_t cr2_content = 0;
 
 	if(isr_code > 255) { // can't be negative as unsigned
 		printkln("INTERRUPT WITH BAD CODE: %d", isr_code);
@@ -226,11 +239,15 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			break;
 			
 		case 13: 
-			printkln("General Protection Fault (GPF)");
+			read_cr2(cr2_content);
+			printkln("General Protection Fault (GPF), error code: %x", error_code);
+			ugly_sleep(4000);
 			break;
 			
-		case 14: 
-			printkln("Page Fault");
+		case 14:
+			read_cr2(cr2_content);
+			printkln("Page Fault, error code: %x. CR2: %lx", error_code, cr2_content);
+			ugly_sleep(5000);
 			break;
 			
 		case 15: 

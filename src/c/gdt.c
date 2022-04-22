@@ -10,6 +10,10 @@
 extern void _load_tss(uint16_t size);
 extern void reload_segments();
 
+extern void* ist1_stack_top;
+extern void* ist2_stack_top;
+extern void* ist3_stack_top;
+
 struct SegmentDescriptor {
 	uint16_t limit_1;
 	uint16_t base_1;
@@ -45,7 +49,10 @@ struct {
 typedef uint32_t TSS_Entry;
 TSS_Entry tss[TSS_ENTRIES]; // 26 entries in the table
 
-uint64_t ist_1[8]; // Stack of 8x8-bytes
+uint64_t ist_1[16]; // Stack of 8x8-bytes
+uint64_t ist_2[16]; // Stack of 8x8-bytes
+uint64_t ist_3[16]; // Stack of 8x8-bytes
+uint64_t ist_4[16]; // Stack of 8x8-bytes
 
 // Set to 0
 void _setup_gdt_0(uint64_t* gdt) {
@@ -96,16 +103,46 @@ void _setup_gdt_2(uint64_t* _gdt) {
 
 	lower_gdt_entry->size = 1;
 
+
+	for(int i = 0; i < 16; ++i) {
+		ist_1[i] = 0;
+		ist_2[i] = 0;
+	}
+
+	//printkln("ist1: %lx, ist2: %p, ist3: %p, ist4: %p", ((uint64_t) ist_1) & 0xFFFFFFFF, ist_2, ist_3, ist_4);
+
 	// Set all entries to 0
 	for(int i = 0; i < TSS_ENTRIES; ++i) {
-		if(i == 9)
-			tss[i] = ((uint64_t) ist_1) & 0xFFFFFFFF;
-		else if(i == 10)
-			tss[i] = (((uint64_t) ist_1) >> 32) & 0xFFFFFFFF;
+		if(i == 9) {
+			// tss[i+1] = ((uint64_t) ist_1[7]) & 0xFFFFFFFF;
+			// tss[i] = (((uint64_t) ist_1[7]) >> 32) & 0xFFFFFFFF;
+			tss[i+1] = ((uint64_t) ist1_stack_top) & 0xFFFFFFFF;
+			tss[i] = (((uint64_t) ist1_stack_top) >> 32) & 0xFFFFFFFF;
+			// tss[i] = 0;
+			// tss[i+1] = 0;
+			i+=1;
+		} else if(i == 11) {
+			tss[i+1] = ((uint64_t) ist_2) & 0xFFFFFFFF;
+			tss[i] = (((uint64_t) ist_2) >> 32) & 0xFFFFFFFF;
+			i+=1;
+		}
 		else if(i == TSS_ENTRIES - 1)
 			tss[i] = 0x680000; // Sets IOPB, First 16 bits unused (reserved), then 104 (size of table)
 		else 
 			tss[i] = 0;
+
+		// if(i == 12)
+		// 	tss[i] = ((uint64_t) ist_2) & 0xFFFFFFFF;
+		// else if(i == 11)
+		// 	tss[i] = (((uint64_t) ist_2) >> 32) & 0xFFFFFFFF;
+		// if(i == 14)
+		// 	tss[i] = ((uint64_t) ist_3) & 0xFFFFFFFF;
+		// else if(i == 13)
+		// 	tss[i] = (((uint64_t) ist_3) >> 32) & 0xFFFFFFFF;
+		// if(i == 16)
+		// 	tss[i] = ((uint64_t) ist_4) & 0xFFFFFFFF;
+		// else if(i == 15)
+		// 	tss[i] = (((uint64_t) ist_4) >> 32) & 0xFFFFFFFF;
 	}
 }
 
@@ -131,5 +168,6 @@ void load_gdt() {
 }
 
 void load_tss() {
+	// Cannot even write "Welcome" before faults if anything but 16, i.e. it is loaded!
 	_load_tss(2*8); // offset in GDT, should be 16 as there are 2 x 8-byte selectors before
 }

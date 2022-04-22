@@ -1,5 +1,8 @@
 global reload_segments
 global _load_tss
+global read_cr2
+
+extern print_long_hex
 
 reload_segments:
      ; Reload data segment register:
@@ -24,3 +27,7 @@ _load_tss:
      ltr [RAX]
 
      ret
+
+read_cr2:
+     mov RDI, CR2 
+     call print_long_hex

@@ -1,6 +1,10 @@
 global start
 extern long_mode_start
 
+global ist1_stack_top
+global ist2_stack_top
+global ist3_stack_top
+
 section .text
 bits 32
 start:
@@ -160,6 +164,18 @@ p2_table:
 stack_bottom:
     resb 64
 stack_top:
+
+ist1_stack_bottom:
+    resb 64
+ist1_stack_top:
+
+ist2_stack_bottom:
+    resb 64
+ist2_stack_top:
+
+ist3_stack_bottom:
+    resb 64
+ist3_stack_top:
 
 ;section .rodata
 section .data

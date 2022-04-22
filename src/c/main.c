@@ -10,6 +10,7 @@ void kmain() {
 
 	setup_gdt(); // create and load new gdt from c
 	load_gdt();
+	load_tss();
 
 	IRQ_set_mask(0); // Disable timer
 
