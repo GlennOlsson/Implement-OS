@@ -2,7 +2,7 @@
 #ifndef CONSOLE_H
 #define CONSOLE_H
 
-void setup_console(void);
+void write_promtp(void);
 void key_action(unsigned char scancode);
 
 #endif

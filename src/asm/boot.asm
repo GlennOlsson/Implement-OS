@@ -1,6 +1,10 @@
 global start
 extern long_mode_start
 
+global ist1_stack_top
+global ist2_stack_top
+global ist3_stack_top
+
 section .text
 bits 32
 start:
@@ -14,7 +18,7 @@ start:
     call enable_paging    
 
 	; load the 64-bit GDT
-    lgdt [gdt64.pointer]
+    lgdt [gdt64.code_pointer]
 
     jmp gdt64.code:long_mode_start
 
@@ -161,11 +165,26 @@ stack_bottom:
     resb 64
 stack_top:
 
-section .rodata
+ist1_stack_bottom:
+    resb 64
+ist1_stack_top:
+
+ist2_stack_bottom:
+    resb 64
+ist2_stack_top:
+
+ist3_stack_bottom:
+    resb 64
+ist3_stack_top:
+
+;section .rodata
+section .data
 gdt64:
     dq 0 ; zero entry
 .code: equ $ - gdt64
+    ;  eq bit   desc. type  present  long mode flag
+    ;   |           |         |          |
     dq (1<<43) | (1<<44) | (1<<47) | (1<<53) ; code segment
-.pointer:
-    dw $ - gdt64 - 1
+.code_pointer:
+    dw $ - gdt64 - 1 ; == 15
     dq gdt64

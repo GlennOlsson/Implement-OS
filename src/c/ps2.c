@@ -2,6 +2,7 @@
 #include "stdint-gcc.h"
 #include "vga_api.h"
 #include "lib.h"
+#include "console.h"
 
 #define PS2_DATA_PORT 0x60
 #define PS2_STATUS_REG 0x64
@@ -18,7 +19,7 @@ struct StatusRegister {
 	uint8_t unknown_2: 1;
 	uint8_t time_out_error: 1;
 	uint8_t parity_error: 1;
-};
+}__attribute__((packed));
 
 // Packed bitfield struct
 struct ControllerByte {
@@ -30,22 +31,7 @@ struct ControllerByte {
 	uint8_t port_2_clock: 1;
 	uint8_t port_1_translation: 1;
 	uint8_t zero2: 1;
-};
-
-// Write to port
-static inline void outb(uint8_t val, uint16_t port) {
-    asm volatile ( "outb %0, %1" : : "a"(val), "Nd"(port));
-}
-
-// Read from port
-static inline uint8_t inb(uint16_t port) {
-	uint8_t ret;
-	asm volatile ("inb %1, %0"
-					: "=a"(ret)
-                    : "Nd"(port)
-				);
-	return ret; 
-}
+}__attribute__((packed));
 
 uint8_t read_status() {
 	return inb(PS2_STATUS_REG);
@@ -88,14 +74,10 @@ void write_data(uint8_t data) {
 	return outb(data, PS2_DATA_PORT);
 }
 
-//Sleeps for approximately sec seconds
-void ugly_sleep(int sec) {
-	int i = 0;
-	int limit = 100000000 * sec;
-	while(i < limit) {
-		i += 1;
-	}
-	i = i;
+void keyboard_interrupt() {
+	uint8_t scancode = read_data();
+
+	key_action(scancode);
 }
 
 // Polls the keyboard for events. Actions are sent to the argument function
@@ -108,7 +90,7 @@ void poll_keyboard(void (*key_action_func)(unsigned char)) {
 }
 
 // Returns a pointer to a function which polls the keyboard
-void* setup_keyboard() {
+void setup_keyboard() {
 	write_command(0xAD);// Dissable port 1
 	write_command(0xA7);// Dissable port 2
 	write_command(0x20);// Read config
@@ -152,5 +134,5 @@ void* setup_keyboard() {
 
 	write_data(0x0);
 
-	return &poll_keyboard;
+	return;
 }

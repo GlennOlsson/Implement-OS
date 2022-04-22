@@ -2,20 +2,27 @@
 #include "lib.h"
 #include "ps2.h"
 #include "console.h"
+#include "interrupts.h"
+#include "gdt.h"
 
 void kmain() {
+	VGA_clear();
 
-	printk("Hello, welcome to GlennOS!\n");
+	setup_gdt(); // create and load new gdt from c
+	load_gdt();
+	load_tss();
 
-	// setup_keyboard returns a pointer to a function which polls the keyboard. This function
-	// takes a function which is called with each key action
-	void (*poll_keyboard_func)(void (*key_action_func)(unsigned char)) = setup_keyboard();
-	setup_console();
+	IRQ_set_mask(0); // Disable timer
 
-	// key_action comes from console.h
-	poll_keyboard_func(&key_action);
+	setup_keyboard(); // Config keyboard
 
-	int j = 0;
+	slow_print("Hello, welcome to GlennOS!\n");
+	write_promtp();
+
+	// Turn on interrupts just now
+	sti(1);
+
+	volatile int j = 0;
 	while(!j)
 		asm("hlt");
 }
