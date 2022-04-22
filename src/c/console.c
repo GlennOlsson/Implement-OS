@@ -71,4 +71,6 @@ void key_action(unsigned char scancode) {
 		is_left_shift = 0;
 	else if(scancode == 0xB6) //rshift
 		is_right_shift = 0;
+	// else // Probably a key-release
+		// printkln("Scancode not handeled: %x", scancode);
 }

@@ -14,7 +14,6 @@ void kmain() {
 	// outb(0xFF, 0x21);
 	// outb(0xFF, 0xA1);
 	IRQ_set_mask(0);
-	IRQ_set_mask(1);
 
 	// ugly_sleep(20000);
 
