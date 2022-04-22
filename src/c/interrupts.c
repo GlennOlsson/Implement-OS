@@ -126,7 +126,7 @@ void map_PIC() {
 void* setup_idt() {
 	map_PIC();
 
- 	// Using GDT (0), privilige level == kernel (00)
+ 	// Using GDT (0), privilige level == kernel (00), index == 1 (or 8 really, offset)
 	uint16_t segment_selector = 0b1000;
 
 	int ist_index = 0;
@@ -168,79 +168,79 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 	} else {
 		// handle specific isr_codes and call their function, or perform generic action
 		switch (isr_code) {
-		case 0: 
+		case 0 + 32: 
 			printkln("Divide by 0, error code: %d", error_code);
 			break;
 			
-		case 1: 
+		case 1 + 32: 
 			printkln("Single step (Debugger), error code: %d", error_code);
 			break;
 			
-		case 2: 
+		case 2 + 32: 
 			printkln("Non Maskable Interrupt (NMI) Pin, error code: %d", error_code);
 			break;
 			
-		case 3: 
+		case 3 + 32: 
 			printkln("Breakpoint (Debugger), error code: %d", error_code);
 			break;
 			
-		case 4: 
+		case 4 + 32: 
 			printkln("Overflow, error code: %d", error_code);
 			break;
 			
-		case 5: 
+		case 5 + 32: 
 			printkln("Bounds check, error code: %d", error_code);
 			break;
 			
-		case 6: 
+		case 6 + 32: 
 			printkln("Undefined Operation Code (OPCode) instruction, error code: %d", error_code);
 			break;
 			
-		case 7: 
+		case 7 + 32: 
 			printkln("No coprocessor, error code: %d", error_code);
 			break;
 			
-		case 8: 
+		case 8 + 32: 
 			printkln("Double Fault, error code: %d", error_code);
 			break;
 			
-		case 9: 
+		case 9 + 32: 
 			printkln("Coprocessor Segment Overrun, error code: %d", error_code);
 			break;
 			
-		case 10: 
+		case 10 + 32: 
 			printkln("Invalid Task State Segment (TSS), error code: %d", error_code);
 			break;
 			
-		case 11: 
+		case 11 + 32: 
 			printkln("Segment Not Present, error code: %d", error_code);
 			break;
 			
-		case 12: 
+		case 12 + 32: 
 			printkln("Stack Segment Overrun, error code: %d", error_code);
 			break;
 			
-		case 13: 
+		case 13 + 32: 
 			printkln("General Protection Fault (GPF), error code: %d", error_code);
 			break;
 			
-		case 14: 
+		case 14 + 32: 
 			printkln("Page Fault, error code: %d", error_code);
 			break;
 			
-		case 15: 
+		case 15 + 32: 
 			printkln("Unassigned, error code: %d", error_code);
 			break;
 			
-		case 16: 
+		case 16 + 32: 
 			printkln("Coprocessor error, error code: %d", error_code);
 			break;
 			
-		case 17: 
+		case 17 + 32: 
 			printkln("Alignment Check (486+ Only), error code: %d", error_code);
 			break;
 			
-		case 18: 
+		case 18 + 32: 
 			printkln("Machine Check (Pentium/586+ Only), error code: %d", error_code);
 			break;
 

@@ -6,8 +6,15 @@
 #include "gdt.h"
 
 void kmain() {
+	volatile int j = 0;
+
 	setup_gdt();
 	load_gdt();
+
+	// ugly_sleep(20000);
+
+	// while(!j)
+	// 	asm("hlt");
 
 	slow_print("Hello, welcome to GlennOS!\n");
 
@@ -21,8 +28,6 @@ void kmain() {
 
 	uint16_t mask = IRQ_get_mask(1);
 	printkln("Mask for keyboard: %d", mask);
-
-	volatile int j = 0;
 
 	while(!j)
 		asm("hlt");

@@ -64,6 +64,11 @@ const char* strchr(const char* s, int c) {
 
 // Convert integer to string in base
 void to_string(long _i, char* s, long base) {
+	if(base == 0) {
+		printkln("WHAT");
+		return;		
+	}
+
 	size_t index = 0;
 	if(_i == 0) {
 		s[0] = '0';
@@ -106,7 +111,6 @@ void to_string(long _i, char* s, long base) {
 char is_alpha(char c) {
 	return c >= 0x41 && c <= 0x5A;
 }
-
 //Sleeps for approximately sec seconds
 void ugly_sleep(int ms) {
 	int i = 0;
@@ -116,7 +120,6 @@ void ugly_sleep(int ms) {
 	}
 	i = i;
 }
-
 // Write to port
 inline void outb(uint8_t val, uint16_t port) {
     asm volatile ( "outb %0, %1" : : "a"(val), "Nd"(port));

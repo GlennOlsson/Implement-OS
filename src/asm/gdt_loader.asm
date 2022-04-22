@@ -1,12 +1,18 @@
 global set_gdt
 global reload_segments
 
+global print_add
+
+extern print_long_hex
+extern print_char
+
 gdtr dw 0 ; store limit (size)
      dq 0 ; store pointer to gdt
  
 set_gdt:
      mov [gdtr], DI
      mov [gdtr+2], RSI
+
      lgdt [gdtr]
      ret
 
@@ -26,4 +32,17 @@ reload_segments:
      mov fs, ax
      mov gs, ax
      
+     ret
+
+print_add:
+     mov [RAX], DI
+     mov [RDI], RAX
+     call print_long_hex
+
+     mov RDI, 0xA
+     call print_char
+
+     lea RDI, [rel RAX]
+     call print_long_hex
+
      ret

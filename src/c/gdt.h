@@ -5,9 +5,6 @@
 
 void setup_gdt();
 void load_gdt();
-
-// From gdt_loader.asm
-extern void set_gdt(uint16_t size, uint64_t* address);
-extern void reload_segments();
+void load_tss();
 
 #endif
