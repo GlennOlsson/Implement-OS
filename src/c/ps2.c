@@ -90,7 +90,7 @@ void poll_keyboard(void (*key_action_func)(unsigned char)) {
 }
 
 // Returns a pointer to a function which polls the keyboard
-void* setup_keyboard() {
+void setup_keyboard() {
 	write_command(0xAD);// Dissable port 1
 	write_command(0xA7);// Dissable port 2
 	write_command(0x20);// Read config
@@ -134,5 +134,5 @@ void* setup_keyboard() {
 
 	write_data(0x0);
 
-	return &poll_keyboard;
+	return;
 }

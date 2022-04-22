@@ -1,11 +1,16 @@
 
 #ifndef VGA_API_H
 #define VGA_API_H
+
+
 // Lowest level
-void write_to(unsigned char col, unsigned char row, unsigned short s);
-void write_str(unsigned char col, unsigned char row, const char* str);
+void VGA_write_to(unsigned char col, unsigned char row, unsigned short s);
+void VGA_write_str(unsigned char col, unsigned char row, const char* str);
 
 // Actual API
+int VGA_count_rows();
+int VGA_count_cols();
+
 void VGA_erase(void);
 void VGA_clear(void);
 void VGA_display_char(char);

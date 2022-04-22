@@ -30,7 +30,7 @@ char is_right_shift = 0;
 
 const char* prompt = "> ";
 
-void setup_console() {
+void write_promtp() {
 	// VGA_clear();
 	VGA_display_str(prompt);
 }

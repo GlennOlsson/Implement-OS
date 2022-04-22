@@ -20,21 +20,21 @@ short vga_offset(unsigned char col, unsigned char row) {
  * @param row the row to write to. Must be between 0-24
  * @param s the short to write. First byte is the attributes, second is the character
  */
-void write_to(unsigned char col, unsigned char row, unsigned short s) {
+void VGA_write_to(unsigned char col, unsigned char row, unsigned short s) {
 	unsigned short offset = vga_offset(col, row);
 	vga_buff[offset] = s;
 }
 
 /**
- * @brief Write char with white text and green background
+ * @brief Write char with green text and black background
  * 
  * @param col the column to start at. Must be between 0-79
  * @param row the row to start at. Must be between 0-24
  * @param str the string to write
  */
 void write_char(unsigned char col, unsigned char row, const char c) {
-	short token = (0x2f << 8) | c;
-	write_to(col, row, token);
+	short token = (0x2 << 8) | c;
+	VGA_write_to(col, row, token);
 }
 
 /**
@@ -44,7 +44,7 @@ void write_char(unsigned char col, unsigned char row, const char c) {
  * @param row the row to start at. Must be between 0-24
  * @param str the string to write
  */
-void write_str(unsigned char col, unsigned char row, const char* str) {
+void VGA_write_str(unsigned char col, unsigned char row, const char* str) {
 	short col_offset = 0;
 	short row_offset = 0;
 
@@ -82,6 +82,15 @@ void scroll() {
 		memcpy(vga_buff + prev_offset, vga_buff + curr_offset, 2 * MAX_COL);
 	}
 }
+
+int VGA_count_rows() {
+	return MAX_ROW;
+}
+
+int VGA_count_cols() {
+	return MAX_COL;
+}
+
 
 unsigned char current_row = 0;
 unsigned char current_col = 0;
