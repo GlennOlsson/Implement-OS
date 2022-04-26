@@ -21,7 +21,7 @@ void kmain() {
 	SER_init();
 
 	slow_print("Hello, welcome to GlennOS!\n");
-	write_promtp();
+	write_prompt();
 
 	// Turn on interrupts just now
 	sti(1);

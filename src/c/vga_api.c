@@ -1,6 +1,7 @@
 #include "vga_api.h"
 #include "lib.h"
 #include "serial.h"
+#include "console.h"
 
 #include <stdarg.h>
 #include <stdint-gcc.h>
@@ -62,6 +63,11 @@ void VGA_write_str(unsigned char col, unsigned char row, const char* str) {
 		}
 		c = str[++str_index];
 	}
+}
+
+char char_at(unsigned char col, unsigned char row) {
+	unsigned short offset = vga_offset(col, row);
+	return vga_buff[offset] & 0xFF;
 }
 
 void clear_row(unsigned char row) {
@@ -365,8 +371,24 @@ int _printk(const char* fmt, int (*print_c_f)(char), int (*print_str_f)(const ch
 	return c_count;
 }
 
+// Returns wether or not this is a prompt line
+char is_prompt() {
+	int prompt_length = strlen(CONSOLE_PROMPT);
+
+	for(int i = 0; i < prompt_length; ++i) {
+		char c = char_at(i, current_row);
+		if(c != CONSOLE_PROMPT[i])
+			return 0;
+	}
+	return 1;
+}
+
 int printk(const char* fmt, ...) {
 	char int_on = cli();
+
+	if(is_prompt()) {
+		VGA_display_char('\n');
+	}	
 
 	va_list args;
     va_start(args, fmt);
@@ -382,6 +404,11 @@ int printk(const char* fmt, ...) {
 int printkln(const char* fmt, ... ) {
 	char int_on = cli();
 
+	char is_p = is_prompt();
+	if(is_p) {
+		VGA_display_char('\n');
+	}	
+
 	va_list args;
     va_start(args, fmt);
 	int c_count = _printk(fmt, &VGA_display_char, &VGA_display_str,&args);
@@ -394,11 +421,20 @@ int printkln(const char* fmt, ... ) {
 
 	sti(int_on);
 
+	if(is_p) {
+		write_prompt();
+	}
+
 	return c_count + 1; // +1 for \n
 }
 
 int printkln_no_serial(const char* fmt, ... ) {
 	char int_on = cli();
+
+	char is_p = is_prompt();
+	if(is_p) {
+		VGA_display_char('\n');
+	}	
 
 	va_list args;
     va_start(args, fmt);
@@ -408,6 +444,10 @@ int printkln_no_serial(const char* fmt, ... ) {
 
 	sti(int_on);
 
+	if(is_p) {
+		write_prompt();
+	}
+	
 	return c_count + 1; // +1 for \n
 }
 

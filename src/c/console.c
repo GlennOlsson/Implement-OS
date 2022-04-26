@@ -28,11 +28,8 @@ char is_capslock = 0;
 char is_left_shift = 0;
 char is_right_shift = 0;
 
-const char* prompt = "> ";
-
-void write_promtp() {
-	// VGA_clear();
-	VGA_display_str(prompt);
+void write_prompt() {
+	VGA_display_str(CONSOLE_PROMPT);
 }
 
 // Called when key is pressed/released
@@ -50,7 +47,7 @@ void key_action(unsigned char scancode) {
 				VGA_display_char(c);
 				if(c == '\n') { // Line break char, print prompt again
 					//TODO: Output string somehow. Need strdup() and therefore malloc
-					VGA_display_str(prompt);
+					write_prompt();
 				}
 			}
 			
