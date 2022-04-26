@@ -4,6 +4,7 @@
 #include "lib.h"
 #include "isr.h"
 #include "ps2.h"
+#include "serial.h"
 
 #define PIC1			0x20		/* IO base address for master PIC */
 #define PIC2			0xA0		/* IO base address for slave PIC */
@@ -174,6 +175,7 @@ void* setup_idt() {
 extern void read_cr2(uint64_t);
 
 void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg) {
+	char int_flag = cli();
 	// Vectors: http://www.brokenthorn.com/Resources/OSDevPic.html 
 
 	// Could use a list with function pointers instead, but to init that list we would to similar things to below
@@ -289,6 +291,9 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			
 		case 36:
 			printkln("IRQ Interrupt: Serial port 1");
+
+			SER_interrupt();
+
 			IRQ_end_of_interrupt(4);
 			break;
 			
@@ -352,4 +357,5 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			break;
 		}
 	}
+	sti(int_flag);
 }

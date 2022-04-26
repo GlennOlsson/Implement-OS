@@ -26,6 +26,8 @@ c: create_isr_h
 	x86_64-elf-gcc $(c_flags) $(c_dir)/console.c -o $(out_dir)/console.o
 	x86_64-elf-gcc $(c_flags) $(c_dir)/interrupts.c -o $(out_dir)/interrupts.o
 	x86_64-elf-gcc $(c_flags) $(c_dir)/gdt.c -o $(out_dir)/gdt.o
+	x86_64-elf-gcc $(c_flags) $(c_dir)/buffer.c -o $(out_dir)/buffer.o
+	x86_64-elf-gcc $(c_flags) $(c_dir)/serial.c -o $(out_dir)/serial.o
 
 compile: asm c
 	ld -n -o out/kernel.bin -T linker.ld $(out_dir)/*.o
@@ -36,7 +38,7 @@ fat:
 build: compile fat
 
 run:
-	sudo qemu-system-x86_64 -s -drive file=out/glennOS.img,format=raw 
+	sudo qemu-system-x86_64 -s -drive file=out/glennOS.img,format=raw -serial stdio
 
 clear:
 	rm $(out_dir)/*

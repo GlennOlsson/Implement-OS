@@ -1,5 +1,7 @@
 #include "vga_api.h"
 #include "lib.h"
+#include "serial.h"
+
 #include <stdarg.h>
 #include <stdint-gcc.h>
 
