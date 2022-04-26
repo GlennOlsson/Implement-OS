@@ -5,6 +5,7 @@
 #include "interrupts.h"
 #include "gdt.h"
 #include "serial.h"
+#include "multiboot_parser.h"
 
 void kmain() {
 	VGA_clear();
