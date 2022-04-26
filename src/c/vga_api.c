@@ -376,6 +376,10 @@ int printk(const char* fmt, ...) {
 	va_list args;
     va_start(args, fmt);
 	int c_count = _printk(fmt, &VGA_display_char, &VGA_display_str, &args);
+	va_end(args);
+
+	// Reset args
+	va_start(args, fmt);
 	_printk(fmt, &SER_write_c, &SER_write_str,&args);
 	va_end(args);
 
@@ -392,10 +396,14 @@ int printkln(const char* fmt, ... ) {
 
 	va_list args;
     va_start(args, fmt);
-	int c_count = _printk(fmt, &VGA_display_char, &VGA_display_str,&args);
+	int c_count = _printk(fmt, &VGA_display_char, &VGA_display_str, &args);
 	VGA_display_char('\n');
+	
+	va_end(args);
 
-	_printk(fmt, &SER_write_c, &SER_write_str,&args);
+	// Reset args
+	va_start(args, fmt);
+	_printk(fmt, &SER_write_c, &SER_write_str, &args);
 	SER_write_c('\n');
 
 	va_end(args);
