@@ -1,4 +1,6 @@
 #include "buffer.h"
+#include "vga_api.h"
+
 #include <stdint-gcc.h>
 
 void BUF_init(struct Buffer* this, void (*consume_func)(char)) {

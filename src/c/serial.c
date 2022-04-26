@@ -23,8 +23,8 @@
 #define COM1_SCR COM1+7 //scratch
 
 struct Buffer serial_buffer;
-// Waiting to write
-char is_waiting = 0;
+
+// is_waiting is same as if buffer is consumeable - if it is, it's waiting
 
 void DLAB_clear() {
 	uint8_t lcr_val = inb(COM1_LCR);
@@ -72,28 +72,19 @@ char is_thr_empty() {
 // Try to write from buffer
 // Returns 1 if can write, 0 if not
 char trigger_write() {
-	char int_flag = cli();
-
 	char ret_val;
 	if(is_thr_empty() && BUF_consumeable(&serial_buffer)){ // If THR is empty and we have something to write
-		is_waiting = 0;
 		BUF_consume(&serial_buffer);
 		ret_val = 1;
-	} else if(!BUF_consumeable(&serial_buffer)) { // If empty
-		is_waiting = 0;
-		ret_val = 0;
-	} else if(!is_thr_empty()) { // Buf is consumable but cannot write yet
-		is_waiting = 1;
+	} else { // thr is not empty or buf is empty, either way return 0
 		ret_val = 0;
 	}
-
-	sti(int_flag);
 
 	return ret_val;
 }
 
 void SER_init() {
-	set_baud(4); // Some arbitrary value I guess, we don't want to high speed (i.e. not to low number)
+	set_baud(65000); // Some arbitrary value I guess, we don't want to high speed (i.e. not to low number)
 
 	// Setting 8N1, 8 bits, no parity, 1 stop bit
 	uint8_t line_ctr_val = 0b00000011;
@@ -116,15 +107,18 @@ int SER_write_c(char c) {
 
 	/* If:
 		- We are not waiting to write from buffer,
-		- Buffer is empty, and,
+		- Buffer is empty, and, (same cond as above)
 		- THR is ready to receive data
 		Write straight to serial
 	*/
-	if(!is_waiting && !BUF_consumeable(&serial_buffer) && is_thr_empty()) {
+	if(!BUF_consumeable(&serial_buffer) && is_thr_empty()) {
 		write_to_serial(c);
 		ret_val = 1;
-	} // Else, see if buffer is availible and write to it
-	else if(BUF_produceable(&serial_buffer)) {
+	} else if(BUF_consumeable(&serial_buffer) && is_thr_empty()) { 
+		// If we are waiting to write from buff but missed interrupt
+		BUF_consume(&serial_buffer);
+	} else if(BUF_produceable(&serial_buffer)) { 
+		// Else, see if buffer is produceable and write to it
 		BUF_produce(&serial_buffer, c);
 		ret_val = 1;
 	}
@@ -182,6 +176,8 @@ void read_lsr() {
 }
 
 void SER_interrupt() {
+	char int_flag = cli();
+
 	uint8_t iir = inb(COM1_IIR);
 	if((iir >> 1) == 0b001) { // TX empty 
 		trigger_write();
@@ -191,4 +187,6 @@ void SER_interrupt() {
 	} else {
 		printkln_no_serial("Unsupported COM1 interrupt. IIR = %x", iir);
 	}
+
+	sti(int_flag);
 }
