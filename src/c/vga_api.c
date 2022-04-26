@@ -191,29 +191,31 @@ int VGA_display_line(const char * str) {
 	return chars + 1; // +1 for \n
 }
 
-void print_char(char c) {
+void VGA_print_char(char c) {
 	VGA_display_char(c);
+	SER_write_c(c);
 }
 
-void print_str(const char* str) {
+void VGA_print_str(const char* str) {
 	VGA_display_str(str);
+	SER_write_str(str);
 }
 
-void print_uchar(unsigned char c) {
+void VGA_print_uchar(unsigned char c) {
 	unsigned long l = (unsigned long) c;
 	char str[3]; // Max is 255 for uchar
 	to_string(l, str, 10);
 	VGA_display_str(str);
 }
 
-void print_short(short s) {
+void VGA_print_short(short s) {
 	long l = (long) s;
 	char str[6]; // Min is "-32767" for uchar
 	to_string(l, str, 10);
 	VGA_display_str(str);
 }
 
-void print_long_hex(unsigned long l) {
+void VGA_print_long_hex(unsigned long l) {
 	char str[20]; // Min is "-9223372036854775808"
 	to_string(l, str, 16);
 	VGA_display_str(str);

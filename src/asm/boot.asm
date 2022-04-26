@@ -5,10 +5,15 @@ global ist1_stack_top
 global ist2_stack_top
 global ist3_stack_top
 
+global save_exx
+
 section .text
 bits 32
 start:
 	mov esp, stack_top
+
+    mov [save_exx], eax
+    mov [save_exx+4], ebx
 
     call check_multiboot
     call check_cpuid
@@ -176,6 +181,9 @@ ist2_stack_top:
 ist3_stack_bottom:
     resb 64
 ist3_stack_top:
+
+save_exx:
+    resb 16 ; reserve 2 * 4 bytes
 
 ;section .rodata
 section .data

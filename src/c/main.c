@@ -10,6 +10,8 @@
 void kmain() {
 	VGA_clear();
 
+	MUL_parse();
+
 	setup_gdt(); // create and load new gdt from c
 	load_gdt();
 	load_tss();

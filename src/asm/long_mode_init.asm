@@ -1,6 +1,5 @@
 global long_mode_start
 
-extern MUL_parse
 extern init_ints
 extern kmain
 
@@ -15,9 +14,6 @@ long_mode_start:
     mov ES, AX
     mov FS, AX
     mov GS, AX
-
-    mov [RDI], EBX ; Mov EBX into argument
-    call MUL_parse
 
     call init_ints
 
