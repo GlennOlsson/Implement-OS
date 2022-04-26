@@ -1,5 +1,6 @@
 #include "multiboot_parser.h"
 #include "vga_api.h"
+#include "memory_manager.h"
 
 #include <stdint-gcc.h>
 
@@ -91,72 +92,26 @@ void parse_mem_map(uint32_t size, uint32_t* ptr) {
 void parse_elf(uint32_t* ptr) {
 	uint32_t entries = *ptr++;
 	uint32_t h_size = *ptr++;
-	// uint32_t string_table_index = *ptr++;
 
-	ptr += 1;
+	ptr += 1; // Skip one attribute
 
 	if(h_size != 64) { // 64 is total bytes required for entry
 		printkln("MUL: ELF Header size %d not supported", h_size);
 		return;
 	}
 
-	uint64_t segments[entries * 2]; // first address followed by size
-	for(int i = 0; i < entries * 2; ++i) { // make all = 0
-		segments[i] = 0;
-	}
-	int curr_seg_index = 0;
-
 	for(int i = 0; i < entries; ++i) {
-		// uint32_t sec_name = *ptr++;
-		// uint32_t type = *ptr++;
+		ptr += 4; // 2 * 4 bytes of other attributes
+		uint64_t seg_addy = *((uint64_t*) ptr);
+		
+		ptr += 4;
+		uint64_t seg_size = *((uint64_t*) ptr);
 
-		ptr += 2;
-
-		// uint64_t flags = *((uint64_t*) ptr);
-		ptr += 2;
-		uint64_t seg_addy = *((uint64_t*) ptr); // THIS
-		ptr += 2;
-		// uint64_t seg_offset = *((uint64_t*) ptr);
-		ptr += 2;
-		uint64_t seg_size = *((uint64_t*) ptr); // THIS
-		ptr += 2;
-
-		printkln("Add: %lx, Size: %lx. Last seg add: %lx, size: %lx", seg_addy, seg_size, segments[curr_seg_index], segments[curr_seg_index+1]);
-
-		if(seg_size > 0) {
-			// if first segment to add, or
-			if(segments[curr_seg_index] == 0) {
-				segments[curr_seg_index] = seg_addy;
-				segments[curr_seg_index + 1] = seg_size;
-			} else if(segments[curr_seg_index] + segments[curr_seg_index + 1] == seg_addy) {
-				// if last start address plus that segment size == current address, add this segment space
-				segments[curr_seg_index + 1] += seg_size;
-			} else {
-				printkln("Does not follow, diff: %ld", seg_addy - (segments[curr_seg_index] + segments[curr_seg_index + 1]));
-				curr_seg_index += 2;
-				segments[curr_seg_index] = seg_addy;
-				segments[curr_seg_index + 1] = seg_size;
-			}
-		}
-
-		// uint32_t table_index = *ptr++;
-		// uint32_t ex_info = *ptr++;
-
-		ptr += 2;
-
-		// uint64_t add_alig = *((uint64_t*) ptr); // power of 2
-		ptr += 2;
-		// uint64_t fixed_entry_size = *((uint64_t*) ptr); // IFF section holds fixed entries
-		ptr += 2;
-
-		// printkln("ELF entry: seg_addy: %lx, seg_size: %lx", seg_addy, seg_size);
+		ptr += 8;
+		PRE_add_span(seg_addy, seg_size);
 	}
 
-	for(int i = 0; i < entries * 2; i += 2) {
-		if(segments[i] == 0)
-			break;
-		printkln("From %lx to %lx", segments[i], segments[i] + segments[i+1]);
-	}
+	PRE_print();
 }
 
 void MUL_parse() {

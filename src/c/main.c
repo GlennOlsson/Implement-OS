@@ -6,9 +6,12 @@
 #include "gdt.h"
 #include "serial.h"
 #include "multiboot_parser.h"
+#include "memory_manager.h"
 
 void kmain() {
 	VGA_clear();
+
+	MEM_init();
 
 	MUL_parse();
 
