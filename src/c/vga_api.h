@@ -13,12 +13,13 @@ int VGA_count_cols();
 
 void VGA_erase(void);
 void VGA_clear(void);
-void VGA_display_char(char);
+int VGA_display_char(char);
 int VGA_display_str(const char *);
 int VGA_display_line(const char *);
 
 int printk(const char* fmt, ...) __attribute__ ((format (printf, 1, 2)));
 int printkln(const char* fmt, ...) __attribute__ ((format (printf, 1, 2)));
+int printkln_no_serial(const char* fmt, ... ) __attribute__ ((format (printf, 1, 2)));
 
 void print_char(char);
 void print_str(const char *);

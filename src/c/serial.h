@@ -4,8 +4,8 @@
 #define SERIAL_H
 
 void SER_init();
-char SER_write_c(char c);
-void SER_write_str(char* str);
+int SER_write_c(char c);
+int SER_write_str(const char* str);
 
 void SER_interrupt();
 

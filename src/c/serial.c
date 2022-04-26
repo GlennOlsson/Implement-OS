@@ -93,7 +93,7 @@ char trigger_write() {
 }
 
 void SER_init() {
-	set_baud(65000); // Some arbitrary value I guess, we don't want to high speed (i.e. not to low number)
+	set_baud(4); // Some arbitrary value I guess, we don't want to high speed (i.e. not to low number)
 
 	// Setting 8N1, 8 bits, no parity, 1 stop bit
 	uint8_t line_ctr_val = 0b00000011;
@@ -107,7 +107,7 @@ void SER_init() {
 }
 
 // returns 1 if could be written or produced, 0 if buffer is full
-char SER_write_c(char c) {
+int SER_write_c(char c) {
 	char int_flag = cli();
 	// If we can produce a value, do it. Else break loop because we rather
 	// end the message early than supply it with missing bytes
@@ -136,45 +136,48 @@ char SER_write_c(char c) {
 	return ret_val;
 }
 
-void SER_write_str(char* str) {
+int SER_write_str(const char* str) {
 	char int_flag = cli();
 
-	char c = *str++;
+	int index = 0;
+	char c = str[index++];
 	while(c != '\0') {
 		if(!SER_write_c(c)) // Break if could not write nor write to buffer
 			break;
 
-		c = *str++;
+		c = str[index++];
 	}
 
 	sti(int_flag);
+
+	return index;
 }
 
 void read_lsr() {
 	uint8_t lsr = inb(COM1_LSR);
 	if(lsr & 0b1) {
-		printkln("Data available");
+		printkln_no_serial("Data available");
 	}
 	if(lsr & 0b10) {
-		printkln("Overrun error");
+		printkln_no_serial("Overrun error");
 	}
 	if(lsr & 0b100) {
-		printkln("Parity error");
+		printkln_no_serial("Parity error");
 	}
 	if(lsr & 0b1000) {
-		printkln("Framing error");
+		printkln_no_serial("Framing error");
 	}
 	if(lsr & 0b10000) {
-		printkln("Break signal received");
+		printkln_no_serial("Break signal received");
 	}
 	if(lsr & 0b100000) {
-		printkln("THR is empty");
+		printkln_no_serial("THR is empty");
 	}
 	if(lsr & 0b1000000) {
-		printkln("THR is empty, and line is idle");
+		printkln_no_serial("THR is empty, and line is idle");
 	}
 	if(lsr & 0b10000000) {
-		printkln("Errornous data in FIFO");
+		printkln_no_serial("Errornous data in FIFO");
 	}
 }
 
@@ -183,9 +186,9 @@ void SER_interrupt() {
 	if((iir >> 1) == 0b001) { // TX empty 
 		trigger_write();
 	} else if((iir >> 1) == 0b011) { // Line status change
-		printkln("Serial LINE interrupt");
+		printkln_no_serial("Serial LINE interrupt");
 		read_lsr();		
 	} else {
-		printkln("Unsupported COM1 interrupt. IIR = %x", iir);
+		printkln_no_serial("Unsupported COM1 interrupt. IIR = %x", iir);
 	}
 }

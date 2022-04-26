@@ -26,10 +26,6 @@ void kmain() {
 	// Turn on interrupts just now
 	sti(1);
 
-	ugly_sleep(5000);
-
-	SER_write_str("hej hopp");
-
 	volatile int j = 0;
 	while(!j)
 		asm("hlt");

@@ -122,7 +122,8 @@ void VGA_clear() {
 	sti(int_on);
 }
 
-void VGA_display_char(char c) {
+// Returns how many chars were printed
+int VGA_display_char(char c) {
 	char int_on = cli();
 	if(current_row == MAX_ROW) {
 		scroll();
@@ -132,11 +133,9 @@ void VGA_display_char(char c) {
 	if(c == '\n') {
 		current_row += 1;
 		current_col = 0;
-
-		SER_write_c('\n');
 		
 		sti(int_on);
-		return;
+		return 1;
 	}
 	if(c == '\t') {
 		// Display 4 spaces
@@ -145,17 +144,14 @@ void VGA_display_char(char c) {
 		VGA_display_char(' ');
 		VGA_display_char(' ');
 
-		SER_write_str("    ");
-
 		sti(int_on);
-		return;
+		return 4;
 	}
 	// If first char of row, clear row
 	if(current_col == 0)
 		clear_row(current_row);
 
 	write_char(current_col++, current_row, c);
-	SER_write_c(c);
 	if(current_col >= MAX_COL) {
 		current_col = 0;
 		if(current_row + 1 < MAX_ROW)
@@ -165,6 +161,7 @@ void VGA_display_char(char c) {
 	}
 
 	sti(int_on);
+	return 1;
 }
 
 // Does not break line after string
@@ -232,7 +229,7 @@ void print_long_hex(unsigned long l) {
 	VGA_display_str(str);
 }
 
-int _printk(const char* fmt, va_list* args) {
+int _printk(const char* fmt, int (*print_c_f)(char), int (*print_str_f)(const char*), va_list* args) {
 
 	int c_count = 0;
 	char c = *fmt;
@@ -242,41 +239,40 @@ int _printk(const char* fmt, va_list* args) {
 			//%% %d %u %x %c %p %h[dux] %l[dux] %q[dux] %s
 			c = *(++fmt);
 			if(c == '%') { // literal %
-				VGA_display_char('%');
+				c_count += print_c_f('%');
 			} else if (c == 'd') { // signed decimal
 				long i = va_arg(*args, long);
 				char s[20]; // max 19 digits and a minus sign
 				to_string(i, s, 10);
-				c_count += VGA_display_str(s);
+				c_count += print_str_f(s);
 
 			} else if (c == 'u') { // unsiged decimal
 				unsigned long i = va_arg(*args, unsigned long);
 				char s[10]; // max 10 digits
 				to_string(i, s, 10);
-				c_count += VGA_display_str(s);
+				c_count += print_str_f(s);
 
 			} else if (c == 'x') { // lowercase hex
 				long i = va_arg(*args, long);
 				char s[11]; //
 				to_string(i, s, 16);
-				c_count += VGA_display_str(s);
+				c_count += print_str_f(s);
 				
 			} else if (c == 'c') { // character
 				char c = va_arg(*args, int);
-				VGA_display_char(c);
-				c_count += 1;
+				c_count += print_c_f(c);
 
 			} else if (c == 'p') { // pointer
 				void* pt = va_arg(*args, void*);
 				char s[8];
 				to_string((long) pt, s, 16);
-				c_count += VGA_display_str(s);
+				c_count += print_str_f(s);
 
 			}  else if (c == 'b') { // binary
 				unsigned long i = va_arg(*args, unsigned long);
 				char s[64];
 				to_string((unsigned long) i, s, 2);
-				c_count += VGA_display_str(s);
+				c_count += print_str_f(s);
 
 			} else if (c == 'h') { // %h[dux] short int
 				c = *(++fmt);
@@ -285,25 +281,24 @@ int _printk(const char* fmt, va_list* args) {
 					short int i = va_arg(*args, int);
 					char s[6]; // 5 digits and -
 					to_string(i, s, 10);
-					c_count += VGA_display_str(s);
+					c_count += print_str_f(s);
 
 				} else if (c == 'u') { // unsigned
 					unsigned short int i = va_arg(*args, unsigned int);
 					char s[5]; // 5 digits
 					to_string(i, s, 10);
-					c_count += VGA_display_str(s);
+					c_count += print_str_f(s);
 
 				} else if (c == 'x') { // hex
 					unsigned short int i = va_arg(*args, unsigned int);
 					char s[4]; // 4 hex digits
 					to_string(i, s, 16);
-					c_count += VGA_display_str(s);
+					c_count += print_str_f(s);
 
 				} else { // just print the %, x and value of c
-					VGA_display_char('%');
-					VGA_display_char('x');
-					VGA_display_char(c);
-					c_count += 3;
+					c_count += print_c_f('%');
+					c_count += print_c_f('x');
+					c_count += print_c_f(c);
 				}
 			} else if (c == 'l') { // %l[dux] long int
 				c = *(++fmt);
@@ -312,23 +307,22 @@ int _printk(const char* fmt, va_list* args) {
 					long int i = va_arg(*args, long int);
 					char s[21]; // 20 digits
 					to_string(i, s, 10);
-					c_count += VGA_display_str(s);
+					c_count += print_str_f(s);
 				} else if (c == 'u') { // unsigned
 					unsigned long int i = va_arg(*args, unsigned long int);
 					char s[20]; // 20 digits
 					to_string(i, s, 10);
-					c_count += VGA_display_str(s);
+					c_count += print_str_f(s);
 					
 				} else if (c == 'x') { // hex
 					unsigned long int i = va_arg(*args, unsigned long int);
 					char s[8]; // 8 hex values
 					to_string(i, s, 16);
-					c_count += VGA_display_str(s);
+					c_count += print_str_f(s);
 				} else { // just print the %, l and value of c
-					VGA_display_char('%');
-					VGA_display_char('l');
-					VGA_display_char(c);
-					c_count += 3;
+					c_count += print_c_f('%');
+					c_count += print_c_f('l');
+					c_count += print_c_f(c);
 				}
 			} else if (c == 'q') { // %q[dux], 8 bit integer
 				c = *(++fmt);
@@ -337,35 +331,32 @@ int _printk(const char* fmt, va_list* args) {
 					char i = va_arg(*args, int);
 					char s[4]; // 3 digits and a -
 					to_string(i, s, 10);
-					c_count += VGA_display_str(s);
+					c_count += print_str_f(s);
 				} else if (c == 'u') {
 					unsigned char i = va_arg(*args, int);
 					char s[3]; // 3 digits
 					to_string(i, s, 10);
-					c_count += VGA_display_str(s);
+					c_count += print_str_f(s);
 				} else if (c == 'x') {
 					unsigned char i = va_arg(*args, int);
 					char s[2]; // 3 digits
 					to_string(i, s, 16);
-					c_count += VGA_display_str(s);
+					c_count += print_str_f(s);
 				} else { // just print the %, q and value of c
-					VGA_display_char('%');
-					VGA_display_char('q');
-					VGA_display_char(c);
-					c_count += 3;
+					c_count += print_c_f('%');
+					c_count += print_c_f('q');
+					c_count += print_c_f(c);
 				}
 			} else if (c == 's') { // string
 				char* str = va_arg(*args, char*);
-				c_count += VGA_display_str(str);
+				c_count += print_str_f(str);
 
 			} else { // Just display the two characters in plain text
-				VGA_display_char('%');
-				VGA_display_char(c);
-				c_count += 2;
+				c_count += print_c_f('%');
+				c_count += print_c_f(c);
 			}
 		} else { // plain text 
-			VGA_display_char(c);
-			c_count += 1;
+			c_count += print_c_f(c);
 		}
 
 		c = *(++fmt);
@@ -379,7 +370,8 @@ int printk(const char* fmt, ...) {
 
 	va_list args;
     va_start(args, fmt);
-	int c_count = _printk(fmt, &args);
+	int c_count = _printk(fmt, &VGA_display_char, &VGA_display_str, &args);
+	_printk(fmt, &SER_write_c, &SER_write_str,&args);
 	va_end(args);
 
 	sti(int_on);
@@ -392,7 +384,25 @@ int printkln(const char* fmt, ... ) {
 
 	va_list args;
     va_start(args, fmt);
-	int c_count = _printk(fmt, &args);
+	int c_count = _printk(fmt, &VGA_display_char, &VGA_display_str,&args);
+	VGA_display_char('\n');
+
+	_printk(fmt, &SER_write_c, &SER_write_str,&args);
+	SER_write_c('\n');
+
+	va_end(args);
+
+	sti(int_on);
+
+	return c_count + 1; // +1 for \n
+}
+
+int printkln_no_serial(const char* fmt, ... ) {
+	char int_on = cli();
+
+	va_list args;
+    va_start(args, fmt);
+	int c_count = _printk(fmt, &VGA_display_char, &VGA_display_str,&args);
 	VGA_display_char('\n');
 	va_end(args);
 
