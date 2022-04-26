@@ -173,7 +173,7 @@ int VGA_display_char(char c) {
 // Does not break line after string
 // Returns amount of characters written
 int VGA_display_str(const char * str) {
-	char int_on = cli();
+	// char int_on = cli();
 
 	int offset = 0;
 	char c = str[offset];
@@ -182,37 +182,37 @@ int VGA_display_str(const char * str) {
 		c = str[++offset];
 	}
 
-	sti(int_on);
+	// sti(int_on);
 
 	return offset;
 }
 
 // Breaks line after the string
 int VGA_display_line(const char * str) {
-	char int_on = cli();
+	// char int_on = cli();
 
 	int chars = VGA_display_str(str);
 	VGA_display_char('\n');
 	
-	sti(int_on);
+	// sti(int_on);
 
 	return chars + 1; // +1 for \n
 }
 
 void print_char(char c) {
-	char int_on = cli();
+	// char int_on = cli();
 
 	VGA_display_char(c);
 
-	sti(int_on);
+	// sti(int_on);
 }
 
 void print_str(const char* str) {
-	char int_on = cli();
+	// char int_on = cli();
 
 	VGA_display_str(str);
 
-	sti(int_on);
+	// sti(int_on);
 }
 
 void print_uchar(unsigned char c) {
@@ -384,7 +384,7 @@ char is_prompt() {
 }
 
 int printk(const char* fmt, ...) {
-	char int_on = cli();
+	// char int_on = cli();
 
 	if(is_prompt()) {
 		VGA_display_char('\n');
@@ -396,13 +396,13 @@ int printk(const char* fmt, ...) {
 	_printk(fmt, &SER_write_c, &SER_write_str,&args);
 	va_end(args);
 
-	sti(int_on);
+	// sti(int_on);
 
 	return c_count;
 }
 
 int printkln(const char* fmt, ... ) {
-	char int_on = cli();
+	// char int_on = cli();
 
 	char is_p = is_prompt();
 	if(is_p) {
@@ -419,7 +419,7 @@ int printkln(const char* fmt, ... ) {
 
 	va_end(args);
 
-	sti(int_on);
+	// sti(int_on);
 
 	if(is_p) {
 		CON_write_prompt();
@@ -429,7 +429,7 @@ int printkln(const char* fmt, ... ) {
 }
 
 int printkln_no_serial(const char* fmt, ... ) {
-	char int_on = cli();
+	// char int_on = cli();
 
 	char is_p = is_prompt();
 	if(is_p) {
@@ -442,7 +442,7 @@ int printkln_no_serial(const char* fmt, ... ) {
 	VGA_display_char('\n');
 	va_end(args);
 
-	sti(int_on);
+	// sti(int_on);
 
 	if(is_p) {
 		CON_write_prompt();
@@ -452,10 +452,10 @@ int printkln_no_serial(const char* fmt, ... ) {
 }
 
 void slow_print(char* str) {
-	char int_on = cli();
+	// char int_on = cli();
 	while(*str != '\0') {
 		VGA_display_char(*(str++));
 		ugly_sleep(100);
 	}
-	sti(int_on);
+	// sti(int_on);
 }

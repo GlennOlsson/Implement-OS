@@ -72,6 +72,8 @@ char is_thr_empty() {
 // Try to write from buffer
 // Returns 1 if can write, 0 if not
 char trigger_write() {
+	char int_flag = cli();
+
 	char ret_val;
 	if(is_thr_empty() && BUF_consumeable(&serial_buffer)){ // If THR is empty and we have something to write
 		BUF_consume(&serial_buffer);
@@ -79,6 +81,8 @@ char trigger_write() {
 	} else { // thr is not empty or buf is empty, either way return 0
 		ret_val = 0;
 	}
+
+	sti(int_flag);
 
 	return ret_val;
 }
@@ -131,8 +135,6 @@ int SER_write_c(char c) {
 }
 
 int SER_write_str(const char* str) {
-	char int_flag = cli();
-
 	int index = 0;
 	char c = str[index++];
 	while(c != '\0') {
@@ -141,8 +143,6 @@ int SER_write_str(const char* str) {
 
 		c = str[index++];
 	}
-
-	sti(int_flag);
 
 	return index;
 }
@@ -176,8 +176,6 @@ void read_lsr() {
 }
 
 void SER_interrupt() {
-	char int_flag = cli();
-
 	uint8_t iir = inb(COM1_IIR);
 	if((iir >> 1) == 0b001) { // TX empty 
 		trigger_write();
@@ -187,6 +185,4 @@ void SER_interrupt() {
 	} else {
 		printkln_no_serial("Unsupported COM1 interrupt. IIR = %x", iir);
 	}
-
-	sti(int_flag);
 }

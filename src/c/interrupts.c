@@ -290,8 +290,6 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			break;
 			
 		case 36:
-			printkln_no_serial("IRQ Interrupt: Serial port 1");
-
 			SER_interrupt();
 
 			IRQ_end_of_interrupt(4);
