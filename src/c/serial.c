@@ -56,7 +56,7 @@ void set_baud(uint16_t divisor) {
 
 void enable_interrupts() {
 	uint8_t ier_val = inb(COM1_IER);
-	ier_val |= 0b10; // enable all ints
+	ier_val |= 0b110; // enable "Transmitter holding register empty" and "Receiver line status register change"
 	outb(ier_val, COM1_IER);
 }
 
@@ -150,10 +150,41 @@ void SER_write_str(char* str) {
 	sti(int_flag);
 }
 
+void read_lsr() {
+	uint8_t lsr = inb(COM1_LSR);
+	if(lsr & 0b1) {
+		printkln("Data available");
+	}
+	if(lsr & 0b10) {
+		printkln("Overrun error");
+	}
+	if(lsr & 0b100) {
+		printkln("Parity error");
+	}
+	if(lsr & 0b1000) {
+		printkln("Framing error");
+	}
+	if(lsr & 0b10000) {
+		printkln("Break signal received");
+	}
+	if(lsr & 0b100000) {
+		printkln("THR is empty");
+	}
+	if(lsr & 0b1000000) {
+		printkln("THR is empty, and line is idle");
+	}
+	if(lsr & 0b10000000) {
+		printkln("Errornous data in FIFO");
+	}
+}
+
 void SER_interrupt() {
 	uint8_t iir = inb(COM1_IIR);
 	if((iir >> 1) == 0b001) { // TX empty 
 		trigger_write();
+	} else if((iir >> 1) == 0b011) { // Line status change
+		printkln("Serial LINE interrupt");
+		read_lsr();		
 	} else {
 		printkln("Unsupported COM1 interrupt. IIR = %x", iir);
 	}

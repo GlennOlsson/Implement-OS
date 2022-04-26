@@ -132,6 +132,8 @@ void VGA_display_char(char c) {
 	if(c == '\n') {
 		current_row += 1;
 		current_col = 0;
+
+		SER_write_c('\n');
 		
 		sti(int_on);
 		return;
@@ -143,6 +145,8 @@ void VGA_display_char(char c) {
 		VGA_display_char(' ');
 		VGA_display_char(' ');
 
+		SER_write_str("    ");
+
 		sti(int_on);
 		return;
 	}
@@ -151,6 +155,7 @@ void VGA_display_char(char c) {
 		clear_row(current_row);
 
 	write_char(current_col++, current_row, c);
+	SER_write_c(c);
 	if(current_col >= MAX_COL) {
 		current_col = 0;
 		if(current_row + 1 < MAX_ROW)
