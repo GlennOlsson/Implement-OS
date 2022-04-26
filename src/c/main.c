@@ -26,9 +26,6 @@ void kmain() {
 	// Turn on interrupts just now
 	sti(1);
 
-	ugly_sleep(5000);
-	printkln("Hej hopp jag heter Glenn och vill jag ska bli klar med mitt exjobb ganska snart, hoppas jag i alla fall :))");
-
 	volatile int j = 0;
 	while(!j)
 		asm("hlt");
