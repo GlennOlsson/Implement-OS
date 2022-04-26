@@ -16,12 +16,12 @@ void kmain() {
 	IRQ_set_mask(0); // Disable timer
 	IRQ_clear_mask(4); // Enable COM1
 
-	setup_keyboard(); // Config keyboard
+	PS2_setup_keyboard(); // Config keyboard
 
 	SER_init();
 
 	slow_print("Hello, welcome to GlennOS!\n");
-	write_prompt();
+	CON_write_prompt();
 
 	// Turn on interrupts just now
 	sti(1);

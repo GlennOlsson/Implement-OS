@@ -4,7 +4,7 @@
 
 #define CONSOLE_PROMPT "> "
 
-void write_prompt(void);
-void key_action(unsigned char scancode);
+void CON_write_prompt(void);
+void CON_key_action(unsigned char scancode);
 
 #endif

@@ -74,10 +74,10 @@ void write_data(uint8_t data) {
 	return outb(data, PS2_DATA_PORT);
 }
 
-void keyboard_interrupt() {
+void PS2_keyboard_interrupt() {
 	uint8_t scancode = read_data();
 
-	key_action(scancode);
+	CON_key_action(scancode);
 }
 
 // Polls the keyboard for events. Actions are sent to the argument function
@@ -90,7 +90,7 @@ void poll_keyboard(void (*key_action_func)(unsigned char)) {
 }
 
 // Returns a pointer to a function which polls the keyboard
-void setup_keyboard() {
+void PS2_setup_keyboard() {
 	write_command(0xAD);// Dissable port 1
 	write_command(0xA7);// Dissable port 2
 	write_command(0x20);// Read config

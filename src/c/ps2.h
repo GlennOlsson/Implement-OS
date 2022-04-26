@@ -1,7 +1,7 @@
 #ifndef PS2_H
 #define PS2_H
 
-void setup_keyboard();
-void keyboard_interrupt();
+void PS2_setup_keyboard();
+void PS2_keyboard_interrupt();
 
 #endif

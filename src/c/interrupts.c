@@ -275,7 +275,7 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			break;
 			
 		case 33: // Keyboard
-			keyboard_interrupt();
+			PS2_keyboard_interrupt();
 			IRQ_end_of_interrupt(1);
 			break;
 			

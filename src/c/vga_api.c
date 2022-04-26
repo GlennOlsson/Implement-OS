@@ -422,7 +422,7 @@ int printkln(const char* fmt, ... ) {
 	sti(int_on);
 
 	if(is_p) {
-		write_prompt();
+		CON_write_prompt();
 	}
 
 	return c_count + 1; // +1 for \n
@@ -445,7 +445,7 @@ int printkln_no_serial(const char* fmt, ... ) {
 	sti(int_on);
 
 	if(is_p) {
-		write_prompt();
+		CON_write_prompt();
 	}
 	
 	return c_count + 1; // +1 for \n
