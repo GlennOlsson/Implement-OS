@@ -20,6 +20,7 @@ struct {
 
 } memory_structure; //Pre allocated regions
 
+// First 8 bytes (uint64_t) of each free page has the address to the next free page (except tail which has 0)
 struct {
 	uint64_t page_head;
 	uint64_t page_tail;
@@ -171,6 +172,28 @@ void PRE_traverse() {
 		address = next_page;
 	}
 	printkln("Free pages: %d", counter);
+}
+
+// Take head of free pages
+void* MEM_pf_alloc(void) {
+	uint64_t curr_head = free_pages.page_head;
+	uint64_t* curr_head_page = (uint64_t*) curr_head;
+
+	uint64_t new_head = *curr_head_page;
+	free_pages.page_head = new_head;
+
+	return (void*) curr_head;
+}
+
+// Set as tail of free pages
+void MEM_pf_free(void *pf) {
+	uint64_t new_tail = (uint64_t) pf;
+
+	uint64_t curr_tail = free_pages.page_tail;
+	uint64_t* curr_tail_page = (uint64_t*) curr_tail;
+
+	*curr_tail_page = new_tail;
+	free_pages.page_tail = new_tail;
 }
 
 void MEM_init() {
