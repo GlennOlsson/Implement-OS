@@ -9,7 +9,7 @@ void PRE_print();
 void PRE_traverse();
 
 void MEM_init();
-void* MEM_pf_alloc(void);
+void* MEM_pf_alloc();
 void MEM_pf_free(void *pf);
 
 #endif
