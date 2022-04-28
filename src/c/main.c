@@ -10,6 +10,7 @@
 
 void kmain() {
 	VGA_clear();
+	printkln("\n\n");
 
 	MEM_init();
 

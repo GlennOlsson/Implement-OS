@@ -78,18 +78,21 @@ void parse_mem_map(uint32_t size, uint32_t* ptr) {
 		ptr += 2; // 2 * 32 bit
 		uint64_t length = *((uint64_t*) ptr);
 		ptr += 2;
-		uint32_t type = *ptr++;
+		uint32_t type = *ptr;
+		ptr += 2; // For type and 4 bytes of reserved
 		
 		// Only care about type==1
-		if(type == 1) // TODO: Something meaningful with the info here
+		if(type == 1) {
 			printkln("Memory map. Start: %lx, length: %ld, type: %d", start_add, length, type);
+			PRE_add_address_space(start_add, length);
+		}
 
 		// Last uint32 is reserved so don't read it, but add it to consumed
 		consumed_bytes += (sizeof(uint64_t) * 2) + (sizeof(uint32_t) * 2);
 	}
 }
 
-void parse_elf(uint32_t* ptr) {
+void parse_elf(uint32_t size, uint32_t* ptr) {
 	uint32_t entries = *ptr++;
 	uint32_t h_size = *ptr++;
 
@@ -108,13 +111,13 @@ void parse_elf(uint32_t* ptr) {
 		uint64_t seg_size = *((uint64_t*) ptr);
 
 		ptr += 8;
-		PRE_add_span(seg_addy, seg_size);
+		PRE_add_allocated_span(seg_addy, seg_size);
 	}
 
 	PRE_print();
 }
 
-void MUL_parse() {
+void parse_tag(uint32_t tag_type, void (*parser)(uint32_t, uint32_t*)) {
 	struct EXX_Regsiters* exx = (struct EXX_Regsiters*) &save_exx;
 
 	if(exx->eax != 0x36d76289) {
@@ -136,33 +139,21 @@ void MUL_parse() {
 		uint32_t* data_start = (uint32_t*) (tag + 1);
 
 		printkln("Tag: %d, size: %d", tag->tag_type, tag->tag_size);
-		switch (tag->tag_type) {
-		case 0:
-			if(tag->tag_size != 8)
-				printkln("MUL: Tag 0 but size is not 8");
-			//Just break, type 0 means it terminates the tag list
-			break;
-
-		case 1:
-			parse_cmd(tag->tag_size - 8, data_start);
-			break;
-
-		case 2:
-			parse_boot_name(tag->tag_size - 8, data_start);
-			break;
-		
-		case 6:
-			parse_mem_map(tag->tag_size - 8, data_start);
-			break;
-
-		case 9:
-			parse_elf(data_start);
-			break;
-
-		default: // Unhandled tags
-			break;
+		if(tag->tag_type == tag_type) {
+			parser(tag->tag_size - 8, data_start);
 		}
 
 		consumed_bytes += padd_8(tag->tag_size);
 	}
+}
+
+void MUL_parse() {
+	parse_tag(1, &parse_cmd);
+	parse_tag(2, &parse_boot_name);
+
+	// Make sure to parse ELF before mem-map
+	parse_tag(9, &parse_elf);
+	parse_tag(6, &parse_mem_map);
+
+	PRE_traverse();
 }

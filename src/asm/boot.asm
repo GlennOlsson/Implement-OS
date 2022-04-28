@@ -119,8 +119,8 @@ set_up_page_tables:
     or eax, 0b11 ; present + writable
     mov [p3_table], eax
 
-    ; TODO map each P2 entry to a huge 2MiB page
-     mov ecx, 0         ; counter variable
+    ; map each P2 entry to a huge 2MiB page
+    mov ecx, 0         ; counter variable
 
 .map_p2_table:
     ; map ecx-th P2 entry to a huge page that starts at address 2MiB*ecx
@@ -167,7 +167,7 @@ p3_table:
 p2_table:
     resb 4096
 stack_bottom:
-    resb 64
+    resb 4096
 stack_top:
 
 ist1_stack_bottom:
@@ -185,7 +185,6 @@ ist3_stack_top:
 save_exx:
     resb 16 ; reserve 2 * 4 bytes
 
-;section .rodata
 section .data
 gdt64:
     dq 0 ; zero entry
