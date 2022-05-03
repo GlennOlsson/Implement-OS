@@ -1,4 +1,5 @@
 global long_mode_start
+
 extern init_ints
 extern kmain
 

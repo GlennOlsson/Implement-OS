@@ -5,10 +5,16 @@ global ist1_stack_top
 global ist2_stack_top
 global ist3_stack_top
 
+global save_exx
+
 section .text
 bits 32
 start:
 	mov esp, stack_top
+
+    ; Save EAX and EBX values in long-term storage
+    mov [save_exx], eax
+    mov [save_exx+4], ebx
 
     call check_multiboot
     call check_cpuid
@@ -114,8 +120,8 @@ set_up_page_tables:
     or eax, 0b11 ; present + writable
     mov [p3_table], eax
 
-    ; TODO map each P2 entry to a huge 2MiB page
-     mov ecx, 0         ; counter variable
+    ; map each P2 entry to a huge 2MiB page
+    mov ecx, 0         ; counter variable
 
 .map_p2_table:
     ; map ecx-th P2 entry to a huge page that starts at address 2MiB*ecx
@@ -162,7 +168,7 @@ p3_table:
 p2_table:
     resb 4096
 stack_bottom:
-    resb 64
+    resb 4096
 stack_top:
 
 ist1_stack_bottom:
@@ -177,7 +183,9 @@ ist3_stack_bottom:
     resb 64
 ist3_stack_top:
 
-;section .rodata
+save_exx:
+    resb 16 ; reserve 2 * 4 bytes
+
 section .data
 gdt64:
     dq 0 ; zero entry
