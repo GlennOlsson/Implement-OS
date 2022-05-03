@@ -116,7 +116,7 @@ void PS2_setup_keyboard() {
 
 	write_command(0xAE);// Enable first port again
 
-	printkln("Configed PS/2");
+	//printkln("Configed PS/2");
 	//PS/2 controller should be configed
 
 	//Config keyboard
@@ -127,7 +127,7 @@ void PS2_setup_keyboard() {
 	// Enable keyboard
 	write_data(0xF4);
 
-	printkln("keyboard setup done");
+	//printkln("keyboard setup done");
 
 	//Check scancode set
 	write_data(0xF0);

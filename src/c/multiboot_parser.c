@@ -83,7 +83,7 @@ void parse_mem_map(uint32_t size, uint32_t* ptr) {
 		
 		// Only care about type==1
 		if(type == 1) {
-			printkln("Memory map. Start: %lx, length: %ld, type: %d", start_add, length, type);
+			//printkln("Memory map. Start: %lx, length: %ld, type: %d", start_add, length, type);
 			PRE_add_address_space(start_add, length);
 		}
 
@@ -113,8 +113,6 @@ void parse_elf(uint32_t size, uint32_t* ptr) {
 		ptr += 8;
 		PRE_add_allocated_span(seg_addy, seg_size);
 	}
-
-	PRE_print();
 }
 
 void parse_tag(uint32_t tag_type, void (*parser)(uint32_t, uint32_t*)) {
@@ -138,7 +136,7 @@ void parse_tag(uint32_t tag_type, void (*parser)(uint32_t, uint32_t*)) {
 		// +1 so we consume the bytes of the tag's size and type
 		uint32_t* data_start = (uint32_t*) (tag + 1);
 
-		printkln("Tag: %d, size: %d", tag->tag_type, tag->tag_size);
+		//printkln("Tag: %d, size: %d", tag->tag_type, tag->tag_size);
 		if(tag->tag_type == tag_type) {
 			parser(tag->tag_size - 8, data_start);
 		}
@@ -148,8 +146,8 @@ void parse_tag(uint32_t tag_type, void (*parser)(uint32_t, uint32_t*)) {
 }
 
 void MUL_parse() {
-	parse_tag(1, &parse_cmd);
-	parse_tag(2, &parse_boot_name);
+	//parse_tag(1, &parse_cmd);
+	//parse_tag(2, &parse_boot_name);
 
 	// Make sure to parse ELF before mem-map
 	parse_tag(9, &parse_elf);

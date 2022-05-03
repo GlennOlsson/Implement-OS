@@ -10,7 +10,13 @@
 
 void kmain() {
 	VGA_clear();
-	printkln("\n\n");
+	printkln("+ - - - - - - - - - +");
+	printkln("|                   |");
+	printkln("|      Welcome      |");
+	printkln("|        To         |");
+	printkln("|      GlennOS!     |");
+	printkln("|                   |");
+	printkln("+ - - - - - - - - - +");
 
 	MEM_init();
 

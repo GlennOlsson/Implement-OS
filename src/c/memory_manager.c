@@ -59,15 +59,6 @@ void PRE_add_allocated_span(uint64_t new_address, uint64_t new_size) {
 	}
 }
 
-void PRE_print() {
-	for(int i = 0; i <= memory_structure.current_allocated_index; ++i) {
-		uint64_t address = memory_structure.allocated_addresses[i];
-		uint64_t size = memory_structure.allocated_sizes[i];
-
-		printkln("From %lx, to %lx, size %ld", address, address + size, size);
-	}
-}
-
 // Checks that address is not in range of pre-allocated memory
 // Returns 0 if is ok, else returns the end address of the span the address was in
 uint64_t ok_address(uint64_t a) {
