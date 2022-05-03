@@ -14,6 +14,7 @@ void MEM_init();
 void* MEM_pf_alloc();
 void MEM_pf_free(void *pf);
 
-void MEM_test_mem();
+void MEM_test_mem1();
+void MEM_test_mem2();
 
 #endif

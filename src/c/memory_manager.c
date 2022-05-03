@@ -210,13 +210,35 @@ void MEM_init() {
 	free_pages.page_tail = 0;
 }
 
+void MEM_test_mem1() {
+	const int PAGE_ALLOCATE_COUNT = 10;
+
+	void* addresses[PAGE_ALLOCATE_COUNT];
+
+	for(int i = 0; i < PAGE_ALLOCATE_COUNT; ++i) {
+		void* addy = MEM_pf_alloc();
+		addresses[i] = addy;
+
+		printkln("Allocated new address: %p", addy);
+	}
+
+	for(int i = 0; i < PAGE_ALLOCATE_COUNT; ++i) {
+		void* addy = addresses[i];
+		MEM_pf_free(addy);
+
+		printkln("Freed address: %p", addy);
+	}
+
+	printkln("Last address in free-list: %lx", free_pages.page_tail);
+}
+
 // Each 4k page frame will contain:
 // Offset: 0, 8 bytes of next free-d page address
 // Offset: 8, 8 bytes of its own address
 // Offset: 16, 8 bytes of its own address
 // ...
 // Until all 4k has been filled
-void MEM_test_mem() {
+void MEM_test_mem2() {
 	int free_pages = PRE_traverse();
 
 	printkln("Writing to each page");
