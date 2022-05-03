@@ -30,9 +30,6 @@ void kmain() {
 	slow_print("Hello, welcome to GlennOS!\n");
 	CON_write_prompt();
 
-	MEM_test_mem1();
-	MEM_test_mem2();
-
 	// Turn on interrupts just now
 	sti(1);
 
