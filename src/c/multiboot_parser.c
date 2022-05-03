@@ -104,7 +104,7 @@ void parse_elf(uint32_t size, uint32_t* ptr) {
 	}
 
 	for(int i = 0; i < entries; ++i) {
-		ptr += 4; // 2 * 4 bytes of other attributes
+		ptr += 4; // 2 * 4 + 1 * 8 bytes of other attributes
 		uint64_t seg_addy = *((uint64_t*) ptr);
 		
 		ptr += 4;
@@ -154,6 +154,4 @@ void MUL_parse() {
 	// Make sure to parse ELF before mem-map
 	parse_tag(9, &parse_elf);
 	parse_tag(6, &parse_mem_map);
-
-	PRE_traverse();
 }

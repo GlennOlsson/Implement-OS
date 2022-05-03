@@ -6,8 +6,6 @@
 // Maximum number of address regions to avoid
 #define AVOID_REGION_COUNT 6
 
-#define PAGE_SIZE 4096
-
 struct {
 	// Each index i of address is the address, and the corresponding index in size is the size of the region
 	uint64_t allocated_addresses[AVOID_REGION_COUNT];
@@ -26,6 +24,7 @@ struct {
 	uint64_t page_tail;
 } free_pages;
 
+// Register span as pre-allocated
 void PRE_add_allocated_span(uint64_t new_address, uint64_t new_size) {
 	if(new_size == 0) // Ignore
 		return;
@@ -44,8 +43,8 @@ void PRE_add_allocated_span(uint64_t new_address, uint64_t new_size) {
 	uint64_t curr_addy = memory_structure.allocated_addresses[curr_reg];
 	uint64_t curr_size = memory_structure.allocated_sizes[curr_reg];
 	
-	// If new address follows last added span, or within 8 bytes of end, add as part of memory_structure span
-	if((new_address - (curr_addy + curr_size)) <= 8) {
+	// If new address follows last added span, or within 1 page of end, add as part of memory_structure span
+	if((new_address - (curr_addy + curr_size)) <= PAGE_SIZE) {
 		// Add size + diff from current address
 		memory_structure.allocated_sizes[curr_reg] += new_size + (new_address - (curr_addy + curr_size));
 	} else { // Else, need new entry
@@ -159,8 +158,8 @@ void PRE_add_address_space(uint64_t start_address, uint64_t space_size) {
 	}
 }
 
-// Traverse and print free pages
-void PRE_traverse() {
+// Traverse free pages, returns the count of pages
+int PRE_traverse() {
 	uint64_t address = free_pages.page_head;
 
 	int counter = 0;
@@ -172,6 +171,7 @@ void PRE_traverse() {
 		address = next_page;
 	}
 	printkln("Free pages: %d", counter);
+	return counter;
 }
 
 // Take head of free pages
@@ -182,11 +182,13 @@ void* MEM_pf_alloc(void) {
 	uint64_t new_head = *curr_head_page;
 	free_pages.page_head = new_head;
 
+	//printkln("Allocated %lx", curr_head);
+
 	return (void*) curr_head;
 }
 
 // Set as tail of free pages
-void MEM_pf_free(void *pf) {
+void MEM_pf_free(void* pf) {
 	uint64_t new_tail = (uint64_t) pf;
 
 	uint64_t curr_tail = free_pages.page_tail;
@@ -194,6 +196,8 @@ void MEM_pf_free(void *pf) {
 
 	*curr_tail_page = new_tail;
 	free_pages.page_tail = new_tail;
+
+	//printkln("Freed %p", pf);
 }
 
 void MEM_init() {
@@ -204,4 +208,69 @@ void MEM_init() {
 
 	free_pages.page_head = 0;
 	free_pages.page_tail = 0;
+}
+
+// Each 4k page frame will contain:
+// Offset: 0, 8 bytes of next free-d page address
+// Offset: 8, 8 bytes of its own address
+// Offset: 16, 8 bytes of its own address
+// ...
+// Until all 4k has been filled
+void MEM_test_mem() {
+	int free_pages = PRE_traverse();
+
+	printkln("Writing to each page");
+
+	char* head = 0x0;
+	char* prev_page = 0x0;
+
+	for(int i = 0; i < free_pages; ++i) {
+		char* page = (char*) MEM_pf_alloc();
+		if(head == 0x0) {
+			// First node
+			head = page;
+		} else {
+			// Write current address to first 8 bytes of last free page, linked list
+			uint64_t* ptr = (uint64_t*) prev_page;
+			*ptr = (uint64_t) page;
+		}
+		prev_page = page;
+
+		uint64_t* page_addy = (uint64_t*) page;
+		// Write start address to each 8-byte block in page
+		for(int j = 1; j < PAGE_SIZE / 8; j++) {
+			page_addy[j] = (uint64_t) page_addy;
+		}
+	}
+
+	printkln("Written to each page, verifying... ");
+
+	char* curr_page = head;
+
+	// Assert that we find what we expect in pages
+	for(int i = 0; i < free_pages; ++i) {
+		uint64_t* page = (uint64_t*) curr_page;
+		uint64_t* next_page = (uint64_t*) *page;
+		curr_page = (char*) next_page;
+		// Write start address to each 8-byte block in page
+		for(int j = 1; j < PAGE_SIZE / 8; j++) {
+			if(page[j] != (uint64_t) page) {
+				printkln("Not correct address at page index %i", j);
+			}
+		}
+	}
+
+	printkln("Verified all pages, freeing");
+
+	curr_page = head;
+
+	for(int i = 0; i < free_pages; ++i) {
+		uint64_t* page = (uint64_t*) curr_page;
+		uint64_t* next_page = (uint64_t*) *page;
+		curr_page = (char*) next_page;
+
+		MEM_pf_free((void*) page);
+	}
+
+	printkln("Freed all pages");
 }

@@ -12,6 +12,7 @@ bits 32
 start:
 	mov esp, stack_top
 
+    ; Save EAX and EBX values in long-term storage
     mov [save_exx], eax
     mov [save_exx+4], ebx
 
