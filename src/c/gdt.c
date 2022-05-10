@@ -14,6 +14,10 @@ extern void* ist1_stack_top;
 extern void* ist2_stack_top;
 extern void* ist3_stack_top;
 
+uint64_t _ist1_stack[512];
+uint64_t _ist2_stack[512];
+uint64_t _ist3_stack[512];
+
 struct SegmentDescriptor {
 	uint16_t limit_1;
 	uint16_t base_1;
@@ -105,6 +109,8 @@ void _setup_gdt_2(uint64_t* _gdt) {
 
 	uint64_t address = (uint64_t) tss;
 
+	printkln("TSS address; %p", tss);
+
 	uint16_t base_1 = address & 0xFFFF;
 	uint8_t base_2 = (address >> 16) & 0xFF;
 	uint8_t base_3 = (address >> 24) & 0xFF;
@@ -145,28 +151,38 @@ void _setup_gdt_2(uint64_t* _gdt) {
 		ist_2[i] = 0;
 	}
 
-	*((uint64_t*) ist1_stack_top) = 0;
-	*((uint64_t*) ist2_stack_top) = 0;
+	// *((uint64_t*) ist1_stack_top) = 0;
+	// *((uint64_t*) ist2_stack_top) = 0;
 
 	//printkln("ist1: %lx, ist2: %p, ist3: %p, ist4: %p", ((uint64_t) ist_1) & 0xFFFFFFFF, ist_2, ist_3, ist_4);
+
+	printkln("BEF_ Address for i=9: %p", _ist1_stack + 511);
+	printkln("BEF_ Address for i=11: %p", _ist2_stack + 511);
+	printkln("BEF_ Address for i=13: %p", _ist3_stack + 511);
 
 	// Set all entries to 0
 	for(int i = 0; i < TSS_ENTRIES; ++i) {
 		if(i == 9) {
 			// tss[i+1] = ((uint64_t) ist_1[7]) & 0xFFFFFFFF;
 			// tss[i] = (((uint64_t) ist_1[7]) >> 32) & 0xFFFFFFFF;
-			tss[i] = ((uint64_t) ist1_stack_top) & 0xFFFFFFFF;
-			tss[i+1] = (((uint64_t) ist1_stack_top) >> 32) & 0xFFFFFFFF;
+			uint64_t* addy = _ist1_stack + 511;
+			tss[i] = ((uint64_t) addy) & 0xFFFFFFFF;
+			tss[i+1] = (((uint64_t) addy) >> 32) & 0xFFFFFFFF;
+			printkln("Address for i=9: %p", addy);
 			// tss[i] = 0;
 			// tss[i+1] = 0;
 			i+=1;
 		} else if(i == 11) {
-			tss[i] = ((uint64_t) ist2_stack_top) & 0xFFFFFFFF;
-			tss[i+1] = (((uint64_t) ist2_stack_top) >> 32) & 0xFFFFFFFF;
+			uint64_t* addy = _ist2_stack + 511;
+			tss[i] = ((uint64_t) addy) & 0xFFFFFFFF;
+			tss[i+1] = (((uint64_t) addy) >> 32) & 0xFFFFFFFF;
+			printkln("Address for i=11: %p", addy);
 			i+=1;
 		} else if(i == 13) {
-			tss[i] = ((uint64_t) ist3_stack_top) & 0xFFFFFFFF;
-			tss[i+1] = (((uint64_t) ist3_stack_top) >> 32) & 0xFFFFFFFF;
+			uint64_t* addy = _ist3_stack + 511;
+			tss[i] = ((uint64_t) addy) & 0xFFFFFFFF;
+			tss[i+1] = (((uint64_t) addy) >> 32) & 0xFFFFFFFF;
+			printkln("Address for i=13: %p", addy);
 			i+=1;
 		}
 		else if(i == TSS_ENTRIES - 1)
