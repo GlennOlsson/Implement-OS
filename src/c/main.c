@@ -35,10 +35,6 @@ void kmain() {
 
 	CON_write_prompt();
 
-	ugly_sleep(2500);
-	printkln("Causing interrupt");
-	asm("int $8");
-
 	// Turn on interrupts just now
 	sti(1);
 

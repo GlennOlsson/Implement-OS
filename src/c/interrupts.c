@@ -152,9 +152,9 @@ void* setup_idt() {
 		if(ist_index == 8) // Double Fault #DF
 			interrupt_desc_table[ist_index].ist = 1;
 		if(ist_index == 13) // General protection #GP
-			interrupt_desc_table[ist_index].ist = 1;
+			interrupt_desc_table[ist_index].ist = 2;
 		if(ist_index == 14) // Page fault #PF
-			interrupt_desc_table[ist_index].ist = 1;
+			interrupt_desc_table[ist_index].ist = 3;
 
 		interrupt_desc_table[ist_index].present = 1;
 		interrupt_desc_table[ist_index].zero = 0;
