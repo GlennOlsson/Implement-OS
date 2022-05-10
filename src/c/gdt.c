@@ -10,10 +10,6 @@
 extern void _load_tss(uint16_t size);
 extern void reload_segments();
 
-extern void* ist1_stack_top;
-extern void* ist2_stack_top;
-extern void* ist3_stack_top;
-
 uint64_t _ist1_stack[512];
 uint64_t _ist2_stack[512];
 uint64_t _ist3_stack[512];

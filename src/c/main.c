@@ -37,7 +37,7 @@ void kmain() {
 
 	ugly_sleep(2500);
 	printkln("Causing interrupt");
-	asm("int $13");
+	asm("int $8");
 
 	// Turn on interrupts just now
 	sti(1);

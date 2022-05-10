@@ -29,5 +29,5 @@ _load_tss:
      ret
 
 read_cr2:
-     mov RDI, CR2 
-     call VGA_print_long_hex
+     mov RAX, CR2
+     ret

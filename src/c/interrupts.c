@@ -149,12 +149,12 @@ void* setup_idt() {
 		interrupt_desc_table[ist_index].target_selector = segment_selector;
 
 		interrupt_desc_table[ist_index].ist = 0;
-		// if(ist_index == 8) // Double Fault #DF
-		// 	interrupt_desc_table[ist_index].ist = 1;
+		if(ist_index == 8) // Double Fault #DF
+			interrupt_desc_table[ist_index].ist = 1;
 		if(ist_index == 13) // General protection #GP
 			interrupt_desc_table[ist_index].ist = 1;
-		// if(ist_index == 14) // Page fault #PF
-		// 	interrupt_desc_table[ist_index].ist = 1;
+		if(ist_index == 14) // Page fault #PF
+			interrupt_desc_table[ist_index].ist = 1;
 
 		interrupt_desc_table[ist_index].present = 1;
 		interrupt_desc_table[ist_index].zero = 0;
@@ -170,7 +170,7 @@ void* setup_idt() {
 	return &load_idt_struct;
 }
 
-extern void read_cr2(uint64_t);
+extern uint64_t read_cr2();
 
 void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg) {
 	char int_flag = cli();
@@ -239,14 +239,14 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			break;
 			
 		case 13: 
-			//read_cr2(cr2_content);
-			printkln("General Protection Fault (GPF), error code: %x", error_code);
+			cr2_content = read_cr2();
+			printkln("General Protection Fault (GPF), error code: %x, CR2=%lx", error_code, cr2_content);
 			ugly_sleep(4000);
 			break;
 			
 		case 14:
-			read_cr2(cr2_content);
-			printkln("Page Fault, error code: %x. CR2: %lx", error_code, cr2_content);
+			cr2_content = read_cr2();
+			printkln("Page Fault, error code: %x, CR2=%lx", error_code, cr2_content);
 			ugly_sleep(5000);
 			break;
 			
