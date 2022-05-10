@@ -164,6 +164,10 @@ void _setup_gdt_2(uint64_t* _gdt) {
 			tss[i] = ((uint64_t) ist2_stack_top) & 0xFFFFFFFF;
 			tss[i+1] = (((uint64_t) ist2_stack_top) >> 32) & 0xFFFFFFFF;
 			i+=1;
+		} else if(i == 13) {
+			tss[i] = ((uint64_t) ist3_stack_top) & 0xFFFFFFFF;
+			tss[i+1] = (((uint64_t) ist3_stack_top) >> 32) & 0xFFFFFFFF;
+			i+=1;
 		}
 		else if(i == TSS_ENTRIES - 1)
 			tss[i] = 0x680000; // Sets IOPB, First 16 bits unused (reserved), then 104 (size of table)
