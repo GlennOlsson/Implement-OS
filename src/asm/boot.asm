@@ -172,19 +172,19 @@ stack_bottom:
 stack_top:
 
 ist1_stack_bottom:
-    resb 64
+    resb 4096
 ist1_stack_top:
 
 ist2_stack_bottom:
-    resb 64
+    resb 4096
 ist2_stack_top:
 
 ist3_stack_bottom:
-    resb 64
+    resb 4096
 ist3_stack_top:
 
 save_exx:
-    resb 16 ; reserve 2 * 4 bytes
+    resb 16 ; reserve 2 * 8 bytes
 
 section .data
 gdt64:

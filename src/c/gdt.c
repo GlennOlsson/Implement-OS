@@ -24,7 +24,7 @@ struct SegmentDescriptor {
 	uint8_t rw: 1;
 	uint8_t direction: 1;
 	uint8_t exec: 1;
-	uint8_t desc: 1;
+	uint8_t desc_type: 1;
 	uint8_t dpl: 2;
 	uint8_t present: 1;
 
@@ -37,6 +37,32 @@ struct SegmentDescriptor {
 
 	uint8_t base_3;
 
+} __attribute__((packed));
+
+
+struct SystemSegmentDescriptor {
+	uint16_t limit_1;
+	uint16_t base_1;
+	uint8_t base_2;
+
+	//access byte
+	uint8_t type: 4;
+	uint8_t desc_type: 1;
+	uint8_t dpl: 2;
+	uint8_t present: 1;
+
+	uint8_t limit_2: 4;
+	//Flags
+	uint8_t res_1: 1;
+	uint8_t long_mode: 1;
+	uint8_t size: 1;
+	uint8_t granularity: 1;
+
+	uint8_t base_3;
+
+	uint32_t base_4;
+
+	uint32_t res_2;
 } __attribute__((packed));
 
 uint64_t gdt[GDT_ENTRIES]; // 8 bytes per entry
@@ -66,48 +92,61 @@ void _setup_gdt_1(uint64_t* _gdt) {
 	*_gdt = 0;
 
 	gdt_entry->exec = 1;
-	gdt_entry->desc = 1;
+	gdt_entry->desc_type = 1;
 	gdt_entry->present = 1;
 	gdt_entry->long_mode = 1;
 }
 
 // The TSS
 void _setup_gdt_2(uint64_t* _gdt) {
-	struct SegmentDescriptor* lower_gdt_entry = (struct SegmentDescriptor*) _gdt;
-	uint64_t* upper_bytes = _gdt + 1; // The part of SSD of 32 bit Base + Reserved
+	struct SystemSegmentDescriptor* tss_segment_desc = (struct SystemSegmentDescriptor*) _gdt;
 
 	*_gdt = 0;
-	*upper_bytes = 0;
 
 	uint64_t address = (uint64_t) tss;
 
 	uint16_t base_1 = address & 0xFFFF;
 	uint8_t base_2 = (address >> 16) & 0xFF;
 	uint8_t base_3 = (address >> 24) & 0xFF;
-	uint8_t base_4 = (address >> 32) & 0xFFFFFFFF;
+	uint32_t base_4 = (address >> 32) & 0xFFFFFFFF;
 
-	lower_gdt_entry->base_1 = base_1;
-	lower_gdt_entry->base_2 = base_2;
-	lower_gdt_entry->base_3 = base_3;
-	*upper_bytes = base_4;
+	tss_segment_desc->base_1 = base_1;
+	tss_segment_desc->base_2 = base_2;
+	tss_segment_desc->base_3 = base_3;
+	tss_segment_desc->base_4 = base_4;
 
 	uint32_t limit = (4 * TSS_ENTRIES) - 1; // 26 rows with 4 bytes each
 	uint16_t limit_1 = limit & 0xFFFF;
 	uint8_t limit_2 = (limit >> 16) & 0xF; // only last 4 bits
-	lower_gdt_entry->limit_1 = limit_1;
-	lower_gdt_entry->limit_2 = limit_2;
+	tss_segment_desc->limit_1 = limit_1;
+	tss_segment_desc->limit_2 = limit_2;
 
-	lower_gdt_entry->present = 1;
-	lower_gdt_entry->access = 1;
-	lower_gdt_entry->exec = 1;
+	tss_segment_desc->present = 1;
+	tss_segment_desc->dpl = 0;
+	tss_segment_desc->desc_type = 0;
+	tss_segment_desc->type = 0x9;
 
-	lower_gdt_entry->size = 1;
+	tss_segment_desc->res_1 = 0x0;
+	tss_segment_desc->granularity = 0x0;
+	tss_segment_desc->long_mode = 0x0;
+	tss_segment_desc->granularity = 0x0;
+
+	tss_segment_desc->res_2 = 0x0;
+
+	// tss_segment_desc->access = 1;
+	// tss_segment_desc->exec = 1;
+
+	//tss_segment_desc->size = 0;
+	//tss_segment_desc->long_mode = 1;
 
 
 	for(int i = 0; i < 16; ++i) {
 		ist_1[i] = 0;
 		ist_2[i] = 0;
 	}
+
+	*((uint64_t*) ist1_stack_top) = 0;
+	*((uint64_t*) ist2_stack_top) = 0;
 
 	//printkln("ist1: %lx, ist2: %p, ist3: %p, ist4: %p", ((uint64_t) ist_1) & 0xFFFFFFFF, ist_2, ist_3, ist_4);
 
@@ -116,14 +155,14 @@ void _setup_gdt_2(uint64_t* _gdt) {
 		if(i == 9) {
 			// tss[i+1] = ((uint64_t) ist_1[7]) & 0xFFFFFFFF;
 			// tss[i] = (((uint64_t) ist_1[7]) >> 32) & 0xFFFFFFFF;
-			tss[i+1] = ((uint64_t) ist1_stack_top) & 0xFFFFFFFF;
-			tss[i] = (((uint64_t) ist1_stack_top) >> 32) & 0xFFFFFFFF;
+			tss[i] = ((uint64_t) ist1_stack_top) & 0xFFFFFFFF;
+			tss[i+1] = (((uint64_t) ist1_stack_top) >> 32) & 0xFFFFFFFF;
 			// tss[i] = 0;
 			// tss[i+1] = 0;
 			i+=1;
 		} else if(i == 11) {
-			tss[i+1] = ((uint64_t) ist_2) & 0xFFFFFFFF;
-			tss[i] = (((uint64_t) ist_2) >> 32) & 0xFFFFFFFF;
+			tss[i] = ((uint64_t) ist2_stack_top) & 0xFFFFFFFF;
+			tss[i+1] = (((uint64_t) ist2_stack_top) >> 32) & 0xFFFFFFFF;
 			i+=1;
 		}
 		else if(i == TSS_ENTRIES - 1)

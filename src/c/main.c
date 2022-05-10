@@ -33,8 +33,11 @@ void kmain() {
 
 	SER_init();
 
-	slow_print("Hello, welcome to GlennOS!\n");
 	CON_write_prompt();
+
+	ugly_sleep(2500);
+	printkln("Causing interrupt");
+	asm("int $13");
 
 	// Turn on interrupts just now
 	sti(1);

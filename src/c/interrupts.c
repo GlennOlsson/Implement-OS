@@ -149,12 +149,12 @@ void* setup_idt() {
 		interrupt_desc_table[ist_index].target_selector = segment_selector;
 
 		interrupt_desc_table[ist_index].ist = 0;
-		if(ist_index == 8) // Double Fault #DF
-			interrupt_desc_table[ist_index].ist = 1;
+		// if(ist_index == 8) // Double Fault #DF
+			// interrupt_desc_table[ist_index].ist = 1;
 		if(ist_index == 13) // General protection #GP
-			interrupt_desc_table[ist_index].ist = 2;
-		if(ist_index == 14) // Page fault #PF
-			interrupt_desc_table[ist_index].ist = 3;
+			interrupt_desc_table[ist_index].ist = 1;
+		// if(ist_index == 14) // Page fault #PF
+			// interrupt_desc_table[ist_index].ist = 3;
 
 		interrupt_desc_table[ist_index].present = 1;
 		interrupt_desc_table[ist_index].zero = 0;
@@ -227,7 +227,7 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			break;
 			
 		case 10: 
-			printkln("Invalid Task State Segment (TSS)");
+			printkln("Invalid Task State Segment #TS (TSS)");
 			break;
 			
 		case 11: 
@@ -239,7 +239,7 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			break;
 			
 		case 13: 
-			read_cr2(cr2_content);
+			//read_cr2(cr2_content);
 			printkln("General Protection Fault (GPF), error code: %x", error_code);
 			ugly_sleep(4000);
 			break;

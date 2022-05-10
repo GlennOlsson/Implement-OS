@@ -283,6 +283,17 @@ isr0:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 0 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -290,6 +301,17 @@ isr0:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -305,6 +327,17 @@ isr1:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 1 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -312,6 +345,17 @@ isr1:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -327,6 +371,17 @@ isr2:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 2 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -334,6 +389,17 @@ isr2:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -349,6 +415,17 @@ isr3:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 3 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -356,6 +433,17 @@ isr3:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -371,6 +459,17 @@ isr4:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 4 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -378,6 +477,17 @@ isr4:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -393,6 +503,17 @@ isr5:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 5 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -400,6 +521,17 @@ isr5:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -415,6 +547,17 @@ isr6:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 6 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -422,6 +565,17 @@ isr6:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -437,6 +591,17 @@ isr7:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 7 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -444,6 +609,17 @@ isr7:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -459,6 +635,17 @@ isr8:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 8 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -466,6 +653,17 @@ isr8:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -481,6 +679,17 @@ isr9:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 9 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -488,6 +697,17 @@ isr9:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -503,6 +723,17 @@ isr10:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 10 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -510,6 +741,17 @@ isr10:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -525,6 +767,17 @@ isr11:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 11 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -532,6 +785,17 @@ isr11:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -547,6 +811,17 @@ isr12:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 12 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -554,6 +829,17 @@ isr12:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -569,6 +855,17 @@ isr13:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 13 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -576,6 +873,17 @@ isr13:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -591,6 +899,17 @@ isr14:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 14 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -598,6 +917,17 @@ isr14:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -613,6 +943,17 @@ isr15:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 15 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -620,6 +961,17 @@ isr15:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -635,6 +987,17 @@ isr16:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 16 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -642,6 +1005,17 @@ isr16:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -657,6 +1031,17 @@ isr17:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 17 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -664,6 +1049,17 @@ isr17:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -679,6 +1075,17 @@ isr18:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 18 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -686,6 +1093,17 @@ isr18:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -701,6 +1119,17 @@ isr19:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 19 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -708,6 +1137,17 @@ isr19:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -723,6 +1163,17 @@ isr20:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 20 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -730,6 +1181,17 @@ isr20:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -745,6 +1207,17 @@ isr21:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 21 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -752,6 +1225,17 @@ isr21:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -767,6 +1251,17 @@ isr22:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 22 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -774,6 +1269,17 @@ isr22:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -789,6 +1295,17 @@ isr23:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 23 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -796,6 +1313,17 @@ isr23:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -811,6 +1339,17 @@ isr24:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 24 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -818,6 +1357,17 @@ isr24:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -833,6 +1383,17 @@ isr25:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 25 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -840,6 +1401,17 @@ isr25:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -855,6 +1427,17 @@ isr26:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 26 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -862,6 +1445,17 @@ isr26:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -877,6 +1471,17 @@ isr27:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 27 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -884,6 +1489,17 @@ isr27:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -899,6 +1515,17 @@ isr28:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 28 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -906,6 +1533,17 @@ isr28:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -921,6 +1559,17 @@ isr29:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 29 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -928,6 +1577,17 @@ isr29:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -943,6 +1603,17 @@ isr30:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 30 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -950,6 +1621,17 @@ isr30:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -965,6 +1647,17 @@ isr31:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 31 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -972,6 +1665,17 @@ isr31:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -987,6 +1691,17 @@ isr32:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 32 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -994,6 +1709,17 @@ isr32:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1009,6 +1735,17 @@ isr33:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 33 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1016,6 +1753,17 @@ isr33:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1031,6 +1779,17 @@ isr34:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 34 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1038,6 +1797,17 @@ isr34:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1053,6 +1823,17 @@ isr35:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 35 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1060,6 +1841,17 @@ isr35:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1075,6 +1867,17 @@ isr36:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 36 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1082,6 +1885,17 @@ isr36:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1097,6 +1911,17 @@ isr37:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 37 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1104,6 +1929,17 @@ isr37:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1119,6 +1955,17 @@ isr38:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 38 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1126,6 +1973,17 @@ isr38:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1141,6 +1999,17 @@ isr39:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 39 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1148,6 +2017,17 @@ isr39:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1163,6 +2043,17 @@ isr40:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 40 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1170,6 +2061,17 @@ isr40:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1185,6 +2087,17 @@ isr41:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 41 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1192,6 +2105,17 @@ isr41:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1207,6 +2131,17 @@ isr42:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 42 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1214,6 +2149,17 @@ isr42:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1229,6 +2175,17 @@ isr43:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 43 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1236,6 +2193,17 @@ isr43:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1251,6 +2219,17 @@ isr44:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 44 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1258,6 +2237,17 @@ isr44:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1273,6 +2263,17 @@ isr45:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 45 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1280,6 +2281,17 @@ isr45:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1295,6 +2307,17 @@ isr46:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 46 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1302,6 +2325,17 @@ isr46:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1317,6 +2351,17 @@ isr47:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 47 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1324,6 +2369,17 @@ isr47:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1339,6 +2395,17 @@ isr48:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 48 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1346,6 +2413,17 @@ isr48:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1361,6 +2439,17 @@ isr49:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 49 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1368,6 +2457,17 @@ isr49:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1383,6 +2483,17 @@ isr50:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 50 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1390,6 +2501,17 @@ isr50:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1405,6 +2527,17 @@ isr51:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 51 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1412,6 +2545,17 @@ isr51:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1427,6 +2571,17 @@ isr52:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 52 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1434,6 +2589,17 @@ isr52:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1449,6 +2615,17 @@ isr53:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 53 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1456,6 +2633,17 @@ isr53:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1471,6 +2659,17 @@ isr54:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 54 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1478,6 +2677,17 @@ isr54:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1493,6 +2703,17 @@ isr55:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 55 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1500,6 +2721,17 @@ isr55:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1515,6 +2747,17 @@ isr56:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 56 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1522,6 +2765,17 @@ isr56:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1537,6 +2791,17 @@ isr57:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 57 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1544,6 +2809,17 @@ isr57:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1559,6 +2835,17 @@ isr58:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 58 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1566,6 +2853,17 @@ isr58:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1581,6 +2879,17 @@ isr59:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 59 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1588,6 +2897,17 @@ isr59:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1603,6 +2923,17 @@ isr60:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 60 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1610,6 +2941,17 @@ isr60:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1625,6 +2967,17 @@ isr61:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 61 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1632,6 +2985,17 @@ isr61:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1647,6 +3011,17 @@ isr62:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 62 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1654,6 +3029,17 @@ isr62:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1669,6 +3055,17 @@ isr63:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 63 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1676,6 +3073,17 @@ isr63:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1691,6 +3099,17 @@ isr64:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 64 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1698,6 +3117,17 @@ isr64:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1713,6 +3143,17 @@ isr65:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 65 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1720,6 +3161,17 @@ isr65:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1735,6 +3187,17 @@ isr66:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 66 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1742,6 +3205,17 @@ isr66:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1757,6 +3231,17 @@ isr67:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 67 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1764,6 +3249,17 @@ isr67:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1779,6 +3275,17 @@ isr68:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 68 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1786,6 +3293,17 @@ isr68:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1801,6 +3319,17 @@ isr69:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 69 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1808,6 +3337,17 @@ isr69:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1823,6 +3363,17 @@ isr70:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 70 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1830,6 +3381,17 @@ isr70:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1845,6 +3407,17 @@ isr71:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 71 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1852,6 +3425,17 @@ isr71:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1867,6 +3451,17 @@ isr72:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 72 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1874,6 +3469,17 @@ isr72:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1889,6 +3495,17 @@ isr73:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 73 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1896,6 +3513,17 @@ isr73:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1911,6 +3539,17 @@ isr74:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 74 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1918,6 +3557,17 @@ isr74:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1933,6 +3583,17 @@ isr75:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 75 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1940,6 +3601,17 @@ isr75:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1955,6 +3627,17 @@ isr76:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 76 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1962,6 +3645,17 @@ isr76:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1977,6 +3671,17 @@ isr77:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 77 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -1984,6 +3689,17 @@ isr77:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -1999,6 +3715,17 @@ isr78:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 78 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2006,6 +3733,17 @@ isr78:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2021,6 +3759,17 @@ isr79:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 79 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2028,6 +3777,17 @@ isr79:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2043,6 +3803,17 @@ isr80:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 80 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2050,6 +3821,17 @@ isr80:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2065,6 +3847,17 @@ isr81:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 81 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2072,6 +3865,17 @@ isr81:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2087,6 +3891,17 @@ isr82:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 82 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2094,6 +3909,17 @@ isr82:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2109,6 +3935,17 @@ isr83:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 83 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2116,6 +3953,17 @@ isr83:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2131,6 +3979,17 @@ isr84:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 84 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2138,6 +3997,17 @@ isr84:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2153,6 +4023,17 @@ isr85:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 85 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2160,6 +4041,17 @@ isr85:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2175,6 +4067,17 @@ isr86:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 86 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2182,6 +4085,17 @@ isr86:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2197,6 +4111,17 @@ isr87:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 87 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2204,6 +4129,17 @@ isr87:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2219,6 +4155,17 @@ isr88:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 88 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2226,6 +4173,17 @@ isr88:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2241,6 +4199,17 @@ isr89:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 89 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2248,6 +4217,17 @@ isr89:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2263,6 +4243,17 @@ isr90:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 90 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2270,6 +4261,17 @@ isr90:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2285,6 +4287,17 @@ isr91:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 91 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2292,6 +4305,17 @@ isr91:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2307,6 +4331,17 @@ isr92:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 92 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2314,6 +4349,17 @@ isr92:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2329,6 +4375,17 @@ isr93:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 93 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2336,6 +4393,17 @@ isr93:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2351,6 +4419,17 @@ isr94:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 94 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2358,6 +4437,17 @@ isr94:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2373,6 +4463,17 @@ isr95:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 95 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2380,6 +4481,17 @@ isr95:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2395,6 +4507,17 @@ isr96:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 96 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2402,6 +4525,17 @@ isr96:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2417,6 +4551,17 @@ isr97:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 97 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2424,6 +4569,17 @@ isr97:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2439,6 +4595,17 @@ isr98:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 98 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2446,6 +4613,17 @@ isr98:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2461,6 +4639,17 @@ isr99:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 99 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2468,6 +4657,17 @@ isr99:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2483,6 +4683,17 @@ isr100:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 100 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2490,6 +4701,17 @@ isr100:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2505,6 +4727,17 @@ isr101:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 101 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2512,6 +4745,17 @@ isr101:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2527,6 +4771,17 @@ isr102:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 102 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2534,6 +4789,17 @@ isr102:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2549,6 +4815,17 @@ isr103:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 103 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2556,6 +4833,17 @@ isr103:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2571,6 +4859,17 @@ isr104:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 104 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2578,6 +4877,17 @@ isr104:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2593,6 +4903,17 @@ isr105:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 105 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2600,6 +4921,17 @@ isr105:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2615,6 +4947,17 @@ isr106:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 106 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2622,6 +4965,17 @@ isr106:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2637,6 +4991,17 @@ isr107:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 107 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2644,6 +5009,17 @@ isr107:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2659,6 +5035,17 @@ isr108:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 108 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2666,6 +5053,17 @@ isr108:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2681,6 +5079,17 @@ isr109:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 109 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2688,6 +5097,17 @@ isr109:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2703,6 +5123,17 @@ isr110:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 110 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2710,6 +5141,17 @@ isr110:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2725,6 +5167,17 @@ isr111:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 111 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2732,6 +5185,17 @@ isr111:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2747,6 +5211,17 @@ isr112:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 112 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2754,6 +5229,17 @@ isr112:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2769,6 +5255,17 @@ isr113:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 113 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2776,6 +5273,17 @@ isr113:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2791,6 +5299,17 @@ isr114:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 114 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2798,6 +5317,17 @@ isr114:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2813,6 +5343,17 @@ isr115:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 115 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2820,6 +5361,17 @@ isr115:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2835,6 +5387,17 @@ isr116:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 116 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2842,6 +5405,17 @@ isr116:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2857,6 +5431,17 @@ isr117:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 117 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2864,6 +5449,17 @@ isr117:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2879,6 +5475,17 @@ isr118:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 118 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2886,6 +5493,17 @@ isr118:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2901,6 +5519,17 @@ isr119:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 119 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2908,6 +5537,17 @@ isr119:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2923,6 +5563,17 @@ isr120:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 120 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2930,6 +5581,17 @@ isr120:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2945,6 +5607,17 @@ isr121:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 121 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2952,6 +5625,17 @@ isr121:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2967,6 +5651,17 @@ isr122:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 122 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2974,6 +5669,17 @@ isr122:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -2989,6 +5695,17 @@ isr123:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 123 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -2996,6 +5713,17 @@ isr123:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3011,6 +5739,17 @@ isr124:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 124 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3018,6 +5757,17 @@ isr124:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3033,6 +5783,17 @@ isr125:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 125 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3040,6 +5801,17 @@ isr125:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3055,6 +5827,17 @@ isr126:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 126 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3062,6 +5845,17 @@ isr126:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3077,6 +5871,17 @@ isr127:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 127 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3084,6 +5889,17 @@ isr127:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3099,6 +5915,17 @@ isr128:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 128 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3106,6 +5933,17 @@ isr128:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3121,6 +5959,17 @@ isr129:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 129 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3128,6 +5977,17 @@ isr129:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3143,6 +6003,17 @@ isr130:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 130 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3150,6 +6021,17 @@ isr130:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3165,6 +6047,17 @@ isr131:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 131 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3172,6 +6065,17 @@ isr131:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3187,6 +6091,17 @@ isr132:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 132 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3194,6 +6109,17 @@ isr132:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3209,6 +6135,17 @@ isr133:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 133 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3216,6 +6153,17 @@ isr133:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3231,6 +6179,17 @@ isr134:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 134 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3238,6 +6197,17 @@ isr134:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3253,6 +6223,17 @@ isr135:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 135 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3260,6 +6241,17 @@ isr135:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3275,6 +6267,17 @@ isr136:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 136 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3282,6 +6285,17 @@ isr136:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3297,6 +6311,17 @@ isr137:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 137 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3304,6 +6329,17 @@ isr137:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3319,6 +6355,17 @@ isr138:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 138 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3326,6 +6373,17 @@ isr138:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3341,6 +6399,17 @@ isr139:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 139 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3348,6 +6417,17 @@ isr139:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3363,6 +6443,17 @@ isr140:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 140 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3370,6 +6461,17 @@ isr140:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3385,6 +6487,17 @@ isr141:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 141 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3392,6 +6505,17 @@ isr141:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3407,6 +6531,17 @@ isr142:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 142 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3414,6 +6549,17 @@ isr142:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3429,6 +6575,17 @@ isr143:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 143 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3436,6 +6593,17 @@ isr143:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3451,6 +6619,17 @@ isr144:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 144 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3458,6 +6637,17 @@ isr144:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3473,6 +6663,17 @@ isr145:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 145 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3480,6 +6681,17 @@ isr145:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3495,6 +6707,17 @@ isr146:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 146 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3502,6 +6725,17 @@ isr146:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3517,6 +6751,17 @@ isr147:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 147 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3524,6 +6769,17 @@ isr147:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3539,6 +6795,17 @@ isr148:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 148 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3546,6 +6813,17 @@ isr148:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3561,6 +6839,17 @@ isr149:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 149 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3568,6 +6857,17 @@ isr149:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3583,6 +6883,17 @@ isr150:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 150 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3590,6 +6901,17 @@ isr150:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3605,6 +6927,17 @@ isr151:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 151 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3612,6 +6945,17 @@ isr151:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3627,6 +6971,17 @@ isr152:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 152 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3634,6 +6989,17 @@ isr152:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3649,6 +7015,17 @@ isr153:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 153 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3656,6 +7033,17 @@ isr153:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3671,6 +7059,17 @@ isr154:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 154 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3678,6 +7077,17 @@ isr154:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3693,6 +7103,17 @@ isr155:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 155 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3700,6 +7121,17 @@ isr155:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3715,6 +7147,17 @@ isr156:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 156 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3722,6 +7165,17 @@ isr156:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3737,6 +7191,17 @@ isr157:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 157 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3744,6 +7209,17 @@ isr157:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3759,6 +7235,17 @@ isr158:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 158 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3766,6 +7253,17 @@ isr158:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3781,6 +7279,17 @@ isr159:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 159 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3788,6 +7297,17 @@ isr159:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3803,6 +7323,17 @@ isr160:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 160 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3810,6 +7341,17 @@ isr160:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3825,6 +7367,17 @@ isr161:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 161 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3832,6 +7385,17 @@ isr161:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3847,6 +7411,17 @@ isr162:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 162 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3854,6 +7429,17 @@ isr162:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3869,6 +7455,17 @@ isr163:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 163 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3876,6 +7473,17 @@ isr163:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3891,6 +7499,17 @@ isr164:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 164 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3898,6 +7517,17 @@ isr164:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3913,6 +7543,17 @@ isr165:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 165 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3920,6 +7561,17 @@ isr165:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3935,6 +7587,17 @@ isr166:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 166 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3942,6 +7605,17 @@ isr166:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3957,6 +7631,17 @@ isr167:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 167 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3964,6 +7649,17 @@ isr167:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -3979,6 +7675,17 @@ isr168:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 168 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -3986,6 +7693,17 @@ isr168:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4001,6 +7719,17 @@ isr169:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 169 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4008,6 +7737,17 @@ isr169:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4023,6 +7763,17 @@ isr170:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 170 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4030,6 +7781,17 @@ isr170:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4045,6 +7807,17 @@ isr171:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 171 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4052,6 +7825,17 @@ isr171:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4067,6 +7851,17 @@ isr172:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 172 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4074,6 +7869,17 @@ isr172:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4089,6 +7895,17 @@ isr173:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 173 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4096,6 +7913,17 @@ isr173:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4111,6 +7939,17 @@ isr174:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 174 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4118,6 +7957,17 @@ isr174:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4133,6 +7983,17 @@ isr175:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 175 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4140,6 +8001,17 @@ isr175:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4155,6 +8027,17 @@ isr176:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 176 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4162,6 +8045,17 @@ isr176:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4177,6 +8071,17 @@ isr177:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 177 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4184,6 +8089,17 @@ isr177:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4199,6 +8115,17 @@ isr178:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 178 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4206,6 +8133,17 @@ isr178:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4221,6 +8159,17 @@ isr179:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 179 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4228,6 +8177,17 @@ isr179:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4243,6 +8203,17 @@ isr180:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 180 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4250,6 +8221,17 @@ isr180:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4265,6 +8247,17 @@ isr181:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 181 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4272,6 +8265,17 @@ isr181:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4287,6 +8291,17 @@ isr182:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 182 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4294,6 +8309,17 @@ isr182:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4309,6 +8335,17 @@ isr183:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 183 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4316,6 +8353,17 @@ isr183:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4331,6 +8379,17 @@ isr184:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 184 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4338,6 +8397,17 @@ isr184:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4353,6 +8423,17 @@ isr185:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 185 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4360,6 +8441,17 @@ isr185:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4375,6 +8467,17 @@ isr186:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 186 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4382,6 +8485,17 @@ isr186:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4397,6 +8511,17 @@ isr187:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 187 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4404,6 +8529,17 @@ isr187:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4419,6 +8555,17 @@ isr188:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 188 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4426,6 +8573,17 @@ isr188:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4441,6 +8599,17 @@ isr189:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 189 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4448,6 +8617,17 @@ isr189:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4463,6 +8643,17 @@ isr190:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 190 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4470,6 +8661,17 @@ isr190:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4485,6 +8687,17 @@ isr191:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 191 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4492,6 +8705,17 @@ isr191:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4507,6 +8731,17 @@ isr192:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 192 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4514,6 +8749,17 @@ isr192:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4529,6 +8775,17 @@ isr193:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 193 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4536,6 +8793,17 @@ isr193:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4551,6 +8819,17 @@ isr194:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 194 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4558,6 +8837,17 @@ isr194:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4573,6 +8863,17 @@ isr195:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 195 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4580,6 +8881,17 @@ isr195:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4595,6 +8907,17 @@ isr196:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 196 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4602,6 +8925,17 @@ isr196:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4617,6 +8951,17 @@ isr197:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 197 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4624,6 +8969,17 @@ isr197:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4639,6 +8995,17 @@ isr198:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 198 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4646,6 +9013,17 @@ isr198:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4661,6 +9039,17 @@ isr199:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 199 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4668,6 +9057,17 @@ isr199:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4683,6 +9083,17 @@ isr200:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 200 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4690,6 +9101,17 @@ isr200:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4705,6 +9127,17 @@ isr201:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 201 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4712,6 +9145,17 @@ isr201:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4727,6 +9171,17 @@ isr202:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 202 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4734,6 +9189,17 @@ isr202:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4749,6 +9215,17 @@ isr203:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 203 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4756,6 +9233,17 @@ isr203:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4771,6 +9259,17 @@ isr204:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 204 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4778,6 +9277,17 @@ isr204:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4793,6 +9303,17 @@ isr205:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 205 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4800,6 +9321,17 @@ isr205:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4815,6 +9347,17 @@ isr206:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 206 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4822,6 +9365,17 @@ isr206:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4837,6 +9391,17 @@ isr207:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 207 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4844,6 +9409,17 @@ isr207:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4859,6 +9435,17 @@ isr208:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 208 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4866,6 +9453,17 @@ isr208:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4881,6 +9479,17 @@ isr209:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 209 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4888,6 +9497,17 @@ isr209:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4903,6 +9523,17 @@ isr210:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 210 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4910,6 +9541,17 @@ isr210:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4925,6 +9567,17 @@ isr211:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 211 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4932,6 +9585,17 @@ isr211:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4947,6 +9611,17 @@ isr212:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 212 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4954,6 +9629,17 @@ isr212:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4969,6 +9655,17 @@ isr213:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 213 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4976,6 +9673,17 @@ isr213:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -4991,6 +9699,17 @@ isr214:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 214 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -4998,6 +9717,17 @@ isr214:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5013,6 +9743,17 @@ isr215:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 215 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5020,6 +9761,17 @@ isr215:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5035,6 +9787,17 @@ isr216:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 216 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5042,6 +9805,17 @@ isr216:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5057,6 +9831,17 @@ isr217:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 217 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5064,6 +9849,17 @@ isr217:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5079,6 +9875,17 @@ isr218:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 218 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5086,6 +9893,17 @@ isr218:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5101,6 +9919,17 @@ isr219:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 219 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5108,6 +9937,17 @@ isr219:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5123,6 +9963,17 @@ isr220:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 220 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5130,6 +9981,17 @@ isr220:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5145,6 +10007,17 @@ isr221:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 221 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5152,6 +10025,17 @@ isr221:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5167,6 +10051,17 @@ isr222:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 222 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5174,6 +10069,17 @@ isr222:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5189,6 +10095,17 @@ isr223:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 223 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5196,6 +10113,17 @@ isr223:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5211,6 +10139,17 @@ isr224:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 224 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5218,6 +10157,17 @@ isr224:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5233,6 +10183,17 @@ isr225:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 225 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5240,6 +10201,17 @@ isr225:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5255,6 +10227,17 @@ isr226:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 226 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5262,6 +10245,17 @@ isr226:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5277,6 +10271,17 @@ isr227:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 227 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5284,6 +10289,17 @@ isr227:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5299,6 +10315,17 @@ isr228:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 228 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5306,6 +10333,17 @@ isr228:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5321,6 +10359,17 @@ isr229:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 229 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5328,6 +10377,17 @@ isr229:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5343,6 +10403,17 @@ isr230:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 230 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5350,6 +10421,17 @@ isr230:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5365,6 +10447,17 @@ isr231:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 231 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5372,6 +10465,17 @@ isr231:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5387,6 +10491,17 @@ isr232:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 232 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5394,6 +10509,17 @@ isr232:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5409,6 +10535,17 @@ isr233:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 233 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5416,6 +10553,17 @@ isr233:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5431,6 +10579,17 @@ isr234:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 234 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5438,6 +10597,17 @@ isr234:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5453,6 +10623,17 @@ isr235:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 235 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5460,6 +10641,17 @@ isr235:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5475,6 +10667,17 @@ isr236:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 236 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5482,6 +10685,17 @@ isr236:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5497,6 +10711,17 @@ isr237:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 237 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5504,6 +10729,17 @@ isr237:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5519,6 +10755,17 @@ isr238:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 238 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5526,6 +10773,17 @@ isr238:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5541,6 +10799,17 @@ isr239:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 239 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5548,6 +10817,17 @@ isr239:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5563,6 +10843,17 @@ isr240:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 240 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5570,6 +10861,17 @@ isr240:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5585,6 +10887,17 @@ isr241:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 241 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5592,6 +10905,17 @@ isr241:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5607,6 +10931,17 @@ isr242:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 242 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5614,6 +10949,17 @@ isr242:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5629,6 +10975,17 @@ isr243:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 243 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5636,6 +10993,17 @@ isr243:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5651,6 +11019,17 @@ isr244:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 244 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5658,6 +11037,17 @@ isr244:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5673,6 +11063,17 @@ isr245:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 245 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5680,6 +11081,17 @@ isr245:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5695,6 +11107,17 @@ isr246:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 246 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5702,6 +11125,17 @@ isr246:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5717,6 +11151,17 @@ isr247:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 247 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5724,6 +11169,17 @@ isr247:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5739,6 +11195,17 @@ isr248:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 248 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5746,6 +11213,17 @@ isr248:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5761,6 +11239,17 @@ isr249:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 249 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5768,6 +11257,17 @@ isr249:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5783,6 +11283,17 @@ isr250:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 250 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5790,6 +11301,17 @@ isr250:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5805,6 +11327,17 @@ isr251:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 251 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5812,6 +11345,17 @@ isr251:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5827,6 +11371,17 @@ isr252:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 252 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5834,6 +11389,17 @@ isr252:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5849,6 +11415,17 @@ isr253:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 253 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5856,6 +11433,17 @@ isr253:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5871,6 +11459,17 @@ isr254:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 254 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5878,6 +11477,17 @@ isr254:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
@@ -5893,6 +11503,17 @@ isr255:
 	push RSP
 	push R12
 	push R13
+	push R14
+	push R15
+	push RAX
+	push RCX
+	push RDX
+	push RSI
+	push RDI
+	push R8
+	push R9
+	push R10
+	push R11
 	
 	mov RDI, 255 ; irq number, 1st arg
 	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
@@ -5900,6 +11521,17 @@ isr255:
 	call generic_interrupt_handler
 
 	; Pop in FILO order
+	pop R11
+	pop R10
+	pop R9
+	pop R8
+	pop RDI
+	pop RSI
+	pop RDX
+	pop RCX
+	pop RAX
+	pop R15
+	pop R14
 	pop R13
 	pop R12
 	pop RSP
