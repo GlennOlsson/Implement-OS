@@ -43,6 +43,8 @@ void PRE_add_allocated_span(uint64_t new_address, uint64_t new_size) {
 	uint64_t curr_addy = memory_structure.allocated_addresses[curr_reg];
 	uint64_t curr_size = memory_structure.allocated_sizes[curr_reg];
 	
+	printkln("Allocated addy: %lx, size: %lx", curr_addy, curr_size);
+
 	// If new address follows last added span, or within 1 page of end, add as part of memory_structure span
 	if((new_address - (curr_addy + curr_size)) <= PAGE_SIZE) {
 		// Add size + diff from current address
@@ -173,8 +175,6 @@ void* MEM_pf_alloc(void) {
 	uint64_t new_head = *curr_head_page;
 	free_pages.page_head = new_head;
 
-	//printkln("Allocated %lx", curr_head);
-
 	return (void*) curr_head;
 }
 
@@ -187,8 +187,6 @@ void MEM_pf_free(void* pf) {
 
 	*curr_tail_page = new_tail;
 	free_pages.page_tail = new_tail;
-
-	//printkln("Freed %p", pf);
 }
 
 void MEM_init() {

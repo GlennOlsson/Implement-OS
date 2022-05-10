@@ -1,10 +1,6 @@
 global start
 extern long_mode_start
 
-global ist1_stack_top
-global ist2_stack_top
-global ist3_stack_top
-
 global save_exx
 
 section .text
