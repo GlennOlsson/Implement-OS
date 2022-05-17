@@ -7,6 +7,7 @@
 #include "serial.h"
 #include "multiboot_parser.h"
 #include "memory_manager.h"
+#include "page_table.h"
 
 void kmain() {
 	VGA_clear();
@@ -21,6 +22,10 @@ void kmain() {
 	MEM_init();
 
 	MUL_parse();
+
+	printkln("Parsed multiboot");
+
+	PT_init();
 
 	setup_gdt(); // create and load new gdt from c
 	load_gdt();

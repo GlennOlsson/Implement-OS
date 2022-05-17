@@ -30,6 +30,7 @@ c: create_isr_h
 	x86_64-elf-gcc $(c_flags) $(c_dir)/serial.c -o $(out_dir)/serial.o
 	x86_64-elf-gcc $(c_flags) $(c_dir)/multiboot_parser.c -o $(out_dir)/multiboot_parser.o
 	x86_64-elf-gcc $(c_flags) $(c_dir)/memory_manager.c -o $(out_dir)/memory_manager.o
+	x86_64-elf-gcc $(c_flags) $(c_dir)/page_table.c -o $(out_dir)/page_table.o
 
 compile: asm c
 	ld -n -o out/kernel.bin -T linker.ld $(out_dir)/*.o

@@ -3,11 +3,12 @@
 #include "lib.h"
 #include "vga_api.h"
 
+extern void ASM_load_tss(uint16_t);
+
 #define GDT_ENTRIES 4 // 1 zero entry, 1 code entry, 2 entries for the TSS SSD
 #define TSS_ENTRIES 26
 
 // From gdt_loader.asm
-extern void _load_tss(uint16_t size);
 extern void reload_segments();
 
 #define IST_STACK_SIZE 512
@@ -184,5 +185,5 @@ void load_gdt() {
 }
 
 void load_tss() {
-	_load_tss(2*8); // offset in GDT, should be 16 as there are 2 x 8-byte selectors before
+	ASM_load_tss(2*8); // offset in GDT, should be 16 as there are 2 x 8-byte selectors before
 }

@@ -24,7 +24,7 @@ static struct idt_t {
 	uint16_t target_selector;
 
 	uint16_t ist: 3;
-	uint16_t res1: 5;
+	uint16_t res_1: 5;
 	uint16_t gate_type: 4;
 	uint16_t zero: 1;
 	uint16_t dpl: 2;
@@ -33,7 +33,7 @@ static struct idt_t {
 	uint16_t target_offset_2;
 	uint32_t target_offset_3;
 
-	uint32_t res2;	
+	uint32_t res_2;	
 } __attribute__((packed)) interrupt_desc_table[256];
 
 static struct {
@@ -170,7 +170,7 @@ void* setup_idt() {
 	return &load_idt_struct;
 }
 
-extern uint64_t read_cr2();
+extern uint64_t ASM_read_cr2();
 
 void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg) {
 	char int_flag = cli();
@@ -239,13 +239,13 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			break;
 			
 		case 13: 
-			cr2_content = read_cr2();
+			cr2_content = ASM_read_cr2();
 			printkln("General Protection Fault (GPF), error code: %x, CR2=%lx", error_code, cr2_content);
 			ugly_sleep(4000);
 			break;
 			
 		case 14:
-			cr2_content = read_cr2();
+			cr2_content = ASM_read_cr2();
 			printkln("Page Fault, error code: %x, CR2=%lx", error_code, cr2_content);
 			ugly_sleep(5000);
 			break;

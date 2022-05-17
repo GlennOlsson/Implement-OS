@@ -1,5 +1,8 @@
 global start
 extern long_mode_start
+extern p4_table
+extern p3_table
+extern p2_table
 
 global save_exx
 
