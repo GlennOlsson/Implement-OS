@@ -43,6 +43,14 @@ void kmain() {
 	// Turn on interrupts just now
 	sti(1);
 
+	int i = 0;
+	int* i_add = (int*) (((uint64_t) &i) | (1 << 30));
+	printkln("&i = %p, or %p", &i, i_add);
+
+	*i_add = 5;
+
+	printkln("i = %d, or %d", i, *i_add);
+
 	volatile int j = 0;
 	while(!j)
 		asm("hlt");

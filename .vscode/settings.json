@@ -2,6 +2,7 @@
 	"files.associations": {
 		"*.psql": "sql",
 		"*.pl": "prolog",
-		"stdint.h": "c"
+		"stdint.h": "c",
+		"stdint-gcc.h": "c"
 	}
 }
