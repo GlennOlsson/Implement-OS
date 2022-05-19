@@ -5,6 +5,7 @@
 #include "isr.h"
 #include "ps2.h"
 #include "serial.h"
+#include "page_table.h"
 
 #define PIC1			0x20		/* IO base address for master PIC */
 #define PIC2			0xA0		/* IO base address for slave PIC */
@@ -247,7 +248,7 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 		case 14:
 			cr2_content = ASM_read_cr2();
 			printkln("Page Fault, error code: %x, CR2=%lx", error_code, cr2_content);
-			ugly_sleep(5000);
+			PT_can_allocate(cr2_content);
 			break;
 			
 		case 15: 

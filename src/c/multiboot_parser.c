@@ -82,7 +82,7 @@ void parse_mem_map(uint32_t size, uint32_t* ptr) {
 		ptr += 2; // For type and 4 bytes of reserved
 		
 		// Only care about type==1
-		printkln("Memory map, type: %d, start: %lx, length: %ld", type, start_add, length);
+		// printkln("Memory map, type: %d, start: %lx, length: %ld", type, start_add, length);
 		if(type == 1) {
 			PRE_add_address_space(start_add, length);
 		}

@@ -6,6 +6,8 @@
 // Maximum number of address regions to avoid
 #define AVOID_REGION_COUNT 6
 
+#define nullptr 0
+
 struct {
 	// Each index i of address is the address, and the corresponding index in size is the size of the region
 	uint64_t allocated_addresses[AVOID_REGION_COUNT];
@@ -43,7 +45,7 @@ void PRE_add_allocated_span(uint64_t new_address, uint64_t new_size) {
 	uint64_t curr_addy = memory_structure.allocated_addresses[curr_reg];
 	uint64_t curr_size = memory_structure.allocated_sizes[curr_reg];
 	
-	printkln("Allocated addy: %lx, size: %lx", curr_addy, curr_size);
+	// printkln("Allocated addy: %lx, size: %lx", curr_addy, curr_size);
 
 	// If new address follows last added span, or within 1 page of end, add as part of memory_structure span
 	if((new_address - (curr_addy + curr_size)) <= PAGE_SIZE) {
@@ -125,6 +127,9 @@ void PRE_add_address_space(uint64_t start_address, uint64_t space_size) {
 		free_pages.page_tail = curr_address;
 	}	
 
+	// Set "next" as nullptr
+	*((uint64_t*) curr_address) = nullptr;
+
 	// Max address of this space
 	const uint64_t max_address = start_address + space_size;
 
@@ -170,6 +175,11 @@ int PRE_traverse() {
 // Take head of free pages
 void* MEM_pf_alloc(void) {
 	uint64_t curr_head = free_pages.page_head;
+	if(curr_head == nullptr) {
+		printkln("Ran out of pages");
+		asm("int $13");
+		return 0;
+	}
 	uint64_t* curr_head_page = (uint64_t*) curr_head;
 
 	uint64_t new_head = *curr_head_page;
@@ -195,7 +205,7 @@ void MEM_init() {
 	memory_structure.start_address = 0;
 	memory_structure.address_space_size = 0;
 
-	free_pages.page_head = 0;
-	free_pages.page_tail = 0;
+	free_pages.page_head = nullptr;
+	free_pages.page_tail = nullptr;
 }
 

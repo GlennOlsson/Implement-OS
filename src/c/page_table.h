@@ -28,5 +28,7 @@ struct VirtualAddress {
 } __attribute__((packed));
 
 void PT_init();
+uint8_t PT_can_allocate(uint64_t add);
+
 
 #endif
