@@ -59,13 +59,11 @@ uint8_t PML_is_allocated(PML* pml) {
 }
 
 void PML_set_add(PML* pml, uint64_t* add) {
-	*pml |= (((uint64_t) add) & 0xFFFFFFFFFF000); // Only last 52 bits
+	*pml |= (((uint64_t) add) & 0xFFFFFFFFFF000); // Only bit 52:12
 }
 
 PML* PML_get_add(PML* pml) {
-	// uint64_t address = 0xFFFFFFFFFFFF8 & *pml;  // Only last 52 bits, but skip last 3 bits as they are present/rw/us
-	// uint64_t address = 0xFFFFFFFFFFFFF & *pml;  // Only last 52 bits, but skip last 3 bits as they are present/rw/us
-	uint64_t address = 0xFFFFFFFFFF000 & *pml;
+	uint64_t address = 0xFFFFFFFFFF000 & *pml; // Only bit 52:12
 	return (PML*) address;
 }
 
@@ -77,22 +75,15 @@ void PT_init() {
 	MEM_pf_free(pml2);
 	pml2 = MEM_pf_alloc();
 
-	printkln("pml2 add: %p", pml2);
-
 	PML_set_present(pml3, 1);
 	PML_set_us(pml3, 1);
 	PML_set_rw(pml3, 1);
 	PML_set_add(pml3, pml2);
 
-	printkln("pml2 after set, add: %p", PML_get_add(pml3));
-
 	int i, j;
 	for(i = 0; i < 512; ++i) {
 		PML* pml2_i = pml2 + i;
 		PML* pml1 = MEM_pf_alloc(); // New pml1 table for each pml2 entry, giving us 1GB of memory
-
-		if(i == 0)
-			printkln("pml1 add for pml2[0]: %p", pml1);
 
 		for(j = 0; j < 512; ++j) {
 			PML* pml1_i = pml1 + j;
@@ -101,18 +92,12 @@ void PT_init() {
 			PML_set_us(pml1_i, 1);
 			PML_set_rw(pml1_i, 1);
 			PML_set_allocated(pml1_i, 0); // set as unallocated, allocated when needed (page fault)
-			PML_set_add(pml1_i, (void*) 0x69000);
-			if(i == 0 && j < 2) {
-				printkln("PLM1 LOW i, add: %p, pointer: %p", pml1_i, PML_get_add(pml1_i));
-			}
 		}
 
 		PML_set_add(pml2_i, pml1);
 		PML_set_present(pml2_i, 1);
 		PML_set_rw(pml2_i, 1);
 	}
-
-	printkln("pml2 (end) after set, add: %p", PML_get_add(1 + &p3_table));
 }
 
 // Checks if address can be allocated (called from page fault), and allocate if possible
@@ -121,7 +106,7 @@ uint8_t PT_can_allocate(uint64_t add) {
 	uint16_t pml3_i = (add >> (12 + 9*2)) & 0x1FF;
 	uint16_t pml2_i = (add >> (12 + 9*1)) & 0x1FF;
 	uint16_t pml1_i = (add >> 12) & 0x1FF;
-	uint16_t phys_pf_i = add & 0xFFF;
+	// Physical page offset does not matter
 
 	if(pml4_i != 0) {
 		printkln("Bad pml4 index! 0x%x", pml4_i);
@@ -133,23 +118,11 @@ uint8_t PT_can_allocate(uint64_t add) {
 	}
 	PML* pml3 = &p3_table;
 	PML* pml2 = PML_get_add(pml3 + pml3_i);
-	printkln("Got plm2: %p, index: %d", pml2, pml2_i);
-	printkln("Dir from p3_table: %p", PML_get_add(1 + &p3_table));
 	PML* pml1 = PML_get_add(pml2 + pml2_i);
-	printkln("Got plm1: %p, index: %d", pml1, pml1_i);
 	PML* pml1_entry = pml1 + pml1_i;
-
-	printkln("plm1_entry: %p", pml1_entry);
-
-	printkln("phys_pf index: %d", phys_pf_i);
-
-	void* pf_ptr = PML_get_add(pml1_entry);
 	
-	uint8_t is_allocated = PML_is_allocated(pml1_entry);
-
-	printkln("is allocated?: %c", is_allocated == 1 ? 'y' : 'n');
-	if(is_allocated) {
-		printkln("Is already allocated, uh oh! Add: %p", pf_ptr);
+	if(PML_is_allocated(pml1_entry)) {
+		printkln("Is already allocated, uh oh!");
 		return 0;
 	}
 
@@ -158,13 +131,6 @@ uint8_t PT_can_allocate(uint64_t add) {
 	PML_set_allocated(pml1_entry, 1);
 	PML_set_present(pml1_entry, 1);
 	PML_set_rw(pml1_entry, 1);
-
-	printkln("pml2: %p, pml2_i: %d", pml2, pml2_i);
-	printkln("pml1: %p, pml1_i: %d", pml1, pml1_i);
-	printkln("pml1_entry: %lx", *pml1_entry);
-	printkln("pml1_entry address: %p", PML_get_add(pml1_entry));
-
-	printkln("Freed page \"on-demand\", %p", phys_pf);
 
 	return 1;
 }

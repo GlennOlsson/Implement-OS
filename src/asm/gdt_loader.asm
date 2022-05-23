@@ -1,6 +1,7 @@
 global reload_segments
 global ASM_load_tss
 global ASM_read_cr2
+global ASM_read_cr3
 global ASM_set_cr3
 
 extern VGA_print_long_hex
@@ -31,6 +32,10 @@ ASM_load_tss:
 
 ASM_read_cr2:
      mov RAX, CR2
+     ret
+
+ASM_read_cr3:
+     mov RAX, CR3
      ret
 
 ASM_set_cr3:

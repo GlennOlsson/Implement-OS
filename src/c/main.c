@@ -23,8 +23,6 @@ void kmain() {
 
 	MUL_parse();
 
-	PRE_traverse();
-
 	PT_init();
 
 	setup_gdt(); // create and load new gdt from c

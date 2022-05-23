@@ -172,6 +172,7 @@ void* setup_idt() {
 }
 
 extern uint64_t ASM_read_cr2();
+extern uint64_t ASM_read_cr3();
 
 void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg) {
 	char int_flag = cli();
@@ -180,6 +181,7 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 	// Could use a list with function pointers instead, but to init that list we would to similar things to below
 
 	uint64_t cr2_content = 0;
+	uint64_t cr3_content = 0;
 
 	if(isr_code > 255) { // can't be negative as unsigned
 		printkln("INTERRUPT WITH BAD CODE: %d", isr_code);
@@ -247,7 +249,8 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			
 		case 14:
 			cr2_content = ASM_read_cr2();
-			printkln("Page Fault, error code: %x, CR2=%lx", error_code, cr2_content);
+			cr3_content = ASM_read_cr3();
+			printkln("Page Fault, error code: %x, CR2=%lx, CR3=%lx", error_code, cr2_content, cr3_content);
 			PT_can_allocate(cr2_content);
 			break;
 			
