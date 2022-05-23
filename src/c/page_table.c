@@ -9,6 +9,8 @@ extern uint64_t p4_table;
 extern uint64_t p3_table;
 extern uint64_t p2_table;
 
+#define nullptr 0
+
 // Start of virtual address space. The variable keeps track of the next address to give out
 uint64_t next_add = 0x40000000;
 
@@ -28,7 +30,7 @@ void modify_bit(uint64_t* pt, uint8_t bit_index, uint8_t val) {
 	if(val)
 		*pt |= (1 << bit_index);
 	else
-		*pt |= ~(1 << bit_index);
+		*pt &= ~(1 << bit_index);
 }
 
 uint8_t read_bit(uint64_t* pt, uint8_t bit_index) {
@@ -57,12 +59,13 @@ uint8_t PML_is_allocated(PML* pml) {
 }
 
 void PML_set_add(PML* pml, uint64_t* add) {
-	*pml |= ((uint64_t) add) & 0xFFFFFFFFFFFFF; // Only last 52 bits
+	*pml |= (((uint64_t) add) & 0xFFFFFFFFFF000); // Only last 52 bits
 }
 
 PML* PML_get_add(PML* pml) {
-	uint64_t address = 0xFFFFFFFFFFFF8 & *pml;  // Only last 52 bits, but skip last 3 bits as they are present/rw/us
+	// uint64_t address = 0xFFFFFFFFFFFF8 & *pml;  // Only last 52 bits, but skip last 3 bits as they are present/rw/us
 	// uint64_t address = 0xFFFFFFFFFFFFF & *pml;  // Only last 52 bits, but skip last 3 bits as they are present/rw/us
+	uint64_t address = 0xFFFFFFFFFF000 & *pml;
 	return (PML*) address;
 }
 
@@ -83,19 +86,25 @@ void PT_init() {
 
 	printkln("pml2 after set, add: %p", PML_get_add(pml3));
 
-	for(int i = 0; i < 512; ++i) {
+	int i, j;
+	for(i = 0; i < 512; ++i) {
 		PML* pml2_i = pml2 + i;
 		PML* pml1 = MEM_pf_alloc(); // New pml1 table for each pml2 entry, giving us 1GB of memory
 
 		if(i == 0)
 			printkln("pml1 add for pml2[0]: %p", pml1);
 
-		for(int j = 0; j < 512; ++j) {
+		for(j = 0; j < 512; ++j) {
 			PML* pml1_i = pml1 + j;
+			*(uint64_t*) pml1_i = 0;
 			PML_set_present(pml1_i, 1);
 			PML_set_us(pml1_i, 1);
 			PML_set_rw(pml1_i, 1);
 			PML_set_allocated(pml1_i, 0); // set as unallocated, allocated when needed (page fault)
+			PML_set_add(pml1_i, (void*) 0x69000);
+			if(i == 0 && j < 2) {
+				printkln("PLM1 LOW i, add: %p, pointer: %p", pml1_i, PML_get_add(pml1_i));
+			}
 		}
 
 		PML_set_add(pml2_i, pml1);
@@ -134,11 +143,13 @@ uint8_t PT_can_allocate(uint64_t add) {
 
 	printkln("phys_pf index: %d", phys_pf_i);
 
+	void* pf_ptr = PML_get_add(pml1_entry);
 	
 	uint8_t is_allocated = PML_is_allocated(pml1_entry);
+
 	printkln("is allocated?: %c", is_allocated == 1 ? 'y' : 'n');
 	if(is_allocated) {
-		printkln("Is already allocated, uh oh!");
+		printkln("Is already allocated, uh oh! Add: %p", pf_ptr);
 		return 0;
 	}
 
