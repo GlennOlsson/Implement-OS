@@ -30,5 +30,9 @@ struct VirtualAddress {
 void PT_init();
 uint8_t PT_can_allocate(uint64_t add);
 
+void *MMU_alloc_page();
+void *MMU_alloc_pages(int num);
+void MMU_free_page(void *);
+void MMU_free_pages(void *, int num);
 
 #endif

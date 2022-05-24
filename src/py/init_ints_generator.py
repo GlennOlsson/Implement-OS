@@ -32,6 +32,10 @@ init_ints:
 for i in range(256):
 	code = f"""
 isr{i}:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -43,7 +47,6 @@ isr{i}:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
 	push RDI
 	push R8
 	push R9
@@ -51,7 +54,7 @@ isr{i}:
 	push R11
 	
 	mov RDI, {i} ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -61,7 +64,6 @@ isr{i}:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -72,6 +74,8 @@ isr{i}:
 	pop RSP
 	pop RBX
 	pop RBP
+
+	pop RSI
 
 	iretq
 """

@@ -277,6 +277,10 @@ init_ints:
 	ret
 
 isr0:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -288,7 +292,7 @@ isr0:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -296,7 +300,7 @@ isr0:
 	push R11
 	
 	mov RDI, 0 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -306,7 +310,7 @@ isr0:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -318,9 +322,15 @@ isr0:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr1:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -332,7 +342,7 @@ isr1:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -340,7 +350,7 @@ isr1:
 	push R11
 	
 	mov RDI, 1 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -350,7 +360,7 @@ isr1:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -362,9 +372,15 @@ isr1:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr2:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -376,7 +392,7 @@ isr2:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -384,7 +400,7 @@ isr2:
 	push R11
 	
 	mov RDI, 2 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -394,7 +410,7 @@ isr2:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -406,9 +422,15 @@ isr2:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr3:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -420,7 +442,7 @@ isr3:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -428,7 +450,7 @@ isr3:
 	push R11
 	
 	mov RDI, 3 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -438,7 +460,7 @@ isr3:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -450,9 +472,15 @@ isr3:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr4:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -464,7 +492,7 @@ isr4:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -472,7 +500,7 @@ isr4:
 	push R11
 	
 	mov RDI, 4 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -482,7 +510,7 @@ isr4:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -494,9 +522,15 @@ isr4:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr5:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -508,7 +542,7 @@ isr5:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -516,7 +550,7 @@ isr5:
 	push R11
 	
 	mov RDI, 5 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -526,7 +560,7 @@ isr5:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -538,9 +572,15 @@ isr5:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr6:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -552,7 +592,7 @@ isr6:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -560,7 +600,7 @@ isr6:
 	push R11
 	
 	mov RDI, 6 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -570,7 +610,7 @@ isr6:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -582,9 +622,15 @@ isr6:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr7:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -596,7 +642,7 @@ isr7:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -604,7 +650,7 @@ isr7:
 	push R11
 	
 	mov RDI, 7 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -614,7 +660,7 @@ isr7:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -626,9 +672,15 @@ isr7:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr8:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -640,7 +692,7 @@ isr8:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -648,7 +700,7 @@ isr8:
 	push R11
 	
 	mov RDI, 8 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -658,7 +710,7 @@ isr8:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -670,9 +722,15 @@ isr8:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr9:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -684,7 +742,7 @@ isr9:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -692,7 +750,7 @@ isr9:
 	push R11
 	
 	mov RDI, 9 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -702,7 +760,7 @@ isr9:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -714,9 +772,15 @@ isr9:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr10:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -728,7 +792,7 @@ isr10:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -736,7 +800,7 @@ isr10:
 	push R11
 	
 	mov RDI, 10 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -746,7 +810,7 @@ isr10:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -758,9 +822,15 @@ isr10:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr11:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -772,7 +842,7 @@ isr11:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -780,7 +850,7 @@ isr11:
 	push R11
 	
 	mov RDI, 11 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -790,7 +860,7 @@ isr11:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -802,9 +872,15 @@ isr11:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr12:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -816,7 +892,7 @@ isr12:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -824,7 +900,7 @@ isr12:
 	push R11
 	
 	mov RDI, 12 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -834,7 +910,7 @@ isr12:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -846,9 +922,15 @@ isr12:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr13:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -860,7 +942,7 @@ isr13:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -868,7 +950,7 @@ isr13:
 	push R11
 	
 	mov RDI, 13 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -878,7 +960,7 @@ isr13:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -890,9 +972,15 @@ isr13:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr14:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -904,7 +992,7 @@ isr14:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -912,7 +1000,7 @@ isr14:
 	push R11
 	
 	mov RDI, 14 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -922,7 +1010,7 @@ isr14:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -934,9 +1022,15 @@ isr14:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr15:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -948,7 +1042,7 @@ isr15:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -956,7 +1050,7 @@ isr15:
 	push R11
 	
 	mov RDI, 15 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -966,7 +1060,7 @@ isr15:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -978,9 +1072,15 @@ isr15:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr16:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -992,7 +1092,7 @@ isr16:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1000,7 +1100,7 @@ isr16:
 	push R11
 	
 	mov RDI, 16 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1010,7 +1110,7 @@ isr16:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1022,9 +1122,15 @@ isr16:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr17:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1036,7 +1142,7 @@ isr17:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1044,7 +1150,7 @@ isr17:
 	push R11
 	
 	mov RDI, 17 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1054,7 +1160,7 @@ isr17:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1066,9 +1172,15 @@ isr17:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr18:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1080,7 +1192,7 @@ isr18:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1088,7 +1200,7 @@ isr18:
 	push R11
 	
 	mov RDI, 18 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1098,7 +1210,7 @@ isr18:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1110,9 +1222,15 @@ isr18:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr19:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1124,7 +1242,7 @@ isr19:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1132,7 +1250,7 @@ isr19:
 	push R11
 	
 	mov RDI, 19 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1142,7 +1260,7 @@ isr19:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1154,9 +1272,15 @@ isr19:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr20:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1168,7 +1292,7 @@ isr20:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1176,7 +1300,7 @@ isr20:
 	push R11
 	
 	mov RDI, 20 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1186,7 +1310,7 @@ isr20:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1198,9 +1322,15 @@ isr20:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr21:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1212,7 +1342,7 @@ isr21:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1220,7 +1350,7 @@ isr21:
 	push R11
 	
 	mov RDI, 21 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1230,7 +1360,7 @@ isr21:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1242,9 +1372,15 @@ isr21:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr22:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1256,7 +1392,7 @@ isr22:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1264,7 +1400,7 @@ isr22:
 	push R11
 	
 	mov RDI, 22 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1274,7 +1410,7 @@ isr22:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1286,9 +1422,15 @@ isr22:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr23:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1300,7 +1442,7 @@ isr23:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1308,7 +1450,7 @@ isr23:
 	push R11
 	
 	mov RDI, 23 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1318,7 +1460,7 @@ isr23:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1330,9 +1472,15 @@ isr23:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr24:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1344,7 +1492,7 @@ isr24:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1352,7 +1500,7 @@ isr24:
 	push R11
 	
 	mov RDI, 24 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1362,7 +1510,7 @@ isr24:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1374,9 +1522,15 @@ isr24:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr25:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1388,7 +1542,7 @@ isr25:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1396,7 +1550,7 @@ isr25:
 	push R11
 	
 	mov RDI, 25 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1406,7 +1560,7 @@ isr25:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1418,9 +1572,15 @@ isr25:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr26:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1432,7 +1592,7 @@ isr26:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1440,7 +1600,7 @@ isr26:
 	push R11
 	
 	mov RDI, 26 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1450,7 +1610,7 @@ isr26:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1462,9 +1622,15 @@ isr26:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr27:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1476,7 +1642,7 @@ isr27:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1484,7 +1650,7 @@ isr27:
 	push R11
 	
 	mov RDI, 27 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1494,7 +1660,7 @@ isr27:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1506,9 +1672,15 @@ isr27:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr28:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1520,7 +1692,7 @@ isr28:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1528,7 +1700,7 @@ isr28:
 	push R11
 	
 	mov RDI, 28 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1538,7 +1710,7 @@ isr28:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1550,9 +1722,15 @@ isr28:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr29:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1564,7 +1742,7 @@ isr29:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1572,7 +1750,7 @@ isr29:
 	push R11
 	
 	mov RDI, 29 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1582,7 +1760,7 @@ isr29:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1594,9 +1772,15 @@ isr29:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr30:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1608,7 +1792,7 @@ isr30:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1616,7 +1800,7 @@ isr30:
 	push R11
 	
 	mov RDI, 30 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1626,7 +1810,7 @@ isr30:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1638,9 +1822,15 @@ isr30:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr31:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1652,7 +1842,7 @@ isr31:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1660,7 +1850,7 @@ isr31:
 	push R11
 	
 	mov RDI, 31 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1670,7 +1860,7 @@ isr31:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1682,9 +1872,15 @@ isr31:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr32:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1696,7 +1892,7 @@ isr32:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1704,7 +1900,7 @@ isr32:
 	push R11
 	
 	mov RDI, 32 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1714,7 +1910,7 @@ isr32:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1726,9 +1922,15 @@ isr32:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr33:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1740,7 +1942,7 @@ isr33:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1748,7 +1950,7 @@ isr33:
 	push R11
 	
 	mov RDI, 33 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1758,7 +1960,7 @@ isr33:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1770,9 +1972,15 @@ isr33:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr34:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1784,7 +1992,7 @@ isr34:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1792,7 +2000,7 @@ isr34:
 	push R11
 	
 	mov RDI, 34 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1802,7 +2010,7 @@ isr34:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1814,9 +2022,15 @@ isr34:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr35:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1828,7 +2042,7 @@ isr35:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1836,7 +2050,7 @@ isr35:
 	push R11
 	
 	mov RDI, 35 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1846,7 +2060,7 @@ isr35:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1858,9 +2072,15 @@ isr35:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr36:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1872,7 +2092,7 @@ isr36:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1880,7 +2100,7 @@ isr36:
 	push R11
 	
 	mov RDI, 36 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1890,7 +2110,7 @@ isr36:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1902,9 +2122,15 @@ isr36:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr37:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1916,7 +2142,7 @@ isr37:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1924,7 +2150,7 @@ isr37:
 	push R11
 	
 	mov RDI, 37 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1934,7 +2160,7 @@ isr37:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1946,9 +2172,15 @@ isr37:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr38:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -1960,7 +2192,7 @@ isr38:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -1968,7 +2200,7 @@ isr38:
 	push R11
 	
 	mov RDI, 38 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -1978,7 +2210,7 @@ isr38:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -1990,9 +2222,15 @@ isr38:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr39:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2004,7 +2242,7 @@ isr39:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2012,7 +2250,7 @@ isr39:
 	push R11
 	
 	mov RDI, 39 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2022,7 +2260,7 @@ isr39:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2034,9 +2272,15 @@ isr39:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr40:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2048,7 +2292,7 @@ isr40:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2056,7 +2300,7 @@ isr40:
 	push R11
 	
 	mov RDI, 40 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2066,7 +2310,7 @@ isr40:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2078,9 +2322,15 @@ isr40:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr41:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2092,7 +2342,7 @@ isr41:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2100,7 +2350,7 @@ isr41:
 	push R11
 	
 	mov RDI, 41 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2110,7 +2360,7 @@ isr41:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2122,9 +2372,15 @@ isr41:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr42:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2136,7 +2392,7 @@ isr42:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2144,7 +2400,7 @@ isr42:
 	push R11
 	
 	mov RDI, 42 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2154,7 +2410,7 @@ isr42:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2166,9 +2422,15 @@ isr42:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr43:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2180,7 +2442,7 @@ isr43:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2188,7 +2450,7 @@ isr43:
 	push R11
 	
 	mov RDI, 43 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2198,7 +2460,7 @@ isr43:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2210,9 +2472,15 @@ isr43:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr44:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2224,7 +2492,7 @@ isr44:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2232,7 +2500,7 @@ isr44:
 	push R11
 	
 	mov RDI, 44 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2242,7 +2510,7 @@ isr44:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2254,9 +2522,15 @@ isr44:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr45:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2268,7 +2542,7 @@ isr45:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2276,7 +2550,7 @@ isr45:
 	push R11
 	
 	mov RDI, 45 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2286,7 +2560,7 @@ isr45:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2298,9 +2572,15 @@ isr45:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr46:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2312,7 +2592,7 @@ isr46:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2320,7 +2600,7 @@ isr46:
 	push R11
 	
 	mov RDI, 46 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2330,7 +2610,7 @@ isr46:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2342,9 +2622,15 @@ isr46:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr47:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2356,7 +2642,7 @@ isr47:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2364,7 +2650,7 @@ isr47:
 	push R11
 	
 	mov RDI, 47 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2374,7 +2660,7 @@ isr47:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2386,9 +2672,15 @@ isr47:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr48:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2400,7 +2692,7 @@ isr48:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2408,7 +2700,7 @@ isr48:
 	push R11
 	
 	mov RDI, 48 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2418,7 +2710,7 @@ isr48:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2430,9 +2722,15 @@ isr48:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr49:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2444,7 +2742,7 @@ isr49:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2452,7 +2750,7 @@ isr49:
 	push R11
 	
 	mov RDI, 49 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2462,7 +2760,7 @@ isr49:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2474,9 +2772,15 @@ isr49:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr50:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2488,7 +2792,7 @@ isr50:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2496,7 +2800,7 @@ isr50:
 	push R11
 	
 	mov RDI, 50 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2506,7 +2810,7 @@ isr50:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2518,9 +2822,15 @@ isr50:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr51:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2532,7 +2842,7 @@ isr51:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2540,7 +2850,7 @@ isr51:
 	push R11
 	
 	mov RDI, 51 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2550,7 +2860,7 @@ isr51:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2562,9 +2872,15 @@ isr51:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr52:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2576,7 +2892,7 @@ isr52:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2584,7 +2900,7 @@ isr52:
 	push R11
 	
 	mov RDI, 52 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2594,7 +2910,7 @@ isr52:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2606,9 +2922,15 @@ isr52:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr53:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2620,7 +2942,7 @@ isr53:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2628,7 +2950,7 @@ isr53:
 	push R11
 	
 	mov RDI, 53 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2638,7 +2960,7 @@ isr53:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2650,9 +2972,15 @@ isr53:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr54:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2664,7 +2992,7 @@ isr54:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2672,7 +3000,7 @@ isr54:
 	push R11
 	
 	mov RDI, 54 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2682,7 +3010,7 @@ isr54:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2694,9 +3022,15 @@ isr54:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr55:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2708,7 +3042,7 @@ isr55:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2716,7 +3050,7 @@ isr55:
 	push R11
 	
 	mov RDI, 55 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2726,7 +3060,7 @@ isr55:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2738,9 +3072,15 @@ isr55:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr56:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2752,7 +3092,7 @@ isr56:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2760,7 +3100,7 @@ isr56:
 	push R11
 	
 	mov RDI, 56 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2770,7 +3110,7 @@ isr56:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2782,9 +3122,15 @@ isr56:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr57:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2796,7 +3142,7 @@ isr57:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2804,7 +3150,7 @@ isr57:
 	push R11
 	
 	mov RDI, 57 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2814,7 +3160,7 @@ isr57:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2826,9 +3172,15 @@ isr57:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr58:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2840,7 +3192,7 @@ isr58:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2848,7 +3200,7 @@ isr58:
 	push R11
 	
 	mov RDI, 58 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2858,7 +3210,7 @@ isr58:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2870,9 +3222,15 @@ isr58:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr59:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2884,7 +3242,7 @@ isr59:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2892,7 +3250,7 @@ isr59:
 	push R11
 	
 	mov RDI, 59 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2902,7 +3260,7 @@ isr59:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2914,9 +3272,15 @@ isr59:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr60:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2928,7 +3292,7 @@ isr60:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2936,7 +3300,7 @@ isr60:
 	push R11
 	
 	mov RDI, 60 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2946,7 +3310,7 @@ isr60:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -2958,9 +3322,15 @@ isr60:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr61:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -2972,7 +3342,7 @@ isr61:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -2980,7 +3350,7 @@ isr61:
 	push R11
 	
 	mov RDI, 61 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -2990,7 +3360,7 @@ isr61:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3002,9 +3372,15 @@ isr61:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr62:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3016,7 +3392,7 @@ isr62:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3024,7 +3400,7 @@ isr62:
 	push R11
 	
 	mov RDI, 62 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3034,7 +3410,7 @@ isr62:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3046,9 +3422,15 @@ isr62:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr63:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3060,7 +3442,7 @@ isr63:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3068,7 +3450,7 @@ isr63:
 	push R11
 	
 	mov RDI, 63 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3078,7 +3460,7 @@ isr63:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3090,9 +3472,15 @@ isr63:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr64:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3104,7 +3492,7 @@ isr64:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3112,7 +3500,7 @@ isr64:
 	push R11
 	
 	mov RDI, 64 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3122,7 +3510,7 @@ isr64:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3134,9 +3522,15 @@ isr64:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr65:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3148,7 +3542,7 @@ isr65:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3156,7 +3550,7 @@ isr65:
 	push R11
 	
 	mov RDI, 65 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3166,7 +3560,7 @@ isr65:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3178,9 +3572,15 @@ isr65:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr66:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3192,7 +3592,7 @@ isr66:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3200,7 +3600,7 @@ isr66:
 	push R11
 	
 	mov RDI, 66 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3210,7 +3610,7 @@ isr66:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3222,9 +3622,15 @@ isr66:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr67:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3236,7 +3642,7 @@ isr67:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3244,7 +3650,7 @@ isr67:
 	push R11
 	
 	mov RDI, 67 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3254,7 +3660,7 @@ isr67:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3266,9 +3672,15 @@ isr67:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr68:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3280,7 +3692,7 @@ isr68:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3288,7 +3700,7 @@ isr68:
 	push R11
 	
 	mov RDI, 68 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3298,7 +3710,7 @@ isr68:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3310,9 +3722,15 @@ isr68:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr69:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3324,7 +3742,7 @@ isr69:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3332,7 +3750,7 @@ isr69:
 	push R11
 	
 	mov RDI, 69 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3342,7 +3760,7 @@ isr69:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3354,9 +3772,15 @@ isr69:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr70:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3368,7 +3792,7 @@ isr70:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3376,7 +3800,7 @@ isr70:
 	push R11
 	
 	mov RDI, 70 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3386,7 +3810,7 @@ isr70:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3398,9 +3822,15 @@ isr70:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr71:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3412,7 +3842,7 @@ isr71:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3420,7 +3850,7 @@ isr71:
 	push R11
 	
 	mov RDI, 71 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3430,7 +3860,7 @@ isr71:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3442,9 +3872,15 @@ isr71:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr72:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3456,7 +3892,7 @@ isr72:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3464,7 +3900,7 @@ isr72:
 	push R11
 	
 	mov RDI, 72 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3474,7 +3910,7 @@ isr72:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3486,9 +3922,15 @@ isr72:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr73:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3500,7 +3942,7 @@ isr73:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3508,7 +3950,7 @@ isr73:
 	push R11
 	
 	mov RDI, 73 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3518,7 +3960,7 @@ isr73:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3530,9 +3972,15 @@ isr73:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr74:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3544,7 +3992,7 @@ isr74:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3552,7 +4000,7 @@ isr74:
 	push R11
 	
 	mov RDI, 74 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3562,7 +4010,7 @@ isr74:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3574,9 +4022,15 @@ isr74:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr75:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3588,7 +4042,7 @@ isr75:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3596,7 +4050,7 @@ isr75:
 	push R11
 	
 	mov RDI, 75 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3606,7 +4060,7 @@ isr75:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3618,9 +4072,15 @@ isr75:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr76:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3632,7 +4092,7 @@ isr76:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3640,7 +4100,7 @@ isr76:
 	push R11
 	
 	mov RDI, 76 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3650,7 +4110,7 @@ isr76:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3662,9 +4122,15 @@ isr76:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr77:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3676,7 +4142,7 @@ isr77:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3684,7 +4150,7 @@ isr77:
 	push R11
 	
 	mov RDI, 77 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3694,7 +4160,7 @@ isr77:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3706,9 +4172,15 @@ isr77:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr78:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3720,7 +4192,7 @@ isr78:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3728,7 +4200,7 @@ isr78:
 	push R11
 	
 	mov RDI, 78 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3738,7 +4210,7 @@ isr78:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3750,9 +4222,15 @@ isr78:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr79:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3764,7 +4242,7 @@ isr79:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3772,7 +4250,7 @@ isr79:
 	push R11
 	
 	mov RDI, 79 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3782,7 +4260,7 @@ isr79:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3794,9 +4272,15 @@ isr79:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr80:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3808,7 +4292,7 @@ isr80:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3816,7 +4300,7 @@ isr80:
 	push R11
 	
 	mov RDI, 80 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3826,7 +4310,7 @@ isr80:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3838,9 +4322,15 @@ isr80:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr81:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3852,7 +4342,7 @@ isr81:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3860,7 +4350,7 @@ isr81:
 	push R11
 	
 	mov RDI, 81 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3870,7 +4360,7 @@ isr81:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3882,9 +4372,15 @@ isr81:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr82:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3896,7 +4392,7 @@ isr82:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3904,7 +4400,7 @@ isr82:
 	push R11
 	
 	mov RDI, 82 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3914,7 +4410,7 @@ isr82:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3926,9 +4422,15 @@ isr82:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr83:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3940,7 +4442,7 @@ isr83:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3948,7 +4450,7 @@ isr83:
 	push R11
 	
 	mov RDI, 83 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -3958,7 +4460,7 @@ isr83:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -3970,9 +4472,15 @@ isr83:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr84:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -3984,7 +4492,7 @@ isr84:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -3992,7 +4500,7 @@ isr84:
 	push R11
 	
 	mov RDI, 84 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4002,7 +4510,7 @@ isr84:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4014,9 +4522,15 @@ isr84:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr85:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4028,7 +4542,7 @@ isr85:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4036,7 +4550,7 @@ isr85:
 	push R11
 	
 	mov RDI, 85 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4046,7 +4560,7 @@ isr85:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4058,9 +4572,15 @@ isr85:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr86:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4072,7 +4592,7 @@ isr86:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4080,7 +4600,7 @@ isr86:
 	push R11
 	
 	mov RDI, 86 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4090,7 +4610,7 @@ isr86:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4102,9 +4622,15 @@ isr86:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr87:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4116,7 +4642,7 @@ isr87:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4124,7 +4650,7 @@ isr87:
 	push R11
 	
 	mov RDI, 87 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4134,7 +4660,7 @@ isr87:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4146,9 +4672,15 @@ isr87:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr88:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4160,7 +4692,7 @@ isr88:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4168,7 +4700,7 @@ isr88:
 	push R11
 	
 	mov RDI, 88 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4178,7 +4710,7 @@ isr88:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4190,9 +4722,15 @@ isr88:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr89:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4204,7 +4742,7 @@ isr89:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4212,7 +4750,7 @@ isr89:
 	push R11
 	
 	mov RDI, 89 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4222,7 +4760,7 @@ isr89:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4234,9 +4772,15 @@ isr89:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr90:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4248,7 +4792,7 @@ isr90:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4256,7 +4800,7 @@ isr90:
 	push R11
 	
 	mov RDI, 90 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4266,7 +4810,7 @@ isr90:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4278,9 +4822,15 @@ isr90:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr91:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4292,7 +4842,7 @@ isr91:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4300,7 +4850,7 @@ isr91:
 	push R11
 	
 	mov RDI, 91 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4310,7 +4860,7 @@ isr91:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4322,9 +4872,15 @@ isr91:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr92:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4336,7 +4892,7 @@ isr92:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4344,7 +4900,7 @@ isr92:
 	push R11
 	
 	mov RDI, 92 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4354,7 +4910,7 @@ isr92:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4366,9 +4922,15 @@ isr92:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr93:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4380,7 +4942,7 @@ isr93:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4388,7 +4950,7 @@ isr93:
 	push R11
 	
 	mov RDI, 93 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4398,7 +4960,7 @@ isr93:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4410,9 +4972,15 @@ isr93:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr94:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4424,7 +4992,7 @@ isr94:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4432,7 +5000,7 @@ isr94:
 	push R11
 	
 	mov RDI, 94 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4442,7 +5010,7 @@ isr94:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4454,9 +5022,15 @@ isr94:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr95:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4468,7 +5042,7 @@ isr95:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4476,7 +5050,7 @@ isr95:
 	push R11
 	
 	mov RDI, 95 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4486,7 +5060,7 @@ isr95:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4498,9 +5072,15 @@ isr95:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr96:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4512,7 +5092,7 @@ isr96:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4520,7 +5100,7 @@ isr96:
 	push R11
 	
 	mov RDI, 96 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4530,7 +5110,7 @@ isr96:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4542,9 +5122,15 @@ isr96:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr97:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4556,7 +5142,7 @@ isr97:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4564,7 +5150,7 @@ isr97:
 	push R11
 	
 	mov RDI, 97 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4574,7 +5160,7 @@ isr97:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4586,9 +5172,15 @@ isr97:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr98:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4600,7 +5192,7 @@ isr98:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4608,7 +5200,7 @@ isr98:
 	push R11
 	
 	mov RDI, 98 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4618,7 +5210,7 @@ isr98:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4630,9 +5222,15 @@ isr98:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr99:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4644,7 +5242,7 @@ isr99:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4652,7 +5250,7 @@ isr99:
 	push R11
 	
 	mov RDI, 99 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4662,7 +5260,7 @@ isr99:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4674,9 +5272,15 @@ isr99:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr100:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4688,7 +5292,7 @@ isr100:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4696,7 +5300,7 @@ isr100:
 	push R11
 	
 	mov RDI, 100 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4706,7 +5310,7 @@ isr100:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4718,9 +5322,15 @@ isr100:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr101:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4732,7 +5342,7 @@ isr101:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4740,7 +5350,7 @@ isr101:
 	push R11
 	
 	mov RDI, 101 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4750,7 +5360,7 @@ isr101:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4762,9 +5372,15 @@ isr101:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr102:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4776,7 +5392,7 @@ isr102:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4784,7 +5400,7 @@ isr102:
 	push R11
 	
 	mov RDI, 102 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4794,7 +5410,7 @@ isr102:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4806,9 +5422,15 @@ isr102:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr103:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4820,7 +5442,7 @@ isr103:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4828,7 +5450,7 @@ isr103:
 	push R11
 	
 	mov RDI, 103 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4838,7 +5460,7 @@ isr103:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4850,9 +5472,15 @@ isr103:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr104:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4864,7 +5492,7 @@ isr104:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4872,7 +5500,7 @@ isr104:
 	push R11
 	
 	mov RDI, 104 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4882,7 +5510,7 @@ isr104:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4894,9 +5522,15 @@ isr104:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr105:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4908,7 +5542,7 @@ isr105:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4916,7 +5550,7 @@ isr105:
 	push R11
 	
 	mov RDI, 105 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4926,7 +5560,7 @@ isr105:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4938,9 +5572,15 @@ isr105:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr106:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4952,7 +5592,7 @@ isr106:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -4960,7 +5600,7 @@ isr106:
 	push R11
 	
 	mov RDI, 106 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -4970,7 +5610,7 @@ isr106:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -4982,9 +5622,15 @@ isr106:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr107:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -4996,7 +5642,7 @@ isr107:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5004,7 +5650,7 @@ isr107:
 	push R11
 	
 	mov RDI, 107 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5014,7 +5660,7 @@ isr107:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5026,9 +5672,15 @@ isr107:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr108:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5040,7 +5692,7 @@ isr108:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5048,7 +5700,7 @@ isr108:
 	push R11
 	
 	mov RDI, 108 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5058,7 +5710,7 @@ isr108:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5070,9 +5722,15 @@ isr108:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr109:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5084,7 +5742,7 @@ isr109:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5092,7 +5750,7 @@ isr109:
 	push R11
 	
 	mov RDI, 109 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5102,7 +5760,7 @@ isr109:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5114,9 +5772,15 @@ isr109:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr110:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5128,7 +5792,7 @@ isr110:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5136,7 +5800,7 @@ isr110:
 	push R11
 	
 	mov RDI, 110 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5146,7 +5810,7 @@ isr110:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5158,9 +5822,15 @@ isr110:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr111:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5172,7 +5842,7 @@ isr111:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5180,7 +5850,7 @@ isr111:
 	push R11
 	
 	mov RDI, 111 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5190,7 +5860,7 @@ isr111:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5202,9 +5872,15 @@ isr111:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr112:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5216,7 +5892,7 @@ isr112:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5224,7 +5900,7 @@ isr112:
 	push R11
 	
 	mov RDI, 112 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5234,7 +5910,7 @@ isr112:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5246,9 +5922,15 @@ isr112:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr113:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5260,7 +5942,7 @@ isr113:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5268,7 +5950,7 @@ isr113:
 	push R11
 	
 	mov RDI, 113 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5278,7 +5960,7 @@ isr113:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5290,9 +5972,15 @@ isr113:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr114:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5304,7 +5992,7 @@ isr114:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5312,7 +6000,7 @@ isr114:
 	push R11
 	
 	mov RDI, 114 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5322,7 +6010,7 @@ isr114:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5334,9 +6022,15 @@ isr114:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr115:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5348,7 +6042,7 @@ isr115:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5356,7 +6050,7 @@ isr115:
 	push R11
 	
 	mov RDI, 115 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5366,7 +6060,7 @@ isr115:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5378,9 +6072,15 @@ isr115:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr116:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5392,7 +6092,7 @@ isr116:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5400,7 +6100,7 @@ isr116:
 	push R11
 	
 	mov RDI, 116 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5410,7 +6110,7 @@ isr116:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5422,9 +6122,15 @@ isr116:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr117:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5436,7 +6142,7 @@ isr117:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5444,7 +6150,7 @@ isr117:
 	push R11
 	
 	mov RDI, 117 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5454,7 +6160,7 @@ isr117:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5466,9 +6172,15 @@ isr117:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr118:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5480,7 +6192,7 @@ isr118:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5488,7 +6200,7 @@ isr118:
 	push R11
 	
 	mov RDI, 118 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5498,7 +6210,7 @@ isr118:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5510,9 +6222,15 @@ isr118:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr119:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5524,7 +6242,7 @@ isr119:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5532,7 +6250,7 @@ isr119:
 	push R11
 	
 	mov RDI, 119 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5542,7 +6260,7 @@ isr119:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5554,9 +6272,15 @@ isr119:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr120:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5568,7 +6292,7 @@ isr120:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5576,7 +6300,7 @@ isr120:
 	push R11
 	
 	mov RDI, 120 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5586,7 +6310,7 @@ isr120:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5598,9 +6322,15 @@ isr120:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr121:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5612,7 +6342,7 @@ isr121:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5620,7 +6350,7 @@ isr121:
 	push R11
 	
 	mov RDI, 121 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5630,7 +6360,7 @@ isr121:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5642,9 +6372,15 @@ isr121:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr122:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5656,7 +6392,7 @@ isr122:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5664,7 +6400,7 @@ isr122:
 	push R11
 	
 	mov RDI, 122 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5674,7 +6410,7 @@ isr122:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5686,9 +6422,15 @@ isr122:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr123:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5700,7 +6442,7 @@ isr123:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5708,7 +6450,7 @@ isr123:
 	push R11
 	
 	mov RDI, 123 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5718,7 +6460,7 @@ isr123:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5730,9 +6472,15 @@ isr123:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr124:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5744,7 +6492,7 @@ isr124:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5752,7 +6500,7 @@ isr124:
 	push R11
 	
 	mov RDI, 124 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5762,7 +6510,7 @@ isr124:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5774,9 +6522,15 @@ isr124:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr125:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5788,7 +6542,7 @@ isr125:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5796,7 +6550,7 @@ isr125:
 	push R11
 	
 	mov RDI, 125 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5806,7 +6560,7 @@ isr125:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5818,9 +6572,15 @@ isr125:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr126:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5832,7 +6592,7 @@ isr126:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5840,7 +6600,7 @@ isr126:
 	push R11
 	
 	mov RDI, 126 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5850,7 +6610,7 @@ isr126:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5862,9 +6622,15 @@ isr126:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr127:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5876,7 +6642,7 @@ isr127:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5884,7 +6650,7 @@ isr127:
 	push R11
 	
 	mov RDI, 127 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5894,7 +6660,7 @@ isr127:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5906,9 +6672,15 @@ isr127:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr128:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5920,7 +6692,7 @@ isr128:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5928,7 +6700,7 @@ isr128:
 	push R11
 	
 	mov RDI, 128 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5938,7 +6710,7 @@ isr128:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5950,9 +6722,15 @@ isr128:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr129:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -5964,7 +6742,7 @@ isr129:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -5972,7 +6750,7 @@ isr129:
 	push R11
 	
 	mov RDI, 129 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -5982,7 +6760,7 @@ isr129:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -5994,9 +6772,15 @@ isr129:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr130:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6008,7 +6792,7 @@ isr130:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6016,7 +6800,7 @@ isr130:
 	push R11
 	
 	mov RDI, 130 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6026,7 +6810,7 @@ isr130:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6038,9 +6822,15 @@ isr130:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr131:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6052,7 +6842,7 @@ isr131:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6060,7 +6850,7 @@ isr131:
 	push R11
 	
 	mov RDI, 131 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6070,7 +6860,7 @@ isr131:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6082,9 +6872,15 @@ isr131:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr132:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6096,7 +6892,7 @@ isr132:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6104,7 +6900,7 @@ isr132:
 	push R11
 	
 	mov RDI, 132 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6114,7 +6910,7 @@ isr132:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6126,9 +6922,15 @@ isr132:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr133:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6140,7 +6942,7 @@ isr133:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6148,7 +6950,7 @@ isr133:
 	push R11
 	
 	mov RDI, 133 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6158,7 +6960,7 @@ isr133:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6170,9 +6972,15 @@ isr133:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr134:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6184,7 +6992,7 @@ isr134:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6192,7 +7000,7 @@ isr134:
 	push R11
 	
 	mov RDI, 134 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6202,7 +7010,7 @@ isr134:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6214,9 +7022,15 @@ isr134:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr135:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6228,7 +7042,7 @@ isr135:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6236,7 +7050,7 @@ isr135:
 	push R11
 	
 	mov RDI, 135 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6246,7 +7060,7 @@ isr135:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6258,9 +7072,15 @@ isr135:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr136:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6272,7 +7092,7 @@ isr136:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6280,7 +7100,7 @@ isr136:
 	push R11
 	
 	mov RDI, 136 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6290,7 +7110,7 @@ isr136:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6302,9 +7122,15 @@ isr136:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr137:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6316,7 +7142,7 @@ isr137:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6324,7 +7150,7 @@ isr137:
 	push R11
 	
 	mov RDI, 137 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6334,7 +7160,7 @@ isr137:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6346,9 +7172,15 @@ isr137:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr138:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6360,7 +7192,7 @@ isr138:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6368,7 +7200,7 @@ isr138:
 	push R11
 	
 	mov RDI, 138 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6378,7 +7210,7 @@ isr138:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6390,9 +7222,15 @@ isr138:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr139:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6404,7 +7242,7 @@ isr139:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6412,7 +7250,7 @@ isr139:
 	push R11
 	
 	mov RDI, 139 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6422,7 +7260,7 @@ isr139:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6434,9 +7272,15 @@ isr139:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr140:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6448,7 +7292,7 @@ isr140:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6456,7 +7300,7 @@ isr140:
 	push R11
 	
 	mov RDI, 140 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6466,7 +7310,7 @@ isr140:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6478,9 +7322,15 @@ isr140:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr141:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6492,7 +7342,7 @@ isr141:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6500,7 +7350,7 @@ isr141:
 	push R11
 	
 	mov RDI, 141 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6510,7 +7360,7 @@ isr141:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6522,9 +7372,15 @@ isr141:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr142:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6536,7 +7392,7 @@ isr142:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6544,7 +7400,7 @@ isr142:
 	push R11
 	
 	mov RDI, 142 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6554,7 +7410,7 @@ isr142:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6566,9 +7422,15 @@ isr142:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr143:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6580,7 +7442,7 @@ isr143:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6588,7 +7450,7 @@ isr143:
 	push R11
 	
 	mov RDI, 143 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6598,7 +7460,7 @@ isr143:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6610,9 +7472,15 @@ isr143:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr144:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6624,7 +7492,7 @@ isr144:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6632,7 +7500,7 @@ isr144:
 	push R11
 	
 	mov RDI, 144 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6642,7 +7510,7 @@ isr144:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6654,9 +7522,15 @@ isr144:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr145:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6668,7 +7542,7 @@ isr145:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6676,7 +7550,7 @@ isr145:
 	push R11
 	
 	mov RDI, 145 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6686,7 +7560,7 @@ isr145:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6698,9 +7572,15 @@ isr145:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr146:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6712,7 +7592,7 @@ isr146:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6720,7 +7600,7 @@ isr146:
 	push R11
 	
 	mov RDI, 146 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6730,7 +7610,7 @@ isr146:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6742,9 +7622,15 @@ isr146:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr147:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6756,7 +7642,7 @@ isr147:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6764,7 +7650,7 @@ isr147:
 	push R11
 	
 	mov RDI, 147 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6774,7 +7660,7 @@ isr147:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6786,9 +7672,15 @@ isr147:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr148:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6800,7 +7692,7 @@ isr148:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6808,7 +7700,7 @@ isr148:
 	push R11
 	
 	mov RDI, 148 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6818,7 +7710,7 @@ isr148:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6830,9 +7722,15 @@ isr148:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr149:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6844,7 +7742,7 @@ isr149:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6852,7 +7750,7 @@ isr149:
 	push R11
 	
 	mov RDI, 149 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6862,7 +7760,7 @@ isr149:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6874,9 +7772,15 @@ isr149:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr150:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6888,7 +7792,7 @@ isr150:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6896,7 +7800,7 @@ isr150:
 	push R11
 	
 	mov RDI, 150 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6906,7 +7810,7 @@ isr150:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6918,9 +7822,15 @@ isr150:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr151:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6932,7 +7842,7 @@ isr151:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6940,7 +7850,7 @@ isr151:
 	push R11
 	
 	mov RDI, 151 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6950,7 +7860,7 @@ isr151:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -6962,9 +7872,15 @@ isr151:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr152:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -6976,7 +7892,7 @@ isr152:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -6984,7 +7900,7 @@ isr152:
 	push R11
 	
 	mov RDI, 152 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -6994,7 +7910,7 @@ isr152:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7006,9 +7922,15 @@ isr152:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr153:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7020,7 +7942,7 @@ isr153:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7028,7 +7950,7 @@ isr153:
 	push R11
 	
 	mov RDI, 153 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7038,7 +7960,7 @@ isr153:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7050,9 +7972,15 @@ isr153:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr154:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7064,7 +7992,7 @@ isr154:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7072,7 +8000,7 @@ isr154:
 	push R11
 	
 	mov RDI, 154 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7082,7 +8010,7 @@ isr154:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7094,9 +8022,15 @@ isr154:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr155:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7108,7 +8042,7 @@ isr155:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7116,7 +8050,7 @@ isr155:
 	push R11
 	
 	mov RDI, 155 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7126,7 +8060,7 @@ isr155:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7138,9 +8072,15 @@ isr155:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr156:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7152,7 +8092,7 @@ isr156:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7160,7 +8100,7 @@ isr156:
 	push R11
 	
 	mov RDI, 156 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7170,7 +8110,7 @@ isr156:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7182,9 +8122,15 @@ isr156:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr157:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7196,7 +8142,7 @@ isr157:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7204,7 +8150,7 @@ isr157:
 	push R11
 	
 	mov RDI, 157 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7214,7 +8160,7 @@ isr157:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7226,9 +8172,15 @@ isr157:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr158:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7240,7 +8192,7 @@ isr158:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7248,7 +8200,7 @@ isr158:
 	push R11
 	
 	mov RDI, 158 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7258,7 +8210,7 @@ isr158:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7270,9 +8222,15 @@ isr158:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr159:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7284,7 +8242,7 @@ isr159:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7292,7 +8250,7 @@ isr159:
 	push R11
 	
 	mov RDI, 159 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7302,7 +8260,7 @@ isr159:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7314,9 +8272,15 @@ isr159:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr160:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7328,7 +8292,7 @@ isr160:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7336,7 +8300,7 @@ isr160:
 	push R11
 	
 	mov RDI, 160 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7346,7 +8310,7 @@ isr160:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7358,9 +8322,15 @@ isr160:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr161:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7372,7 +8342,7 @@ isr161:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7380,7 +8350,7 @@ isr161:
 	push R11
 	
 	mov RDI, 161 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7390,7 +8360,7 @@ isr161:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7402,9 +8372,15 @@ isr161:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr162:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7416,7 +8392,7 @@ isr162:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7424,7 +8400,7 @@ isr162:
 	push R11
 	
 	mov RDI, 162 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7434,7 +8410,7 @@ isr162:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7446,9 +8422,15 @@ isr162:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr163:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7460,7 +8442,7 @@ isr163:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7468,7 +8450,7 @@ isr163:
 	push R11
 	
 	mov RDI, 163 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7478,7 +8460,7 @@ isr163:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7490,9 +8472,15 @@ isr163:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr164:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7504,7 +8492,7 @@ isr164:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7512,7 +8500,7 @@ isr164:
 	push R11
 	
 	mov RDI, 164 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7522,7 +8510,7 @@ isr164:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7534,9 +8522,15 @@ isr164:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr165:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7548,7 +8542,7 @@ isr165:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7556,7 +8550,7 @@ isr165:
 	push R11
 	
 	mov RDI, 165 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7566,7 +8560,7 @@ isr165:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7578,9 +8572,15 @@ isr165:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr166:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7592,7 +8592,7 @@ isr166:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7600,7 +8600,7 @@ isr166:
 	push R11
 	
 	mov RDI, 166 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7610,7 +8610,7 @@ isr166:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7622,9 +8622,15 @@ isr166:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr167:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7636,7 +8642,7 @@ isr167:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7644,7 +8650,7 @@ isr167:
 	push R11
 	
 	mov RDI, 167 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7654,7 +8660,7 @@ isr167:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7666,9 +8672,15 @@ isr167:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr168:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7680,7 +8692,7 @@ isr168:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7688,7 +8700,7 @@ isr168:
 	push R11
 	
 	mov RDI, 168 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7698,7 +8710,7 @@ isr168:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7710,9 +8722,15 @@ isr168:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr169:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7724,7 +8742,7 @@ isr169:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7732,7 +8750,7 @@ isr169:
 	push R11
 	
 	mov RDI, 169 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7742,7 +8760,7 @@ isr169:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7754,9 +8772,15 @@ isr169:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr170:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7768,7 +8792,7 @@ isr170:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7776,7 +8800,7 @@ isr170:
 	push R11
 	
 	mov RDI, 170 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7786,7 +8810,7 @@ isr170:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7798,9 +8822,15 @@ isr170:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr171:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7812,7 +8842,7 @@ isr171:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7820,7 +8850,7 @@ isr171:
 	push R11
 	
 	mov RDI, 171 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7830,7 +8860,7 @@ isr171:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7842,9 +8872,15 @@ isr171:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr172:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7856,7 +8892,7 @@ isr172:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7864,7 +8900,7 @@ isr172:
 	push R11
 	
 	mov RDI, 172 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7874,7 +8910,7 @@ isr172:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7886,9 +8922,15 @@ isr172:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr173:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7900,7 +8942,7 @@ isr173:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7908,7 +8950,7 @@ isr173:
 	push R11
 	
 	mov RDI, 173 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7918,7 +8960,7 @@ isr173:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7930,9 +8972,15 @@ isr173:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr174:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7944,7 +8992,7 @@ isr174:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7952,7 +9000,7 @@ isr174:
 	push R11
 	
 	mov RDI, 174 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -7962,7 +9010,7 @@ isr174:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -7974,9 +9022,15 @@ isr174:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr175:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -7988,7 +9042,7 @@ isr175:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -7996,7 +9050,7 @@ isr175:
 	push R11
 	
 	mov RDI, 175 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8006,7 +9060,7 @@ isr175:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8018,9 +9072,15 @@ isr175:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr176:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8032,7 +9092,7 @@ isr176:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8040,7 +9100,7 @@ isr176:
 	push R11
 	
 	mov RDI, 176 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8050,7 +9110,7 @@ isr176:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8062,9 +9122,15 @@ isr176:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr177:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8076,7 +9142,7 @@ isr177:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8084,7 +9150,7 @@ isr177:
 	push R11
 	
 	mov RDI, 177 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8094,7 +9160,7 @@ isr177:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8106,9 +9172,15 @@ isr177:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr178:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8120,7 +9192,7 @@ isr178:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8128,7 +9200,7 @@ isr178:
 	push R11
 	
 	mov RDI, 178 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8138,7 +9210,7 @@ isr178:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8150,9 +9222,15 @@ isr178:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr179:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8164,7 +9242,7 @@ isr179:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8172,7 +9250,7 @@ isr179:
 	push R11
 	
 	mov RDI, 179 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8182,7 +9260,7 @@ isr179:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8194,9 +9272,15 @@ isr179:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr180:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8208,7 +9292,7 @@ isr180:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8216,7 +9300,7 @@ isr180:
 	push R11
 	
 	mov RDI, 180 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8226,7 +9310,7 @@ isr180:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8238,9 +9322,15 @@ isr180:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr181:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8252,7 +9342,7 @@ isr181:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8260,7 +9350,7 @@ isr181:
 	push R11
 	
 	mov RDI, 181 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8270,7 +9360,7 @@ isr181:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8282,9 +9372,15 @@ isr181:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr182:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8296,7 +9392,7 @@ isr182:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8304,7 +9400,7 @@ isr182:
 	push R11
 	
 	mov RDI, 182 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8314,7 +9410,7 @@ isr182:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8326,9 +9422,15 @@ isr182:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr183:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8340,7 +9442,7 @@ isr183:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8348,7 +9450,7 @@ isr183:
 	push R11
 	
 	mov RDI, 183 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8358,7 +9460,7 @@ isr183:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8370,9 +9472,15 @@ isr183:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr184:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8384,7 +9492,7 @@ isr184:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8392,7 +9500,7 @@ isr184:
 	push R11
 	
 	mov RDI, 184 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8402,7 +9510,7 @@ isr184:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8414,9 +9522,15 @@ isr184:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr185:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8428,7 +9542,7 @@ isr185:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8436,7 +9550,7 @@ isr185:
 	push R11
 	
 	mov RDI, 185 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8446,7 +9560,7 @@ isr185:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8458,9 +9572,15 @@ isr185:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr186:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8472,7 +9592,7 @@ isr186:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8480,7 +9600,7 @@ isr186:
 	push R11
 	
 	mov RDI, 186 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8490,7 +9610,7 @@ isr186:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8502,9 +9622,15 @@ isr186:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr187:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8516,7 +9642,7 @@ isr187:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8524,7 +9650,7 @@ isr187:
 	push R11
 	
 	mov RDI, 187 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8534,7 +9660,7 @@ isr187:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8546,9 +9672,15 @@ isr187:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr188:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8560,7 +9692,7 @@ isr188:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8568,7 +9700,7 @@ isr188:
 	push R11
 	
 	mov RDI, 188 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8578,7 +9710,7 @@ isr188:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8590,9 +9722,15 @@ isr188:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr189:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8604,7 +9742,7 @@ isr189:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8612,7 +9750,7 @@ isr189:
 	push R11
 	
 	mov RDI, 189 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8622,7 +9760,7 @@ isr189:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8634,9 +9772,15 @@ isr189:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr190:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8648,7 +9792,7 @@ isr190:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8656,7 +9800,7 @@ isr190:
 	push R11
 	
 	mov RDI, 190 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8666,7 +9810,7 @@ isr190:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8678,9 +9822,15 @@ isr190:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr191:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8692,7 +9842,7 @@ isr191:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8700,7 +9850,7 @@ isr191:
 	push R11
 	
 	mov RDI, 191 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8710,7 +9860,7 @@ isr191:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8722,9 +9872,15 @@ isr191:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr192:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8736,7 +9892,7 @@ isr192:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8744,7 +9900,7 @@ isr192:
 	push R11
 	
 	mov RDI, 192 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8754,7 +9910,7 @@ isr192:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8766,9 +9922,15 @@ isr192:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr193:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8780,7 +9942,7 @@ isr193:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8788,7 +9950,7 @@ isr193:
 	push R11
 	
 	mov RDI, 193 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8798,7 +9960,7 @@ isr193:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8810,9 +9972,15 @@ isr193:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr194:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8824,7 +9992,7 @@ isr194:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8832,7 +10000,7 @@ isr194:
 	push R11
 	
 	mov RDI, 194 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8842,7 +10010,7 @@ isr194:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8854,9 +10022,15 @@ isr194:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr195:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8868,7 +10042,7 @@ isr195:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8876,7 +10050,7 @@ isr195:
 	push R11
 	
 	mov RDI, 195 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8886,7 +10060,7 @@ isr195:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8898,9 +10072,15 @@ isr195:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr196:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8912,7 +10092,7 @@ isr196:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8920,7 +10100,7 @@ isr196:
 	push R11
 	
 	mov RDI, 196 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8930,7 +10110,7 @@ isr196:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8942,9 +10122,15 @@ isr196:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr197:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -8956,7 +10142,7 @@ isr197:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -8964,7 +10150,7 @@ isr197:
 	push R11
 	
 	mov RDI, 197 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -8974,7 +10160,7 @@ isr197:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -8986,9 +10172,15 @@ isr197:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr198:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9000,7 +10192,7 @@ isr198:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9008,7 +10200,7 @@ isr198:
 	push R11
 	
 	mov RDI, 198 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9018,7 +10210,7 @@ isr198:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9030,9 +10222,15 @@ isr198:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr199:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9044,7 +10242,7 @@ isr199:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9052,7 +10250,7 @@ isr199:
 	push R11
 	
 	mov RDI, 199 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9062,7 +10260,7 @@ isr199:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9074,9 +10272,15 @@ isr199:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr200:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9088,7 +10292,7 @@ isr200:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9096,7 +10300,7 @@ isr200:
 	push R11
 	
 	mov RDI, 200 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9106,7 +10310,7 @@ isr200:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9118,9 +10322,15 @@ isr200:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr201:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9132,7 +10342,7 @@ isr201:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9140,7 +10350,7 @@ isr201:
 	push R11
 	
 	mov RDI, 201 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9150,7 +10360,7 @@ isr201:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9162,9 +10372,15 @@ isr201:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr202:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9176,7 +10392,7 @@ isr202:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9184,7 +10400,7 @@ isr202:
 	push R11
 	
 	mov RDI, 202 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9194,7 +10410,7 @@ isr202:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9206,9 +10422,15 @@ isr202:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr203:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9220,7 +10442,7 @@ isr203:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9228,7 +10450,7 @@ isr203:
 	push R11
 	
 	mov RDI, 203 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9238,7 +10460,7 @@ isr203:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9250,9 +10472,15 @@ isr203:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr204:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9264,7 +10492,7 @@ isr204:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9272,7 +10500,7 @@ isr204:
 	push R11
 	
 	mov RDI, 204 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9282,7 +10510,7 @@ isr204:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9294,9 +10522,15 @@ isr204:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr205:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9308,7 +10542,7 @@ isr205:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9316,7 +10550,7 @@ isr205:
 	push R11
 	
 	mov RDI, 205 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9326,7 +10560,7 @@ isr205:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9338,9 +10572,15 @@ isr205:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr206:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9352,7 +10592,7 @@ isr206:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9360,7 +10600,7 @@ isr206:
 	push R11
 	
 	mov RDI, 206 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9370,7 +10610,7 @@ isr206:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9382,9 +10622,15 @@ isr206:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr207:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9396,7 +10642,7 @@ isr207:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9404,7 +10650,7 @@ isr207:
 	push R11
 	
 	mov RDI, 207 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9414,7 +10660,7 @@ isr207:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9426,9 +10672,15 @@ isr207:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr208:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9440,7 +10692,7 @@ isr208:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9448,7 +10700,7 @@ isr208:
 	push R11
 	
 	mov RDI, 208 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9458,7 +10710,7 @@ isr208:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9470,9 +10722,15 @@ isr208:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr209:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9484,7 +10742,7 @@ isr209:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9492,7 +10750,7 @@ isr209:
 	push R11
 	
 	mov RDI, 209 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9502,7 +10760,7 @@ isr209:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9514,9 +10772,15 @@ isr209:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr210:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9528,7 +10792,7 @@ isr210:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9536,7 +10800,7 @@ isr210:
 	push R11
 	
 	mov RDI, 210 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9546,7 +10810,7 @@ isr210:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9558,9 +10822,15 @@ isr210:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr211:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9572,7 +10842,7 @@ isr211:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9580,7 +10850,7 @@ isr211:
 	push R11
 	
 	mov RDI, 211 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9590,7 +10860,7 @@ isr211:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9602,9 +10872,15 @@ isr211:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr212:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9616,7 +10892,7 @@ isr212:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9624,7 +10900,7 @@ isr212:
 	push R11
 	
 	mov RDI, 212 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9634,7 +10910,7 @@ isr212:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9646,9 +10922,15 @@ isr212:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr213:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9660,7 +10942,7 @@ isr213:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9668,7 +10950,7 @@ isr213:
 	push R11
 	
 	mov RDI, 213 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9678,7 +10960,7 @@ isr213:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9690,9 +10972,15 @@ isr213:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr214:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9704,7 +10992,7 @@ isr214:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9712,7 +11000,7 @@ isr214:
 	push R11
 	
 	mov RDI, 214 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9722,7 +11010,7 @@ isr214:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9734,9 +11022,15 @@ isr214:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr215:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9748,7 +11042,7 @@ isr215:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9756,7 +11050,7 @@ isr215:
 	push R11
 	
 	mov RDI, 215 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9766,7 +11060,7 @@ isr215:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9778,9 +11072,15 @@ isr215:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr216:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9792,7 +11092,7 @@ isr216:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9800,7 +11100,7 @@ isr216:
 	push R11
 	
 	mov RDI, 216 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9810,7 +11110,7 @@ isr216:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9822,9 +11122,15 @@ isr216:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr217:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9836,7 +11142,7 @@ isr217:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9844,7 +11150,7 @@ isr217:
 	push R11
 	
 	mov RDI, 217 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9854,7 +11160,7 @@ isr217:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9866,9 +11172,15 @@ isr217:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr218:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9880,7 +11192,7 @@ isr218:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9888,7 +11200,7 @@ isr218:
 	push R11
 	
 	mov RDI, 218 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9898,7 +11210,7 @@ isr218:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9910,9 +11222,15 @@ isr218:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr219:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9924,7 +11242,7 @@ isr219:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9932,7 +11250,7 @@ isr219:
 	push R11
 	
 	mov RDI, 219 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9942,7 +11260,7 @@ isr219:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9954,9 +11272,15 @@ isr219:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr220:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -9968,7 +11292,7 @@ isr220:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -9976,7 +11300,7 @@ isr220:
 	push R11
 	
 	mov RDI, 220 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -9986,7 +11310,7 @@ isr220:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -9998,9 +11322,15 @@ isr220:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr221:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10012,7 +11342,7 @@ isr221:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10020,7 +11350,7 @@ isr221:
 	push R11
 	
 	mov RDI, 221 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10030,7 +11360,7 @@ isr221:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10042,9 +11372,15 @@ isr221:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr222:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10056,7 +11392,7 @@ isr222:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10064,7 +11400,7 @@ isr222:
 	push R11
 	
 	mov RDI, 222 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10074,7 +11410,7 @@ isr222:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10086,9 +11422,15 @@ isr222:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr223:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10100,7 +11442,7 @@ isr223:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10108,7 +11450,7 @@ isr223:
 	push R11
 	
 	mov RDI, 223 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10118,7 +11460,7 @@ isr223:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10130,9 +11472,15 @@ isr223:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr224:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10144,7 +11492,7 @@ isr224:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10152,7 +11500,7 @@ isr224:
 	push R11
 	
 	mov RDI, 224 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10162,7 +11510,7 @@ isr224:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10174,9 +11522,15 @@ isr224:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr225:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10188,7 +11542,7 @@ isr225:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10196,7 +11550,7 @@ isr225:
 	push R11
 	
 	mov RDI, 225 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10206,7 +11560,7 @@ isr225:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10218,9 +11572,15 @@ isr225:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr226:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10232,7 +11592,7 @@ isr226:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10240,7 +11600,7 @@ isr226:
 	push R11
 	
 	mov RDI, 226 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10250,7 +11610,7 @@ isr226:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10262,9 +11622,15 @@ isr226:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr227:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10276,7 +11642,7 @@ isr227:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10284,7 +11650,7 @@ isr227:
 	push R11
 	
 	mov RDI, 227 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10294,7 +11660,7 @@ isr227:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10306,9 +11672,15 @@ isr227:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr228:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10320,7 +11692,7 @@ isr228:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10328,7 +11700,7 @@ isr228:
 	push R11
 	
 	mov RDI, 228 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10338,7 +11710,7 @@ isr228:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10350,9 +11722,15 @@ isr228:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr229:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10364,7 +11742,7 @@ isr229:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10372,7 +11750,7 @@ isr229:
 	push R11
 	
 	mov RDI, 229 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10382,7 +11760,7 @@ isr229:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10394,9 +11772,15 @@ isr229:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr230:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10408,7 +11792,7 @@ isr230:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10416,7 +11800,7 @@ isr230:
 	push R11
 	
 	mov RDI, 230 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10426,7 +11810,7 @@ isr230:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10438,9 +11822,15 @@ isr230:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr231:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10452,7 +11842,7 @@ isr231:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10460,7 +11850,7 @@ isr231:
 	push R11
 	
 	mov RDI, 231 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10470,7 +11860,7 @@ isr231:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10482,9 +11872,15 @@ isr231:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr232:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10496,7 +11892,7 @@ isr232:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10504,7 +11900,7 @@ isr232:
 	push R11
 	
 	mov RDI, 232 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10514,7 +11910,7 @@ isr232:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10526,9 +11922,15 @@ isr232:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr233:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10540,7 +11942,7 @@ isr233:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10548,7 +11950,7 @@ isr233:
 	push R11
 	
 	mov RDI, 233 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10558,7 +11960,7 @@ isr233:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10570,9 +11972,15 @@ isr233:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr234:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10584,7 +11992,7 @@ isr234:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10592,7 +12000,7 @@ isr234:
 	push R11
 	
 	mov RDI, 234 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10602,7 +12010,7 @@ isr234:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10614,9 +12022,15 @@ isr234:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr235:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10628,7 +12042,7 @@ isr235:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10636,7 +12050,7 @@ isr235:
 	push R11
 	
 	mov RDI, 235 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10646,7 +12060,7 @@ isr235:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10658,9 +12072,15 @@ isr235:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr236:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10672,7 +12092,7 @@ isr236:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10680,7 +12100,7 @@ isr236:
 	push R11
 	
 	mov RDI, 236 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10690,7 +12110,7 @@ isr236:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10702,9 +12122,15 @@ isr236:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr237:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10716,7 +12142,7 @@ isr237:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10724,7 +12150,7 @@ isr237:
 	push R11
 	
 	mov RDI, 237 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10734,7 +12160,7 @@ isr237:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10746,9 +12172,15 @@ isr237:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr238:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10760,7 +12192,7 @@ isr238:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10768,7 +12200,7 @@ isr238:
 	push R11
 	
 	mov RDI, 238 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10778,7 +12210,7 @@ isr238:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10790,9 +12222,15 @@ isr238:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr239:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10804,7 +12242,7 @@ isr239:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10812,7 +12250,7 @@ isr239:
 	push R11
 	
 	mov RDI, 239 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10822,7 +12260,7 @@ isr239:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10834,9 +12272,15 @@ isr239:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr240:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10848,7 +12292,7 @@ isr240:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10856,7 +12300,7 @@ isr240:
 	push R11
 	
 	mov RDI, 240 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10866,7 +12310,7 @@ isr240:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10878,9 +12322,15 @@ isr240:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr241:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10892,7 +12342,7 @@ isr241:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10900,7 +12350,7 @@ isr241:
 	push R11
 	
 	mov RDI, 241 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10910,7 +12360,7 @@ isr241:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10922,9 +12372,15 @@ isr241:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr242:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10936,7 +12392,7 @@ isr242:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10944,7 +12400,7 @@ isr242:
 	push R11
 	
 	mov RDI, 242 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10954,7 +12410,7 @@ isr242:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -10966,9 +12422,15 @@ isr242:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr243:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -10980,7 +12442,7 @@ isr243:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -10988,7 +12450,7 @@ isr243:
 	push R11
 	
 	mov RDI, 243 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -10998,7 +12460,7 @@ isr243:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -11010,9 +12472,15 @@ isr243:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr244:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -11024,7 +12492,7 @@ isr244:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -11032,7 +12500,7 @@ isr244:
 	push R11
 	
 	mov RDI, 244 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -11042,7 +12510,7 @@ isr244:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -11054,9 +12522,15 @@ isr244:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr245:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -11068,7 +12542,7 @@ isr245:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -11076,7 +12550,7 @@ isr245:
 	push R11
 	
 	mov RDI, 245 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -11086,7 +12560,7 @@ isr245:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -11098,9 +12572,15 @@ isr245:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr246:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -11112,7 +12592,7 @@ isr246:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -11120,7 +12600,7 @@ isr246:
 	push R11
 	
 	mov RDI, 246 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -11130,7 +12610,7 @@ isr246:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -11142,9 +12622,15 @@ isr246:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr247:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -11156,7 +12642,7 @@ isr247:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -11164,7 +12650,7 @@ isr247:
 	push R11
 	
 	mov RDI, 247 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -11174,7 +12660,7 @@ isr247:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -11186,9 +12672,15 @@ isr247:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr248:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -11200,7 +12692,7 @@ isr248:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -11208,7 +12700,7 @@ isr248:
 	push R11
 	
 	mov RDI, 248 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -11218,7 +12710,7 @@ isr248:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -11230,9 +12722,15 @@ isr248:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr249:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -11244,7 +12742,7 @@ isr249:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -11252,7 +12750,7 @@ isr249:
 	push R11
 	
 	mov RDI, 249 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -11262,7 +12760,7 @@ isr249:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -11274,9 +12772,15 @@ isr249:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr250:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -11288,7 +12792,7 @@ isr250:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -11296,7 +12800,7 @@ isr250:
 	push R11
 	
 	mov RDI, 250 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -11306,7 +12810,7 @@ isr250:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -11318,9 +12822,15 @@ isr250:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr251:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -11332,7 +12842,7 @@ isr251:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -11340,7 +12850,7 @@ isr251:
 	push R11
 	
 	mov RDI, 251 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -11350,7 +12860,7 @@ isr251:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -11362,9 +12872,15 @@ isr251:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr252:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -11376,7 +12892,7 @@ isr252:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -11384,7 +12900,7 @@ isr252:
 	push R11
 	
 	mov RDI, 252 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -11394,7 +12910,7 @@ isr252:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -11406,9 +12922,15 @@ isr252:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr253:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -11420,7 +12942,7 @@ isr253:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -11428,7 +12950,7 @@ isr253:
 	push R11
 	
 	mov RDI, 253 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -11438,7 +12960,7 @@ isr253:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -11450,9 +12972,15 @@ isr253:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr254:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -11464,7 +12992,7 @@ isr254:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -11472,7 +13000,7 @@ isr254:
 	push R11
 	
 	mov RDI, 254 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -11482,7 +13010,7 @@ isr254:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -11494,9 +13022,15 @@ isr254:
 	pop RBX
 	pop RBP
 
+	pop RSI
+
 	iretq
 
 isr255:
+	push RSI
+
+	mov RSI, [RSP + 8]
+
 	; Push all register for safety
 	push RBP
 	push RBX
@@ -11508,7 +13042,7 @@ isr255:
 	push RAX
 	push RCX
 	push RDX
-	push RSI
+	;push RSI
 	push RDI
 	push R8
 	push R9
@@ -11516,7 +13050,7 @@ isr255:
 	push R11
 	
 	mov RDI, 255 ; irq number, 1st arg
-	mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
 
 	call generic_interrupt_handler
 
@@ -11526,7 +13060,7 @@ isr255:
 	pop R9
 	pop R8
 	pop RDI
-	pop RSI
+	;pop RSI
 	pop RDX
 	pop RCX
 	pop RAX
@@ -11537,5 +13071,7 @@ isr255:
 	pop RSP
 	pop RBX
 	pop RBP
+
+	pop RSI
 
 	iretq

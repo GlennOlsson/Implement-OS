@@ -41,8 +41,17 @@ void kmain() {
 	// Turn on interrupts just now
 	sti(1);
 
-	char* i = (char*) 0x40000000;
-	*i = 5;
+	// char* i = (char*) 0x40000000;
+	// *i = 5;
+
+	void* page = MMU_alloc_page();
+	*(uint64_t*) page = 0x69;
+	printkln("At %p: 0x%lx", page, *(uint64_t*) page);
+
+	void* page2 = MMU_alloc_page();
+	printkln("Curr At %p: 0x%lx", page2, *(uint64_t*) page2);
+	*(uint64_t*) page2 = 0x79;
+	printkln("Now At %p: 0x%lx", page2, *(uint64_t*) page2);
 
 	// int i = 0;
 	// int* i_add = (int*) (((uint64_t) &i) | (1 << 30));
