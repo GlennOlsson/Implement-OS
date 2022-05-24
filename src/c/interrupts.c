@@ -254,12 +254,12 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			if(!PT_can_allocate(cr2_content)) // If cannot allocate (demand allocate), print error
 				printkln("(SAME)Page Fault, error code: %x, CR2=%lx, CR3=%lx", error_code, cr2_content, cr3_content);
 			else {
-				printkln("OK! , error code: %x, CR2=%lx", error_code, cr2_content);
+				//printkln("OK! , error code: %x, CR2=%lx", error_code, cr2_content);
 				
-				uint64_t* pt = (uint64_t*) cr2_content;
-				printkln("Content at pt: %lx", *pt);
+				//uint64_t* pt = (uint64_t*) cr2_content;
+				//printkln("Content at pt: %lx", *pt);
 
-				printkln("Done with interrupt");
+				//printkln("Done with interrupt");
 			}
 
 			break;

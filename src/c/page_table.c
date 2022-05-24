@@ -98,6 +98,8 @@ void PT_init() {
 	// Mark address nullptr as not present
 	PML* pml1_0 = PML_get_pml1(nullptr);
 	PML_set_present(pml1_0, 0);
+	PML_set_rw(pml1_0, 0);
+	PML_set_us(pml1_0, 0);
 
 
 	PML* pml3 = &p3_table;
@@ -140,7 +142,7 @@ void PT_init() {
 // Checks if address can be allocated (called from page fault), and allocate if possible
 // returns 1 if could allocate new page, 0 if not
 uint8_t PT_can_allocate(uint64_t add) {
-	printkln("Can alloc?");
+	//printkln("Can alloc?");
 	PML* pml1_entry = PML_get_pml1(add);
 	
 	if(PML_is_allocated(pml1_entry)) {
@@ -148,7 +150,7 @@ uint8_t PT_can_allocate(uint64_t add) {
 		return 0;
 	}
 
-	printkln("PRE PML1 entry: %lx", *pml1_entry);
+	//printkln("PRE PML1 entry: %lx", *pml1_entry);
 
 	void* phys_pf = MEM_pf_alloc();
 	if(phys_pf == nullptr) {
@@ -157,17 +159,17 @@ uint8_t PT_can_allocate(uint64_t add) {
 	}
 	PML_clear(pml1_entry);
 
-	printkln("'PML1 entry: %lx", *pml1_entry);
+	//printkln("'PML1 entry: %lx", *pml1_entry);
 
 	PML_set_add(pml1_entry, phys_pf);
-	PML_set_allocated(pml1_entry, 0);
+	PML_set_allocated(pml1_entry, 1);
 	PML_set_present(pml1_entry, 1);
 	PML_set_us(pml1_entry, 1);
 	PML_set_rw(pml1_entry, 1);
 
-	printkln("PML1 entry: %lx", *pml1_entry);
-	printkln("Phys add: %p", phys_pf);
-	printkln("Is allocated: %c", PML_is_allocated(pml1_entry) == 1 ? 'y' : 'n');
+	//printkln("PML1 entry: %lx", *pml1_entry);
+	//printkln("Phys add: %p", phys_pf);
+	//printkln("Is allocated: %c", PML_is_allocated(pml1_entry) == 1 ? 'y' : 'n');
 
 	return 1;
 }

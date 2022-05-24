@@ -41,8 +41,8 @@ void kmain() {
 	// Turn on interrupts just now
 	sti(1);
 
-	// char* i = (char*) 0x40000000;
-	// *i = 5;
+	char* i = (char*) 0x40000000;
+	*i = 5;
 
 	void* page = MMU_alloc_page();
 	printkln("Stack ptr: %p", &page);
@@ -54,14 +54,7 @@ void kmain() {
 	printkln("Curr At %p: 0x%lx", page2, *(uint64_t*) page2);
 	*(uint64_t*) page2 = 0x79;
 	printkln("Now At %p: 0x%lx", page2, *(uint64_t*) page2);
-
-	// int i = 0;
-	// int* i_add = (int*) (((uint64_t) &i) | (1 << 30));
-	// printkln("&i = %p, or %p", &i, i_add);
-
-	// *i_add = 5;
-
-	// printkln("i = %d, or %d", i, *i_add);
+	printkln("(P1) Now At %p: 0x%lx", page, *(uint64_t*) page);
 
 	volatile int j = 0;
 	while(!j)
