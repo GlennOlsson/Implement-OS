@@ -24,11 +24,13 @@ content += """
 section .bss
 align 8
 curr_isr:
+.after_push:
+	resb 8
+.after_pop:
 	resb 8
 
 error_code:
 	resb 8
-
 
 section .text
 init_ints:
@@ -60,9 +62,9 @@ push_reg: ; Push all registers
 	push R10
 	push R11 ; 16 8-byte registers
 
-	jmp [curr_isr]
+	jmp [curr_isr.after_push]
 
-pop_reg: ; Pop in FILO order, and iretq
+pop_reg: ; Pop in FILO order
 	pop R11
 	pop R10
 	pop R9
@@ -80,16 +82,16 @@ pop_reg: ; Pop in FILO order, and iretq
 	pop RBP
 	pop RSI
 
-	iretq
+	jmp [curr_isr.after_pop]
+"""
+
+store_error_code = """
+	;mov [error_code], [RSP + 8]
 """
 
 # Only add to isr's with error code
-save_error_code = """
-	;pop word [error_code]
-	;mov rsi, [rsp + 16*8] ; load error code into rsi
-	;mov rdi, rsp
-	;add rdi, 17*8 ; calculate exception stack frame pointer, 16 registers + error code
-	;sub rsp, 8 ; align the stack pointer
+load_error_code = """
+	mov RSI, [RSP + 8 * 16]
 """
 
 reset_rsp_code = """
@@ -99,24 +101,35 @@ reset_rsp_code = """
 for i in range(256):
 	code = f"""
 isr{i}:
-	mov qword [curr_isr], isr{i}.after_push
+	{store_error_code if i in error_code_isrs else ""}
+
+	;push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr{i}.after_push
+	mov qword [curr_isr.after_pop], isr{i}.after_pop
 
 	; Push all register for safety
 	jmp push_reg
 
 .after_push:
 
-	{save_error_code if i in error_code_isrs else ""}
+	{load_error_code if i in error_code_isrs else ""}
 
 	mov RDI, {i} ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	{reset_rsp_code if i in error_code_isrs else ""}
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	;add RSP, 8
+	
+	iretq
 """
 	content += code
 

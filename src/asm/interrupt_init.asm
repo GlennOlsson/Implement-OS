@@ -270,11 +270,13 @@ global isr255
 section .bss
 align 8
 curr_isr:
+.after_push:
+	resb 8
+.after_pop:
 	resb 8
 
 error_code:
 	resb 8
-
 
 section .text
 init_ints:
@@ -306,9 +308,9 @@ push_reg: ; Push all registers
 	push R10
 	push R11 ; 16 8-byte registers
 
-	jmp [curr_isr]
+	jmp [curr_isr.after_push]
 
-pop_reg: ; Pop in FILO order, and iretq
+pop_reg: ; Pop in FILO order
 	pop R11
 	pop R10
 	pop R9
@@ -326,10 +328,16 @@ pop_reg: ; Pop in FILO order, and iretq
 	pop RBP
 	pop RSI
 
-	iretq
+	jmp [curr_isr.after_pop]
 
 isr0:
-	mov qword [curr_isr], isr0.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr0.after_push
+	mov qword [curr_isr.after_pop], isr0.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -339,17 +347,28 @@ isr0:
 	
 
 	mov RDI, 0 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr1:
-	mov qword [curr_isr], isr1.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr1.after_push
+	mov qword [curr_isr.after_pop], isr1.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -359,17 +378,28 @@ isr1:
 	
 
 	mov RDI, 1 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr2:
-	mov qword [curr_isr], isr2.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr2.after_push
+	mov qword [curr_isr.after_pop], isr2.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -379,17 +409,28 @@ isr2:
 	
 
 	mov RDI, 2 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr3:
-	mov qword [curr_isr], isr3.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr3.after_push
+	mov qword [curr_isr.after_pop], isr3.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -399,17 +440,28 @@ isr3:
 	
 
 	mov RDI, 3 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr4:
-	mov qword [curr_isr], isr4.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr4.after_push
+	mov qword [curr_isr.after_pop], isr4.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -419,17 +471,28 @@ isr4:
 	
 
 	mov RDI, 4 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr5:
-	mov qword [curr_isr], isr5.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr5.after_push
+	mov qword [curr_isr.after_pop], isr5.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -439,17 +502,28 @@ isr5:
 	
 
 	mov RDI, 5 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr6:
-	mov qword [curr_isr], isr6.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr6.after_push
+	mov qword [curr_isr.after_pop], isr6.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -459,17 +533,28 @@ isr6:
 	
 
 	mov RDI, 6 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr7:
-	mov qword [curr_isr], isr7.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr7.after_push
+	mov qword [curr_isr.after_pop], isr7.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -479,17 +564,30 @@ isr7:
 	
 
 	mov RDI, 7 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr8:
-	mov qword [curr_isr], isr8.after_push
+	
+	;mov [error_code], [RSP + 8]
+
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr8.after_push
+	mov qword [curr_isr.after_pop], isr8.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -497,15 +595,11 @@ isr8:
 .after_push:
 
 	
-	;pop word [error_code]
-	;mov rsi, [rsp + 16*8] ; load error code into rsi
-	;mov rdi, rsp
-	;add rdi, 17*8 ; calculate exception stack frame pointer, 16 registers + error code
-	;sub rsp, 8 ; align the stack pointer
+	mov RSI, [RSP + 8 * 16]
 
 
 	mov RDI, 8 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
@@ -513,11 +607,22 @@ isr8:
 	;add rsp, 8
 
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr9:
-	mov qword [curr_isr], isr9.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr9.after_push
+	mov qword [curr_isr.after_pop], isr9.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -527,17 +632,30 @@ isr9:
 	
 
 	mov RDI, 9 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr10:
-	mov qword [curr_isr], isr10.after_push
+	
+	;mov [error_code], [RSP + 8]
+
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr10.after_push
+	mov qword [curr_isr.after_pop], isr10.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -545,15 +663,11 @@ isr10:
 .after_push:
 
 	
-	;pop word [error_code]
-	;mov rsi, [rsp + 16*8] ; load error code into rsi
-	;mov rdi, rsp
-	;add rdi, 17*8 ; calculate exception stack frame pointer, 16 registers + error code
-	;sub rsp, 8 ; align the stack pointer
+	mov RSI, [RSP + 8 * 16]
 
 
 	mov RDI, 10 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
@@ -561,11 +675,24 @@ isr10:
 	;add rsp, 8
 
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr11:
-	mov qword [curr_isr], isr11.after_push
+	
+	;mov [error_code], [RSP + 8]
+
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr11.after_push
+	mov qword [curr_isr.after_pop], isr11.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -573,15 +700,11 @@ isr11:
 .after_push:
 
 	
-	;pop word [error_code]
-	;mov rsi, [rsp + 16*8] ; load error code into rsi
-	;mov rdi, rsp
-	;add rdi, 17*8 ; calculate exception stack frame pointer, 16 registers + error code
-	;sub rsp, 8 ; align the stack pointer
+	mov RSI, [RSP + 8 * 16]
 
 
 	mov RDI, 11 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
@@ -589,11 +712,24 @@ isr11:
 	;add rsp, 8
 
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr12:
-	mov qword [curr_isr], isr12.after_push
+	
+	;mov [error_code], [RSP + 8]
+
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr12.after_push
+	mov qword [curr_isr.after_pop], isr12.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -601,15 +737,11 @@ isr12:
 .after_push:
 
 	
-	;pop word [error_code]
-	;mov rsi, [rsp + 16*8] ; load error code into rsi
-	;mov rdi, rsp
-	;add rdi, 17*8 ; calculate exception stack frame pointer, 16 registers + error code
-	;sub rsp, 8 ; align the stack pointer
+	mov RSI, [RSP + 8 * 16]
 
 
 	mov RDI, 12 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
@@ -617,11 +749,24 @@ isr12:
 	;add rsp, 8
 
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr13:
-	mov qword [curr_isr], isr13.after_push
+	
+	;mov [error_code], [RSP + 8]
+
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr13.after_push
+	mov qword [curr_isr.after_pop], isr13.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -629,15 +774,11 @@ isr13:
 .after_push:
 
 	
-	;pop word [error_code]
-	;mov rsi, [rsp + 16*8] ; load error code into rsi
-	;mov rdi, rsp
-	;add rdi, 17*8 ; calculate exception stack frame pointer, 16 registers + error code
-	;sub rsp, 8 ; align the stack pointer
+	mov RSI, [RSP + 8 * 16]
 
 
 	mov RDI, 13 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
@@ -645,11 +786,24 @@ isr13:
 	;add rsp, 8
 
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr14:
-	mov qword [curr_isr], isr14.after_push
+	
+	;mov [error_code], [RSP + 8]
+
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr14.after_push
+	mov qword [curr_isr.after_pop], isr14.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -657,15 +811,11 @@ isr14:
 .after_push:
 
 	
-	;pop word [error_code]
-	;mov rsi, [rsp + 16*8] ; load error code into rsi
-	;mov rdi, rsp
-	;add rdi, 17*8 ; calculate exception stack frame pointer, 16 registers + error code
-	;sub rsp, 8 ; align the stack pointer
+	mov RSI, [RSP + 8 * 16]
 
 
 	mov RDI, 14 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
@@ -673,11 +823,22 @@ isr14:
 	;add rsp, 8
 
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr15:
-	mov qword [curr_isr], isr15.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr15.after_push
+	mov qword [curr_isr.after_pop], isr15.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -687,17 +848,28 @@ isr15:
 	
 
 	mov RDI, 15 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr16:
-	mov qword [curr_isr], isr16.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr16.after_push
+	mov qword [curr_isr.after_pop], isr16.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -707,17 +879,30 @@ isr16:
 	
 
 	mov RDI, 16 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr17:
-	mov qword [curr_isr], isr17.after_push
+	
+	;mov [error_code], [RSP + 8]
+
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr17.after_push
+	mov qword [curr_isr.after_pop], isr17.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -725,15 +910,11 @@ isr17:
 .after_push:
 
 	
-	;pop word [error_code]
-	;mov rsi, [rsp + 16*8] ; load error code into rsi
-	;mov rdi, rsp
-	;add rdi, 17*8 ; calculate exception stack frame pointer, 16 registers + error code
-	;sub rsp, 8 ; align the stack pointer
+	mov RSI, [RSP + 8 * 16]
 
 
 	mov RDI, 17 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
@@ -741,11 +922,22 @@ isr17:
 	;add rsp, 8
 
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr18:
-	mov qword [curr_isr], isr18.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr18.after_push
+	mov qword [curr_isr.after_pop], isr18.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -755,17 +947,28 @@ isr18:
 	
 
 	mov RDI, 18 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr19:
-	mov qword [curr_isr], isr19.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr19.after_push
+	mov qword [curr_isr.after_pop], isr19.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -775,17 +978,28 @@ isr19:
 	
 
 	mov RDI, 19 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr20:
-	mov qword [curr_isr], isr20.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr20.after_push
+	mov qword [curr_isr.after_pop], isr20.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -795,17 +1009,28 @@ isr20:
 	
 
 	mov RDI, 20 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr21:
-	mov qword [curr_isr], isr21.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr21.after_push
+	mov qword [curr_isr.after_pop], isr21.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -815,17 +1040,28 @@ isr21:
 	
 
 	mov RDI, 21 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr22:
-	mov qword [curr_isr], isr22.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr22.after_push
+	mov qword [curr_isr.after_pop], isr22.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -835,17 +1071,28 @@ isr22:
 	
 
 	mov RDI, 22 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr23:
-	mov qword [curr_isr], isr23.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr23.after_push
+	mov qword [curr_isr.after_pop], isr23.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -855,17 +1102,28 @@ isr23:
 	
 
 	mov RDI, 23 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr24:
-	mov qword [curr_isr], isr24.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr24.after_push
+	mov qword [curr_isr.after_pop], isr24.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -875,17 +1133,28 @@ isr24:
 	
 
 	mov RDI, 24 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr25:
-	mov qword [curr_isr], isr25.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr25.after_push
+	mov qword [curr_isr.after_pop], isr25.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -895,17 +1164,28 @@ isr25:
 	
 
 	mov RDI, 25 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr26:
-	mov qword [curr_isr], isr26.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr26.after_push
+	mov qword [curr_isr.after_pop], isr26.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -915,17 +1195,28 @@ isr26:
 	
 
 	mov RDI, 26 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr27:
-	mov qword [curr_isr], isr27.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr27.after_push
+	mov qword [curr_isr.after_pop], isr27.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -935,17 +1226,28 @@ isr27:
 	
 
 	mov RDI, 27 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr28:
-	mov qword [curr_isr], isr28.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr28.after_push
+	mov qword [curr_isr.after_pop], isr28.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -955,17 +1257,28 @@ isr28:
 	
 
 	mov RDI, 28 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr29:
-	mov qword [curr_isr], isr29.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr29.after_push
+	mov qword [curr_isr.after_pop], isr29.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -975,17 +1288,28 @@ isr29:
 	
 
 	mov RDI, 29 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr30:
-	mov qword [curr_isr], isr30.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr30.after_push
+	mov qword [curr_isr.after_pop], isr30.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -995,17 +1319,28 @@ isr30:
 	
 
 	mov RDI, 30 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr31:
-	mov qword [curr_isr], isr31.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr31.after_push
+	mov qword [curr_isr.after_pop], isr31.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1015,17 +1350,28 @@ isr31:
 	
 
 	mov RDI, 31 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr32:
-	mov qword [curr_isr], isr32.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr32.after_push
+	mov qword [curr_isr.after_pop], isr32.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1035,17 +1381,28 @@ isr32:
 	
 
 	mov RDI, 32 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr33:
-	mov qword [curr_isr], isr33.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr33.after_push
+	mov qword [curr_isr.after_pop], isr33.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1055,17 +1412,28 @@ isr33:
 	
 
 	mov RDI, 33 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr34:
-	mov qword [curr_isr], isr34.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr34.after_push
+	mov qword [curr_isr.after_pop], isr34.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1075,17 +1443,28 @@ isr34:
 	
 
 	mov RDI, 34 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr35:
-	mov qword [curr_isr], isr35.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr35.after_push
+	mov qword [curr_isr.after_pop], isr35.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1095,17 +1474,28 @@ isr35:
 	
 
 	mov RDI, 35 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr36:
-	mov qword [curr_isr], isr36.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr36.after_push
+	mov qword [curr_isr.after_pop], isr36.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1115,17 +1505,28 @@ isr36:
 	
 
 	mov RDI, 36 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr37:
-	mov qword [curr_isr], isr37.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr37.after_push
+	mov qword [curr_isr.after_pop], isr37.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1135,17 +1536,28 @@ isr37:
 	
 
 	mov RDI, 37 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr38:
-	mov qword [curr_isr], isr38.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr38.after_push
+	mov qword [curr_isr.after_pop], isr38.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1155,17 +1567,28 @@ isr38:
 	
 
 	mov RDI, 38 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr39:
-	mov qword [curr_isr], isr39.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr39.after_push
+	mov qword [curr_isr.after_pop], isr39.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1175,17 +1598,28 @@ isr39:
 	
 
 	mov RDI, 39 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr40:
-	mov qword [curr_isr], isr40.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr40.after_push
+	mov qword [curr_isr.after_pop], isr40.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1195,17 +1629,28 @@ isr40:
 	
 
 	mov RDI, 40 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr41:
-	mov qword [curr_isr], isr41.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr41.after_push
+	mov qword [curr_isr.after_pop], isr41.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1215,17 +1660,28 @@ isr41:
 	
 
 	mov RDI, 41 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr42:
-	mov qword [curr_isr], isr42.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr42.after_push
+	mov qword [curr_isr.after_pop], isr42.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1235,17 +1691,28 @@ isr42:
 	
 
 	mov RDI, 42 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr43:
-	mov qword [curr_isr], isr43.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr43.after_push
+	mov qword [curr_isr.after_pop], isr43.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1255,17 +1722,28 @@ isr43:
 	
 
 	mov RDI, 43 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr44:
-	mov qword [curr_isr], isr44.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr44.after_push
+	mov qword [curr_isr.after_pop], isr44.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1275,17 +1753,28 @@ isr44:
 	
 
 	mov RDI, 44 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr45:
-	mov qword [curr_isr], isr45.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr45.after_push
+	mov qword [curr_isr.after_pop], isr45.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1295,17 +1784,28 @@ isr45:
 	
 
 	mov RDI, 45 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr46:
-	mov qword [curr_isr], isr46.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr46.after_push
+	mov qword [curr_isr.after_pop], isr46.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1315,17 +1815,28 @@ isr46:
 	
 
 	mov RDI, 46 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr47:
-	mov qword [curr_isr], isr47.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr47.after_push
+	mov qword [curr_isr.after_pop], isr47.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1335,17 +1846,28 @@ isr47:
 	
 
 	mov RDI, 47 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr48:
-	mov qword [curr_isr], isr48.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr48.after_push
+	mov qword [curr_isr.after_pop], isr48.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1355,17 +1877,28 @@ isr48:
 	
 
 	mov RDI, 48 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr49:
-	mov qword [curr_isr], isr49.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr49.after_push
+	mov qword [curr_isr.after_pop], isr49.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1375,17 +1908,28 @@ isr49:
 	
 
 	mov RDI, 49 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr50:
-	mov qword [curr_isr], isr50.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr50.after_push
+	mov qword [curr_isr.after_pop], isr50.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1395,17 +1939,28 @@ isr50:
 	
 
 	mov RDI, 50 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr51:
-	mov qword [curr_isr], isr51.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr51.after_push
+	mov qword [curr_isr.after_pop], isr51.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1415,17 +1970,28 @@ isr51:
 	
 
 	mov RDI, 51 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr52:
-	mov qword [curr_isr], isr52.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr52.after_push
+	mov qword [curr_isr.after_pop], isr52.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1435,17 +2001,28 @@ isr52:
 	
 
 	mov RDI, 52 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr53:
-	mov qword [curr_isr], isr53.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr53.after_push
+	mov qword [curr_isr.after_pop], isr53.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1455,17 +2032,28 @@ isr53:
 	
 
 	mov RDI, 53 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr54:
-	mov qword [curr_isr], isr54.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr54.after_push
+	mov qword [curr_isr.after_pop], isr54.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1475,17 +2063,28 @@ isr54:
 	
 
 	mov RDI, 54 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr55:
-	mov qword [curr_isr], isr55.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr55.after_push
+	mov qword [curr_isr.after_pop], isr55.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1495,17 +2094,28 @@ isr55:
 	
 
 	mov RDI, 55 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr56:
-	mov qword [curr_isr], isr56.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr56.after_push
+	mov qword [curr_isr.after_pop], isr56.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1515,17 +2125,28 @@ isr56:
 	
 
 	mov RDI, 56 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr57:
-	mov qword [curr_isr], isr57.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr57.after_push
+	mov qword [curr_isr.after_pop], isr57.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1535,17 +2156,28 @@ isr57:
 	
 
 	mov RDI, 57 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr58:
-	mov qword [curr_isr], isr58.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr58.after_push
+	mov qword [curr_isr.after_pop], isr58.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1555,17 +2187,28 @@ isr58:
 	
 
 	mov RDI, 58 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr59:
-	mov qword [curr_isr], isr59.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr59.after_push
+	mov qword [curr_isr.after_pop], isr59.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1575,17 +2218,28 @@ isr59:
 	
 
 	mov RDI, 59 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr60:
-	mov qword [curr_isr], isr60.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr60.after_push
+	mov qword [curr_isr.after_pop], isr60.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1595,17 +2249,28 @@ isr60:
 	
 
 	mov RDI, 60 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr61:
-	mov qword [curr_isr], isr61.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr61.after_push
+	mov qword [curr_isr.after_pop], isr61.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1615,17 +2280,28 @@ isr61:
 	
 
 	mov RDI, 61 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr62:
-	mov qword [curr_isr], isr62.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr62.after_push
+	mov qword [curr_isr.after_pop], isr62.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1635,17 +2311,28 @@ isr62:
 	
 
 	mov RDI, 62 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr63:
-	mov qword [curr_isr], isr63.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr63.after_push
+	mov qword [curr_isr.after_pop], isr63.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1655,17 +2342,28 @@ isr63:
 	
 
 	mov RDI, 63 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr64:
-	mov qword [curr_isr], isr64.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr64.after_push
+	mov qword [curr_isr.after_pop], isr64.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1675,17 +2373,28 @@ isr64:
 	
 
 	mov RDI, 64 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr65:
-	mov qword [curr_isr], isr65.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr65.after_push
+	mov qword [curr_isr.after_pop], isr65.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1695,17 +2404,28 @@ isr65:
 	
 
 	mov RDI, 65 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr66:
-	mov qword [curr_isr], isr66.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr66.after_push
+	mov qword [curr_isr.after_pop], isr66.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1715,17 +2435,28 @@ isr66:
 	
 
 	mov RDI, 66 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr67:
-	mov qword [curr_isr], isr67.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr67.after_push
+	mov qword [curr_isr.after_pop], isr67.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1735,17 +2466,28 @@ isr67:
 	
 
 	mov RDI, 67 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr68:
-	mov qword [curr_isr], isr68.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr68.after_push
+	mov qword [curr_isr.after_pop], isr68.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1755,17 +2497,28 @@ isr68:
 	
 
 	mov RDI, 68 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr69:
-	mov qword [curr_isr], isr69.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr69.after_push
+	mov qword [curr_isr.after_pop], isr69.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1775,17 +2528,28 @@ isr69:
 	
 
 	mov RDI, 69 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr70:
-	mov qword [curr_isr], isr70.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr70.after_push
+	mov qword [curr_isr.after_pop], isr70.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1795,17 +2559,28 @@ isr70:
 	
 
 	mov RDI, 70 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr71:
-	mov qword [curr_isr], isr71.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr71.after_push
+	mov qword [curr_isr.after_pop], isr71.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1815,17 +2590,28 @@ isr71:
 	
 
 	mov RDI, 71 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr72:
-	mov qword [curr_isr], isr72.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr72.after_push
+	mov qword [curr_isr.after_pop], isr72.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1835,17 +2621,28 @@ isr72:
 	
 
 	mov RDI, 72 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr73:
-	mov qword [curr_isr], isr73.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr73.after_push
+	mov qword [curr_isr.after_pop], isr73.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1855,17 +2652,28 @@ isr73:
 	
 
 	mov RDI, 73 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr74:
-	mov qword [curr_isr], isr74.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr74.after_push
+	mov qword [curr_isr.after_pop], isr74.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1875,17 +2683,28 @@ isr74:
 	
 
 	mov RDI, 74 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr75:
-	mov qword [curr_isr], isr75.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr75.after_push
+	mov qword [curr_isr.after_pop], isr75.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1895,17 +2714,28 @@ isr75:
 	
 
 	mov RDI, 75 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr76:
-	mov qword [curr_isr], isr76.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr76.after_push
+	mov qword [curr_isr.after_pop], isr76.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1915,17 +2745,28 @@ isr76:
 	
 
 	mov RDI, 76 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr77:
-	mov qword [curr_isr], isr77.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr77.after_push
+	mov qword [curr_isr.after_pop], isr77.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1935,17 +2776,28 @@ isr77:
 	
 
 	mov RDI, 77 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr78:
-	mov qword [curr_isr], isr78.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr78.after_push
+	mov qword [curr_isr.after_pop], isr78.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1955,17 +2807,28 @@ isr78:
 	
 
 	mov RDI, 78 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr79:
-	mov qword [curr_isr], isr79.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr79.after_push
+	mov qword [curr_isr.after_pop], isr79.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1975,17 +2838,28 @@ isr79:
 	
 
 	mov RDI, 79 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr80:
-	mov qword [curr_isr], isr80.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr80.after_push
+	mov qword [curr_isr.after_pop], isr80.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -1995,17 +2869,28 @@ isr80:
 	
 
 	mov RDI, 80 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr81:
-	mov qword [curr_isr], isr81.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr81.after_push
+	mov qword [curr_isr.after_pop], isr81.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2015,17 +2900,28 @@ isr81:
 	
 
 	mov RDI, 81 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr82:
-	mov qword [curr_isr], isr82.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr82.after_push
+	mov qword [curr_isr.after_pop], isr82.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2035,17 +2931,28 @@ isr82:
 	
 
 	mov RDI, 82 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr83:
-	mov qword [curr_isr], isr83.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr83.after_push
+	mov qword [curr_isr.after_pop], isr83.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2055,17 +2962,28 @@ isr83:
 	
 
 	mov RDI, 83 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr84:
-	mov qword [curr_isr], isr84.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr84.after_push
+	mov qword [curr_isr.after_pop], isr84.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2075,17 +2993,28 @@ isr84:
 	
 
 	mov RDI, 84 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr85:
-	mov qword [curr_isr], isr85.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr85.after_push
+	mov qword [curr_isr.after_pop], isr85.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2095,17 +3024,28 @@ isr85:
 	
 
 	mov RDI, 85 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr86:
-	mov qword [curr_isr], isr86.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr86.after_push
+	mov qword [curr_isr.after_pop], isr86.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2115,17 +3055,28 @@ isr86:
 	
 
 	mov RDI, 86 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr87:
-	mov qword [curr_isr], isr87.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr87.after_push
+	mov qword [curr_isr.after_pop], isr87.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2135,17 +3086,28 @@ isr87:
 	
 
 	mov RDI, 87 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr88:
-	mov qword [curr_isr], isr88.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr88.after_push
+	mov qword [curr_isr.after_pop], isr88.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2155,17 +3117,28 @@ isr88:
 	
 
 	mov RDI, 88 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr89:
-	mov qword [curr_isr], isr89.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr89.after_push
+	mov qword [curr_isr.after_pop], isr89.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2175,17 +3148,28 @@ isr89:
 	
 
 	mov RDI, 89 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr90:
-	mov qword [curr_isr], isr90.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr90.after_push
+	mov qword [curr_isr.after_pop], isr90.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2195,17 +3179,28 @@ isr90:
 	
 
 	mov RDI, 90 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr91:
-	mov qword [curr_isr], isr91.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr91.after_push
+	mov qword [curr_isr.after_pop], isr91.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2215,17 +3210,28 @@ isr91:
 	
 
 	mov RDI, 91 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr92:
-	mov qword [curr_isr], isr92.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr92.after_push
+	mov qword [curr_isr.after_pop], isr92.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2235,17 +3241,28 @@ isr92:
 	
 
 	mov RDI, 92 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr93:
-	mov qword [curr_isr], isr93.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr93.after_push
+	mov qword [curr_isr.after_pop], isr93.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2255,17 +3272,28 @@ isr93:
 	
 
 	mov RDI, 93 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr94:
-	mov qword [curr_isr], isr94.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr94.after_push
+	mov qword [curr_isr.after_pop], isr94.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2275,17 +3303,28 @@ isr94:
 	
 
 	mov RDI, 94 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr95:
-	mov qword [curr_isr], isr95.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr95.after_push
+	mov qword [curr_isr.after_pop], isr95.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2295,17 +3334,28 @@ isr95:
 	
 
 	mov RDI, 95 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr96:
-	mov qword [curr_isr], isr96.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr96.after_push
+	mov qword [curr_isr.after_pop], isr96.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2315,17 +3365,28 @@ isr96:
 	
 
 	mov RDI, 96 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr97:
-	mov qword [curr_isr], isr97.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr97.after_push
+	mov qword [curr_isr.after_pop], isr97.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2335,17 +3396,28 @@ isr97:
 	
 
 	mov RDI, 97 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr98:
-	mov qword [curr_isr], isr98.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr98.after_push
+	mov qword [curr_isr.after_pop], isr98.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2355,17 +3427,28 @@ isr98:
 	
 
 	mov RDI, 98 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr99:
-	mov qword [curr_isr], isr99.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr99.after_push
+	mov qword [curr_isr.after_pop], isr99.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2375,17 +3458,28 @@ isr99:
 	
 
 	mov RDI, 99 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr100:
-	mov qword [curr_isr], isr100.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr100.after_push
+	mov qword [curr_isr.after_pop], isr100.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2395,17 +3489,28 @@ isr100:
 	
 
 	mov RDI, 100 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr101:
-	mov qword [curr_isr], isr101.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr101.after_push
+	mov qword [curr_isr.after_pop], isr101.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2415,17 +3520,28 @@ isr101:
 	
 
 	mov RDI, 101 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr102:
-	mov qword [curr_isr], isr102.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr102.after_push
+	mov qword [curr_isr.after_pop], isr102.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2435,17 +3551,28 @@ isr102:
 	
 
 	mov RDI, 102 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr103:
-	mov qword [curr_isr], isr103.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr103.after_push
+	mov qword [curr_isr.after_pop], isr103.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2455,17 +3582,28 @@ isr103:
 	
 
 	mov RDI, 103 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr104:
-	mov qword [curr_isr], isr104.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr104.after_push
+	mov qword [curr_isr.after_pop], isr104.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2475,17 +3613,28 @@ isr104:
 	
 
 	mov RDI, 104 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr105:
-	mov qword [curr_isr], isr105.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr105.after_push
+	mov qword [curr_isr.after_pop], isr105.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2495,17 +3644,28 @@ isr105:
 	
 
 	mov RDI, 105 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr106:
-	mov qword [curr_isr], isr106.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr106.after_push
+	mov qword [curr_isr.after_pop], isr106.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2515,17 +3675,28 @@ isr106:
 	
 
 	mov RDI, 106 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr107:
-	mov qword [curr_isr], isr107.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr107.after_push
+	mov qword [curr_isr.after_pop], isr107.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2535,17 +3706,28 @@ isr107:
 	
 
 	mov RDI, 107 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr108:
-	mov qword [curr_isr], isr108.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr108.after_push
+	mov qword [curr_isr.after_pop], isr108.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2555,17 +3737,28 @@ isr108:
 	
 
 	mov RDI, 108 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr109:
-	mov qword [curr_isr], isr109.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr109.after_push
+	mov qword [curr_isr.after_pop], isr109.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2575,17 +3768,28 @@ isr109:
 	
 
 	mov RDI, 109 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr110:
-	mov qword [curr_isr], isr110.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr110.after_push
+	mov qword [curr_isr.after_pop], isr110.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2595,17 +3799,28 @@ isr110:
 	
 
 	mov RDI, 110 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr111:
-	mov qword [curr_isr], isr111.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr111.after_push
+	mov qword [curr_isr.after_pop], isr111.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2615,17 +3830,28 @@ isr111:
 	
 
 	mov RDI, 111 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr112:
-	mov qword [curr_isr], isr112.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr112.after_push
+	mov qword [curr_isr.after_pop], isr112.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2635,17 +3861,28 @@ isr112:
 	
 
 	mov RDI, 112 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr113:
-	mov qword [curr_isr], isr113.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr113.after_push
+	mov qword [curr_isr.after_pop], isr113.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2655,17 +3892,28 @@ isr113:
 	
 
 	mov RDI, 113 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr114:
-	mov qword [curr_isr], isr114.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr114.after_push
+	mov qword [curr_isr.after_pop], isr114.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2675,17 +3923,28 @@ isr114:
 	
 
 	mov RDI, 114 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr115:
-	mov qword [curr_isr], isr115.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr115.after_push
+	mov qword [curr_isr.after_pop], isr115.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2695,17 +3954,28 @@ isr115:
 	
 
 	mov RDI, 115 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr116:
-	mov qword [curr_isr], isr116.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr116.after_push
+	mov qword [curr_isr.after_pop], isr116.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2715,17 +3985,28 @@ isr116:
 	
 
 	mov RDI, 116 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr117:
-	mov qword [curr_isr], isr117.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr117.after_push
+	mov qword [curr_isr.after_pop], isr117.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2735,17 +4016,28 @@ isr117:
 	
 
 	mov RDI, 117 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr118:
-	mov qword [curr_isr], isr118.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr118.after_push
+	mov qword [curr_isr.after_pop], isr118.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2755,17 +4047,28 @@ isr118:
 	
 
 	mov RDI, 118 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr119:
-	mov qword [curr_isr], isr119.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr119.after_push
+	mov qword [curr_isr.after_pop], isr119.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2775,17 +4078,28 @@ isr119:
 	
 
 	mov RDI, 119 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr120:
-	mov qword [curr_isr], isr120.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr120.after_push
+	mov qword [curr_isr.after_pop], isr120.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2795,17 +4109,28 @@ isr120:
 	
 
 	mov RDI, 120 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr121:
-	mov qword [curr_isr], isr121.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr121.after_push
+	mov qword [curr_isr.after_pop], isr121.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2815,17 +4140,28 @@ isr121:
 	
 
 	mov RDI, 121 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr122:
-	mov qword [curr_isr], isr122.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr122.after_push
+	mov qword [curr_isr.after_pop], isr122.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2835,17 +4171,28 @@ isr122:
 	
 
 	mov RDI, 122 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr123:
-	mov qword [curr_isr], isr123.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr123.after_push
+	mov qword [curr_isr.after_pop], isr123.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2855,17 +4202,28 @@ isr123:
 	
 
 	mov RDI, 123 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr124:
-	mov qword [curr_isr], isr124.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr124.after_push
+	mov qword [curr_isr.after_pop], isr124.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2875,17 +4233,28 @@ isr124:
 	
 
 	mov RDI, 124 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr125:
-	mov qword [curr_isr], isr125.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr125.after_push
+	mov qword [curr_isr.after_pop], isr125.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2895,17 +4264,28 @@ isr125:
 	
 
 	mov RDI, 125 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr126:
-	mov qword [curr_isr], isr126.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr126.after_push
+	mov qword [curr_isr.after_pop], isr126.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2915,17 +4295,28 @@ isr126:
 	
 
 	mov RDI, 126 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr127:
-	mov qword [curr_isr], isr127.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr127.after_push
+	mov qword [curr_isr.after_pop], isr127.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2935,17 +4326,28 @@ isr127:
 	
 
 	mov RDI, 127 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr128:
-	mov qword [curr_isr], isr128.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr128.after_push
+	mov qword [curr_isr.after_pop], isr128.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2955,17 +4357,28 @@ isr128:
 	
 
 	mov RDI, 128 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr129:
-	mov qword [curr_isr], isr129.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr129.after_push
+	mov qword [curr_isr.after_pop], isr129.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2975,17 +4388,28 @@ isr129:
 	
 
 	mov RDI, 129 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr130:
-	mov qword [curr_isr], isr130.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr130.after_push
+	mov qword [curr_isr.after_pop], isr130.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -2995,17 +4419,28 @@ isr130:
 	
 
 	mov RDI, 130 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr131:
-	mov qword [curr_isr], isr131.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr131.after_push
+	mov qword [curr_isr.after_pop], isr131.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3015,17 +4450,28 @@ isr131:
 	
 
 	mov RDI, 131 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr132:
-	mov qword [curr_isr], isr132.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr132.after_push
+	mov qword [curr_isr.after_pop], isr132.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3035,17 +4481,28 @@ isr132:
 	
 
 	mov RDI, 132 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr133:
-	mov qword [curr_isr], isr133.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr133.after_push
+	mov qword [curr_isr.after_pop], isr133.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3055,17 +4512,28 @@ isr133:
 	
 
 	mov RDI, 133 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr134:
-	mov qword [curr_isr], isr134.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr134.after_push
+	mov qword [curr_isr.after_pop], isr134.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3075,17 +4543,28 @@ isr134:
 	
 
 	mov RDI, 134 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr135:
-	mov qword [curr_isr], isr135.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr135.after_push
+	mov qword [curr_isr.after_pop], isr135.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3095,17 +4574,28 @@ isr135:
 	
 
 	mov RDI, 135 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr136:
-	mov qword [curr_isr], isr136.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr136.after_push
+	mov qword [curr_isr.after_pop], isr136.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3115,17 +4605,28 @@ isr136:
 	
 
 	mov RDI, 136 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr137:
-	mov qword [curr_isr], isr137.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr137.after_push
+	mov qword [curr_isr.after_pop], isr137.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3135,17 +4636,28 @@ isr137:
 	
 
 	mov RDI, 137 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr138:
-	mov qword [curr_isr], isr138.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr138.after_push
+	mov qword [curr_isr.after_pop], isr138.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3155,17 +4667,28 @@ isr138:
 	
 
 	mov RDI, 138 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr139:
-	mov qword [curr_isr], isr139.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr139.after_push
+	mov qword [curr_isr.after_pop], isr139.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3175,17 +4698,28 @@ isr139:
 	
 
 	mov RDI, 139 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr140:
-	mov qword [curr_isr], isr140.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr140.after_push
+	mov qword [curr_isr.after_pop], isr140.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3195,17 +4729,28 @@ isr140:
 	
 
 	mov RDI, 140 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr141:
-	mov qword [curr_isr], isr141.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr141.after_push
+	mov qword [curr_isr.after_pop], isr141.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3215,17 +4760,28 @@ isr141:
 	
 
 	mov RDI, 141 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr142:
-	mov qword [curr_isr], isr142.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr142.after_push
+	mov qword [curr_isr.after_pop], isr142.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3235,17 +4791,28 @@ isr142:
 	
 
 	mov RDI, 142 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr143:
-	mov qword [curr_isr], isr143.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr143.after_push
+	mov qword [curr_isr.after_pop], isr143.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3255,17 +4822,28 @@ isr143:
 	
 
 	mov RDI, 143 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr144:
-	mov qword [curr_isr], isr144.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr144.after_push
+	mov qword [curr_isr.after_pop], isr144.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3275,17 +4853,28 @@ isr144:
 	
 
 	mov RDI, 144 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr145:
-	mov qword [curr_isr], isr145.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr145.after_push
+	mov qword [curr_isr.after_pop], isr145.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3295,17 +4884,28 @@ isr145:
 	
 
 	mov RDI, 145 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr146:
-	mov qword [curr_isr], isr146.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr146.after_push
+	mov qword [curr_isr.after_pop], isr146.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3315,17 +4915,28 @@ isr146:
 	
 
 	mov RDI, 146 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr147:
-	mov qword [curr_isr], isr147.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr147.after_push
+	mov qword [curr_isr.after_pop], isr147.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3335,17 +4946,28 @@ isr147:
 	
 
 	mov RDI, 147 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr148:
-	mov qword [curr_isr], isr148.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr148.after_push
+	mov qword [curr_isr.after_pop], isr148.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3355,17 +4977,28 @@ isr148:
 	
 
 	mov RDI, 148 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr149:
-	mov qword [curr_isr], isr149.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr149.after_push
+	mov qword [curr_isr.after_pop], isr149.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3375,17 +5008,28 @@ isr149:
 	
 
 	mov RDI, 149 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr150:
-	mov qword [curr_isr], isr150.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr150.after_push
+	mov qword [curr_isr.after_pop], isr150.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3395,17 +5039,28 @@ isr150:
 	
 
 	mov RDI, 150 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr151:
-	mov qword [curr_isr], isr151.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr151.after_push
+	mov qword [curr_isr.after_pop], isr151.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3415,17 +5070,28 @@ isr151:
 	
 
 	mov RDI, 151 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr152:
-	mov qword [curr_isr], isr152.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr152.after_push
+	mov qword [curr_isr.after_pop], isr152.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3435,17 +5101,28 @@ isr152:
 	
 
 	mov RDI, 152 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr153:
-	mov qword [curr_isr], isr153.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr153.after_push
+	mov qword [curr_isr.after_pop], isr153.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3455,17 +5132,28 @@ isr153:
 	
 
 	mov RDI, 153 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr154:
-	mov qword [curr_isr], isr154.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr154.after_push
+	mov qword [curr_isr.after_pop], isr154.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3475,17 +5163,28 @@ isr154:
 	
 
 	mov RDI, 154 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr155:
-	mov qword [curr_isr], isr155.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr155.after_push
+	mov qword [curr_isr.after_pop], isr155.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3495,17 +5194,28 @@ isr155:
 	
 
 	mov RDI, 155 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr156:
-	mov qword [curr_isr], isr156.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr156.after_push
+	mov qword [curr_isr.after_pop], isr156.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3515,17 +5225,28 @@ isr156:
 	
 
 	mov RDI, 156 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr157:
-	mov qword [curr_isr], isr157.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr157.after_push
+	mov qword [curr_isr.after_pop], isr157.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3535,17 +5256,28 @@ isr157:
 	
 
 	mov RDI, 157 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr158:
-	mov qword [curr_isr], isr158.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr158.after_push
+	mov qword [curr_isr.after_pop], isr158.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3555,17 +5287,28 @@ isr158:
 	
 
 	mov RDI, 158 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr159:
-	mov qword [curr_isr], isr159.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr159.after_push
+	mov qword [curr_isr.after_pop], isr159.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3575,17 +5318,28 @@ isr159:
 	
 
 	mov RDI, 159 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr160:
-	mov qword [curr_isr], isr160.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr160.after_push
+	mov qword [curr_isr.after_pop], isr160.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3595,17 +5349,28 @@ isr160:
 	
 
 	mov RDI, 160 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr161:
-	mov qword [curr_isr], isr161.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr161.after_push
+	mov qword [curr_isr.after_pop], isr161.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3615,17 +5380,28 @@ isr161:
 	
 
 	mov RDI, 161 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr162:
-	mov qword [curr_isr], isr162.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr162.after_push
+	mov qword [curr_isr.after_pop], isr162.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3635,17 +5411,28 @@ isr162:
 	
 
 	mov RDI, 162 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr163:
-	mov qword [curr_isr], isr163.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr163.after_push
+	mov qword [curr_isr.after_pop], isr163.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3655,17 +5442,28 @@ isr163:
 	
 
 	mov RDI, 163 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr164:
-	mov qword [curr_isr], isr164.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr164.after_push
+	mov qword [curr_isr.after_pop], isr164.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3675,17 +5473,28 @@ isr164:
 	
 
 	mov RDI, 164 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr165:
-	mov qword [curr_isr], isr165.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr165.after_push
+	mov qword [curr_isr.after_pop], isr165.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3695,17 +5504,28 @@ isr165:
 	
 
 	mov RDI, 165 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr166:
-	mov qword [curr_isr], isr166.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr166.after_push
+	mov qword [curr_isr.after_pop], isr166.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3715,17 +5535,28 @@ isr166:
 	
 
 	mov RDI, 166 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr167:
-	mov qword [curr_isr], isr167.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr167.after_push
+	mov qword [curr_isr.after_pop], isr167.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3735,17 +5566,28 @@ isr167:
 	
 
 	mov RDI, 167 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr168:
-	mov qword [curr_isr], isr168.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr168.after_push
+	mov qword [curr_isr.after_pop], isr168.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3755,17 +5597,28 @@ isr168:
 	
 
 	mov RDI, 168 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr169:
-	mov qword [curr_isr], isr169.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr169.after_push
+	mov qword [curr_isr.after_pop], isr169.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3775,17 +5628,28 @@ isr169:
 	
 
 	mov RDI, 169 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr170:
-	mov qword [curr_isr], isr170.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr170.after_push
+	mov qword [curr_isr.after_pop], isr170.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3795,17 +5659,28 @@ isr170:
 	
 
 	mov RDI, 170 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr171:
-	mov qword [curr_isr], isr171.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr171.after_push
+	mov qword [curr_isr.after_pop], isr171.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3815,17 +5690,28 @@ isr171:
 	
 
 	mov RDI, 171 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr172:
-	mov qword [curr_isr], isr172.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr172.after_push
+	mov qword [curr_isr.after_pop], isr172.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3835,17 +5721,28 @@ isr172:
 	
 
 	mov RDI, 172 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr173:
-	mov qword [curr_isr], isr173.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr173.after_push
+	mov qword [curr_isr.after_pop], isr173.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3855,17 +5752,28 @@ isr173:
 	
 
 	mov RDI, 173 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr174:
-	mov qword [curr_isr], isr174.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr174.after_push
+	mov qword [curr_isr.after_pop], isr174.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3875,17 +5783,28 @@ isr174:
 	
 
 	mov RDI, 174 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr175:
-	mov qword [curr_isr], isr175.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr175.after_push
+	mov qword [curr_isr.after_pop], isr175.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3895,17 +5814,28 @@ isr175:
 	
 
 	mov RDI, 175 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr176:
-	mov qword [curr_isr], isr176.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr176.after_push
+	mov qword [curr_isr.after_pop], isr176.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3915,17 +5845,28 @@ isr176:
 	
 
 	mov RDI, 176 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr177:
-	mov qword [curr_isr], isr177.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr177.after_push
+	mov qword [curr_isr.after_pop], isr177.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3935,17 +5876,28 @@ isr177:
 	
 
 	mov RDI, 177 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr178:
-	mov qword [curr_isr], isr178.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr178.after_push
+	mov qword [curr_isr.after_pop], isr178.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3955,17 +5907,28 @@ isr178:
 	
 
 	mov RDI, 178 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr179:
-	mov qword [curr_isr], isr179.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr179.after_push
+	mov qword [curr_isr.after_pop], isr179.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3975,17 +5938,28 @@ isr179:
 	
 
 	mov RDI, 179 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr180:
-	mov qword [curr_isr], isr180.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr180.after_push
+	mov qword [curr_isr.after_pop], isr180.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -3995,17 +5969,28 @@ isr180:
 	
 
 	mov RDI, 180 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr181:
-	mov qword [curr_isr], isr181.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr181.after_push
+	mov qword [curr_isr.after_pop], isr181.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4015,17 +6000,28 @@ isr181:
 	
 
 	mov RDI, 181 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr182:
-	mov qword [curr_isr], isr182.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr182.after_push
+	mov qword [curr_isr.after_pop], isr182.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4035,17 +6031,28 @@ isr182:
 	
 
 	mov RDI, 182 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr183:
-	mov qword [curr_isr], isr183.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr183.after_push
+	mov qword [curr_isr.after_pop], isr183.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4055,17 +6062,28 @@ isr183:
 	
 
 	mov RDI, 183 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr184:
-	mov qword [curr_isr], isr184.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr184.after_push
+	mov qword [curr_isr.after_pop], isr184.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4075,17 +6093,28 @@ isr184:
 	
 
 	mov RDI, 184 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr185:
-	mov qword [curr_isr], isr185.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr185.after_push
+	mov qword [curr_isr.after_pop], isr185.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4095,17 +6124,28 @@ isr185:
 	
 
 	mov RDI, 185 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr186:
-	mov qword [curr_isr], isr186.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr186.after_push
+	mov qword [curr_isr.after_pop], isr186.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4115,17 +6155,28 @@ isr186:
 	
 
 	mov RDI, 186 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr187:
-	mov qword [curr_isr], isr187.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr187.after_push
+	mov qword [curr_isr.after_pop], isr187.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4135,17 +6186,28 @@ isr187:
 	
 
 	mov RDI, 187 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr188:
-	mov qword [curr_isr], isr188.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr188.after_push
+	mov qword [curr_isr.after_pop], isr188.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4155,17 +6217,28 @@ isr188:
 	
 
 	mov RDI, 188 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr189:
-	mov qword [curr_isr], isr189.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr189.after_push
+	mov qword [curr_isr.after_pop], isr189.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4175,17 +6248,28 @@ isr189:
 	
 
 	mov RDI, 189 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr190:
-	mov qword [curr_isr], isr190.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr190.after_push
+	mov qword [curr_isr.after_pop], isr190.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4195,17 +6279,28 @@ isr190:
 	
 
 	mov RDI, 190 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr191:
-	mov qword [curr_isr], isr191.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr191.after_push
+	mov qword [curr_isr.after_pop], isr191.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4215,17 +6310,28 @@ isr191:
 	
 
 	mov RDI, 191 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr192:
-	mov qword [curr_isr], isr192.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr192.after_push
+	mov qword [curr_isr.after_pop], isr192.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4235,17 +6341,28 @@ isr192:
 	
 
 	mov RDI, 192 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr193:
-	mov qword [curr_isr], isr193.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr193.after_push
+	mov qword [curr_isr.after_pop], isr193.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4255,17 +6372,28 @@ isr193:
 	
 
 	mov RDI, 193 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr194:
-	mov qword [curr_isr], isr194.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr194.after_push
+	mov qword [curr_isr.after_pop], isr194.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4275,17 +6403,28 @@ isr194:
 	
 
 	mov RDI, 194 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr195:
-	mov qword [curr_isr], isr195.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr195.after_push
+	mov qword [curr_isr.after_pop], isr195.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4295,17 +6434,28 @@ isr195:
 	
 
 	mov RDI, 195 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr196:
-	mov qword [curr_isr], isr196.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr196.after_push
+	mov qword [curr_isr.after_pop], isr196.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4315,17 +6465,28 @@ isr196:
 	
 
 	mov RDI, 196 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr197:
-	mov qword [curr_isr], isr197.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr197.after_push
+	mov qword [curr_isr.after_pop], isr197.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4335,17 +6496,28 @@ isr197:
 	
 
 	mov RDI, 197 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr198:
-	mov qword [curr_isr], isr198.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr198.after_push
+	mov qword [curr_isr.after_pop], isr198.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4355,17 +6527,28 @@ isr198:
 	
 
 	mov RDI, 198 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr199:
-	mov qword [curr_isr], isr199.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr199.after_push
+	mov qword [curr_isr.after_pop], isr199.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4375,17 +6558,28 @@ isr199:
 	
 
 	mov RDI, 199 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr200:
-	mov qword [curr_isr], isr200.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr200.after_push
+	mov qword [curr_isr.after_pop], isr200.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4395,17 +6589,28 @@ isr200:
 	
 
 	mov RDI, 200 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr201:
-	mov qword [curr_isr], isr201.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr201.after_push
+	mov qword [curr_isr.after_pop], isr201.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4415,17 +6620,28 @@ isr201:
 	
 
 	mov RDI, 201 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr202:
-	mov qword [curr_isr], isr202.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr202.after_push
+	mov qword [curr_isr.after_pop], isr202.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4435,17 +6651,28 @@ isr202:
 	
 
 	mov RDI, 202 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr203:
-	mov qword [curr_isr], isr203.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr203.after_push
+	mov qword [curr_isr.after_pop], isr203.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4455,17 +6682,28 @@ isr203:
 	
 
 	mov RDI, 203 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr204:
-	mov qword [curr_isr], isr204.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr204.after_push
+	mov qword [curr_isr.after_pop], isr204.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4475,17 +6713,28 @@ isr204:
 	
 
 	mov RDI, 204 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr205:
-	mov qword [curr_isr], isr205.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr205.after_push
+	mov qword [curr_isr.after_pop], isr205.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4495,17 +6744,28 @@ isr205:
 	
 
 	mov RDI, 205 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr206:
-	mov qword [curr_isr], isr206.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr206.after_push
+	mov qword [curr_isr.after_pop], isr206.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4515,17 +6775,28 @@ isr206:
 	
 
 	mov RDI, 206 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr207:
-	mov qword [curr_isr], isr207.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr207.after_push
+	mov qword [curr_isr.after_pop], isr207.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4535,17 +6806,28 @@ isr207:
 	
 
 	mov RDI, 207 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr208:
-	mov qword [curr_isr], isr208.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr208.after_push
+	mov qword [curr_isr.after_pop], isr208.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4555,17 +6837,28 @@ isr208:
 	
 
 	mov RDI, 208 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr209:
-	mov qword [curr_isr], isr209.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr209.after_push
+	mov qword [curr_isr.after_pop], isr209.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4575,17 +6868,28 @@ isr209:
 	
 
 	mov RDI, 209 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr210:
-	mov qword [curr_isr], isr210.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr210.after_push
+	mov qword [curr_isr.after_pop], isr210.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4595,17 +6899,28 @@ isr210:
 	
 
 	mov RDI, 210 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr211:
-	mov qword [curr_isr], isr211.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr211.after_push
+	mov qword [curr_isr.after_pop], isr211.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4615,17 +6930,28 @@ isr211:
 	
 
 	mov RDI, 211 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr212:
-	mov qword [curr_isr], isr212.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr212.after_push
+	mov qword [curr_isr.after_pop], isr212.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4635,17 +6961,28 @@ isr212:
 	
 
 	mov RDI, 212 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr213:
-	mov qword [curr_isr], isr213.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr213.after_push
+	mov qword [curr_isr.after_pop], isr213.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4655,17 +6992,28 @@ isr213:
 	
 
 	mov RDI, 213 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr214:
-	mov qword [curr_isr], isr214.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr214.after_push
+	mov qword [curr_isr.after_pop], isr214.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4675,17 +7023,28 @@ isr214:
 	
 
 	mov RDI, 214 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr215:
-	mov qword [curr_isr], isr215.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr215.after_push
+	mov qword [curr_isr.after_pop], isr215.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4695,17 +7054,28 @@ isr215:
 	
 
 	mov RDI, 215 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr216:
-	mov qword [curr_isr], isr216.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr216.after_push
+	mov qword [curr_isr.after_pop], isr216.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4715,17 +7085,28 @@ isr216:
 	
 
 	mov RDI, 216 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr217:
-	mov qword [curr_isr], isr217.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr217.after_push
+	mov qword [curr_isr.after_pop], isr217.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4735,17 +7116,28 @@ isr217:
 	
 
 	mov RDI, 217 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr218:
-	mov qword [curr_isr], isr218.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr218.after_push
+	mov qword [curr_isr.after_pop], isr218.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4755,17 +7147,28 @@ isr218:
 	
 
 	mov RDI, 218 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr219:
-	mov qword [curr_isr], isr219.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr219.after_push
+	mov qword [curr_isr.after_pop], isr219.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4775,17 +7178,28 @@ isr219:
 	
 
 	mov RDI, 219 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr220:
-	mov qword [curr_isr], isr220.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr220.after_push
+	mov qword [curr_isr.after_pop], isr220.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4795,17 +7209,28 @@ isr220:
 	
 
 	mov RDI, 220 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr221:
-	mov qword [curr_isr], isr221.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr221.after_push
+	mov qword [curr_isr.after_pop], isr221.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4815,17 +7240,28 @@ isr221:
 	
 
 	mov RDI, 221 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr222:
-	mov qword [curr_isr], isr222.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr222.after_push
+	mov qword [curr_isr.after_pop], isr222.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4835,17 +7271,28 @@ isr222:
 	
 
 	mov RDI, 222 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr223:
-	mov qword [curr_isr], isr223.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr223.after_push
+	mov qword [curr_isr.after_pop], isr223.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4855,17 +7302,28 @@ isr223:
 	
 
 	mov RDI, 223 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr224:
-	mov qword [curr_isr], isr224.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr224.after_push
+	mov qword [curr_isr.after_pop], isr224.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4875,17 +7333,28 @@ isr224:
 	
 
 	mov RDI, 224 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr225:
-	mov qword [curr_isr], isr225.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr225.after_push
+	mov qword [curr_isr.after_pop], isr225.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4895,17 +7364,28 @@ isr225:
 	
 
 	mov RDI, 225 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr226:
-	mov qword [curr_isr], isr226.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr226.after_push
+	mov qword [curr_isr.after_pop], isr226.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4915,17 +7395,28 @@ isr226:
 	
 
 	mov RDI, 226 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr227:
-	mov qword [curr_isr], isr227.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr227.after_push
+	mov qword [curr_isr.after_pop], isr227.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4935,17 +7426,28 @@ isr227:
 	
 
 	mov RDI, 227 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr228:
-	mov qword [curr_isr], isr228.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr228.after_push
+	mov qword [curr_isr.after_pop], isr228.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4955,17 +7457,28 @@ isr228:
 	
 
 	mov RDI, 228 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr229:
-	mov qword [curr_isr], isr229.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr229.after_push
+	mov qword [curr_isr.after_pop], isr229.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4975,17 +7488,28 @@ isr229:
 	
 
 	mov RDI, 229 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr230:
-	mov qword [curr_isr], isr230.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr230.after_push
+	mov qword [curr_isr.after_pop], isr230.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -4995,17 +7519,28 @@ isr230:
 	
 
 	mov RDI, 230 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr231:
-	mov qword [curr_isr], isr231.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr231.after_push
+	mov qword [curr_isr.after_pop], isr231.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5015,17 +7550,28 @@ isr231:
 	
 
 	mov RDI, 231 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr232:
-	mov qword [curr_isr], isr232.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr232.after_push
+	mov qword [curr_isr.after_pop], isr232.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5035,17 +7581,28 @@ isr232:
 	
 
 	mov RDI, 232 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr233:
-	mov qword [curr_isr], isr233.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr233.after_push
+	mov qword [curr_isr.after_pop], isr233.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5055,17 +7612,28 @@ isr233:
 	
 
 	mov RDI, 233 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr234:
-	mov qword [curr_isr], isr234.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr234.after_push
+	mov qword [curr_isr.after_pop], isr234.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5075,17 +7643,28 @@ isr234:
 	
 
 	mov RDI, 234 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr235:
-	mov qword [curr_isr], isr235.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr235.after_push
+	mov qword [curr_isr.after_pop], isr235.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5095,17 +7674,28 @@ isr235:
 	
 
 	mov RDI, 235 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr236:
-	mov qword [curr_isr], isr236.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr236.after_push
+	mov qword [curr_isr.after_pop], isr236.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5115,17 +7705,28 @@ isr236:
 	
 
 	mov RDI, 236 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr237:
-	mov qword [curr_isr], isr237.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr237.after_push
+	mov qword [curr_isr.after_pop], isr237.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5135,17 +7736,28 @@ isr237:
 	
 
 	mov RDI, 237 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr238:
-	mov qword [curr_isr], isr238.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr238.after_push
+	mov qword [curr_isr.after_pop], isr238.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5155,17 +7767,28 @@ isr238:
 	
 
 	mov RDI, 238 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr239:
-	mov qword [curr_isr], isr239.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr239.after_push
+	mov qword [curr_isr.after_pop], isr239.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5175,17 +7798,28 @@ isr239:
 	
 
 	mov RDI, 239 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr240:
-	mov qword [curr_isr], isr240.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr240.after_push
+	mov qword [curr_isr.after_pop], isr240.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5195,17 +7829,28 @@ isr240:
 	
 
 	mov RDI, 240 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr241:
-	mov qword [curr_isr], isr241.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr241.after_push
+	mov qword [curr_isr.after_pop], isr241.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5215,17 +7860,28 @@ isr241:
 	
 
 	mov RDI, 241 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr242:
-	mov qword [curr_isr], isr242.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr242.after_push
+	mov qword [curr_isr.after_pop], isr242.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5235,17 +7891,28 @@ isr242:
 	
 
 	mov RDI, 242 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr243:
-	mov qword [curr_isr], isr243.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr243.after_push
+	mov qword [curr_isr.after_pop], isr243.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5255,17 +7922,28 @@ isr243:
 	
 
 	mov RDI, 243 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr244:
-	mov qword [curr_isr], isr244.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr244.after_push
+	mov qword [curr_isr.after_pop], isr244.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5275,17 +7953,28 @@ isr244:
 	
 
 	mov RDI, 244 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr245:
-	mov qword [curr_isr], isr245.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr245.after_push
+	mov qword [curr_isr.after_pop], isr245.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5295,17 +7984,28 @@ isr245:
 	
 
 	mov RDI, 245 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr246:
-	mov qword [curr_isr], isr246.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr246.after_push
+	mov qword [curr_isr.after_pop], isr246.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5315,17 +8015,28 @@ isr246:
 	
 
 	mov RDI, 246 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr247:
-	mov qword [curr_isr], isr247.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr247.after_push
+	mov qword [curr_isr.after_pop], isr247.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5335,17 +8046,28 @@ isr247:
 	
 
 	mov RDI, 247 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr248:
-	mov qword [curr_isr], isr248.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr248.after_push
+	mov qword [curr_isr.after_pop], isr248.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5355,17 +8077,28 @@ isr248:
 	
 
 	mov RDI, 248 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr249:
-	mov qword [curr_isr], isr249.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr249.after_push
+	mov qword [curr_isr.after_pop], isr249.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5375,17 +8108,28 @@ isr249:
 	
 
 	mov RDI, 249 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr250:
-	mov qword [curr_isr], isr250.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr250.after_push
+	mov qword [curr_isr.after_pop], isr250.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5395,17 +8139,28 @@ isr250:
 	
 
 	mov RDI, 250 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr251:
-	mov qword [curr_isr], isr251.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr251.after_push
+	mov qword [curr_isr.after_pop], isr251.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5415,17 +8170,28 @@ isr251:
 	
 
 	mov RDI, 251 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr252:
-	mov qword [curr_isr], isr252.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr252.after_push
+	mov qword [curr_isr.after_pop], isr252.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5435,17 +8201,28 @@ isr252:
 	
 
 	mov RDI, 252 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr253:
-	mov qword [curr_isr], isr253.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr253.after_push
+	mov qword [curr_isr.after_pop], isr253.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5455,17 +8232,28 @@ isr253:
 	
 
 	mov RDI, 253 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr254:
-	mov qword [curr_isr], isr254.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr254.after_push
+	mov qword [curr_isr.after_pop], isr254.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5475,17 +8263,28 @@ isr254:
 	
 
 	mov RDI, 254 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
 
 isr255:
-	mov qword [curr_isr], isr255.after_push
+	
+
+	push 0x69
+
+	; register jump-back instructions
+	mov qword [curr_isr.after_push], isr255.after_push
+	mov qword [curr_isr.after_pop], isr255.after_pop
 
 	; Push all register for safety
 	jmp push_reg
@@ -5495,11 +8294,16 @@ isr255:
 	
 
 	mov RDI, 255 ; irq number, 1st arg
-	mov RSI, [RSP]
+	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
 
 	
 
-	; pop registers and iretq from isr
+	; pop registers
 	jmp pop_reg
+.after_pop:
+
+	add RSP, 8
+	
+	iretq
