@@ -333,7 +333,7 @@ pop_reg: ; Pop in FILO order
 isr0:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr0.after_push
@@ -357,14 +357,14 @@ isr0:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr1:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr1.after_push
@@ -388,14 +388,14 @@ isr1:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr2:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr2.after_push
@@ -419,14 +419,14 @@ isr2:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr3:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr3.after_push
@@ -450,14 +450,14 @@ isr3:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr4:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr4.after_push
@@ -481,14 +481,14 @@ isr4:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr5:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr5.after_push
@@ -512,14 +512,14 @@ isr5:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr6:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr6.after_push
@@ -543,14 +543,14 @@ isr6:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr7:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr7.after_push
@@ -574,7 +574,7 @@ isr7:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
@@ -583,7 +583,7 @@ isr8:
 	;mov [error_code], [RSP + 8]
 
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr8.after_push
@@ -618,7 +618,7 @@ isr8:
 isr9:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr9.after_push
@@ -642,7 +642,7 @@ isr9:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
@@ -651,7 +651,7 @@ isr10:
 	;mov [error_code], [RSP + 8]
 
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr10.after_push
@@ -688,7 +688,7 @@ isr11:
 	;mov [error_code], [RSP + 8]
 
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr11.after_push
@@ -725,7 +725,7 @@ isr12:
 	;mov [error_code], [RSP + 8]
 
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr12.after_push
@@ -762,7 +762,7 @@ isr13:
 	;mov [error_code], [RSP + 8]
 
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr13.after_push
@@ -799,7 +799,7 @@ isr14:
 	;mov [error_code], [RSP + 8]
 
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr14.after_push
@@ -834,7 +834,7 @@ isr14:
 isr15:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr15.after_push
@@ -858,14 +858,14 @@ isr15:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr16:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr16.after_push
@@ -889,7 +889,7 @@ isr16:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
@@ -898,7 +898,7 @@ isr17:
 	;mov [error_code], [RSP + 8]
 
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr17.after_push
@@ -933,7 +933,7 @@ isr17:
 isr18:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr18.after_push
@@ -957,14 +957,14 @@ isr18:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr19:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr19.after_push
@@ -988,14 +988,14 @@ isr19:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr20:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr20.after_push
@@ -1019,14 +1019,14 @@ isr20:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr21:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr21.after_push
@@ -1050,14 +1050,14 @@ isr21:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr22:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr22.after_push
@@ -1081,14 +1081,14 @@ isr22:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr23:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr23.after_push
@@ -1112,14 +1112,14 @@ isr23:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr24:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr24.after_push
@@ -1143,14 +1143,14 @@ isr24:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr25:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr25.after_push
@@ -1174,14 +1174,14 @@ isr25:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr26:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr26.after_push
@@ -1205,14 +1205,14 @@ isr26:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr27:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr27.after_push
@@ -1236,14 +1236,14 @@ isr27:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr28:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr28.after_push
@@ -1267,14 +1267,14 @@ isr28:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr29:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr29.after_push
@@ -1298,14 +1298,14 @@ isr29:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr30:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr30.after_push
@@ -1329,14 +1329,14 @@ isr30:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr31:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr31.after_push
@@ -1360,14 +1360,14 @@ isr31:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr32:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr32.after_push
@@ -1391,14 +1391,14 @@ isr32:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr33:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr33.after_push
@@ -1422,14 +1422,14 @@ isr33:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr34:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr34.after_push
@@ -1453,14 +1453,14 @@ isr34:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr35:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr35.after_push
@@ -1484,14 +1484,14 @@ isr35:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr36:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr36.after_push
@@ -1515,14 +1515,14 @@ isr36:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr37:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr37.after_push
@@ -1546,14 +1546,14 @@ isr37:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr38:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr38.after_push
@@ -1577,14 +1577,14 @@ isr38:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr39:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr39.after_push
@@ -1608,14 +1608,14 @@ isr39:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr40:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr40.after_push
@@ -1639,14 +1639,14 @@ isr40:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr41:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr41.after_push
@@ -1670,14 +1670,14 @@ isr41:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr42:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr42.after_push
@@ -1701,14 +1701,14 @@ isr42:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr43:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr43.after_push
@@ -1732,14 +1732,14 @@ isr43:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr44:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr44.after_push
@@ -1763,14 +1763,14 @@ isr44:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr45:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr45.after_push
@@ -1794,14 +1794,14 @@ isr45:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr46:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr46.after_push
@@ -1825,14 +1825,14 @@ isr46:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr47:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr47.after_push
@@ -1856,14 +1856,14 @@ isr47:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr48:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr48.after_push
@@ -1887,14 +1887,14 @@ isr48:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr49:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr49.after_push
@@ -1918,14 +1918,14 @@ isr49:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr50:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr50.after_push
@@ -1949,14 +1949,14 @@ isr50:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr51:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr51.after_push
@@ -1980,14 +1980,14 @@ isr51:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr52:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr52.after_push
@@ -2011,14 +2011,14 @@ isr52:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr53:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr53.after_push
@@ -2042,14 +2042,14 @@ isr53:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr54:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr54.after_push
@@ -2073,14 +2073,14 @@ isr54:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr55:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr55.after_push
@@ -2104,14 +2104,14 @@ isr55:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr56:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr56.after_push
@@ -2135,14 +2135,14 @@ isr56:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr57:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr57.after_push
@@ -2166,14 +2166,14 @@ isr57:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr58:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr58.after_push
@@ -2197,14 +2197,14 @@ isr58:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr59:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr59.after_push
@@ -2228,14 +2228,14 @@ isr59:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr60:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr60.after_push
@@ -2259,14 +2259,14 @@ isr60:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr61:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr61.after_push
@@ -2290,14 +2290,14 @@ isr61:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr62:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr62.after_push
@@ -2321,14 +2321,14 @@ isr62:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr63:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr63.after_push
@@ -2352,14 +2352,14 @@ isr63:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr64:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr64.after_push
@@ -2383,14 +2383,14 @@ isr64:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr65:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr65.after_push
@@ -2414,14 +2414,14 @@ isr65:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr66:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr66.after_push
@@ -2445,14 +2445,14 @@ isr66:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr67:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr67.after_push
@@ -2476,14 +2476,14 @@ isr67:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr68:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr68.after_push
@@ -2507,14 +2507,14 @@ isr68:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr69:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr69.after_push
@@ -2538,14 +2538,14 @@ isr69:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr70:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr70.after_push
@@ -2569,14 +2569,14 @@ isr70:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr71:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr71.after_push
@@ -2600,14 +2600,14 @@ isr71:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr72:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr72.after_push
@@ -2631,14 +2631,14 @@ isr72:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr73:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr73.after_push
@@ -2662,14 +2662,14 @@ isr73:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr74:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr74.after_push
@@ -2693,14 +2693,14 @@ isr74:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr75:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr75.after_push
@@ -2724,14 +2724,14 @@ isr75:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr76:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr76.after_push
@@ -2755,14 +2755,14 @@ isr76:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr77:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr77.after_push
@@ -2786,14 +2786,14 @@ isr77:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr78:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr78.after_push
@@ -2817,14 +2817,14 @@ isr78:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr79:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr79.after_push
@@ -2848,14 +2848,14 @@ isr79:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr80:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr80.after_push
@@ -2879,14 +2879,14 @@ isr80:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr81:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr81.after_push
@@ -2910,14 +2910,14 @@ isr81:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr82:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr82.after_push
@@ -2941,14 +2941,14 @@ isr82:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr83:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr83.after_push
@@ -2972,14 +2972,14 @@ isr83:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr84:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr84.after_push
@@ -3003,14 +3003,14 @@ isr84:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr85:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr85.after_push
@@ -3034,14 +3034,14 @@ isr85:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr86:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr86.after_push
@@ -3065,14 +3065,14 @@ isr86:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr87:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr87.after_push
@@ -3096,14 +3096,14 @@ isr87:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr88:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr88.after_push
@@ -3127,14 +3127,14 @@ isr88:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr89:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr89.after_push
@@ -3158,14 +3158,14 @@ isr89:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr90:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr90.after_push
@@ -3189,14 +3189,14 @@ isr90:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr91:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr91.after_push
@@ -3220,14 +3220,14 @@ isr91:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr92:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr92.after_push
@@ -3251,14 +3251,14 @@ isr92:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr93:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr93.after_push
@@ -3282,14 +3282,14 @@ isr93:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr94:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr94.after_push
@@ -3313,14 +3313,14 @@ isr94:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr95:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr95.after_push
@@ -3344,14 +3344,14 @@ isr95:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr96:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr96.after_push
@@ -3375,14 +3375,14 @@ isr96:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr97:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr97.after_push
@@ -3406,14 +3406,14 @@ isr97:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr98:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr98.after_push
@@ -3437,14 +3437,14 @@ isr98:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr99:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr99.after_push
@@ -3468,14 +3468,14 @@ isr99:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr100:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr100.after_push
@@ -3499,14 +3499,14 @@ isr100:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr101:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr101.after_push
@@ -3530,14 +3530,14 @@ isr101:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr102:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr102.after_push
@@ -3561,14 +3561,14 @@ isr102:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr103:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr103.after_push
@@ -3592,14 +3592,14 @@ isr103:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr104:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr104.after_push
@@ -3623,14 +3623,14 @@ isr104:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr105:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr105.after_push
@@ -3654,14 +3654,14 @@ isr105:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr106:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr106.after_push
@@ -3685,14 +3685,14 @@ isr106:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr107:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr107.after_push
@@ -3716,14 +3716,14 @@ isr107:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr108:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr108.after_push
@@ -3747,14 +3747,14 @@ isr108:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr109:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr109.after_push
@@ -3778,14 +3778,14 @@ isr109:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr110:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr110.after_push
@@ -3809,14 +3809,14 @@ isr110:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr111:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr111.after_push
@@ -3840,14 +3840,14 @@ isr111:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr112:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr112.after_push
@@ -3871,14 +3871,14 @@ isr112:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr113:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr113.after_push
@@ -3902,14 +3902,14 @@ isr113:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr114:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr114.after_push
@@ -3933,14 +3933,14 @@ isr114:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr115:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr115.after_push
@@ -3964,14 +3964,14 @@ isr115:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr116:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr116.after_push
@@ -3995,14 +3995,14 @@ isr116:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr117:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr117.after_push
@@ -4026,14 +4026,14 @@ isr117:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr118:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr118.after_push
@@ -4057,14 +4057,14 @@ isr118:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr119:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr119.after_push
@@ -4088,14 +4088,14 @@ isr119:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr120:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr120.after_push
@@ -4119,14 +4119,14 @@ isr120:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr121:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr121.after_push
@@ -4150,14 +4150,14 @@ isr121:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr122:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr122.after_push
@@ -4181,14 +4181,14 @@ isr122:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr123:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr123.after_push
@@ -4212,14 +4212,14 @@ isr123:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr124:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr124.after_push
@@ -4243,14 +4243,14 @@ isr124:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr125:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr125.after_push
@@ -4274,14 +4274,14 @@ isr125:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr126:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr126.after_push
@@ -4305,14 +4305,14 @@ isr126:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr127:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr127.after_push
@@ -4336,14 +4336,14 @@ isr127:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr128:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr128.after_push
@@ -4367,14 +4367,14 @@ isr128:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr129:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr129.after_push
@@ -4398,14 +4398,14 @@ isr129:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr130:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr130.after_push
@@ -4429,14 +4429,14 @@ isr130:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr131:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr131.after_push
@@ -4460,14 +4460,14 @@ isr131:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr132:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr132.after_push
@@ -4491,14 +4491,14 @@ isr132:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr133:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr133.after_push
@@ -4522,14 +4522,14 @@ isr133:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr134:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr134.after_push
@@ -4553,14 +4553,14 @@ isr134:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr135:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr135.after_push
@@ -4584,14 +4584,14 @@ isr135:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr136:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr136.after_push
@@ -4615,14 +4615,14 @@ isr136:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr137:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr137.after_push
@@ -4646,14 +4646,14 @@ isr137:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr138:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr138.after_push
@@ -4677,14 +4677,14 @@ isr138:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr139:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr139.after_push
@@ -4708,14 +4708,14 @@ isr139:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr140:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr140.after_push
@@ -4739,14 +4739,14 @@ isr140:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr141:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr141.after_push
@@ -4770,14 +4770,14 @@ isr141:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr142:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr142.after_push
@@ -4801,14 +4801,14 @@ isr142:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr143:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr143.after_push
@@ -4832,14 +4832,14 @@ isr143:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr144:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr144.after_push
@@ -4863,14 +4863,14 @@ isr144:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr145:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr145.after_push
@@ -4894,14 +4894,14 @@ isr145:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr146:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr146.after_push
@@ -4925,14 +4925,14 @@ isr146:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr147:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr147.after_push
@@ -4956,14 +4956,14 @@ isr147:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr148:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr148.after_push
@@ -4987,14 +4987,14 @@ isr148:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr149:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr149.after_push
@@ -5018,14 +5018,14 @@ isr149:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr150:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr150.after_push
@@ -5049,14 +5049,14 @@ isr150:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr151:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr151.after_push
@@ -5080,14 +5080,14 @@ isr151:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr152:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr152.after_push
@@ -5111,14 +5111,14 @@ isr152:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr153:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr153.after_push
@@ -5142,14 +5142,14 @@ isr153:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr154:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr154.after_push
@@ -5173,14 +5173,14 @@ isr154:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr155:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr155.after_push
@@ -5204,14 +5204,14 @@ isr155:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr156:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr156.after_push
@@ -5235,14 +5235,14 @@ isr156:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr157:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr157.after_push
@@ -5266,14 +5266,14 @@ isr157:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr158:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr158.after_push
@@ -5297,14 +5297,14 @@ isr158:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr159:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr159.after_push
@@ -5328,14 +5328,14 @@ isr159:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr160:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr160.after_push
@@ -5359,14 +5359,14 @@ isr160:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr161:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr161.after_push
@@ -5390,14 +5390,14 @@ isr161:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr162:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr162.after_push
@@ -5421,14 +5421,14 @@ isr162:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr163:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr163.after_push
@@ -5452,14 +5452,14 @@ isr163:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr164:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr164.after_push
@@ -5483,14 +5483,14 @@ isr164:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr165:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr165.after_push
@@ -5514,14 +5514,14 @@ isr165:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr166:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr166.after_push
@@ -5545,14 +5545,14 @@ isr166:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr167:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr167.after_push
@@ -5576,14 +5576,14 @@ isr167:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr168:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr168.after_push
@@ -5607,14 +5607,14 @@ isr168:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr169:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr169.after_push
@@ -5638,14 +5638,14 @@ isr169:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr170:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr170.after_push
@@ -5669,14 +5669,14 @@ isr170:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr171:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr171.after_push
@@ -5700,14 +5700,14 @@ isr171:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr172:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr172.after_push
@@ -5731,14 +5731,14 @@ isr172:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr173:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr173.after_push
@@ -5762,14 +5762,14 @@ isr173:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr174:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr174.after_push
@@ -5793,14 +5793,14 @@ isr174:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr175:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr175.after_push
@@ -5824,14 +5824,14 @@ isr175:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr176:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr176.after_push
@@ -5855,14 +5855,14 @@ isr176:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr177:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr177.after_push
@@ -5886,14 +5886,14 @@ isr177:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr178:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr178.after_push
@@ -5917,14 +5917,14 @@ isr178:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr179:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr179.after_push
@@ -5948,14 +5948,14 @@ isr179:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr180:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr180.after_push
@@ -5979,14 +5979,14 @@ isr180:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr181:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr181.after_push
@@ -6010,14 +6010,14 @@ isr181:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr182:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr182.after_push
@@ -6041,14 +6041,14 @@ isr182:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr183:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr183.after_push
@@ -6072,14 +6072,14 @@ isr183:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr184:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr184.after_push
@@ -6103,14 +6103,14 @@ isr184:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr185:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr185.after_push
@@ -6134,14 +6134,14 @@ isr185:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr186:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr186.after_push
@@ -6165,14 +6165,14 @@ isr186:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr187:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr187.after_push
@@ -6196,14 +6196,14 @@ isr187:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr188:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr188.after_push
@@ -6227,14 +6227,14 @@ isr188:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr189:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr189.after_push
@@ -6258,14 +6258,14 @@ isr189:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr190:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr190.after_push
@@ -6289,14 +6289,14 @@ isr190:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr191:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr191.after_push
@@ -6320,14 +6320,14 @@ isr191:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr192:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr192.after_push
@@ -6351,14 +6351,14 @@ isr192:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr193:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr193.after_push
@@ -6382,14 +6382,14 @@ isr193:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr194:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr194.after_push
@@ -6413,14 +6413,14 @@ isr194:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr195:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr195.after_push
@@ -6444,14 +6444,14 @@ isr195:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr196:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr196.after_push
@@ -6475,14 +6475,14 @@ isr196:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr197:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr197.after_push
@@ -6506,14 +6506,14 @@ isr197:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr198:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr198.after_push
@@ -6537,14 +6537,14 @@ isr198:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr199:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr199.after_push
@@ -6568,14 +6568,14 @@ isr199:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr200:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr200.after_push
@@ -6599,14 +6599,14 @@ isr200:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr201:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr201.after_push
@@ -6630,14 +6630,14 @@ isr201:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr202:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr202.after_push
@@ -6661,14 +6661,14 @@ isr202:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr203:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr203.after_push
@@ -6692,14 +6692,14 @@ isr203:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr204:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr204.after_push
@@ -6723,14 +6723,14 @@ isr204:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr205:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr205.after_push
@@ -6754,14 +6754,14 @@ isr205:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr206:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr206.after_push
@@ -6785,14 +6785,14 @@ isr206:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr207:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr207.after_push
@@ -6816,14 +6816,14 @@ isr207:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr208:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr208.after_push
@@ -6847,14 +6847,14 @@ isr208:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr209:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr209.after_push
@@ -6878,14 +6878,14 @@ isr209:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr210:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr210.after_push
@@ -6909,14 +6909,14 @@ isr210:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr211:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr211.after_push
@@ -6940,14 +6940,14 @@ isr211:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr212:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr212.after_push
@@ -6971,14 +6971,14 @@ isr212:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr213:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr213.after_push
@@ -7002,14 +7002,14 @@ isr213:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr214:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr214.after_push
@@ -7033,14 +7033,14 @@ isr214:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr215:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr215.after_push
@@ -7064,14 +7064,14 @@ isr215:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr216:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr216.after_push
@@ -7095,14 +7095,14 @@ isr216:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr217:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr217.after_push
@@ -7126,14 +7126,14 @@ isr217:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr218:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr218.after_push
@@ -7157,14 +7157,14 @@ isr218:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr219:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr219.after_push
@@ -7188,14 +7188,14 @@ isr219:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr220:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr220.after_push
@@ -7219,14 +7219,14 @@ isr220:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr221:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr221.after_push
@@ -7250,14 +7250,14 @@ isr221:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr222:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr222.after_push
@@ -7281,14 +7281,14 @@ isr222:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr223:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr223.after_push
@@ -7312,14 +7312,14 @@ isr223:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr224:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr224.after_push
@@ -7343,14 +7343,14 @@ isr224:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr225:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr225.after_push
@@ -7374,14 +7374,14 @@ isr225:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr226:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr226.after_push
@@ -7405,14 +7405,14 @@ isr226:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr227:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr227.after_push
@@ -7436,14 +7436,14 @@ isr227:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr228:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr228.after_push
@@ -7467,14 +7467,14 @@ isr228:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr229:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr229.after_push
@@ -7498,14 +7498,14 @@ isr229:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr230:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr230.after_push
@@ -7529,14 +7529,14 @@ isr230:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr231:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr231.after_push
@@ -7560,14 +7560,14 @@ isr231:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr232:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr232.after_push
@@ -7591,14 +7591,14 @@ isr232:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr233:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr233.after_push
@@ -7622,14 +7622,14 @@ isr233:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr234:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr234.after_push
@@ -7653,14 +7653,14 @@ isr234:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr235:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr235.after_push
@@ -7684,14 +7684,14 @@ isr235:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr236:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr236.after_push
@@ -7715,14 +7715,14 @@ isr236:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr237:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr237.after_push
@@ -7746,14 +7746,14 @@ isr237:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr238:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr238.after_push
@@ -7777,14 +7777,14 @@ isr238:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr239:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr239.after_push
@@ -7808,14 +7808,14 @@ isr239:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr240:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr240.after_push
@@ -7839,14 +7839,14 @@ isr240:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr241:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr241.after_push
@@ -7870,14 +7870,14 @@ isr241:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr242:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr242.after_push
@@ -7901,14 +7901,14 @@ isr242:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr243:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr243.after_push
@@ -7932,14 +7932,14 @@ isr243:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr244:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr244.after_push
@@ -7963,14 +7963,14 @@ isr244:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr245:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr245.after_push
@@ -7994,14 +7994,14 @@ isr245:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr246:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr246.after_push
@@ -8025,14 +8025,14 @@ isr246:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr247:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr247.after_push
@@ -8056,14 +8056,14 @@ isr247:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr248:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr248.after_push
@@ -8087,14 +8087,14 @@ isr248:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr249:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr249.after_push
@@ -8118,14 +8118,14 @@ isr249:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr250:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr250.after_push
@@ -8149,14 +8149,14 @@ isr250:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr251:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr251.after_push
@@ -8180,14 +8180,14 @@ isr251:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr252:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr252.after_push
@@ -8211,14 +8211,14 @@ isr252:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr253:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr253.after_push
@@ -8242,14 +8242,14 @@ isr253:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr254:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr254.after_push
@@ -8273,14 +8273,14 @@ isr254:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq
 
 isr255:
 	
 
-	push 0x69
+	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr255.after_push
@@ -8304,6 +8304,6 @@ isr255:
 	jmp pop_reg
 .after_pop:
 
-	add RSP, 8
+	
 	
 	iretq

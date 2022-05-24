@@ -127,7 +127,7 @@ isr{i}:
 	jmp pop_reg
 .after_pop:
 
-	;add RSP, 8
+	{"add RSP, 8" if i in error_code_isrs else ""}
 	
 	iretq
 """

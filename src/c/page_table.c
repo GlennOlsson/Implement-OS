@@ -160,7 +160,7 @@ uint8_t PT_can_allocate(uint64_t add) {
 	printkln("'PML1 entry: %lx", *pml1_entry);
 
 	PML_set_add(pml1_entry, phys_pf);
-	PML_set_allocated(pml1_entry, 1);
+	PML_set_allocated(pml1_entry, 0);
 	PML_set_present(pml1_entry, 1);
 	PML_set_us(pml1_entry, 1);
 	PML_set_rw(pml1_entry, 1);
