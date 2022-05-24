@@ -222,7 +222,7 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			break;
 			
 		case 8: 
-			printkln("Double Fault");
+			printkln("Double Fault #DF, error code: %x", error_code);
 			break;
 			
 		case 9: 
@@ -234,11 +234,11 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			break;
 			
 		case 11: 
-			printkln("Segment Not Present");
+			printkln("Segment Not Present #NP, error code: %x", error_code);
 			break;
 			
 		case 12: 
-			printkln("Stack Segment Overrun");
+			printkln("Stack Segment Overrun #SS, error code: %x", error_code);
 			break;
 			
 		case 13: 
@@ -273,7 +273,7 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			break;
 			
 		case 17: 
-			printkln("Alignment Check (486+ Only)");
+			printkln("Alignment Check (486+ Only) #AC, error code: %x", error_code);
 			break;
 			
 		case 18: 
