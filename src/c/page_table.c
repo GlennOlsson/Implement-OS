@@ -96,8 +96,8 @@ PML* PML_get_pml1(uint64_t add) {
 
 void PT_init() {
 	// Mark address nullptr as not present
-	// PML* pml1_0 = PML_get_pml1(nullptr);
-	// PML_set_present(pml1_0, 0);
+	PML* pml1_0 = PML_get_pml1(nullptr);
+	PML_set_present(pml1_0, 0);
 
 
 	PML* pml3 = &p3_table;
@@ -123,10 +123,10 @@ void PT_init() {
 			
 			PML_clear(pml1_i);
 			
-			PML_set_present(pml1_i, 1);
+			PML_set_present(pml1_i, 0);
 			PML_set_us(pml1_i, 1);
 			PML_set_rw(pml1_i, 1);
-			PML_set_add(pml1_i, (void*) ~0);
+			PML_set_add(pml1_i, nullptr);
 			PML_set_allocated(pml1_i, 0); // set as unallocated, allocated when needed (page fault)
 		}
 

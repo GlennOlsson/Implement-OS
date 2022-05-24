@@ -8,6 +8,9 @@ content = """
 extern setup_idt
 extern generic_interrupt_handler
 
+extern VGA_print_long_hex
+extern VGA_display_char
+
 global init_ints
 
 """
@@ -16,6 +19,15 @@ for i in range(256):
 	content += f"global isr{i}\n"
 
 content += """
+section .bss
+align 8
+curr_isr:
+	resb 8
+
+error_code:
+	resb 4
+
+
 section .text
 init_ints:
 	cli ; dissable interrupts
@@ -27,16 +39,9 @@ init_ints:
 	; enable interrupts in kmain
 
 	ret
-"""
 
-for i in range(256):
-	code = f"""
-isr{i}:
+push_reg: ; Push all registers
 	push RSI
-
-	mov RSI, [RSP + 8]
-
-	; Push all register for safety
 	push RBP
 	push RBX
 	push RSP
@@ -51,14 +56,11 @@ isr{i}:
 	push R8
 	push R9
 	push R10
-	push R11
-	
-	mov RDI, {i} ; irq number, 1st arg
-	;mov RSI, [RSP] ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+	push R11 ; 16 8-byte registers
 
-	call generic_interrupt_handler
+	jmp [curr_isr]
 
-	; Pop in FILO order
+pop_reg: ; Pop in FILO order, and iretq
 	pop R11
 	pop R10
 	pop R9
@@ -74,10 +76,29 @@ isr{i}:
 	pop RSP
 	pop RBX
 	pop RBP
-
 	pop RSI
 
 	iretq
+"""
+
+for i in range(256):
+	code = f"""
+isr{i}:
+	mov qword [curr_isr], isr{i}.after_push
+	mov [error_code], RSP
+
+	; Push all register for safety
+	jmp push_reg
+
+.after_push:
+
+	mov RDI, {i} ; irq number, 1st arg
+	mov RSI, error_code ; error code, 2nd arg. Not present in some isr but doesn't matter, loading some garbage instead 
+
+	call generic_interrupt_handler 
+
+	; pop registers and iretq from isr
+	jmp pop_reg
 """
 	content += code
 

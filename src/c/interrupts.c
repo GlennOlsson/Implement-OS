@@ -230,7 +230,7 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			break;
 			
 		case 10: 
-			printkln("Invalid Task State Segment #TS (TSS)");
+			printkln("Invalid Task State Segment #TS (TSS), error code: %x", error_code);
 			break;
 			
 		case 11: 

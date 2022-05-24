@@ -45,8 +45,10 @@ void kmain() {
 	// *i = 5;
 
 	void* page = MMU_alloc_page();
+	printkln("Stack ptr: %p", &page);
+	printkln("Read At %p: 0x%lx", page, *(uint64_t*) page);
 	*(uint64_t*) page = 0x69;
-	printkln("At %p: 0x%lx", page, *(uint64_t*) page);
+	printkln("Wrote At %p: 0x%lx", page, *(uint64_t*) page);
 
 	void* page2 = MMU_alloc_page();
 	printkln("Curr At %p: 0x%lx", page2, *(uint64_t*) page2);

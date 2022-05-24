@@ -5,6 +5,7 @@ extern p3_table
 extern p2_table
 
 global save_exx
+global error_code
 
 section .text
 bits 32
@@ -172,6 +173,9 @@ stack_top:
 
 save_exx:
     resb 16 ; reserve 2 * 8 bytes
+
+error_code:
+	resb 4 ; 32 bit error code
 
 section .data
 gdt64:
