@@ -12,5 +12,6 @@ int PRE_traverse();
 void MEM_init();
 void* MEM_pf_alloc();
 void MEM_pf_free(void *pf);
+uint32_t MEM_count_free_pages();
 
 #endif

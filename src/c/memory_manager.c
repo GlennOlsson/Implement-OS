@@ -24,6 +24,7 @@ struct {
 struct {
 	uint64_t page_head;
 	uint64_t page_tail;
+	uint32_t count;
 } free_pages;
 
 // Register span as pre-allocated
@@ -125,7 +126,8 @@ void PRE_add_address_space(uint64_t start_address, uint64_t space_size) {
 	} else { // If == 0, i.e. is first element in list
 		free_pages.page_head = curr_address;
 		free_pages.page_tail = curr_address;
-	}	
+	}
+	free_pages.count++;
 
 	// Set "next" as nullptr
 	*((uint64_t*) curr_address) = nullptr;
@@ -133,6 +135,7 @@ void PRE_add_address_space(uint64_t start_address, uint64_t space_size) {
 	// Max address of this space
 	const uint64_t max_address = start_address + space_size;
 
+	// Add all free pages follwing the address
 	while(curr_address + PAGE_SIZE <= max_address) {
 		uint64_t* curr_page = (uint64_t*) curr_address;
 
@@ -144,7 +147,7 @@ void PRE_add_address_space(uint64_t start_address, uint64_t space_size) {
 		// If the next free page is outside our address scope, write to 
 		// nullptr to curr_page to set it as tail of linked list
 		if(next_free_page + PAGE_SIZE > max_address) {
-			*curr_page = 0;
+			*curr_page = nullptr;
 			free_pages.page_tail = curr_address;
 			break;
 		} else {
@@ -152,6 +155,7 @@ void PRE_add_address_space(uint64_t start_address, uint64_t space_size) {
 			// write its address to curr_page
 			*curr_page = next_free_page;
 			curr_address = next_free_page;
+			free_pages.count++;
 		}
 	}
 }
@@ -185,6 +189,8 @@ void* MEM_pf_alloc(void) {
 	uint64_t new_head = *curr_head_page;
 	free_pages.page_head = new_head;
 
+	free_pages.count--;
+
 	return (void*) curr_head;
 }
 
@@ -197,6 +203,12 @@ void MEM_pf_free(void* pf) {
 
 	*curr_tail_page = new_tail;
 	free_pages.page_tail = new_tail;
+	
+	free_pages.count++;
+}
+
+uint32_t MEM_count_free_pages() {
+	return free_pages.count;
 }
 
 void MEM_init() {
@@ -207,5 +219,6 @@ void MEM_init() {
 
 	free_pages.page_head = nullptr;
 	free_pages.page_tail = nullptr;
+	free_pages.count = 0;
 }
 

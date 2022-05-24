@@ -41,20 +41,58 @@ void kmain() {
 	// Turn on interrupts just now
 	sti(1);
 
-	char* i = (char*) 0x40000000;
-	*i = 5;
+	int allocated_addresses = 10;
+	char* start_add = MMU_alloc_pages(allocated_addresses);
+	char* next = MMU_alloc_page(); // to make sure we don't get the same address again
 
-	void* page = MMU_alloc_page();
-	printkln("Stack ptr: %p", &page);
-	printkln("Read At %p: 0x%lx", page, *(uint64_t*) page);
-	*(uint64_t*) page = 0x69;
-	printkln("Wrote At %p: 0x%lx", page, *(uint64_t*) page);
+	if(start_add >= next)
+		printkln("Start address bigger than next, NOT OK!!");
 
-	void* page2 = MMU_alloc_page();
-	printkln("Curr At %p: 0x%lx", page2, *(uint64_t*) page2);
-	*(uint64_t*) page2 = 0x79;
-	printkln("Now At %p: 0x%lx", page2, *(uint64_t*) page2);
-	printkln("(P1) Now At %p: 0x%lx", page, *(uint64_t*) page);
+	// Set a value for each entry
+	for(int i = 0; i < 10; ++i) {
+		for(int j = 0; j < PAGE_SIZE; ++j) {
+			*(start_add + (j + (i * PAGE_SIZE))) = 'a';
+		}
+	}
+
+	for(int j = 0; j < PAGE_SIZE; ++j) {
+		*(next + j) = 'b';
+	}
+
+	// Verify that the entries are correct, and that writing to 'next' does not manipulate the data in the 10-page address space
+	for(int i = 0; i < 10; ++i) {
+		for(int j = 0; j < PAGE_SIZE; ++j) {
+			if(*(start_add + (j + (i * PAGE_SIZE))) != 'a') {
+				printkln("NOT CORRECT FOR MULTI PAGE!! Expected: %d, Actually: %c", (j % 256), *(start_add + (j + (i * PAGE_SIZE))));
+			}
+		}
+	}
+
+	for(int j = 0; j < PAGE_SIZE; ++j) {
+		if(*(next + j) != 'b') {
+			printkln("NOT CORRECT!! %d", j);
+		}
+	}
+
+	// If we get here without any prints we are all good
+
+	MMU_free_pages(start_add, allocated_addresses);
+	MMU_free_page(next);
+
+	char* next_next = MMU_alloc_page();
+	if(next >= next_next)
+		printkln("next_next is lower than next, NOT OK!!");
+
+	printkln("Is start_add present? %c", MMU_is_present(start_add) ? 'y' : 'n');
+
+	printkln("EXPECTING PAGE FAULT AFTER THIS!");
+	*start_add = 'c';
+	printkln("Value of start_add: %c", *start_add);
+	*(start_add + PAGE_SIZE + 1) = 'f';
+	printkln("Value of start_add + page: %c", *(start_add + PAGE_SIZE + 1));
+	//*next = 'd';
+	//printkln("Value of next: %c", *next);
+	//printkln("Value of next_next: %c", *next_next);
 
 	volatile int j = 0;
 	while(!j)

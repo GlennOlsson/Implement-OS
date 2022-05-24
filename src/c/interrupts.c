@@ -250,8 +250,10 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 		case 14:
 			cr2_content = ASM_read_cr2();
 			cr3_content = ASM_read_cr3();
-			if(!PT_can_allocate(cr2_content)) // If cannot allocate (demand allocate), print error
-				printkln("(SAME)Page Fault, error code: %x, CR2=%lx, CR3=%lx", error_code, cr2_content, cr3_content);
+			if(!PT_can_allocate(cr2_content)) { // If cannot allocate (demand allocate), print error
+				printkln("Page Fault, error code: %x, CR2=%lx, CR3=%lx", error_code, cr2_content, cr3_content);
+				ugly_sleep(3000);
+			}
 			break;
 			
 		case 15: 
