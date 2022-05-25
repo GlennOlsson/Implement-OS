@@ -2,6 +2,7 @@
 #include "memory_manager.h"
 #include "vga_api.h"
 #include "lib.h"
+#include "serial.h"
 
 extern void ASM_set_cr3(void*);
 
@@ -139,6 +140,10 @@ void PT_init() {
 // Checks if address can be allocated (called from page fault), and allocate if possible
 // returns 1 if could allocate new page, 0 if not
 uint8_t PT_can_allocate(uint64_t add) {
+	// IF this function is NOT volatile, we FOR SOME REASON need to print to serial before
+	// setting the address of pml1_entry below. Otherwise we don't get a page fault when 
+	// accessing free-ed virtual address
+
 	PML* pml1_entry = PML_get_pml1(add);
 	
 	if(!PML_is_allocatable(pml1_entry)) {
@@ -153,12 +158,13 @@ uint8_t PT_can_allocate(uint64_t add) {
 
 	void* phys_pf = MEM_pf_alloc();
 
+	// printkln("Physical address: %p", phys_pf);
+
+	// *(uint64_t*) phys_pf = 0;
+	outb(0x0, 0x3F8);
+	//write_to_serial('c');
 
 	PML_clear(pml1_entry);
-
-	// IF this print statement is here, we get a page fault when accessing freed address
-	// If under the next line, we get no page fault??
-	printkln("Demand allocating");
 
 	PML_set_add(pml1_entry, phys_pf);
 	PML_set_allocatable(pml1_entry, 0); // already allocated now
