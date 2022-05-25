@@ -85,25 +85,18 @@ pop_reg: ; Pop in FILO order
 	jmp [curr_isr.after_pop]
 """
 
-store_error_code = """
-	;mov [error_code], [RSP + 8]
-"""
-
 # Only add to isr's with error code
 load_error_code = """
 	mov RSI, [RSP + 8 * 16]
 """
 
 reset_rsp_code = """
-	;add rsp, 8
+	add RSP, 8
 """
 
 for i in range(256):
 	code = f"""
 isr{i}:
-	{store_error_code if i in error_code_isrs else ""}
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr{i}.after_push
@@ -121,13 +114,11 @@ isr{i}:
 
 	call generic_interrupt_handler 
 
-	{reset_rsp_code if i in error_code_isrs else ""}
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
 
-	{"add RSP, 8" if i in error_code_isrs else ""}
+	{reset_rsp_code if i in error_code_isrs else ""}
 	
 	iretq
 """

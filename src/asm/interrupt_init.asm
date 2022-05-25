@@ -331,9 +331,6 @@ pop_reg: ; Pop in FILO order
 	jmp [curr_isr.after_pop]
 
 isr0:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr0.after_push
@@ -351,8 +348,6 @@ isr0:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -362,9 +357,6 @@ isr0:
 	iretq
 
 isr1:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr1.after_push
@@ -382,8 +374,6 @@ isr1:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -393,9 +383,6 @@ isr1:
 	iretq
 
 isr2:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr2.after_push
@@ -413,8 +400,6 @@ isr2:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -424,9 +409,6 @@ isr2:
 	iretq
 
 isr3:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr3.after_push
@@ -444,8 +426,6 @@ isr3:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -455,9 +435,6 @@ isr3:
 	iretq
 
 isr4:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr4.after_push
@@ -475,8 +452,6 @@ isr4:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -486,9 +461,6 @@ isr4:
 	iretq
 
 isr5:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr5.after_push
@@ -506,8 +478,6 @@ isr5:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -517,9 +487,6 @@ isr5:
 	iretq
 
 isr6:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr6.after_push
@@ -537,8 +504,6 @@ isr6:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -548,9 +513,6 @@ isr6:
 	iretq
 
 isr7:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr7.after_push
@@ -568,8 +530,6 @@ isr7:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -579,11 +539,6 @@ isr7:
 	iretq
 
 isr8:
-	
-	;mov [error_code], [RSP + 8]
-
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr8.after_push
@@ -603,22 +558,17 @@ isr8:
 
 	call generic_interrupt_handler 
 
-	
-	;add rsp, 8
-
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
 
+	
 	add RSP, 8
+
 	
 	iretq
 
 isr9:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr9.after_push
@@ -636,8 +586,6 @@ isr9:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -647,11 +595,6 @@ isr9:
 	iretq
 
 isr10:
-	
-	;mov [error_code], [RSP + 8]
-
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr10.after_push
@@ -671,24 +614,17 @@ isr10:
 
 	call generic_interrupt_handler 
 
-	
-	;add rsp, 8
-
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
 
+	
 	add RSP, 8
+
 	
 	iretq
 
 isr11:
-	
-	;mov [error_code], [RSP + 8]
-
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr11.after_push
@@ -708,24 +644,17 @@ isr11:
 
 	call generic_interrupt_handler 
 
-	
-	;add rsp, 8
-
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
 
+	
 	add RSP, 8
+
 	
 	iretq
 
 isr12:
-	
-	;mov [error_code], [RSP + 8]
-
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr12.after_push
@@ -745,24 +674,17 @@ isr12:
 
 	call generic_interrupt_handler 
 
-	
-	;add rsp, 8
-
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
 
+	
 	add RSP, 8
+
 	
 	iretq
 
 isr13:
-	
-	;mov [error_code], [RSP + 8]
-
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr13.after_push
@@ -782,24 +704,17 @@ isr13:
 
 	call generic_interrupt_handler 
 
-	
-	;add rsp, 8
-
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
 
+	
 	add RSP, 8
+
 	
 	iretq
 
 isr14:
-	
-	;mov [error_code], [RSP + 8]
-
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr14.after_push
@@ -819,22 +734,17 @@ isr14:
 
 	call generic_interrupt_handler 
 
-	
-	;add rsp, 8
-
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
 
+	
 	add RSP, 8
+
 	
 	iretq
 
 isr15:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr15.after_push
@@ -852,8 +762,6 @@ isr15:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -863,9 +771,6 @@ isr15:
 	iretq
 
 isr16:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr16.after_push
@@ -883,8 +788,6 @@ isr16:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -894,11 +797,6 @@ isr16:
 	iretq
 
 isr17:
-	
-	;mov [error_code], [RSP + 8]
-
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr17.after_push
@@ -918,22 +816,17 @@ isr17:
 
 	call generic_interrupt_handler 
 
-	
-	;add rsp, 8
-
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
 
+	
 	add RSP, 8
+
 	
 	iretq
 
 isr18:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr18.after_push
@@ -951,8 +844,6 @@ isr18:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -962,9 +853,6 @@ isr18:
 	iretq
 
 isr19:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr19.after_push
@@ -982,8 +870,6 @@ isr19:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -993,9 +879,6 @@ isr19:
 	iretq
 
 isr20:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr20.after_push
@@ -1013,8 +896,6 @@ isr20:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1024,9 +905,6 @@ isr20:
 	iretq
 
 isr21:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr21.after_push
@@ -1044,8 +922,6 @@ isr21:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1055,9 +931,6 @@ isr21:
 	iretq
 
 isr22:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr22.after_push
@@ -1075,8 +948,6 @@ isr22:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1086,9 +957,6 @@ isr22:
 	iretq
 
 isr23:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr23.after_push
@@ -1106,8 +974,6 @@ isr23:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1117,9 +983,6 @@ isr23:
 	iretq
 
 isr24:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr24.after_push
@@ -1137,8 +1000,6 @@ isr24:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1148,9 +1009,6 @@ isr24:
 	iretq
 
 isr25:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr25.after_push
@@ -1168,8 +1026,6 @@ isr25:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1179,9 +1035,6 @@ isr25:
 	iretq
 
 isr26:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr26.after_push
@@ -1199,8 +1052,6 @@ isr26:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1210,9 +1061,6 @@ isr26:
 	iretq
 
 isr27:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr27.after_push
@@ -1230,8 +1078,6 @@ isr27:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1241,9 +1087,6 @@ isr27:
 	iretq
 
 isr28:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr28.after_push
@@ -1261,8 +1104,6 @@ isr28:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1272,9 +1113,6 @@ isr28:
 	iretq
 
 isr29:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr29.after_push
@@ -1292,8 +1130,6 @@ isr29:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1303,9 +1139,6 @@ isr29:
 	iretq
 
 isr30:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr30.after_push
@@ -1323,8 +1156,6 @@ isr30:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1334,9 +1165,6 @@ isr30:
 	iretq
 
 isr31:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr31.after_push
@@ -1354,8 +1182,6 @@ isr31:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1365,9 +1191,6 @@ isr31:
 	iretq
 
 isr32:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr32.after_push
@@ -1385,8 +1208,6 @@ isr32:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1396,9 +1217,6 @@ isr32:
 	iretq
 
 isr33:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr33.after_push
@@ -1416,8 +1234,6 @@ isr33:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1427,9 +1243,6 @@ isr33:
 	iretq
 
 isr34:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr34.after_push
@@ -1447,8 +1260,6 @@ isr34:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1458,9 +1269,6 @@ isr34:
 	iretq
 
 isr35:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr35.after_push
@@ -1478,8 +1286,6 @@ isr35:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1489,9 +1295,6 @@ isr35:
 	iretq
 
 isr36:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr36.after_push
@@ -1509,8 +1312,6 @@ isr36:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1520,9 +1321,6 @@ isr36:
 	iretq
 
 isr37:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr37.after_push
@@ -1540,8 +1338,6 @@ isr37:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1551,9 +1347,6 @@ isr37:
 	iretq
 
 isr38:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr38.after_push
@@ -1571,8 +1364,6 @@ isr38:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1582,9 +1373,6 @@ isr38:
 	iretq
 
 isr39:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr39.after_push
@@ -1602,8 +1390,6 @@ isr39:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1613,9 +1399,6 @@ isr39:
 	iretq
 
 isr40:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr40.after_push
@@ -1633,8 +1416,6 @@ isr40:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1644,9 +1425,6 @@ isr40:
 	iretq
 
 isr41:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr41.after_push
@@ -1664,8 +1442,6 @@ isr41:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1675,9 +1451,6 @@ isr41:
 	iretq
 
 isr42:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr42.after_push
@@ -1695,8 +1468,6 @@ isr42:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1706,9 +1477,6 @@ isr42:
 	iretq
 
 isr43:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr43.after_push
@@ -1726,8 +1494,6 @@ isr43:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1737,9 +1503,6 @@ isr43:
 	iretq
 
 isr44:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr44.after_push
@@ -1757,8 +1520,6 @@ isr44:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1768,9 +1529,6 @@ isr44:
 	iretq
 
 isr45:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr45.after_push
@@ -1788,8 +1546,6 @@ isr45:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1799,9 +1555,6 @@ isr45:
 	iretq
 
 isr46:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr46.after_push
@@ -1819,8 +1572,6 @@ isr46:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1830,9 +1581,6 @@ isr46:
 	iretq
 
 isr47:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr47.after_push
@@ -1850,8 +1598,6 @@ isr47:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1861,9 +1607,6 @@ isr47:
 	iretq
 
 isr48:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr48.after_push
@@ -1881,8 +1624,6 @@ isr48:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1892,9 +1633,6 @@ isr48:
 	iretq
 
 isr49:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr49.after_push
@@ -1912,8 +1650,6 @@ isr49:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1923,9 +1659,6 @@ isr49:
 	iretq
 
 isr50:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr50.after_push
@@ -1943,8 +1676,6 @@ isr50:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1954,9 +1685,6 @@ isr50:
 	iretq
 
 isr51:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr51.after_push
@@ -1974,8 +1702,6 @@ isr51:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -1985,9 +1711,6 @@ isr51:
 	iretq
 
 isr52:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr52.after_push
@@ -2005,8 +1728,6 @@ isr52:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2016,9 +1737,6 @@ isr52:
 	iretq
 
 isr53:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr53.after_push
@@ -2036,8 +1754,6 @@ isr53:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2047,9 +1763,6 @@ isr53:
 	iretq
 
 isr54:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr54.after_push
@@ -2067,8 +1780,6 @@ isr54:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2078,9 +1789,6 @@ isr54:
 	iretq
 
 isr55:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr55.after_push
@@ -2098,8 +1806,6 @@ isr55:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2109,9 +1815,6 @@ isr55:
 	iretq
 
 isr56:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr56.after_push
@@ -2129,8 +1832,6 @@ isr56:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2140,9 +1841,6 @@ isr56:
 	iretq
 
 isr57:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr57.after_push
@@ -2160,8 +1858,6 @@ isr57:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2171,9 +1867,6 @@ isr57:
 	iretq
 
 isr58:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr58.after_push
@@ -2191,8 +1884,6 @@ isr58:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2202,9 +1893,6 @@ isr58:
 	iretq
 
 isr59:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr59.after_push
@@ -2222,8 +1910,6 @@ isr59:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2233,9 +1919,6 @@ isr59:
 	iretq
 
 isr60:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr60.after_push
@@ -2253,8 +1936,6 @@ isr60:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2264,9 +1945,6 @@ isr60:
 	iretq
 
 isr61:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr61.after_push
@@ -2284,8 +1962,6 @@ isr61:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2295,9 +1971,6 @@ isr61:
 	iretq
 
 isr62:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr62.after_push
@@ -2315,8 +1988,6 @@ isr62:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2326,9 +1997,6 @@ isr62:
 	iretq
 
 isr63:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr63.after_push
@@ -2346,8 +2014,6 @@ isr63:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2357,9 +2023,6 @@ isr63:
 	iretq
 
 isr64:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr64.after_push
@@ -2377,8 +2040,6 @@ isr64:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2388,9 +2049,6 @@ isr64:
 	iretq
 
 isr65:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr65.after_push
@@ -2408,8 +2066,6 @@ isr65:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2419,9 +2075,6 @@ isr65:
 	iretq
 
 isr66:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr66.after_push
@@ -2439,8 +2092,6 @@ isr66:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2450,9 +2101,6 @@ isr66:
 	iretq
 
 isr67:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr67.after_push
@@ -2470,8 +2118,6 @@ isr67:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2481,9 +2127,6 @@ isr67:
 	iretq
 
 isr68:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr68.after_push
@@ -2501,8 +2144,6 @@ isr68:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2512,9 +2153,6 @@ isr68:
 	iretq
 
 isr69:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr69.after_push
@@ -2532,8 +2170,6 @@ isr69:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2543,9 +2179,6 @@ isr69:
 	iretq
 
 isr70:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr70.after_push
@@ -2563,8 +2196,6 @@ isr70:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2574,9 +2205,6 @@ isr70:
 	iretq
 
 isr71:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr71.after_push
@@ -2594,8 +2222,6 @@ isr71:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2605,9 +2231,6 @@ isr71:
 	iretq
 
 isr72:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr72.after_push
@@ -2625,8 +2248,6 @@ isr72:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2636,9 +2257,6 @@ isr72:
 	iretq
 
 isr73:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr73.after_push
@@ -2656,8 +2274,6 @@ isr73:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2667,9 +2283,6 @@ isr73:
 	iretq
 
 isr74:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr74.after_push
@@ -2687,8 +2300,6 @@ isr74:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2698,9 +2309,6 @@ isr74:
 	iretq
 
 isr75:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr75.after_push
@@ -2718,8 +2326,6 @@ isr75:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2729,9 +2335,6 @@ isr75:
 	iretq
 
 isr76:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr76.after_push
@@ -2749,8 +2352,6 @@ isr76:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2760,9 +2361,6 @@ isr76:
 	iretq
 
 isr77:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr77.after_push
@@ -2780,8 +2378,6 @@ isr77:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2791,9 +2387,6 @@ isr77:
 	iretq
 
 isr78:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr78.after_push
@@ -2811,8 +2404,6 @@ isr78:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2822,9 +2413,6 @@ isr78:
 	iretq
 
 isr79:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr79.after_push
@@ -2842,8 +2430,6 @@ isr79:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2853,9 +2439,6 @@ isr79:
 	iretq
 
 isr80:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr80.after_push
@@ -2873,8 +2456,6 @@ isr80:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2884,9 +2465,6 @@ isr80:
 	iretq
 
 isr81:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr81.after_push
@@ -2904,8 +2482,6 @@ isr81:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2915,9 +2491,6 @@ isr81:
 	iretq
 
 isr82:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr82.after_push
@@ -2935,8 +2508,6 @@ isr82:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2946,9 +2517,6 @@ isr82:
 	iretq
 
 isr83:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr83.after_push
@@ -2966,8 +2534,6 @@ isr83:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -2977,9 +2543,6 @@ isr83:
 	iretq
 
 isr84:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr84.after_push
@@ -2997,8 +2560,6 @@ isr84:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3008,9 +2569,6 @@ isr84:
 	iretq
 
 isr85:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr85.after_push
@@ -3028,8 +2586,6 @@ isr85:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3039,9 +2595,6 @@ isr85:
 	iretq
 
 isr86:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr86.after_push
@@ -3059,8 +2612,6 @@ isr86:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3070,9 +2621,6 @@ isr86:
 	iretq
 
 isr87:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr87.after_push
@@ -3090,8 +2638,6 @@ isr87:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3101,9 +2647,6 @@ isr87:
 	iretq
 
 isr88:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr88.after_push
@@ -3121,8 +2664,6 @@ isr88:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3132,9 +2673,6 @@ isr88:
 	iretq
 
 isr89:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr89.after_push
@@ -3152,8 +2690,6 @@ isr89:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3163,9 +2699,6 @@ isr89:
 	iretq
 
 isr90:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr90.after_push
@@ -3183,8 +2716,6 @@ isr90:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3194,9 +2725,6 @@ isr90:
 	iretq
 
 isr91:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr91.after_push
@@ -3214,8 +2742,6 @@ isr91:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3225,9 +2751,6 @@ isr91:
 	iretq
 
 isr92:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr92.after_push
@@ -3245,8 +2768,6 @@ isr92:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3256,9 +2777,6 @@ isr92:
 	iretq
 
 isr93:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr93.after_push
@@ -3276,8 +2794,6 @@ isr93:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3287,9 +2803,6 @@ isr93:
 	iretq
 
 isr94:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr94.after_push
@@ -3307,8 +2820,6 @@ isr94:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3318,9 +2829,6 @@ isr94:
 	iretq
 
 isr95:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr95.after_push
@@ -3338,8 +2846,6 @@ isr95:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3349,9 +2855,6 @@ isr95:
 	iretq
 
 isr96:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr96.after_push
@@ -3369,8 +2872,6 @@ isr96:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3380,9 +2881,6 @@ isr96:
 	iretq
 
 isr97:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr97.after_push
@@ -3400,8 +2898,6 @@ isr97:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3411,9 +2907,6 @@ isr97:
 	iretq
 
 isr98:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr98.after_push
@@ -3431,8 +2924,6 @@ isr98:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3442,9 +2933,6 @@ isr98:
 	iretq
 
 isr99:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr99.after_push
@@ -3462,8 +2950,6 @@ isr99:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3473,9 +2959,6 @@ isr99:
 	iretq
 
 isr100:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr100.after_push
@@ -3493,8 +2976,6 @@ isr100:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3504,9 +2985,6 @@ isr100:
 	iretq
 
 isr101:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr101.after_push
@@ -3524,8 +3002,6 @@ isr101:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3535,9 +3011,6 @@ isr101:
 	iretq
 
 isr102:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr102.after_push
@@ -3555,8 +3028,6 @@ isr102:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3566,9 +3037,6 @@ isr102:
 	iretq
 
 isr103:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr103.after_push
@@ -3586,8 +3054,6 @@ isr103:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3597,9 +3063,6 @@ isr103:
 	iretq
 
 isr104:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr104.after_push
@@ -3617,8 +3080,6 @@ isr104:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3628,9 +3089,6 @@ isr104:
 	iretq
 
 isr105:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr105.after_push
@@ -3648,8 +3106,6 @@ isr105:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3659,9 +3115,6 @@ isr105:
 	iretq
 
 isr106:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr106.after_push
@@ -3679,8 +3132,6 @@ isr106:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3690,9 +3141,6 @@ isr106:
 	iretq
 
 isr107:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr107.after_push
@@ -3710,8 +3158,6 @@ isr107:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3721,9 +3167,6 @@ isr107:
 	iretq
 
 isr108:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr108.after_push
@@ -3741,8 +3184,6 @@ isr108:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3752,9 +3193,6 @@ isr108:
 	iretq
 
 isr109:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr109.after_push
@@ -3772,8 +3210,6 @@ isr109:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3783,9 +3219,6 @@ isr109:
 	iretq
 
 isr110:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr110.after_push
@@ -3803,8 +3236,6 @@ isr110:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3814,9 +3245,6 @@ isr110:
 	iretq
 
 isr111:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr111.after_push
@@ -3834,8 +3262,6 @@ isr111:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3845,9 +3271,6 @@ isr111:
 	iretq
 
 isr112:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr112.after_push
@@ -3865,8 +3288,6 @@ isr112:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3876,9 +3297,6 @@ isr112:
 	iretq
 
 isr113:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr113.after_push
@@ -3896,8 +3314,6 @@ isr113:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3907,9 +3323,6 @@ isr113:
 	iretq
 
 isr114:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr114.after_push
@@ -3927,8 +3340,6 @@ isr114:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3938,9 +3349,6 @@ isr114:
 	iretq
 
 isr115:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr115.after_push
@@ -3958,8 +3366,6 @@ isr115:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -3969,9 +3375,6 @@ isr115:
 	iretq
 
 isr116:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr116.after_push
@@ -3989,8 +3392,6 @@ isr116:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4000,9 +3401,6 @@ isr116:
 	iretq
 
 isr117:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr117.after_push
@@ -4020,8 +3418,6 @@ isr117:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4031,9 +3427,6 @@ isr117:
 	iretq
 
 isr118:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr118.after_push
@@ -4051,8 +3444,6 @@ isr118:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4062,9 +3453,6 @@ isr118:
 	iretq
 
 isr119:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr119.after_push
@@ -4082,8 +3470,6 @@ isr119:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4093,9 +3479,6 @@ isr119:
 	iretq
 
 isr120:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr120.after_push
@@ -4113,8 +3496,6 @@ isr120:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4124,9 +3505,6 @@ isr120:
 	iretq
 
 isr121:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr121.after_push
@@ -4144,8 +3522,6 @@ isr121:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4155,9 +3531,6 @@ isr121:
 	iretq
 
 isr122:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr122.after_push
@@ -4175,8 +3548,6 @@ isr122:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4186,9 +3557,6 @@ isr122:
 	iretq
 
 isr123:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr123.after_push
@@ -4206,8 +3574,6 @@ isr123:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4217,9 +3583,6 @@ isr123:
 	iretq
 
 isr124:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr124.after_push
@@ -4237,8 +3600,6 @@ isr124:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4248,9 +3609,6 @@ isr124:
 	iretq
 
 isr125:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr125.after_push
@@ -4268,8 +3626,6 @@ isr125:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4279,9 +3635,6 @@ isr125:
 	iretq
 
 isr126:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr126.after_push
@@ -4299,8 +3652,6 @@ isr126:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4310,9 +3661,6 @@ isr126:
 	iretq
 
 isr127:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr127.after_push
@@ -4330,8 +3678,6 @@ isr127:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4341,9 +3687,6 @@ isr127:
 	iretq
 
 isr128:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr128.after_push
@@ -4361,8 +3704,6 @@ isr128:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4372,9 +3713,6 @@ isr128:
 	iretq
 
 isr129:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr129.after_push
@@ -4392,8 +3730,6 @@ isr129:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4403,9 +3739,6 @@ isr129:
 	iretq
 
 isr130:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr130.after_push
@@ -4423,8 +3756,6 @@ isr130:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4434,9 +3765,6 @@ isr130:
 	iretq
 
 isr131:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr131.after_push
@@ -4454,8 +3782,6 @@ isr131:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4465,9 +3791,6 @@ isr131:
 	iretq
 
 isr132:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr132.after_push
@@ -4485,8 +3808,6 @@ isr132:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4496,9 +3817,6 @@ isr132:
 	iretq
 
 isr133:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr133.after_push
@@ -4516,8 +3834,6 @@ isr133:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4527,9 +3843,6 @@ isr133:
 	iretq
 
 isr134:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr134.after_push
@@ -4547,8 +3860,6 @@ isr134:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4558,9 +3869,6 @@ isr134:
 	iretq
 
 isr135:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr135.after_push
@@ -4578,8 +3886,6 @@ isr135:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4589,9 +3895,6 @@ isr135:
 	iretq
 
 isr136:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr136.after_push
@@ -4609,8 +3912,6 @@ isr136:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4620,9 +3921,6 @@ isr136:
 	iretq
 
 isr137:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr137.after_push
@@ -4640,8 +3938,6 @@ isr137:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4651,9 +3947,6 @@ isr137:
 	iretq
 
 isr138:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr138.after_push
@@ -4671,8 +3964,6 @@ isr138:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4682,9 +3973,6 @@ isr138:
 	iretq
 
 isr139:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr139.after_push
@@ -4702,8 +3990,6 @@ isr139:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4713,9 +3999,6 @@ isr139:
 	iretq
 
 isr140:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr140.after_push
@@ -4733,8 +4016,6 @@ isr140:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4744,9 +4025,6 @@ isr140:
 	iretq
 
 isr141:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr141.after_push
@@ -4764,8 +4042,6 @@ isr141:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4775,9 +4051,6 @@ isr141:
 	iretq
 
 isr142:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr142.after_push
@@ -4795,8 +4068,6 @@ isr142:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4806,9 +4077,6 @@ isr142:
 	iretq
 
 isr143:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr143.after_push
@@ -4826,8 +4094,6 @@ isr143:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4837,9 +4103,6 @@ isr143:
 	iretq
 
 isr144:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr144.after_push
@@ -4857,8 +4120,6 @@ isr144:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4868,9 +4129,6 @@ isr144:
 	iretq
 
 isr145:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr145.after_push
@@ -4888,8 +4146,6 @@ isr145:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4899,9 +4155,6 @@ isr145:
 	iretq
 
 isr146:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr146.after_push
@@ -4919,8 +4172,6 @@ isr146:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4930,9 +4181,6 @@ isr146:
 	iretq
 
 isr147:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr147.after_push
@@ -4950,8 +4198,6 @@ isr147:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4961,9 +4207,6 @@ isr147:
 	iretq
 
 isr148:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr148.after_push
@@ -4981,8 +4224,6 @@ isr148:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -4992,9 +4233,6 @@ isr148:
 	iretq
 
 isr149:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr149.after_push
@@ -5012,8 +4250,6 @@ isr149:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5023,9 +4259,6 @@ isr149:
 	iretq
 
 isr150:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr150.after_push
@@ -5043,8 +4276,6 @@ isr150:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5054,9 +4285,6 @@ isr150:
 	iretq
 
 isr151:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr151.after_push
@@ -5074,8 +4302,6 @@ isr151:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5085,9 +4311,6 @@ isr151:
 	iretq
 
 isr152:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr152.after_push
@@ -5105,8 +4328,6 @@ isr152:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5116,9 +4337,6 @@ isr152:
 	iretq
 
 isr153:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr153.after_push
@@ -5136,8 +4354,6 @@ isr153:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5147,9 +4363,6 @@ isr153:
 	iretq
 
 isr154:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr154.after_push
@@ -5167,8 +4380,6 @@ isr154:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5178,9 +4389,6 @@ isr154:
 	iretq
 
 isr155:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr155.after_push
@@ -5198,8 +4406,6 @@ isr155:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5209,9 +4415,6 @@ isr155:
 	iretq
 
 isr156:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr156.after_push
@@ -5229,8 +4432,6 @@ isr156:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5240,9 +4441,6 @@ isr156:
 	iretq
 
 isr157:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr157.after_push
@@ -5260,8 +4458,6 @@ isr157:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5271,9 +4467,6 @@ isr157:
 	iretq
 
 isr158:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr158.after_push
@@ -5291,8 +4484,6 @@ isr158:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5302,9 +4493,6 @@ isr158:
 	iretq
 
 isr159:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr159.after_push
@@ -5322,8 +4510,6 @@ isr159:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5333,9 +4519,6 @@ isr159:
 	iretq
 
 isr160:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr160.after_push
@@ -5353,8 +4536,6 @@ isr160:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5364,9 +4545,6 @@ isr160:
 	iretq
 
 isr161:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr161.after_push
@@ -5384,8 +4562,6 @@ isr161:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5395,9 +4571,6 @@ isr161:
 	iretq
 
 isr162:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr162.after_push
@@ -5415,8 +4588,6 @@ isr162:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5426,9 +4597,6 @@ isr162:
 	iretq
 
 isr163:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr163.after_push
@@ -5446,8 +4614,6 @@ isr163:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5457,9 +4623,6 @@ isr163:
 	iretq
 
 isr164:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr164.after_push
@@ -5477,8 +4640,6 @@ isr164:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5488,9 +4649,6 @@ isr164:
 	iretq
 
 isr165:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr165.after_push
@@ -5508,8 +4666,6 @@ isr165:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5519,9 +4675,6 @@ isr165:
 	iretq
 
 isr166:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr166.after_push
@@ -5539,8 +4692,6 @@ isr166:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5550,9 +4701,6 @@ isr166:
 	iretq
 
 isr167:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr167.after_push
@@ -5570,8 +4718,6 @@ isr167:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5581,9 +4727,6 @@ isr167:
 	iretq
 
 isr168:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr168.after_push
@@ -5601,8 +4744,6 @@ isr168:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5612,9 +4753,6 @@ isr168:
 	iretq
 
 isr169:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr169.after_push
@@ -5632,8 +4770,6 @@ isr169:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5643,9 +4779,6 @@ isr169:
 	iretq
 
 isr170:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr170.after_push
@@ -5663,8 +4796,6 @@ isr170:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5674,9 +4805,6 @@ isr170:
 	iretq
 
 isr171:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr171.after_push
@@ -5694,8 +4822,6 @@ isr171:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5705,9 +4831,6 @@ isr171:
 	iretq
 
 isr172:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr172.after_push
@@ -5725,8 +4848,6 @@ isr172:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5736,9 +4857,6 @@ isr172:
 	iretq
 
 isr173:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr173.after_push
@@ -5756,8 +4874,6 @@ isr173:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5767,9 +4883,6 @@ isr173:
 	iretq
 
 isr174:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr174.after_push
@@ -5787,8 +4900,6 @@ isr174:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5798,9 +4909,6 @@ isr174:
 	iretq
 
 isr175:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr175.after_push
@@ -5818,8 +4926,6 @@ isr175:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5829,9 +4935,6 @@ isr175:
 	iretq
 
 isr176:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr176.after_push
@@ -5849,8 +4952,6 @@ isr176:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5860,9 +4961,6 @@ isr176:
 	iretq
 
 isr177:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr177.after_push
@@ -5880,8 +4978,6 @@ isr177:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5891,9 +4987,6 @@ isr177:
 	iretq
 
 isr178:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr178.after_push
@@ -5911,8 +5004,6 @@ isr178:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5922,9 +5013,6 @@ isr178:
 	iretq
 
 isr179:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr179.after_push
@@ -5942,8 +5030,6 @@ isr179:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5953,9 +5039,6 @@ isr179:
 	iretq
 
 isr180:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr180.after_push
@@ -5973,8 +5056,6 @@ isr180:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -5984,9 +5065,6 @@ isr180:
 	iretq
 
 isr181:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr181.after_push
@@ -6004,8 +5082,6 @@ isr181:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6015,9 +5091,6 @@ isr181:
 	iretq
 
 isr182:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr182.after_push
@@ -6035,8 +5108,6 @@ isr182:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6046,9 +5117,6 @@ isr182:
 	iretq
 
 isr183:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr183.after_push
@@ -6066,8 +5134,6 @@ isr183:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6077,9 +5143,6 @@ isr183:
 	iretq
 
 isr184:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr184.after_push
@@ -6097,8 +5160,6 @@ isr184:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6108,9 +5169,6 @@ isr184:
 	iretq
 
 isr185:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr185.after_push
@@ -6128,8 +5186,6 @@ isr185:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6139,9 +5195,6 @@ isr185:
 	iretq
 
 isr186:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr186.after_push
@@ -6159,8 +5212,6 @@ isr186:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6170,9 +5221,6 @@ isr186:
 	iretq
 
 isr187:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr187.after_push
@@ -6190,8 +5238,6 @@ isr187:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6201,9 +5247,6 @@ isr187:
 	iretq
 
 isr188:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr188.after_push
@@ -6221,8 +5264,6 @@ isr188:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6232,9 +5273,6 @@ isr188:
 	iretq
 
 isr189:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr189.after_push
@@ -6252,8 +5290,6 @@ isr189:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6263,9 +5299,6 @@ isr189:
 	iretq
 
 isr190:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr190.after_push
@@ -6283,8 +5316,6 @@ isr190:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6294,9 +5325,6 @@ isr190:
 	iretq
 
 isr191:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr191.after_push
@@ -6314,8 +5342,6 @@ isr191:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6325,9 +5351,6 @@ isr191:
 	iretq
 
 isr192:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr192.after_push
@@ -6345,8 +5368,6 @@ isr192:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6356,9 +5377,6 @@ isr192:
 	iretq
 
 isr193:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr193.after_push
@@ -6376,8 +5394,6 @@ isr193:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6387,9 +5403,6 @@ isr193:
 	iretq
 
 isr194:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr194.after_push
@@ -6407,8 +5420,6 @@ isr194:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6418,9 +5429,6 @@ isr194:
 	iretq
 
 isr195:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr195.after_push
@@ -6438,8 +5446,6 @@ isr195:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6449,9 +5455,6 @@ isr195:
 	iretq
 
 isr196:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr196.after_push
@@ -6469,8 +5472,6 @@ isr196:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6480,9 +5481,6 @@ isr196:
 	iretq
 
 isr197:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr197.after_push
@@ -6500,8 +5498,6 @@ isr197:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6511,9 +5507,6 @@ isr197:
 	iretq
 
 isr198:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr198.after_push
@@ -6531,8 +5524,6 @@ isr198:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6542,9 +5533,6 @@ isr198:
 	iretq
 
 isr199:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr199.after_push
@@ -6562,8 +5550,6 @@ isr199:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6573,9 +5559,6 @@ isr199:
 	iretq
 
 isr200:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr200.after_push
@@ -6593,8 +5576,6 @@ isr200:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6604,9 +5585,6 @@ isr200:
 	iretq
 
 isr201:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr201.after_push
@@ -6624,8 +5602,6 @@ isr201:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6635,9 +5611,6 @@ isr201:
 	iretq
 
 isr202:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr202.after_push
@@ -6655,8 +5628,6 @@ isr202:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6666,9 +5637,6 @@ isr202:
 	iretq
 
 isr203:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr203.after_push
@@ -6686,8 +5654,6 @@ isr203:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6697,9 +5663,6 @@ isr203:
 	iretq
 
 isr204:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr204.after_push
@@ -6717,8 +5680,6 @@ isr204:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6728,9 +5689,6 @@ isr204:
 	iretq
 
 isr205:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr205.after_push
@@ -6748,8 +5706,6 @@ isr205:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6759,9 +5715,6 @@ isr205:
 	iretq
 
 isr206:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr206.after_push
@@ -6779,8 +5732,6 @@ isr206:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6790,9 +5741,6 @@ isr206:
 	iretq
 
 isr207:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr207.after_push
@@ -6810,8 +5758,6 @@ isr207:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6821,9 +5767,6 @@ isr207:
 	iretq
 
 isr208:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr208.after_push
@@ -6841,8 +5784,6 @@ isr208:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6852,9 +5793,6 @@ isr208:
 	iretq
 
 isr209:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr209.after_push
@@ -6872,8 +5810,6 @@ isr209:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6883,9 +5819,6 @@ isr209:
 	iretq
 
 isr210:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr210.after_push
@@ -6903,8 +5836,6 @@ isr210:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6914,9 +5845,6 @@ isr210:
 	iretq
 
 isr211:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr211.after_push
@@ -6934,8 +5862,6 @@ isr211:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6945,9 +5871,6 @@ isr211:
 	iretq
 
 isr212:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr212.after_push
@@ -6965,8 +5888,6 @@ isr212:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -6976,9 +5897,6 @@ isr212:
 	iretq
 
 isr213:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr213.after_push
@@ -6996,8 +5914,6 @@ isr213:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7007,9 +5923,6 @@ isr213:
 	iretq
 
 isr214:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr214.after_push
@@ -7027,8 +5940,6 @@ isr214:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7038,9 +5949,6 @@ isr214:
 	iretq
 
 isr215:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr215.after_push
@@ -7058,8 +5966,6 @@ isr215:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7069,9 +5975,6 @@ isr215:
 	iretq
 
 isr216:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr216.after_push
@@ -7089,8 +5992,6 @@ isr216:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7100,9 +6001,6 @@ isr216:
 	iretq
 
 isr217:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr217.after_push
@@ -7120,8 +6018,6 @@ isr217:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7131,9 +6027,6 @@ isr217:
 	iretq
 
 isr218:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr218.after_push
@@ -7151,8 +6044,6 @@ isr218:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7162,9 +6053,6 @@ isr218:
 	iretq
 
 isr219:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr219.after_push
@@ -7182,8 +6070,6 @@ isr219:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7193,9 +6079,6 @@ isr219:
 	iretq
 
 isr220:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr220.after_push
@@ -7213,8 +6096,6 @@ isr220:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7224,9 +6105,6 @@ isr220:
 	iretq
 
 isr221:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr221.after_push
@@ -7244,8 +6122,6 @@ isr221:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7255,9 +6131,6 @@ isr221:
 	iretq
 
 isr222:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr222.after_push
@@ -7275,8 +6148,6 @@ isr222:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7286,9 +6157,6 @@ isr222:
 	iretq
 
 isr223:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr223.after_push
@@ -7306,8 +6174,6 @@ isr223:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7317,9 +6183,6 @@ isr223:
 	iretq
 
 isr224:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr224.after_push
@@ -7337,8 +6200,6 @@ isr224:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7348,9 +6209,6 @@ isr224:
 	iretq
 
 isr225:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr225.after_push
@@ -7368,8 +6226,6 @@ isr225:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7379,9 +6235,6 @@ isr225:
 	iretq
 
 isr226:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr226.after_push
@@ -7399,8 +6252,6 @@ isr226:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7410,9 +6261,6 @@ isr226:
 	iretq
 
 isr227:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr227.after_push
@@ -7430,8 +6278,6 @@ isr227:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7441,9 +6287,6 @@ isr227:
 	iretq
 
 isr228:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr228.after_push
@@ -7461,8 +6304,6 @@ isr228:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7472,9 +6313,6 @@ isr228:
 	iretq
 
 isr229:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr229.after_push
@@ -7492,8 +6330,6 @@ isr229:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7503,9 +6339,6 @@ isr229:
 	iretq
 
 isr230:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr230.after_push
@@ -7523,8 +6356,6 @@ isr230:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7534,9 +6365,6 @@ isr230:
 	iretq
 
 isr231:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr231.after_push
@@ -7554,8 +6382,6 @@ isr231:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7565,9 +6391,6 @@ isr231:
 	iretq
 
 isr232:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr232.after_push
@@ -7585,8 +6408,6 @@ isr232:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7596,9 +6417,6 @@ isr232:
 	iretq
 
 isr233:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr233.after_push
@@ -7616,8 +6434,6 @@ isr233:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7627,9 +6443,6 @@ isr233:
 	iretq
 
 isr234:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr234.after_push
@@ -7647,8 +6460,6 @@ isr234:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7658,9 +6469,6 @@ isr234:
 	iretq
 
 isr235:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr235.after_push
@@ -7678,8 +6486,6 @@ isr235:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7689,9 +6495,6 @@ isr235:
 	iretq
 
 isr236:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr236.after_push
@@ -7709,8 +6512,6 @@ isr236:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7720,9 +6521,6 @@ isr236:
 	iretq
 
 isr237:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr237.after_push
@@ -7740,8 +6538,6 @@ isr237:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7751,9 +6547,6 @@ isr237:
 	iretq
 
 isr238:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr238.after_push
@@ -7771,8 +6564,6 @@ isr238:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7782,9 +6573,6 @@ isr238:
 	iretq
 
 isr239:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr239.after_push
@@ -7802,8 +6590,6 @@ isr239:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7813,9 +6599,6 @@ isr239:
 	iretq
 
 isr240:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr240.after_push
@@ -7833,8 +6616,6 @@ isr240:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7844,9 +6625,6 @@ isr240:
 	iretq
 
 isr241:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr241.after_push
@@ -7864,8 +6642,6 @@ isr241:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7875,9 +6651,6 @@ isr241:
 	iretq
 
 isr242:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr242.after_push
@@ -7895,8 +6668,6 @@ isr242:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7906,9 +6677,6 @@ isr242:
 	iretq
 
 isr243:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr243.after_push
@@ -7926,8 +6694,6 @@ isr243:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7937,9 +6703,6 @@ isr243:
 	iretq
 
 isr244:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr244.after_push
@@ -7957,8 +6720,6 @@ isr244:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7968,9 +6729,6 @@ isr244:
 	iretq
 
 isr245:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr245.after_push
@@ -7988,8 +6746,6 @@ isr245:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -7999,9 +6755,6 @@ isr245:
 	iretq
 
 isr246:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr246.after_push
@@ -8019,8 +6772,6 @@ isr246:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -8030,9 +6781,6 @@ isr246:
 	iretq
 
 isr247:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr247.after_push
@@ -8050,8 +6798,6 @@ isr247:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -8061,9 +6807,6 @@ isr247:
 	iretq
 
 isr248:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr248.after_push
@@ -8081,8 +6824,6 @@ isr248:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -8092,9 +6833,6 @@ isr248:
 	iretq
 
 isr249:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr249.after_push
@@ -8112,8 +6850,6 @@ isr249:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -8123,9 +6859,6 @@ isr249:
 	iretq
 
 isr250:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr250.after_push
@@ -8143,8 +6876,6 @@ isr250:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -8154,9 +6885,6 @@ isr250:
 	iretq
 
 isr251:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr251.after_push
@@ -8174,8 +6902,6 @@ isr251:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -8185,9 +6911,6 @@ isr251:
 	iretq
 
 isr252:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr252.after_push
@@ -8205,8 +6928,6 @@ isr252:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -8216,9 +6937,6 @@ isr252:
 	iretq
 
 isr253:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr253.after_push
@@ -8236,8 +6954,6 @@ isr253:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -8247,9 +6963,6 @@ isr253:
 	iretq
 
 isr254:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr254.after_push
@@ -8267,8 +6980,6 @@ isr254:
 
 	call generic_interrupt_handler 
 
-	
-
 	; pop registers
 	jmp pop_reg
 .after_pop:
@@ -8278,9 +6989,6 @@ isr254:
 	iretq
 
 isr255:
-	
-
-	;push 0x69
 
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr255.after_push
@@ -8297,8 +7005,6 @@ isr255:
 	;mov RSI, [RSP]
 
 	call generic_interrupt_handler 
-
-	
 
 	; pop registers
 	jmp pop_reg

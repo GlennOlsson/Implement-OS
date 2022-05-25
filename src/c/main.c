@@ -10,6 +10,9 @@
 #include "page_table.h"
 
 void kmain() {
+	// Dissable interrupts in case they are on
+	cli(0);
+
 	VGA_clear();
 	printkln("+ - - - - - - - - - +");
 	printkln("|                   |");
@@ -40,6 +43,9 @@ void kmain() {
 
 	// Turn on interrupts just now
 	sti(1);
+
+	int* i = 0;
+	*i = 3;
 
 	int allocated_addresses = 10;
 	char* start_add = MMU_alloc_pages(allocated_addresses);

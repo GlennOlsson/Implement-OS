@@ -140,9 +140,6 @@ void PT_init() {
 // Checks if address can be allocated (called from page fault), and allocate if possible
 // returns 1 if could allocate new page, 0 if not
 uint8_t PT_can_allocate(uint64_t add) {
-	// IF this function is NOT volatile, we FOR SOME REASON need to print to serial before
-	// setting the address of pml1_entry below. Otherwise we don't get a page fault when 
-	// accessing free-ed virtual address
 
 	PML* pml1_entry = PML_get_pml1(add);
 	
@@ -158,11 +155,8 @@ uint8_t PT_can_allocate(uint64_t add) {
 
 	void* phys_pf = MEM_pf_alloc();
 
-	// printkln("Physical address: %p", phys_pf);
-
-	// *(uint64_t*) phys_pf = 0;
+	// without this line, for some reason, it won't throw a PF when accessing non-present page
 	outb(0x0, 0x3F8);
-	//write_to_serial('c');
 
 	PML_clear(pml1_entry);
 
@@ -198,6 +192,8 @@ uint8_t MMU_is_present(void* pt) {
 
 // Returns virtual address to a whole page (4096Kb)
 void *MMU_alloc_page() {
+	uint8_t int_flag = cli();
+
 	struct VirtualAddress address;
 	curr_pml1_index += 1;
 	if(curr_pml1_index >= 512) {
@@ -211,6 +207,8 @@ void *MMU_alloc_page() {
 	if(curr_pml3_index > 1) {
 		printkln("MUST FIX; PML3 index is too big: %d", curr_pml3_index);
 		asm("int $14");
+
+		sti(int_flag);
 		return nullptr;
 	}
 
@@ -227,15 +225,22 @@ void *MMU_alloc_page() {
 	PML_set_add(pml1_entry, nullptr);
 	PML_set_allocatable(pml1_entry, 1); // Mark as allocatable, demand allocation is active
 
+	sti(int_flag);
 	return (void*) virt_as_int(&address);
 }
 
 void *MMU_alloc_pages(int num) {
-	if(num < 1)
+	uint8_t int_flag = cli();
+
+	if(num < 1) {
+		sti(int_flag);
 		return nullptr;
+	}
+
 	uint32_t free_pages = MEM_count_free_pages();
 	if(num > free_pages) {
 		printkln("Cannot allocate %d pages, only %d pages available", num, free_pages);
+		sti(int_flag);
 		return nullptr;
 	}
 	// Addresses allocated will be sequential as they are virtual. The physical page can be anywhere in memory
@@ -244,12 +249,15 @@ void *MMU_alloc_pages(int num) {
 		MMU_alloc_page(); // don't need to save this address, just the first one
 	}
 
+	sti(int_flag);
 	return start_address;
 }
 
 // Just set as not present, but don't add virtual address back to available addresses, 
 // there are enough in 64 bit address space
 void MMU_free_page(void* add) {
+	uint8_t int_flag = cli();
+
 	PML* pml1 = PML_get_pml1((uint64_t) add);
 	
 	void* phys_pf = PML_get_add(pml1);
@@ -261,9 +269,13 @@ void MMU_free_page(void* add) {
 	PML_set_add(pml1, nullptr);
 	PML_set_rw(pml1, 0);
 	PML_set_us(pml1, 0);
+
+	sti(int_flag);
 }
 
 void MMU_free_pages(void* start_address, int num) {
+	uint8_t int_flag = cli();
+
 	void* address = start_address;
 	while(num--) {
 		if(num > 6)
@@ -271,11 +283,6 @@ void MMU_free_pages(void* start_address, int num) {
 		MMU_free_page(address);
 		address += PAGE_SIZE;
 	}
+
+	sti(int_flag);
 }
-
-//		pml3			pml2			pml1			phys
-// 000 0000 01		00 0000 000		0 0000 0001 	0000 0000 0000
-//		1					0				1					0
-
-// 000 0000 01		00 0000 000		0 0000 0010 	0000 0000 0000
-//		1					0				2					0
