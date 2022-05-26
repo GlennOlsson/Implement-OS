@@ -4,7 +4,7 @@
 #include <stdint-gcc.h>
 
 struct KmallocPool {
-   int max_size;
+   int block_size;
    int avail;
    struct FreeList *head;
 } __attribute__((packed));

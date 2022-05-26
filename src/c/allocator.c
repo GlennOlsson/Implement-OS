@@ -10,6 +10,7 @@
 
 struct KmallocPool pool_64 = {64, 0, 0};
 struct KmallocPool pool_2048 = {2048, 0, 0};
+struct KmallocPool pool_512 = {512, 0, 0};
 
 uint16_t curr_pf_index = 0;
 void* curr_pf;
@@ -18,7 +19,7 @@ void allocate_for_pool(struct KmallocPool* pool) {
         void* new_pf = MMU_alloc_page();
 
         void* prev_node = pool->head;
-        for(int i = 0; i < PAGE_SIZE; i += pool->max_size) {
+        for(int i = 0; i < PAGE_SIZE; i += pool->block_size) {
             void* address = new_pf + i;
             if(prev_node == nullptr) { // means head is nullptr
                 pool->head = address;
@@ -68,7 +69,7 @@ void* kmalloc_big(uint32_t size) {
         allocated_pages += 1;
     }
 
-    printkln("Size %d required %d pages", size, allocated_pages);
+    printkln("Size %d requires %d pages", size, allocated_pages);
 
     return start;
 }
@@ -77,12 +78,16 @@ void* kmalloc(uint32_t size) {
     struct KmallocPool* pool;
 
     uint32_t required_size = size + KMALLOC_HEADER_SIZE;
-    if(required_size <= pool_64.max_size)
+    if(required_size <= pool_64.block_size)
         pool = &pool_64;
-    else if(required_size <= pool_2048.max_size)
+    else if(required_size <= pool_512.block_size)
+        pool = &pool_512;
+    else if(required_size <= pool_2048.block_size)
         pool = &pool_2048;
     else // required size is bigger than biggest pool, needs actual pages
         return kmalloc_big(size);
+
+    printkln("Using pool size %d for kmalloc(%d)", pool->block_size, size);
 
     if(pool->avail == 0) { // allocate another page for it
         printkln("Need to allocate");
@@ -143,7 +148,7 @@ void kfree(void* add) {
     struct FreeList* tail = traverse(pool);
 
     while(block_size > 0) {
-        block_size -= pool->max_size;
+        block_size -= pool->block_size;
         
         tail->next = start_address;
         tail->next->next = nullptr; // Set next of the block as nullptr
