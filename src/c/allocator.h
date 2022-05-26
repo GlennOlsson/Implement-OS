@@ -13,7 +13,7 @@ struct FreeList {
    struct FreeList *next;
 };
 
-struct KmallocExtra { // 8 + 4 = 12 bytes
+struct KmallocHeader { // 8 + 4 = 12 bytes
    struct KmallocPool *pool;
    uint32_t size;
 };
