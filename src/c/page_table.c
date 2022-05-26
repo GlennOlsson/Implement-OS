@@ -83,8 +83,10 @@ PML* PML_get_pml1(uint64_t add) {
 	uint16_t pml1_i = (add >> 12) & 0x1FF;
 	// Physical page offset does not matter
 
+	//printkln("PML1 for %lx: %d, %d, %d", add, pml3_i, pml2_i, pml1_i);
+
 	PML* pml3 = &p3_table + pml3_i;// PML_get_add(pml4_i + &p4_table);
-	PML* pml2 = PML_get_add(pml3 + pml3_i);
+	PML* pml2 = PML_get_add(pml3);
 	PML* pml1 = PML_get_add(pml2 + pml2_i);
 	PML* pml1_entry = pml1 + pml1_i;
 	
@@ -140,8 +142,13 @@ void PT_init() {
 // Checks if address can be allocated (called from page fault), and allocate if possible
 // returns 1 if could allocate new page, 0 if not
 uint8_t PT_can_allocate(uint64_t add) {
+	printkln("DEMAND ALLOC %lx", add);
 	PML* pml1_entry = PML_get_pml1(add);
 	
+	MMU_is_allocatable((uint64_t*) add);
+
+	//printkln("Checked, now allocating %lx", add);
+
 	if(!PML_is_allocatable(pml1_entry)) {
 		printkln("Is not allocatable, uh oh!");
 		return 0;
@@ -164,6 +171,9 @@ uint8_t PT_can_allocate(uint64_t add) {
 	PML_set_present(pml1_entry, 1);
 	PML_set_us(pml1_entry, 1);
 	PML_set_rw(pml1_entry, 1);
+
+	//printkln("Allocated %lx as %p", add, phys_pf);
+	//printkln("Is allocatable and present? %c %c", PML_is_allocatable(pml1_entry) ? 'y' : 'n', PML_is_present(pml1_entry) ? 'y' : 'n');
 
 	return 1;
 }
@@ -191,6 +201,16 @@ uint8_t MMU_is_present(void* pt) {
 	uint64_t address = (uint64_t) pt;
 	PML* pml1 = PML_get_pml1(address);
 	return PML_is_present(pml1);
+}
+
+// Check if virtual address points to present entry
+uint8_t MMU_is_allocatable(void* pt) {
+	uint64_t address = (uint64_t) pt;
+	PML* pml1 = PML_get_pml1(address);
+
+	//printkln("Checking if %p is allocatable: %c", pt, PML_is_allocatable(pml1) ? 'y' : 'n');
+
+	return PML_is_allocatable(pml1);
 }
 
 // Returns virtual address to a whole page (4096Kb)
@@ -227,6 +247,8 @@ void *MMU_alloc_page() {
 	PML_set_present(pml1_entry, 0);
 	PML_set_add(pml1_entry, nullptr);
 	PML_set_allocatable(pml1_entry, 1); // Mark as allocatable, demand allocation is active
+
+	MMU_is_allocatable((void*) virt_as_int(&address));
 
 	sti(int_flag);
 	return (void*) virt_as_int(&address);

@@ -45,33 +45,69 @@ void kmain() {
 	// Turn on interrupts just now
 	sti(1);
 
-	// char* i = (char*) 286000;
-	// *i = 3;
+	int allocated_addresses = 10;
+	char* start_add = MMU_alloc_pages(allocated_addresses);
+	char* next = MMU_alloc_page(); // to make sure we don't get the same address again
 
-	char* add = MMU_alloc_page(); 
+	if(start_add >= next)
+		printkln("Start address bigger than next, NOT OK!!");
 
-	// outb(0x0, 0x3F8);
-	// asm("int $38");
+	printkln("Setting values");
+	// printkln("Is start_add present? %c", MMU_is_present(start_add) ? 'y' : 'n');
+	// printkln("Is start_add allocatable? %c", MMU_is_allocatable(start_add) ? 'y' : 'n');
+	// printkln("start add: %p", start_add);
+	// printkln("*start add: %d", *start_add);
+	// Set a value for each entry
+	for(int i = 0; i < 10; ++i) {
+		for(int j = 0; j < PAGE_SIZE; ++j) {
+			*(start_add + (j + (i * PAGE_SIZE))) = 'a';
+		}
+	}
 
-	// volatile int* k = (int*) 0x001;
-	// *k = 5;
+	for(int j = 0; j < PAGE_SIZE; ++j) {
+		*(next + j) = 'b';
+	}
 
-	// printkln("Att add %p: %d", add, *add);
-	// printkln("Att add %p: %d", i, *i);
+	printkln("Verifying values");
 
-	*add = 0x69;
+	// Verify that the entries are correct, and that writing to 'next' does not manipulate the data in the 10-page address space
+	for(int i = 0; i < 10; ++i) {
+		for(int j = 0; j < PAGE_SIZE; ++j) {
+			if(*(start_add + (j + (i * PAGE_SIZE))) != 'a') {
+				printkln("NOT CORRECT FOR MULTI PAGE!! Expected: %d, Actually: %c", (j % 256), *(start_add + (j + (i * PAGE_SIZE))));
+			}
+		}
+	}
 
-	// printkln("Att add %p: %d", add, *add);
-	// printkln("Att add %p: %d", i, *i);
+	for(int j = 0; j < PAGE_SIZE; ++j) {
+		if(*(next + j) != 'b') {
+			printkln("NOT CORRECT!! %d", j);
+		}
+	}
 
-	MMU_free_page(add);
+	// If we get here without any prints we are all good
 
-	// printkln("Freed %p", add);
+	printkln("Freeing addresses");
 
-	*add = 0;
+	MMU_free_pages(start_add, allocated_addresses);
+	MMU_free_page(next);
 
-	// printkln("Not here");
+	printkln("Freed addresses");
 
+	char* next_next = MMU_alloc_page();
+	if(next >= next_next)
+		printkln("next_next is lower than next, NOT OK!!");
+
+	printkln("Is start_add present? %c", MMU_is_present(start_add) ? 'y' : 'n');
+
+	printkln("EXPECTING PAGE FAULT AFTER THIS!");
+	*start_add = 'c';
+	printkln("Value of start_add: %c", *start_add);
+	*(start_add + PAGE_SIZE + 1) = 'f';
+	printkln("Value of start_add + page: %c", *(start_add + PAGE_SIZE + 1));
+	//*next = 'd';
+	//printkln("Value of next: %c", *next);
+	//printkln("Value of next_next: %c", *next_next);
 
 	volatile int j = 0;
 	while(!j)
