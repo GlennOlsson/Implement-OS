@@ -101,13 +101,11 @@ void kmain() {
 	printkln("Is start_add present? %c", MMU_is_present(start_add) ? 'y' : 'n');
 
 	printkln("EXPECTING PAGE FAULT AFTER THIS!");
-	*start_add = 'c';
-	printkln("Value of start_add: %c", *start_add);
-	*(start_add + PAGE_SIZE + 1) = 'f';
-	printkln("Value of start_add + page: %c", *(start_add + PAGE_SIZE + 1));
-	//*next = 'd';
-	//printkln("Value of next: %c", *next);
-	//printkln("Value of next_next: %c", *next_next);
+	uint8_t read_pf = 0;
+	if(read_pf)
+		printkln("Start add val: %d", *start_add);
+	else
+		*start_add = 'c';
 
 	volatile int j = 0;
 	while(!j)
