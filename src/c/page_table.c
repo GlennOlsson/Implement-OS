@@ -140,9 +140,6 @@ void PT_init() {
 // Checks if address can be allocated (called from page fault), and allocate if possible
 // returns 1 if could allocate new page, 0 if not
 uint8_t PT_can_allocate(uint64_t add) {
-
-	printkln("DEMAND ALLOC %lx", add);
-
 	PML* pml1_entry = PML_get_pml1(add);
 	
 	if(!PML_is_allocatable(pml1_entry)) {
@@ -159,8 +156,6 @@ uint8_t PT_can_allocate(uint64_t add) {
 
 	// without this line, for some reason, it won't throw a PF when accessing non-present page
 	// outb(0x0, 0x3F8);
-
-	printkln("Phys add: %p", phys_pf);
 
 	PML_clear(pml1_entry);
 

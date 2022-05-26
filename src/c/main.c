@@ -56,21 +56,21 @@ void kmain() {
 	// volatile int* k = (int*) 0x001;
 	// *k = 5;
 
-	printkln("Att add %p: %d", add, *add);
+	// printkln("Att add %p: %d", add, *add);
 	// printkln("Att add %p: %d", i, *i);
 
 	*add = 0x69;
 
-	printkln("Att add %p: %d", add, *add);
+	// printkln("Att add %p: %d", add, *add);
 	// printkln("Att add %p: %d", i, *i);
 
 	MMU_free_page(add);
 
-	printkln("Freed %p", add);
+	// printkln("Freed %p", add);
 
 	*add = 0;
 
-	printkln("Not here");
+	// printkln("Not here");
 
 
 	volatile int j = 0;
