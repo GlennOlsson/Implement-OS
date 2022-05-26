@@ -9,6 +9,7 @@
 #include "memory_manager.h"
 #include "page_table.h"
 #include "buffer.h"
+#include "allocator.h"
 
 void kmain() {
 	// Dissable interrupts in case they are on
@@ -42,18 +43,22 @@ void kmain() {
 
 	CON_write_prompt();
 
+	MAL_init();
+
 	// Turn on interrupts just now
 	sti(1);
 
-	uint64_t* heap_pages = MMU_alloc_pages(10);
-	for(int i = 0; i < 10; i++) {
-		printkln("Heap page add: %p", heap_pages + (i * 512));
-	}
+	// uint64_t* heap_pages = MMU_alloc_pages(10);
+	// for(int i = 0; i < 10; i++) {
+	// 	printkln("Heap page add: %p", heap_pages + (i * 512));
+	// }
 
-	for(int i = 0; i < 3; ++i) {
-		uint64_t* stack_page = MMU_alloc_stack_page();
-		printkln("Stack page add: %p", stack_page);
-	}
+	// for(int i = 0; i < 3; ++i) {
+	// 	uint64_t* stack_page = MMU_alloc_stack_page();
+	// 	printkln("Stack page add: %p", stack_page);
+	// }
+
+	kmalloc(60);
 
 	volatile int j = 0;
 	while(!j)
