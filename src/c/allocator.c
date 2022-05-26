@@ -9,8 +9,10 @@
 #define KMALLOC_HEADER_SIZE sizeof(struct KmallocHeader)
 
 struct KmallocPool pool_64 = {64, 0, 0};
-struct KmallocPool pool_2048 = {2048, 0, 0};
 struct KmallocPool pool_512 = {512, 0, 0};
+struct KmallocPool pool_2048 = {2048, 0, 0};
+
+struct KmallocPool* pools[] = {&pool_64, &pool_512, &pool_2048, nullptr};
 
 uint16_t curr_pf_index = 0;
 void* curr_pf;
@@ -75,17 +77,18 @@ void* kmalloc_big(uint32_t size) {
 }
 
 void* kmalloc(uint32_t size) {
-    struct KmallocPool* pool;
-
     uint32_t required_size = size + KMALLOC_HEADER_SIZE;
-    if(required_size <= pool_64.block_size)
-        pool = &pool_64;
-    else if(required_size <= pool_512.block_size)
-        pool = &pool_512;
-    else if(required_size <= pool_2048.block_size)
-        pool = &pool_2048;
-    else // required size is bigger than biggest pool, needs actual pages
+
+    uint32_t index = 0;
+    struct KmallocPool* pool = pools[index++];
+    while (pool != nullptr && required_size > pool->block_size) {
+        pool = pools[index++];
+    }
+    if(pool == nullptr) // required size is bigger than biggest pool, needs actual pages
         return kmalloc_big(size);
+    
+    // if here means pool != nullptr but !(required_size > pool->block_size)
+    // i.e. required_size <= pool->block_size, use this pool!
 
     printkln("Using pool size %d for kmalloc(%d)", pool->block_size, size);
 
