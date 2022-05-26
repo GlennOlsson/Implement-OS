@@ -306,8 +306,7 @@ push_reg: ; Push all registers
 	push R8
 	push R9
 	push R10
-	push R11 ; 16 8-byte registers
-
+	push R11
 	jmp [curr_isr.after_push]
 
 pop_reg: ; Pop in FILO order
@@ -330,8 +329,8 @@ pop_reg: ; Pop in FILO order
 
 	jmp [curr_isr.after_pop]
 
-isr0:
 
+isr0:
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr0.after_push
 	mov qword [curr_isr.after_pop], isr0.after_pop
@@ -340,9 +339,7 @@ isr0:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 0 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -351,13 +348,10 @@ isr0:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr1:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr1.after_push
 	mov qword [curr_isr.after_pop], isr1.after_pop
@@ -366,9 +360,7 @@ isr1:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 1 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -377,13 +369,10 @@ isr1:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr2:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr2.after_push
 	mov qword [curr_isr.after_pop], isr2.after_pop
@@ -392,9 +381,7 @@ isr2:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 2 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -403,13 +390,10 @@ isr2:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr3:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr3.after_push
 	mov qword [curr_isr.after_pop], isr3.after_pop
@@ -418,9 +402,7 @@ isr3:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 3 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -429,13 +411,10 @@ isr3:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr4:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr4.after_push
 	mov qword [curr_isr.after_pop], isr4.after_pop
@@ -444,9 +423,7 @@ isr4:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 4 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -455,13 +432,10 @@ isr4:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr5:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr5.after_push
 	mov qword [curr_isr.after_pop], isr5.after_pop
@@ -470,9 +444,7 @@ isr5:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 5 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -481,13 +453,10 @@ isr5:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr6:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr6.after_push
 	mov qword [curr_isr.after_pop], isr6.after_pop
@@ -496,9 +465,7 @@ isr6:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 6 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -507,13 +474,10 @@ isr6:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr7:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr7.after_push
 	mov qword [curr_isr.after_pop], isr7.after_pop
@@ -522,9 +486,7 @@ isr7:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 7 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -533,13 +495,10 @@ isr7:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr8:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr8.after_push
 	mov qword [curr_isr.after_pop], isr8.after_pop
@@ -548,10 +507,8 @@ isr8:
 	jmp push_reg
 
 .after_push:
-
 	
 	mov RSI, [RSP + 8 * 16]
-
 
 	mov RDI, 8 ; irq number, 1st arg
 	;mov RSI, [RSP]
@@ -561,15 +518,12 @@ isr8:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
 	
 	add RSP, 8
 
-	
 	iretq
 
 isr9:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr9.after_push
 	mov qword [curr_isr.after_pop], isr9.after_pop
@@ -578,9 +532,7 @@ isr9:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 9 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -589,13 +541,10 @@ isr9:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr10:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr10.after_push
 	mov qword [curr_isr.after_pop], isr10.after_pop
@@ -604,10 +553,8 @@ isr10:
 	jmp push_reg
 
 .after_push:
-
 	
 	mov RSI, [RSP + 8 * 16]
-
 
 	mov RDI, 10 ; irq number, 1st arg
 	;mov RSI, [RSP]
@@ -617,15 +564,12 @@ isr10:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
 	
 	add RSP, 8
 
-	
 	iretq
 
 isr11:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr11.after_push
 	mov qword [curr_isr.after_pop], isr11.after_pop
@@ -634,10 +578,8 @@ isr11:
 	jmp push_reg
 
 .after_push:
-
 	
 	mov RSI, [RSP + 8 * 16]
-
 
 	mov RDI, 11 ; irq number, 1st arg
 	;mov RSI, [RSP]
@@ -647,15 +589,12 @@ isr11:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
 	
 	add RSP, 8
 
-	
 	iretq
 
 isr12:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr12.after_push
 	mov qword [curr_isr.after_pop], isr12.after_pop
@@ -664,10 +603,8 @@ isr12:
 	jmp push_reg
 
 .after_push:
-
 	
 	mov RSI, [RSP + 8 * 16]
-
 
 	mov RDI, 12 ; irq number, 1st arg
 	;mov RSI, [RSP]
@@ -677,15 +614,12 @@ isr12:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
 	
 	add RSP, 8
 
-	
 	iretq
 
 isr13:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr13.after_push
 	mov qword [curr_isr.after_pop], isr13.after_pop
@@ -694,10 +628,8 @@ isr13:
 	jmp push_reg
 
 .after_push:
-
 	
 	mov RSI, [RSP + 8 * 16]
-
 
 	mov RDI, 13 ; irq number, 1st arg
 	;mov RSI, [RSP]
@@ -707,15 +639,12 @@ isr13:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
 	
 	add RSP, 8
 
-	
 	iretq
 
 isr14:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr14.after_push
 	mov qword [curr_isr.after_pop], isr14.after_pop
@@ -724,10 +653,8 @@ isr14:
 	jmp push_reg
 
 .after_push:
-
 	
 	mov RSI, [RSP + 8 * 16]
-
 
 	mov RDI, 14 ; irq number, 1st arg
 	;mov RSI, [RSP]
@@ -737,15 +664,12 @@ isr14:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
 	
 	add RSP, 8
 
-	
 	iretq
 
 isr15:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr15.after_push
 	mov qword [curr_isr.after_pop], isr15.after_pop
@@ -754,9 +678,7 @@ isr15:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 15 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -765,13 +687,10 @@ isr15:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr16:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr16.after_push
 	mov qword [curr_isr.after_pop], isr16.after_pop
@@ -780,9 +699,7 @@ isr16:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 16 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -791,13 +708,10 @@ isr16:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr17:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr17.after_push
 	mov qword [curr_isr.after_pop], isr17.after_pop
@@ -806,10 +720,8 @@ isr17:
 	jmp push_reg
 
 .after_push:
-
 	
 	mov RSI, [RSP + 8 * 16]
-
 
 	mov RDI, 17 ; irq number, 1st arg
 	;mov RSI, [RSP]
@@ -819,15 +731,12 @@ isr17:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
 	
 	add RSP, 8
 
-	
 	iretq
 
 isr18:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr18.after_push
 	mov qword [curr_isr.after_pop], isr18.after_pop
@@ -836,9 +745,7 @@ isr18:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 18 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -847,13 +754,10 @@ isr18:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr19:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr19.after_push
 	mov qword [curr_isr.after_pop], isr19.after_pop
@@ -862,9 +766,7 @@ isr19:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 19 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -873,13 +775,10 @@ isr19:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr20:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr20.after_push
 	mov qword [curr_isr.after_pop], isr20.after_pop
@@ -888,9 +787,7 @@ isr20:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 20 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -899,13 +796,10 @@ isr20:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr21:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr21.after_push
 	mov qword [curr_isr.after_pop], isr21.after_pop
@@ -914,9 +808,7 @@ isr21:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 21 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -925,13 +817,10 @@ isr21:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr22:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr22.after_push
 	mov qword [curr_isr.after_pop], isr22.after_pop
@@ -940,9 +829,7 @@ isr22:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 22 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -951,13 +838,10 @@ isr22:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr23:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr23.after_push
 	mov qword [curr_isr.after_pop], isr23.after_pop
@@ -966,9 +850,7 @@ isr23:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 23 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -977,13 +859,10 @@ isr23:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr24:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr24.after_push
 	mov qword [curr_isr.after_pop], isr24.after_pop
@@ -992,9 +871,7 @@ isr24:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 24 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1003,13 +880,10 @@ isr24:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr25:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr25.after_push
 	mov qword [curr_isr.after_pop], isr25.after_pop
@@ -1018,9 +892,7 @@ isr25:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 25 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1029,13 +901,10 @@ isr25:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr26:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr26.after_push
 	mov qword [curr_isr.after_pop], isr26.after_pop
@@ -1044,9 +913,7 @@ isr26:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 26 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1055,13 +922,10 @@ isr26:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr27:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr27.after_push
 	mov qword [curr_isr.after_pop], isr27.after_pop
@@ -1070,9 +934,7 @@ isr27:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 27 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1081,13 +943,10 @@ isr27:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr28:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr28.after_push
 	mov qword [curr_isr.after_pop], isr28.after_pop
@@ -1096,9 +955,7 @@ isr28:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 28 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1107,13 +964,10 @@ isr28:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr29:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr29.after_push
 	mov qword [curr_isr.after_pop], isr29.after_pop
@@ -1122,9 +976,7 @@ isr29:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 29 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1133,13 +985,10 @@ isr29:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr30:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr30.after_push
 	mov qword [curr_isr.after_pop], isr30.after_pop
@@ -1148,9 +997,7 @@ isr30:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 30 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1159,13 +1006,10 @@ isr30:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr31:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr31.after_push
 	mov qword [curr_isr.after_pop], isr31.after_pop
@@ -1174,9 +1018,7 @@ isr31:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 31 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1185,13 +1027,10 @@ isr31:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr32:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr32.after_push
 	mov qword [curr_isr.after_pop], isr32.after_pop
@@ -1200,9 +1039,7 @@ isr32:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 32 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1211,13 +1048,10 @@ isr32:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr33:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr33.after_push
 	mov qword [curr_isr.after_pop], isr33.after_pop
@@ -1226,9 +1060,7 @@ isr33:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 33 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1237,13 +1069,10 @@ isr33:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr34:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr34.after_push
 	mov qword [curr_isr.after_pop], isr34.after_pop
@@ -1252,9 +1081,7 @@ isr34:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 34 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1263,13 +1090,10 @@ isr34:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr35:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr35.after_push
 	mov qword [curr_isr.after_pop], isr35.after_pop
@@ -1278,9 +1102,7 @@ isr35:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 35 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1289,13 +1111,10 @@ isr35:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr36:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr36.after_push
 	mov qword [curr_isr.after_pop], isr36.after_pop
@@ -1304,9 +1123,7 @@ isr36:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 36 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1315,13 +1132,10 @@ isr36:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr37:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr37.after_push
 	mov qword [curr_isr.after_pop], isr37.after_pop
@@ -1330,9 +1144,7 @@ isr37:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 37 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1341,13 +1153,10 @@ isr37:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr38:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr38.after_push
 	mov qword [curr_isr.after_pop], isr38.after_pop
@@ -1356,9 +1165,7 @@ isr38:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 38 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1367,13 +1174,10 @@ isr38:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr39:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr39.after_push
 	mov qword [curr_isr.after_pop], isr39.after_pop
@@ -1382,9 +1186,7 @@ isr39:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 39 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1393,13 +1195,10 @@ isr39:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr40:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr40.after_push
 	mov qword [curr_isr.after_pop], isr40.after_pop
@@ -1408,9 +1207,7 @@ isr40:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 40 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1419,13 +1216,10 @@ isr40:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr41:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr41.after_push
 	mov qword [curr_isr.after_pop], isr41.after_pop
@@ -1434,9 +1228,7 @@ isr41:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 41 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1445,13 +1237,10 @@ isr41:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr42:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr42.after_push
 	mov qword [curr_isr.after_pop], isr42.after_pop
@@ -1460,9 +1249,7 @@ isr42:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 42 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1471,13 +1258,10 @@ isr42:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr43:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr43.after_push
 	mov qword [curr_isr.after_pop], isr43.after_pop
@@ -1486,9 +1270,7 @@ isr43:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 43 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1497,13 +1279,10 @@ isr43:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr44:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr44.after_push
 	mov qword [curr_isr.after_pop], isr44.after_pop
@@ -1512,9 +1291,7 @@ isr44:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 44 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1523,13 +1300,10 @@ isr44:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr45:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr45.after_push
 	mov qword [curr_isr.after_pop], isr45.after_pop
@@ -1538,9 +1312,7 @@ isr45:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 45 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1549,13 +1321,10 @@ isr45:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr46:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr46.after_push
 	mov qword [curr_isr.after_pop], isr46.after_pop
@@ -1564,9 +1333,7 @@ isr46:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 46 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1575,13 +1342,10 @@ isr46:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr47:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr47.after_push
 	mov qword [curr_isr.after_pop], isr47.after_pop
@@ -1590,9 +1354,7 @@ isr47:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 47 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1601,13 +1363,10 @@ isr47:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr48:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr48.after_push
 	mov qword [curr_isr.after_pop], isr48.after_pop
@@ -1616,9 +1375,7 @@ isr48:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 48 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1627,13 +1384,10 @@ isr48:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr49:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr49.after_push
 	mov qword [curr_isr.after_pop], isr49.after_pop
@@ -1642,9 +1396,7 @@ isr49:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 49 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1653,13 +1405,10 @@ isr49:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr50:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr50.after_push
 	mov qword [curr_isr.after_pop], isr50.after_pop
@@ -1668,9 +1417,7 @@ isr50:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 50 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1679,13 +1426,10 @@ isr50:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr51:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr51.after_push
 	mov qword [curr_isr.after_pop], isr51.after_pop
@@ -1694,9 +1438,7 @@ isr51:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 51 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1705,13 +1447,10 @@ isr51:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr52:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr52.after_push
 	mov qword [curr_isr.after_pop], isr52.after_pop
@@ -1720,9 +1459,7 @@ isr52:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 52 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1731,13 +1468,10 @@ isr52:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr53:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr53.after_push
 	mov qword [curr_isr.after_pop], isr53.after_pop
@@ -1746,9 +1480,7 @@ isr53:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 53 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1757,13 +1489,10 @@ isr53:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr54:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr54.after_push
 	mov qword [curr_isr.after_pop], isr54.after_pop
@@ -1772,9 +1501,7 @@ isr54:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 54 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1783,13 +1510,10 @@ isr54:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr55:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr55.after_push
 	mov qword [curr_isr.after_pop], isr55.after_pop
@@ -1798,9 +1522,7 @@ isr55:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 55 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1809,13 +1531,10 @@ isr55:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr56:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr56.after_push
 	mov qword [curr_isr.after_pop], isr56.after_pop
@@ -1824,9 +1543,7 @@ isr56:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 56 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1835,13 +1552,10 @@ isr56:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr57:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr57.after_push
 	mov qword [curr_isr.after_pop], isr57.after_pop
@@ -1850,9 +1564,7 @@ isr57:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 57 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1861,13 +1573,10 @@ isr57:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr58:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr58.after_push
 	mov qword [curr_isr.after_pop], isr58.after_pop
@@ -1876,9 +1585,7 @@ isr58:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 58 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1887,13 +1594,10 @@ isr58:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr59:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr59.after_push
 	mov qword [curr_isr.after_pop], isr59.after_pop
@@ -1902,9 +1606,7 @@ isr59:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 59 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1913,13 +1615,10 @@ isr59:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr60:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr60.after_push
 	mov qword [curr_isr.after_pop], isr60.after_pop
@@ -1928,9 +1627,7 @@ isr60:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 60 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1939,13 +1636,10 @@ isr60:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr61:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr61.after_push
 	mov qword [curr_isr.after_pop], isr61.after_pop
@@ -1954,9 +1648,7 @@ isr61:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 61 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1965,13 +1657,10 @@ isr61:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr62:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr62.after_push
 	mov qword [curr_isr.after_pop], isr62.after_pop
@@ -1980,9 +1669,7 @@ isr62:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 62 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -1991,13 +1678,10 @@ isr62:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr63:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr63.after_push
 	mov qword [curr_isr.after_pop], isr63.after_pop
@@ -2006,9 +1690,7 @@ isr63:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 63 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2017,13 +1699,10 @@ isr63:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr64:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr64.after_push
 	mov qword [curr_isr.after_pop], isr64.after_pop
@@ -2032,9 +1711,7 @@ isr64:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 64 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2043,13 +1720,10 @@ isr64:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr65:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr65.after_push
 	mov qword [curr_isr.after_pop], isr65.after_pop
@@ -2058,9 +1732,7 @@ isr65:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 65 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2069,13 +1741,10 @@ isr65:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr66:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr66.after_push
 	mov qword [curr_isr.after_pop], isr66.after_pop
@@ -2084,9 +1753,7 @@ isr66:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 66 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2095,13 +1762,10 @@ isr66:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr67:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr67.after_push
 	mov qword [curr_isr.after_pop], isr67.after_pop
@@ -2110,9 +1774,7 @@ isr67:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 67 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2121,13 +1783,10 @@ isr67:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr68:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr68.after_push
 	mov qword [curr_isr.after_pop], isr68.after_pop
@@ -2136,9 +1795,7 @@ isr68:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 68 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2147,13 +1804,10 @@ isr68:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr69:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr69.after_push
 	mov qword [curr_isr.after_pop], isr69.after_pop
@@ -2162,9 +1816,7 @@ isr69:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 69 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2173,13 +1825,10 @@ isr69:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr70:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr70.after_push
 	mov qword [curr_isr.after_pop], isr70.after_pop
@@ -2188,9 +1837,7 @@ isr70:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 70 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2199,13 +1846,10 @@ isr70:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr71:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr71.after_push
 	mov qword [curr_isr.after_pop], isr71.after_pop
@@ -2214,9 +1858,7 @@ isr71:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 71 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2225,13 +1867,10 @@ isr71:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr72:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr72.after_push
 	mov qword [curr_isr.after_pop], isr72.after_pop
@@ -2240,9 +1879,7 @@ isr72:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 72 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2251,13 +1888,10 @@ isr72:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr73:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr73.after_push
 	mov qword [curr_isr.after_pop], isr73.after_pop
@@ -2266,9 +1900,7 @@ isr73:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 73 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2277,13 +1909,10 @@ isr73:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr74:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr74.after_push
 	mov qword [curr_isr.after_pop], isr74.after_pop
@@ -2292,9 +1921,7 @@ isr74:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 74 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2303,13 +1930,10 @@ isr74:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr75:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr75.after_push
 	mov qword [curr_isr.after_pop], isr75.after_pop
@@ -2318,9 +1942,7 @@ isr75:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 75 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2329,13 +1951,10 @@ isr75:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr76:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr76.after_push
 	mov qword [curr_isr.after_pop], isr76.after_pop
@@ -2344,9 +1963,7 @@ isr76:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 76 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2355,13 +1972,10 @@ isr76:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr77:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr77.after_push
 	mov qword [curr_isr.after_pop], isr77.after_pop
@@ -2370,9 +1984,7 @@ isr77:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 77 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2381,13 +1993,10 @@ isr77:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr78:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr78.after_push
 	mov qword [curr_isr.after_pop], isr78.after_pop
@@ -2396,9 +2005,7 @@ isr78:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 78 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2407,13 +2014,10 @@ isr78:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr79:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr79.after_push
 	mov qword [curr_isr.after_pop], isr79.after_pop
@@ -2422,9 +2026,7 @@ isr79:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 79 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2433,13 +2035,10 @@ isr79:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr80:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr80.after_push
 	mov qword [curr_isr.after_pop], isr80.after_pop
@@ -2448,9 +2047,7 @@ isr80:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 80 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2459,13 +2056,10 @@ isr80:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr81:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr81.after_push
 	mov qword [curr_isr.after_pop], isr81.after_pop
@@ -2474,9 +2068,7 @@ isr81:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 81 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2485,13 +2077,10 @@ isr81:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr82:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr82.after_push
 	mov qword [curr_isr.after_pop], isr82.after_pop
@@ -2500,9 +2089,7 @@ isr82:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 82 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2511,13 +2098,10 @@ isr82:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr83:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr83.after_push
 	mov qword [curr_isr.after_pop], isr83.after_pop
@@ -2526,9 +2110,7 @@ isr83:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 83 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2537,13 +2119,10 @@ isr83:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr84:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr84.after_push
 	mov qword [curr_isr.after_pop], isr84.after_pop
@@ -2552,9 +2131,7 @@ isr84:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 84 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2563,13 +2140,10 @@ isr84:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr85:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr85.after_push
 	mov qword [curr_isr.after_pop], isr85.after_pop
@@ -2578,9 +2152,7 @@ isr85:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 85 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2589,13 +2161,10 @@ isr85:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr86:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr86.after_push
 	mov qword [curr_isr.after_pop], isr86.after_pop
@@ -2604,9 +2173,7 @@ isr86:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 86 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2615,13 +2182,10 @@ isr86:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr87:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr87.after_push
 	mov qword [curr_isr.after_pop], isr87.after_pop
@@ -2630,9 +2194,7 @@ isr87:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 87 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2641,13 +2203,10 @@ isr87:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr88:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr88.after_push
 	mov qword [curr_isr.after_pop], isr88.after_pop
@@ -2656,9 +2215,7 @@ isr88:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 88 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2667,13 +2224,10 @@ isr88:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr89:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr89.after_push
 	mov qword [curr_isr.after_pop], isr89.after_pop
@@ -2682,9 +2236,7 @@ isr89:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 89 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2693,13 +2245,10 @@ isr89:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr90:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr90.after_push
 	mov qword [curr_isr.after_pop], isr90.after_pop
@@ -2708,9 +2257,7 @@ isr90:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 90 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2719,13 +2266,10 @@ isr90:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr91:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr91.after_push
 	mov qword [curr_isr.after_pop], isr91.after_pop
@@ -2734,9 +2278,7 @@ isr91:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 91 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2745,13 +2287,10 @@ isr91:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr92:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr92.after_push
 	mov qword [curr_isr.after_pop], isr92.after_pop
@@ -2760,9 +2299,7 @@ isr92:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 92 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2771,13 +2308,10 @@ isr92:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr93:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr93.after_push
 	mov qword [curr_isr.after_pop], isr93.after_pop
@@ -2786,9 +2320,7 @@ isr93:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 93 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2797,13 +2329,10 @@ isr93:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr94:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr94.after_push
 	mov qword [curr_isr.after_pop], isr94.after_pop
@@ -2812,9 +2341,7 @@ isr94:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 94 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2823,13 +2350,10 @@ isr94:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr95:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr95.after_push
 	mov qword [curr_isr.after_pop], isr95.after_pop
@@ -2838,9 +2362,7 @@ isr95:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 95 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2849,13 +2371,10 @@ isr95:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr96:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr96.after_push
 	mov qword [curr_isr.after_pop], isr96.after_pop
@@ -2864,9 +2383,7 @@ isr96:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 96 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2875,13 +2392,10 @@ isr96:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr97:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr97.after_push
 	mov qword [curr_isr.after_pop], isr97.after_pop
@@ -2890,9 +2404,7 @@ isr97:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 97 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2901,13 +2413,10 @@ isr97:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr98:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr98.after_push
 	mov qword [curr_isr.after_pop], isr98.after_pop
@@ -2916,9 +2425,7 @@ isr98:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 98 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2927,13 +2434,10 @@ isr98:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr99:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr99.after_push
 	mov qword [curr_isr.after_pop], isr99.after_pop
@@ -2942,9 +2446,7 @@ isr99:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 99 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2953,13 +2455,10 @@ isr99:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr100:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr100.after_push
 	mov qword [curr_isr.after_pop], isr100.after_pop
@@ -2968,9 +2467,7 @@ isr100:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 100 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -2979,13 +2476,10 @@ isr100:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr101:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr101.after_push
 	mov qword [curr_isr.after_pop], isr101.after_pop
@@ -2994,9 +2488,7 @@ isr101:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 101 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3005,13 +2497,10 @@ isr101:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr102:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr102.after_push
 	mov qword [curr_isr.after_pop], isr102.after_pop
@@ -3020,9 +2509,7 @@ isr102:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 102 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3031,13 +2518,10 @@ isr102:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr103:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr103.after_push
 	mov qword [curr_isr.after_pop], isr103.after_pop
@@ -3046,9 +2530,7 @@ isr103:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 103 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3057,13 +2539,10 @@ isr103:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr104:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr104.after_push
 	mov qword [curr_isr.after_pop], isr104.after_pop
@@ -3072,9 +2551,7 @@ isr104:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 104 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3083,13 +2560,10 @@ isr104:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr105:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr105.after_push
 	mov qword [curr_isr.after_pop], isr105.after_pop
@@ -3098,9 +2572,7 @@ isr105:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 105 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3109,13 +2581,10 @@ isr105:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr106:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr106.after_push
 	mov qword [curr_isr.after_pop], isr106.after_pop
@@ -3124,9 +2593,7 @@ isr106:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 106 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3135,13 +2602,10 @@ isr106:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr107:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr107.after_push
 	mov qword [curr_isr.after_pop], isr107.after_pop
@@ -3150,9 +2614,7 @@ isr107:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 107 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3161,13 +2623,10 @@ isr107:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr108:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr108.after_push
 	mov qword [curr_isr.after_pop], isr108.after_pop
@@ -3176,9 +2635,7 @@ isr108:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 108 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3187,13 +2644,10 @@ isr108:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr109:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr109.after_push
 	mov qword [curr_isr.after_pop], isr109.after_pop
@@ -3202,9 +2656,7 @@ isr109:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 109 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3213,13 +2665,10 @@ isr109:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr110:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr110.after_push
 	mov qword [curr_isr.after_pop], isr110.after_pop
@@ -3228,9 +2677,7 @@ isr110:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 110 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3239,13 +2686,10 @@ isr110:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr111:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr111.after_push
 	mov qword [curr_isr.after_pop], isr111.after_pop
@@ -3254,9 +2698,7 @@ isr111:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 111 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3265,13 +2707,10 @@ isr111:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr112:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr112.after_push
 	mov qword [curr_isr.after_pop], isr112.after_pop
@@ -3280,9 +2719,7 @@ isr112:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 112 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3291,13 +2728,10 @@ isr112:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr113:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr113.after_push
 	mov qword [curr_isr.after_pop], isr113.after_pop
@@ -3306,9 +2740,7 @@ isr113:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 113 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3317,13 +2749,10 @@ isr113:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr114:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr114.after_push
 	mov qword [curr_isr.after_pop], isr114.after_pop
@@ -3332,9 +2761,7 @@ isr114:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 114 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3343,13 +2770,10 @@ isr114:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr115:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr115.after_push
 	mov qword [curr_isr.after_pop], isr115.after_pop
@@ -3358,9 +2782,7 @@ isr115:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 115 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3369,13 +2791,10 @@ isr115:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr116:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr116.after_push
 	mov qword [curr_isr.after_pop], isr116.after_pop
@@ -3384,9 +2803,7 @@ isr116:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 116 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3395,13 +2812,10 @@ isr116:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr117:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr117.after_push
 	mov qword [curr_isr.after_pop], isr117.after_pop
@@ -3410,9 +2824,7 @@ isr117:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 117 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3421,13 +2833,10 @@ isr117:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr118:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr118.after_push
 	mov qword [curr_isr.after_pop], isr118.after_pop
@@ -3436,9 +2845,7 @@ isr118:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 118 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3447,13 +2854,10 @@ isr118:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr119:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr119.after_push
 	mov qword [curr_isr.after_pop], isr119.after_pop
@@ -3462,9 +2866,7 @@ isr119:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 119 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3473,13 +2875,10 @@ isr119:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr120:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr120.after_push
 	mov qword [curr_isr.after_pop], isr120.after_pop
@@ -3488,9 +2887,7 @@ isr120:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 120 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3499,13 +2896,10 @@ isr120:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr121:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr121.after_push
 	mov qword [curr_isr.after_pop], isr121.after_pop
@@ -3514,9 +2908,7 @@ isr121:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 121 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3525,13 +2917,10 @@ isr121:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr122:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr122.after_push
 	mov qword [curr_isr.after_pop], isr122.after_pop
@@ -3540,9 +2929,7 @@ isr122:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 122 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3551,13 +2938,10 @@ isr122:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr123:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr123.after_push
 	mov qword [curr_isr.after_pop], isr123.after_pop
@@ -3566,9 +2950,7 @@ isr123:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 123 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3577,13 +2959,10 @@ isr123:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr124:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr124.after_push
 	mov qword [curr_isr.after_pop], isr124.after_pop
@@ -3592,9 +2971,7 @@ isr124:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 124 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3603,13 +2980,10 @@ isr124:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr125:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr125.after_push
 	mov qword [curr_isr.after_pop], isr125.after_pop
@@ -3618,9 +2992,7 @@ isr125:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 125 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3629,13 +3001,10 @@ isr125:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr126:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr126.after_push
 	mov qword [curr_isr.after_pop], isr126.after_pop
@@ -3644,9 +3013,7 @@ isr126:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 126 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3655,13 +3022,10 @@ isr126:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr127:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr127.after_push
 	mov qword [curr_isr.after_pop], isr127.after_pop
@@ -3670,9 +3034,7 @@ isr127:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 127 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3681,13 +3043,10 @@ isr127:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr128:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr128.after_push
 	mov qword [curr_isr.after_pop], isr128.after_pop
@@ -3696,9 +3055,7 @@ isr128:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 128 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3707,13 +3064,10 @@ isr128:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr129:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr129.after_push
 	mov qword [curr_isr.after_pop], isr129.after_pop
@@ -3722,9 +3076,7 @@ isr129:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 129 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3733,13 +3085,10 @@ isr129:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr130:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr130.after_push
 	mov qword [curr_isr.after_pop], isr130.after_pop
@@ -3748,9 +3097,7 @@ isr130:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 130 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3759,13 +3106,10 @@ isr130:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr131:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr131.after_push
 	mov qword [curr_isr.after_pop], isr131.after_pop
@@ -3774,9 +3118,7 @@ isr131:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 131 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3785,13 +3127,10 @@ isr131:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr132:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr132.after_push
 	mov qword [curr_isr.after_pop], isr132.after_pop
@@ -3800,9 +3139,7 @@ isr132:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 132 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3811,13 +3148,10 @@ isr132:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr133:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr133.after_push
 	mov qword [curr_isr.after_pop], isr133.after_pop
@@ -3826,9 +3160,7 @@ isr133:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 133 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3837,13 +3169,10 @@ isr133:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr134:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr134.after_push
 	mov qword [curr_isr.after_pop], isr134.after_pop
@@ -3852,9 +3181,7 @@ isr134:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 134 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3863,13 +3190,10 @@ isr134:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr135:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr135.after_push
 	mov qword [curr_isr.after_pop], isr135.after_pop
@@ -3878,9 +3202,7 @@ isr135:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 135 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3889,13 +3211,10 @@ isr135:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr136:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr136.after_push
 	mov qword [curr_isr.after_pop], isr136.after_pop
@@ -3904,9 +3223,7 @@ isr136:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 136 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3915,13 +3232,10 @@ isr136:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr137:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr137.after_push
 	mov qword [curr_isr.after_pop], isr137.after_pop
@@ -3930,9 +3244,7 @@ isr137:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 137 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3941,13 +3253,10 @@ isr137:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr138:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr138.after_push
 	mov qword [curr_isr.after_pop], isr138.after_pop
@@ -3956,9 +3265,7 @@ isr138:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 138 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3967,13 +3274,10 @@ isr138:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr139:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr139.after_push
 	mov qword [curr_isr.after_pop], isr139.after_pop
@@ -3982,9 +3286,7 @@ isr139:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 139 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -3993,13 +3295,10 @@ isr139:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr140:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr140.after_push
 	mov qword [curr_isr.after_pop], isr140.after_pop
@@ -4008,9 +3307,7 @@ isr140:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 140 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4019,13 +3316,10 @@ isr140:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr141:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr141.after_push
 	mov qword [curr_isr.after_pop], isr141.after_pop
@@ -4034,9 +3328,7 @@ isr141:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 141 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4045,13 +3337,10 @@ isr141:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr142:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr142.after_push
 	mov qword [curr_isr.after_pop], isr142.after_pop
@@ -4060,9 +3349,7 @@ isr142:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 142 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4071,13 +3358,10 @@ isr142:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr143:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr143.after_push
 	mov qword [curr_isr.after_pop], isr143.after_pop
@@ -4086,9 +3370,7 @@ isr143:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 143 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4097,13 +3379,10 @@ isr143:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr144:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr144.after_push
 	mov qword [curr_isr.after_pop], isr144.after_pop
@@ -4112,9 +3391,7 @@ isr144:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 144 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4123,13 +3400,10 @@ isr144:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr145:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr145.after_push
 	mov qword [curr_isr.after_pop], isr145.after_pop
@@ -4138,9 +3412,7 @@ isr145:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 145 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4149,13 +3421,10 @@ isr145:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr146:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr146.after_push
 	mov qword [curr_isr.after_pop], isr146.after_pop
@@ -4164,9 +3433,7 @@ isr146:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 146 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4175,13 +3442,10 @@ isr146:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr147:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr147.after_push
 	mov qword [curr_isr.after_pop], isr147.after_pop
@@ -4190,9 +3454,7 @@ isr147:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 147 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4201,13 +3463,10 @@ isr147:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr148:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr148.after_push
 	mov qword [curr_isr.after_pop], isr148.after_pop
@@ -4216,9 +3475,7 @@ isr148:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 148 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4227,13 +3484,10 @@ isr148:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr149:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr149.after_push
 	mov qword [curr_isr.after_pop], isr149.after_pop
@@ -4242,9 +3496,7 @@ isr149:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 149 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4253,13 +3505,10 @@ isr149:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr150:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr150.after_push
 	mov qword [curr_isr.after_pop], isr150.after_pop
@@ -4268,9 +3517,7 @@ isr150:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 150 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4279,13 +3526,10 @@ isr150:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr151:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr151.after_push
 	mov qword [curr_isr.after_pop], isr151.after_pop
@@ -4294,9 +3538,7 @@ isr151:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 151 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4305,13 +3547,10 @@ isr151:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr152:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr152.after_push
 	mov qword [curr_isr.after_pop], isr152.after_pop
@@ -4320,9 +3559,7 @@ isr152:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 152 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4331,13 +3568,10 @@ isr152:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr153:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr153.after_push
 	mov qword [curr_isr.after_pop], isr153.after_pop
@@ -4346,9 +3580,7 @@ isr153:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 153 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4357,13 +3589,10 @@ isr153:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr154:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr154.after_push
 	mov qword [curr_isr.after_pop], isr154.after_pop
@@ -4372,9 +3601,7 @@ isr154:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 154 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4383,13 +3610,10 @@ isr154:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr155:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr155.after_push
 	mov qword [curr_isr.after_pop], isr155.after_pop
@@ -4398,9 +3622,7 @@ isr155:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 155 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4409,13 +3631,10 @@ isr155:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr156:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr156.after_push
 	mov qword [curr_isr.after_pop], isr156.after_pop
@@ -4424,9 +3643,7 @@ isr156:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 156 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4435,13 +3652,10 @@ isr156:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr157:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr157.after_push
 	mov qword [curr_isr.after_pop], isr157.after_pop
@@ -4450,9 +3664,7 @@ isr157:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 157 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4461,13 +3673,10 @@ isr157:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr158:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr158.after_push
 	mov qword [curr_isr.after_pop], isr158.after_pop
@@ -4476,9 +3685,7 @@ isr158:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 158 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4487,13 +3694,10 @@ isr158:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr159:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr159.after_push
 	mov qword [curr_isr.after_pop], isr159.after_pop
@@ -4502,9 +3706,7 @@ isr159:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 159 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4513,13 +3715,10 @@ isr159:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr160:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr160.after_push
 	mov qword [curr_isr.after_pop], isr160.after_pop
@@ -4528,9 +3727,7 @@ isr160:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 160 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4539,13 +3736,10 @@ isr160:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr161:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr161.after_push
 	mov qword [curr_isr.after_pop], isr161.after_pop
@@ -4554,9 +3748,7 @@ isr161:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 161 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4565,13 +3757,10 @@ isr161:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr162:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr162.after_push
 	mov qword [curr_isr.after_pop], isr162.after_pop
@@ -4580,9 +3769,7 @@ isr162:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 162 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4591,13 +3778,10 @@ isr162:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr163:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr163.after_push
 	mov qword [curr_isr.after_pop], isr163.after_pop
@@ -4606,9 +3790,7 @@ isr163:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 163 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4617,13 +3799,10 @@ isr163:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr164:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr164.after_push
 	mov qword [curr_isr.after_pop], isr164.after_pop
@@ -4632,9 +3811,7 @@ isr164:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 164 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4643,13 +3820,10 @@ isr164:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr165:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr165.after_push
 	mov qword [curr_isr.after_pop], isr165.after_pop
@@ -4658,9 +3832,7 @@ isr165:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 165 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4669,13 +3841,10 @@ isr165:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr166:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr166.after_push
 	mov qword [curr_isr.after_pop], isr166.after_pop
@@ -4684,9 +3853,7 @@ isr166:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 166 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4695,13 +3862,10 @@ isr166:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr167:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr167.after_push
 	mov qword [curr_isr.after_pop], isr167.after_pop
@@ -4710,9 +3874,7 @@ isr167:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 167 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4721,13 +3883,10 @@ isr167:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr168:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr168.after_push
 	mov qword [curr_isr.after_pop], isr168.after_pop
@@ -4736,9 +3895,7 @@ isr168:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 168 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4747,13 +3904,10 @@ isr168:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr169:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr169.after_push
 	mov qword [curr_isr.after_pop], isr169.after_pop
@@ -4762,9 +3916,7 @@ isr169:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 169 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4773,13 +3925,10 @@ isr169:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr170:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr170.after_push
 	mov qword [curr_isr.after_pop], isr170.after_pop
@@ -4788,9 +3937,7 @@ isr170:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 170 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4799,13 +3946,10 @@ isr170:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr171:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr171.after_push
 	mov qword [curr_isr.after_pop], isr171.after_pop
@@ -4814,9 +3958,7 @@ isr171:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 171 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4825,13 +3967,10 @@ isr171:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr172:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr172.after_push
 	mov qword [curr_isr.after_pop], isr172.after_pop
@@ -4840,9 +3979,7 @@ isr172:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 172 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4851,13 +3988,10 @@ isr172:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr173:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr173.after_push
 	mov qword [curr_isr.after_pop], isr173.after_pop
@@ -4866,9 +4000,7 @@ isr173:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 173 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4877,13 +4009,10 @@ isr173:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr174:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr174.after_push
 	mov qword [curr_isr.after_pop], isr174.after_pop
@@ -4892,9 +4021,7 @@ isr174:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 174 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4903,13 +4030,10 @@ isr174:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr175:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr175.after_push
 	mov qword [curr_isr.after_pop], isr175.after_pop
@@ -4918,9 +4042,7 @@ isr175:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 175 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4929,13 +4051,10 @@ isr175:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr176:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr176.after_push
 	mov qword [curr_isr.after_pop], isr176.after_pop
@@ -4944,9 +4063,7 @@ isr176:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 176 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4955,13 +4072,10 @@ isr176:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr177:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr177.after_push
 	mov qword [curr_isr.after_pop], isr177.after_pop
@@ -4970,9 +4084,7 @@ isr177:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 177 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -4981,13 +4093,10 @@ isr177:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr178:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr178.after_push
 	mov qword [curr_isr.after_pop], isr178.after_pop
@@ -4996,9 +4105,7 @@ isr178:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 178 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5007,13 +4114,10 @@ isr178:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr179:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr179.after_push
 	mov qword [curr_isr.after_pop], isr179.after_pop
@@ -5022,9 +4126,7 @@ isr179:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 179 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5033,13 +4135,10 @@ isr179:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr180:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr180.after_push
 	mov qword [curr_isr.after_pop], isr180.after_pop
@@ -5048,9 +4147,7 @@ isr180:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 180 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5059,13 +4156,10 @@ isr180:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr181:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr181.after_push
 	mov qword [curr_isr.after_pop], isr181.after_pop
@@ -5074,9 +4168,7 @@ isr181:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 181 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5085,13 +4177,10 @@ isr181:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr182:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr182.after_push
 	mov qword [curr_isr.after_pop], isr182.after_pop
@@ -5100,9 +4189,7 @@ isr182:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 182 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5111,13 +4198,10 @@ isr182:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr183:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr183.after_push
 	mov qword [curr_isr.after_pop], isr183.after_pop
@@ -5126,9 +4210,7 @@ isr183:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 183 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5137,13 +4219,10 @@ isr183:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr184:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr184.after_push
 	mov qword [curr_isr.after_pop], isr184.after_pop
@@ -5152,9 +4231,7 @@ isr184:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 184 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5163,13 +4240,10 @@ isr184:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr185:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr185.after_push
 	mov qword [curr_isr.after_pop], isr185.after_pop
@@ -5178,9 +4252,7 @@ isr185:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 185 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5189,13 +4261,10 @@ isr185:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr186:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr186.after_push
 	mov qword [curr_isr.after_pop], isr186.after_pop
@@ -5204,9 +4273,7 @@ isr186:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 186 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5215,13 +4282,10 @@ isr186:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr187:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr187.after_push
 	mov qword [curr_isr.after_pop], isr187.after_pop
@@ -5230,9 +4294,7 @@ isr187:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 187 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5241,13 +4303,10 @@ isr187:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr188:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr188.after_push
 	mov qword [curr_isr.after_pop], isr188.after_pop
@@ -5256,9 +4315,7 @@ isr188:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 188 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5267,13 +4324,10 @@ isr188:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr189:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr189.after_push
 	mov qword [curr_isr.after_pop], isr189.after_pop
@@ -5282,9 +4336,7 @@ isr189:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 189 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5293,13 +4345,10 @@ isr189:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr190:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr190.after_push
 	mov qword [curr_isr.after_pop], isr190.after_pop
@@ -5308,9 +4357,7 @@ isr190:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 190 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5319,13 +4366,10 @@ isr190:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr191:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr191.after_push
 	mov qword [curr_isr.after_pop], isr191.after_pop
@@ -5334,9 +4378,7 @@ isr191:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 191 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5345,13 +4387,10 @@ isr191:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr192:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr192.after_push
 	mov qword [curr_isr.after_pop], isr192.after_pop
@@ -5360,9 +4399,7 @@ isr192:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 192 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5371,13 +4408,10 @@ isr192:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr193:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr193.after_push
 	mov qword [curr_isr.after_pop], isr193.after_pop
@@ -5386,9 +4420,7 @@ isr193:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 193 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5397,13 +4429,10 @@ isr193:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr194:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr194.after_push
 	mov qword [curr_isr.after_pop], isr194.after_pop
@@ -5412,9 +4441,7 @@ isr194:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 194 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5423,13 +4450,10 @@ isr194:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr195:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr195.after_push
 	mov qword [curr_isr.after_pop], isr195.after_pop
@@ -5438,9 +4462,7 @@ isr195:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 195 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5449,13 +4471,10 @@ isr195:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr196:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr196.after_push
 	mov qword [curr_isr.after_pop], isr196.after_pop
@@ -5464,9 +4483,7 @@ isr196:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 196 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5475,13 +4492,10 @@ isr196:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr197:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr197.after_push
 	mov qword [curr_isr.after_pop], isr197.after_pop
@@ -5490,9 +4504,7 @@ isr197:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 197 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5501,13 +4513,10 @@ isr197:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr198:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr198.after_push
 	mov qword [curr_isr.after_pop], isr198.after_pop
@@ -5516,9 +4525,7 @@ isr198:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 198 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5527,13 +4534,10 @@ isr198:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr199:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr199.after_push
 	mov qword [curr_isr.after_pop], isr199.after_pop
@@ -5542,9 +4546,7 @@ isr199:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 199 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5553,13 +4555,10 @@ isr199:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr200:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr200.after_push
 	mov qword [curr_isr.after_pop], isr200.after_pop
@@ -5568,9 +4567,7 @@ isr200:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 200 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5579,13 +4576,10 @@ isr200:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr201:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr201.after_push
 	mov qword [curr_isr.after_pop], isr201.after_pop
@@ -5594,9 +4588,7 @@ isr201:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 201 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5605,13 +4597,10 @@ isr201:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr202:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr202.after_push
 	mov qword [curr_isr.after_pop], isr202.after_pop
@@ -5620,9 +4609,7 @@ isr202:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 202 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5631,13 +4618,10 @@ isr202:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr203:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr203.after_push
 	mov qword [curr_isr.after_pop], isr203.after_pop
@@ -5646,9 +4630,7 @@ isr203:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 203 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5657,13 +4639,10 @@ isr203:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr204:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr204.after_push
 	mov qword [curr_isr.after_pop], isr204.after_pop
@@ -5672,9 +4651,7 @@ isr204:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 204 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5683,13 +4660,10 @@ isr204:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr205:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr205.after_push
 	mov qword [curr_isr.after_pop], isr205.after_pop
@@ -5698,9 +4672,7 @@ isr205:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 205 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5709,13 +4681,10 @@ isr205:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr206:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr206.after_push
 	mov qword [curr_isr.after_pop], isr206.after_pop
@@ -5724,9 +4693,7 @@ isr206:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 206 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5735,13 +4702,10 @@ isr206:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr207:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr207.after_push
 	mov qword [curr_isr.after_pop], isr207.after_pop
@@ -5750,9 +4714,7 @@ isr207:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 207 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5761,13 +4723,10 @@ isr207:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr208:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr208.after_push
 	mov qword [curr_isr.after_pop], isr208.after_pop
@@ -5776,9 +4735,7 @@ isr208:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 208 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5787,13 +4744,10 @@ isr208:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr209:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr209.after_push
 	mov qword [curr_isr.after_pop], isr209.after_pop
@@ -5802,9 +4756,7 @@ isr209:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 209 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5813,13 +4765,10 @@ isr209:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr210:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr210.after_push
 	mov qword [curr_isr.after_pop], isr210.after_pop
@@ -5828,9 +4777,7 @@ isr210:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 210 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5839,13 +4786,10 @@ isr210:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr211:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr211.after_push
 	mov qword [curr_isr.after_pop], isr211.after_pop
@@ -5854,9 +4798,7 @@ isr211:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 211 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5865,13 +4807,10 @@ isr211:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr212:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr212.after_push
 	mov qword [curr_isr.after_pop], isr212.after_pop
@@ -5880,9 +4819,7 @@ isr212:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 212 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5891,13 +4828,10 @@ isr212:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr213:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr213.after_push
 	mov qword [curr_isr.after_pop], isr213.after_pop
@@ -5906,9 +4840,7 @@ isr213:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 213 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5917,13 +4849,10 @@ isr213:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr214:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr214.after_push
 	mov qword [curr_isr.after_pop], isr214.after_pop
@@ -5932,9 +4861,7 @@ isr214:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 214 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5943,13 +4870,10 @@ isr214:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr215:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr215.after_push
 	mov qword [curr_isr.after_pop], isr215.after_pop
@@ -5958,9 +4882,7 @@ isr215:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 215 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5969,13 +4891,10 @@ isr215:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr216:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr216.after_push
 	mov qword [curr_isr.after_pop], isr216.after_pop
@@ -5984,9 +4903,7 @@ isr216:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 216 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -5995,13 +4912,10 @@ isr216:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr217:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr217.after_push
 	mov qword [curr_isr.after_pop], isr217.after_pop
@@ -6010,9 +4924,7 @@ isr217:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 217 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6021,13 +4933,10 @@ isr217:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr218:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr218.after_push
 	mov qword [curr_isr.after_pop], isr218.after_pop
@@ -6036,9 +4945,7 @@ isr218:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 218 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6047,13 +4954,10 @@ isr218:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr219:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr219.after_push
 	mov qword [curr_isr.after_pop], isr219.after_pop
@@ -6062,9 +4966,7 @@ isr219:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 219 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6073,13 +4975,10 @@ isr219:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr220:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr220.after_push
 	mov qword [curr_isr.after_pop], isr220.after_pop
@@ -6088,9 +4987,7 @@ isr220:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 220 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6099,13 +4996,10 @@ isr220:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr221:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr221.after_push
 	mov qword [curr_isr.after_pop], isr221.after_pop
@@ -6114,9 +5008,7 @@ isr221:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 221 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6125,13 +5017,10 @@ isr221:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr222:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr222.after_push
 	mov qword [curr_isr.after_pop], isr222.after_pop
@@ -6140,9 +5029,7 @@ isr222:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 222 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6151,13 +5038,10 @@ isr222:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr223:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr223.after_push
 	mov qword [curr_isr.after_pop], isr223.after_pop
@@ -6166,9 +5050,7 @@ isr223:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 223 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6177,13 +5059,10 @@ isr223:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr224:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr224.after_push
 	mov qword [curr_isr.after_pop], isr224.after_pop
@@ -6192,9 +5071,7 @@ isr224:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 224 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6203,13 +5080,10 @@ isr224:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr225:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr225.after_push
 	mov qword [curr_isr.after_pop], isr225.after_pop
@@ -6218,9 +5092,7 @@ isr225:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 225 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6229,13 +5101,10 @@ isr225:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr226:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr226.after_push
 	mov qword [curr_isr.after_pop], isr226.after_pop
@@ -6244,9 +5113,7 @@ isr226:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 226 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6255,13 +5122,10 @@ isr226:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr227:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr227.after_push
 	mov qword [curr_isr.after_pop], isr227.after_pop
@@ -6270,9 +5134,7 @@ isr227:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 227 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6281,13 +5143,10 @@ isr227:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr228:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr228.after_push
 	mov qword [curr_isr.after_pop], isr228.after_pop
@@ -6296,9 +5155,7 @@ isr228:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 228 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6307,13 +5164,10 @@ isr228:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr229:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr229.after_push
 	mov qword [curr_isr.after_pop], isr229.after_pop
@@ -6322,9 +5176,7 @@ isr229:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 229 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6333,13 +5185,10 @@ isr229:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr230:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr230.after_push
 	mov qword [curr_isr.after_pop], isr230.after_pop
@@ -6348,9 +5197,7 @@ isr230:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 230 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6359,13 +5206,10 @@ isr230:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr231:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr231.after_push
 	mov qword [curr_isr.after_pop], isr231.after_pop
@@ -6374,9 +5218,7 @@ isr231:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 231 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6385,13 +5227,10 @@ isr231:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr232:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr232.after_push
 	mov qword [curr_isr.after_pop], isr232.after_pop
@@ -6400,9 +5239,7 @@ isr232:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 232 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6411,13 +5248,10 @@ isr232:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr233:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr233.after_push
 	mov qword [curr_isr.after_pop], isr233.after_pop
@@ -6426,9 +5260,7 @@ isr233:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 233 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6437,13 +5269,10 @@ isr233:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr234:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr234.after_push
 	mov qword [curr_isr.after_pop], isr234.after_pop
@@ -6452,9 +5281,7 @@ isr234:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 234 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6463,13 +5290,10 @@ isr234:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr235:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr235.after_push
 	mov qword [curr_isr.after_pop], isr235.after_pop
@@ -6478,9 +5302,7 @@ isr235:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 235 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6489,13 +5311,10 @@ isr235:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr236:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr236.after_push
 	mov qword [curr_isr.after_pop], isr236.after_pop
@@ -6504,9 +5323,7 @@ isr236:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 236 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6515,13 +5332,10 @@ isr236:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr237:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr237.after_push
 	mov qword [curr_isr.after_pop], isr237.after_pop
@@ -6530,9 +5344,7 @@ isr237:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 237 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6541,13 +5353,10 @@ isr237:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr238:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr238.after_push
 	mov qword [curr_isr.after_pop], isr238.after_pop
@@ -6556,9 +5365,7 @@ isr238:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 238 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6567,13 +5374,10 @@ isr238:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr239:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr239.after_push
 	mov qword [curr_isr.after_pop], isr239.after_pop
@@ -6582,9 +5386,7 @@ isr239:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 239 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6593,13 +5395,10 @@ isr239:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr240:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr240.after_push
 	mov qword [curr_isr.after_pop], isr240.after_pop
@@ -6608,9 +5407,7 @@ isr240:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 240 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6619,13 +5416,10 @@ isr240:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr241:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr241.after_push
 	mov qword [curr_isr.after_pop], isr241.after_pop
@@ -6634,9 +5428,7 @@ isr241:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 241 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6645,13 +5437,10 @@ isr241:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr242:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr242.after_push
 	mov qword [curr_isr.after_pop], isr242.after_pop
@@ -6660,9 +5449,7 @@ isr242:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 242 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6671,13 +5458,10 @@ isr242:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr243:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr243.after_push
 	mov qword [curr_isr.after_pop], isr243.after_pop
@@ -6686,9 +5470,7 @@ isr243:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 243 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6697,13 +5479,10 @@ isr243:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr244:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr244.after_push
 	mov qword [curr_isr.after_pop], isr244.after_pop
@@ -6712,9 +5491,7 @@ isr244:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 244 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6723,13 +5500,10 @@ isr244:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr245:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr245.after_push
 	mov qword [curr_isr.after_pop], isr245.after_pop
@@ -6738,9 +5512,7 @@ isr245:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 245 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6749,13 +5521,10 @@ isr245:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr246:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr246.after_push
 	mov qword [curr_isr.after_pop], isr246.after_pop
@@ -6764,9 +5533,7 @@ isr246:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 246 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6775,13 +5542,10 @@ isr246:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr247:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr247.after_push
 	mov qword [curr_isr.after_pop], isr247.after_pop
@@ -6790,9 +5554,7 @@ isr247:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 247 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6801,13 +5563,10 @@ isr247:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr248:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr248.after_push
 	mov qword [curr_isr.after_pop], isr248.after_pop
@@ -6816,9 +5575,7 @@ isr248:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 248 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6827,13 +5584,10 @@ isr248:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr249:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr249.after_push
 	mov qword [curr_isr.after_pop], isr249.after_pop
@@ -6842,9 +5596,7 @@ isr249:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 249 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6853,13 +5605,10 @@ isr249:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr250:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr250.after_push
 	mov qword [curr_isr.after_pop], isr250.after_pop
@@ -6868,9 +5617,7 @@ isr250:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 250 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6879,13 +5626,10 @@ isr250:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr251:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr251.after_push
 	mov qword [curr_isr.after_pop], isr251.after_pop
@@ -6894,9 +5638,7 @@ isr251:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 251 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6905,13 +5647,10 @@ isr251:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr252:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr252.after_push
 	mov qword [curr_isr.after_pop], isr252.after_pop
@@ -6920,9 +5659,7 @@ isr252:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 252 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6931,13 +5668,10 @@ isr252:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr253:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr253.after_push
 	mov qword [curr_isr.after_pop], isr253.after_pop
@@ -6946,9 +5680,7 @@ isr253:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 253 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6957,13 +5689,10 @@ isr253:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr254:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr254.after_push
 	mov qword [curr_isr.after_pop], isr254.after_pop
@@ -6972,9 +5701,7 @@ isr254:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 254 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -6983,13 +5710,10 @@ isr254:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
 
 isr255:
-
 	; register jump-back instructions
 	mov qword [curr_isr.after_push], isr255.after_push
 	mov qword [curr_isr.after_pop], isr255.after_pop
@@ -6998,9 +5722,7 @@ isr255:
 	jmp push_reg
 
 .after_push:
-
 	
-
 	mov RDI, 255 ; irq number, 1st arg
 	;mov RSI, [RSP]
 
@@ -7009,7 +5731,5 @@ isr255:
 	; pop registers
 	jmp pop_reg
 .after_pop:
-
-	
 	
 	iretq
