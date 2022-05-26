@@ -305,7 +305,7 @@ void generic_interrupt_handler(unsigned int isr_code, int error_code, void* arg)
 			break;
 			
 		case 38:
-			printkln("IRQ Interrupt: Diskette drive");
+			printkln_no_serial("IRQ Interrupt: Diskette drive");
 			IRQ_end_of_interrupt(6);
 			break;
 			

@@ -420,21 +420,24 @@ int printkln(const char* fmt, ... ) {
 
 int printkln_no_serial(const char* fmt, ... ) {
 	
-	char is_p = is_prompt();
-	if(is_p) {
-		VGA_display_char('\n');
-	}	
+	// write_char(50, 10, 0);
+	// vga_buff[0] = 0;
+
+	// char is_p = is_prompt();
+	// if(is_p) {
+	// 	// VGA_display_char('\n');
+	// }
 
 	va_list args;
     va_start(args, fmt);
-	int c_count = _printk(fmt, &VGA_display_char, &VGA_display_str,&args);
+	int c_count = 0; //_printk(fmt, &VGA_display_char, &VGA_display_str,&args);
 	VGA_display_char('\n');
 	va_end(args);
 
 
-	if(is_p) {
-		CON_write_prompt();
-	}
+	// if(is_p) {
+	// 	CON_write_prompt();
+	// }
 	
 	return c_count + 1; // +1 for \n
 }

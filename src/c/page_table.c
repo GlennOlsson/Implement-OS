@@ -83,7 +83,7 @@ PML* PML_get_pml1(uint64_t add) {
 	uint16_t pml1_i = (add >> 12) & 0x1FF;
 	// Physical page offset does not matter
 
-	PML* pml3 = &p3_table;// PML_get_add(pml4_i + &p4_table);
+	PML* pml3 = &p3_table + pml3_i;// PML_get_add(pml4_i + &p4_table);
 	PML* pml2 = PML_get_add(pml3 + pml3_i);
 	PML* pml1 = PML_get_add(pml2 + pml2_i);
 	PML* pml1_entry = pml1 + pml1_i;
@@ -141,6 +141,8 @@ void PT_init() {
 // returns 1 if could allocate new page, 0 if not
 uint8_t PT_can_allocate(uint64_t add) {
 
+	printkln("DEMAND ALLOC %lx", add);
+
 	PML* pml1_entry = PML_get_pml1(add);
 	
 	if(!PML_is_allocatable(pml1_entry)) {
@@ -156,7 +158,9 @@ uint8_t PT_can_allocate(uint64_t add) {
 	void* phys_pf = MEM_pf_alloc();
 
 	// without this line, for some reason, it won't throw a PF when accessing non-present page
-	outb(0x0, 0x3F8);
+	// outb(0x0, 0x3F8);
+
+	printkln("Phys add: %p", phys_pf);
 
 	PML_clear(pml1_entry);
 
@@ -167,6 +171,10 @@ uint8_t PT_can_allocate(uint64_t add) {
 	PML_set_rw(pml1_entry, 1);
 
 	return 1;
+}
+
+void PML_verbose(void* pt) {
+	// PML_get_pml1();
 }
 
 /**
@@ -278,8 +286,6 @@ void MMU_free_pages(void* start_address, int num) {
 
 	void* address = start_address;
 	while(num--) {
-		if(num > 6)
-			printkln("Address: %p", address);
 		MMU_free_page(address);
 		address += PAGE_SIZE;
 	}

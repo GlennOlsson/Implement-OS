@@ -295,14 +295,14 @@ push_reg: ; Push all registers
 	push RBP
 	push RBX
 	push RSP
-	push R12
-	push R13
-	push R14
-	push R15
 	push RAX
 	push RCX
 	push RDX
 	push RDI
+	push R12
+	push R13
+	push R14
+	push R15
 	push R8
 	push R9
 	push R10
@@ -314,14 +314,14 @@ pop_reg: ; Pop in FILO order
 	pop R10
 	pop R9
 	pop R8
-	pop RDI
-	pop RDX
-	pop RCX
-	pop RAX
 	pop R15
 	pop R14
 	pop R13
 	pop R12
+	pop RDI
+	pop RDX
+	pop RCX
+	pop RAX
 	pop RSP
 	pop RBX
 	pop RBP

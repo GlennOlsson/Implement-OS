@@ -32,6 +32,8 @@ uint8_t PT_can_allocate(uint64_t add);
 
 uint8_t MMU_is_present(void* pt);
 
+void PML_verbose(void*);
+
 void *MMU_alloc_page();
 void *MMU_alloc_pages(int num);
 void MMU_free_page(void *);

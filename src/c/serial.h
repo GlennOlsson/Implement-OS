@@ -9,4 +9,6 @@ int SER_write_str(const char* str);
 
 void SER_interrupt();
 
+char trigger_write();
+
 #endif

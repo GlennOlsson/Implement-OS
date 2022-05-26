@@ -88,7 +88,7 @@ char trigger_write() {
 }
 
 void SER_init() {
-	set_baud(65000); // Some arbitrary value I guess, we don't want to high speed (i.e. not to low number)
+	set_baud(12); // Some arbitrary value I guess, we don't want to high speed (i.e. not to low number)
 
 	// Setting 8N1, 8 bits, no parity, 1 stop bit
 	uint8_t line_ctr_val = 0b00000011;
@@ -121,6 +121,7 @@ int SER_write_c(char c) {
 	} else if(BUF_consumeable(&serial_buffer) && is_thr_empty()) { 
 		// If we are waiting to write from buff but missed interrupt
 		BUF_consume(&serial_buffer);
+		ret_val = 1;
 	} else if(BUF_produceable(&serial_buffer)) { 
 		// Else, see if buffer is produceable and write to it
 		BUF_produce(&serial_buffer, c);

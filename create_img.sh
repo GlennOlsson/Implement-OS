@@ -1,6 +1,6 @@
 # Set to lowest available loop number, and one above
-loop_low=22
-loop_high=23
+loop_low=24
+loop_high=25
 
 loop_l="loop$loop_low"
 loop_h="loop$loop_high"
