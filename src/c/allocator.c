@@ -18,6 +18,18 @@
  * 
  * When we are sure that there is at least one block free in the pool, we pop the
  *  head of the pool, create a malloc header containing the size and pool address. 
+ *  The pool address is used to return the block to the available blocks of pool
+ *  when the address is freed. The size is really only used if there is no pool
+ *  big enough to fit s + KMALLOC_HEADER_SIZE bytes. The page address (returned
+ *  by the MMU_alloc() func) is then added with KMALLOC_HEADER_SIZE so that the 
+ *  address returned to the user is where they can write. Otherwise the header would
+ *  be overwritten
+ * 
+ * In the case were s + KMALLOC_HEADER_SIZE is bigger than any pool's block size,
+ *  the allocator simply allocates enough pages from the MMU to fit all the bytes, 
+ *  and returns the first page address (the rest will be consecutive as the MMU always
+ *  returns consecutive addresses). When freed, the pages are also freed in the MMU
+ * 
  * 
 */
 
