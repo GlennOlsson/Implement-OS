@@ -21,6 +21,23 @@ void MAL_init() {
     pool_2048.head = nullptr;
 }
 
+void allocate_for_pool(struct KmallocPool* pool) {
+        void* new_pf = MMU_alloc_page();
+
+        void* prev_node = pool->head;
+        for(int i = 0; i < PAGE_SIZE; i += pool->max_size) {
+            void* address = new_pf + i;
+            if(prev_node == nullptr) { // means head is nullptr
+                pool->head = address;
+                prev_node = address;
+            }
+            *(void**) prev_node = address;
+            prev_node = address;
+
+            pool->avail += 1;
+        }
+}
+
 void* kmalloc(uint32_t size) {
     uint32_t required_size = size + KMALLOC_HEADER_SIZE;
 
@@ -33,25 +50,11 @@ void* kmalloc(uint32_t size) {
     printkln("Pool size %d required for malloc of %d bytes", pool->max_size, size);
 
     if(pool->avail == 0) { // allocate another page for it
-        void* new_pf = MMU_alloc_page();
-
-        void* prev_node = pool->head;
-        for(int i = 0; i < PAGE_SIZE; i += pool->max_size) {
-            void* address = new_pf + i;
-            if(prev_node == nullptr) { // means head is nullptr
-                pool->head = address;
-                prev_node = address;
-            }
-            *(void**) prev_node = address;
-            prev_node = address;
-        }
+        allocate_for_pool(pool);
+        return kmalloc(size); // Try again with newly allocated page
     }
 
-    void* prev_node = pool->head;
-    while(prev_node != nullptr) {
-        printkln("Node at %p, %p", prev_node, *(void**) prev_node);
-        prev_node = *(void**) prev_node;
-    }
+    
 
     return pool->head;
 }
