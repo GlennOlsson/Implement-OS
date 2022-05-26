@@ -12,10 +12,9 @@ struct KmallocPool pool_64 = {64, 0, 0};
 struct KmallocPool pool_512 = {512, 0, 0};
 struct KmallocPool pool_2048 = {2048, 0, 0};
 
+// To introduce more pools, simply create one above and add it a the appropriate spot in the list below
+// Make sure the list is sorted and that nullptr is in the end
 struct KmallocPool* pools[] = {&pool_64, &pool_512, &pool_2048, nullptr};
-
-uint16_t curr_pf_index = 0;
-void* curr_pf;
 
 void allocate_for_pool(struct KmallocPool* pool) {
         void* new_pf = MMU_alloc_page();
