@@ -45,62 +45,15 @@ void kmain() {
 	// Turn on interrupts just now
 	sti(1);
 
-	int allocated_addresses = 10;
-	char* start_add = MMU_alloc_pages(allocated_addresses);
-	char* next = MMU_alloc_page(); // to make sure we don't get the same address again
-
-	if(start_add >= next)
-		printkln("Start address bigger than next, NOT OK!!");
-
-	printkln("Setting values");
-
-	// Set a value for each entry
-	for(int i = 0; i < 10; ++i) {
-		for(int j = 0; j < PAGE_SIZE; ++j) {
-			*(start_add + (j + (i * PAGE_SIZE))) = 'a';
-		}
+	uint64_t* heap_pages = MMU_alloc_pages(10);
+	for(int i = 0; i < 10; i++) {
+		printkln("Heap page add: %p", heap_pages + (i * 512));
 	}
 
-	for(int j = 0; j < PAGE_SIZE; ++j) {
-		*(next + j) = 'b';
+	for(int i = 0; i < 3; ++i) {
+		uint64_t* stack_page = MMU_alloc_stack_page();
+		printkln("Stack page add: %p", stack_page);
 	}
-
-	printkln("Verifying values");
-
-	// Verify that the entries are correct, and that writing to 'next' does not manipulate the data in the 10-page address space
-	for(int i = 0; i < 10; ++i) {
-		for(int j = 0; j < PAGE_SIZE; ++j) {
-			if(*(start_add + (j + (i * PAGE_SIZE))) != 'a') {
-				printkln("NOT CORRECT FOR MULTI PAGE!! Expected: %d, Actually: %c", (j % 256), *(start_add + (j + (i * PAGE_SIZE))));
-			}
-		}
-	}
-
-	for(int j = 0; j < PAGE_SIZE; ++j) {
-		if(*(next + j) != 'b') {
-			printkln("NOT CORRECT!! %d", j);
-		}
-	}
-
-	// If we get here without any prints we are all good
-
-	printkln("Freeing addresses");
-
-	MMU_free_pages(start_add, allocated_addresses);
-	MMU_free_page(next);
-
-	printkln("Freed addresses");
-
-	char* next_next = MMU_alloc_page();
-	if(next >= next_next)
-		printkln("next_next is lower than next, NOT OK!!");
-
-	printkln("EXPECTING PAGE FAULT AFTER THIS!");
-	uint8_t read_pf = 0;
-	if(read_pf)
-		printkln("Start add val: %d", *start_add);
-	else
-		*start_add = 'c';
 
 	volatile int j = 0;
 	while(!j)

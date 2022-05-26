@@ -17,12 +17,13 @@ uint64_t next_add = 0x40000000;
 
 uint64_t count_allocatable_addresses = 0;
 
-uint16_t curr_pf_index = 0;
 uint16_t curr_pml1_index = 0;
 uint16_t curr_pml2_index = 0;
 uint16_t curr_pml3_index = 1;
 
-uint64_t* physical_pf;
+uint16_t curr_stack_pml1_index = 512;
+uint16_t curr_stack_pml2_index = 512;
+uint16_t curr_stack_pml3_index = 1;
 
 typedef uint64_t PML;
 
@@ -168,20 +169,6 @@ uint8_t PT_can_allocate(uint64_t add) {
 	return 1;
 }
 
-void PML_verbose(void* pt) {
-	// PML_get_pml1();
-}
-
-/**
- * @brief 
- * 
- * @param pt 
- * @return void* 
- */
-void* PT_get_phys_addy(void* pt) {
-	return 0x0;
-}
-
 uint64_t virt_as_int(struct VirtualAddress* a) {
 	return *((uint64_t*) a);
 }
@@ -223,7 +210,7 @@ void *MMU_alloc_page() {
 		return nullptr;
 	}
 
-	address.phys_page_off = curr_pf_index;
+	address.phys_page_off = 0;
 	address.pml1_off = curr_pml1_index;
 	address.pml2_off = curr_pml2_index;
 	address.pml3_off = curr_pml3_index;
@@ -296,4 +283,44 @@ void MMU_free_pages(void* start_address, int num) {
 	}
 
 	sti(int_flag);
+}
+
+void *MMU_alloc_stack_page() {
+	uint8_t int_flag = cli();
+
+	struct VirtualAddress address;
+	curr_stack_pml1_index -= 1;
+	if(curr_stack_pml1_index < 0) {
+		curr_stack_pml1_index = 511;
+		curr_stack_pml2_index -= 1;
+	}
+	if(curr_stack_pml2_index < 0) {
+		curr_stack_pml2_index = 511;
+		curr_stack_pml3_index -= 1;
+	}
+	if(curr_stack_pml3_index < 1) {
+		printkln("MUST FIX; PML3 index is too small: %d", curr_stack_pml3_index);
+		asm("int $14");
+
+		sti(int_flag);
+		return nullptr;
+	}
+
+	address.phys_page_off = 0;
+	address.pml1_off = curr_stack_pml1_index;
+	address.pml2_off = curr_stack_pml2_index;
+	address.pml3_off = curr_stack_pml3_index;
+	address.pml4_off = 0;
+	address.sign_ext = 0; // Sign extending 0 (pml4) is 0
+
+	PML* pml1_entry = PML_get_pml1(virt_as_int(&address));
+	PML_clear(pml1_entry);
+	PML_set_present(pml1_entry, 0);
+	PML_set_add(pml1_entry, nullptr);
+	PML_set_allocatable(pml1_entry, 1); // Mark as allocatable, demand allocation is active
+
+	MMU_is_allocatable((void*) virt_as_int(&address));
+
+	sti(int_flag);
+	return (void*) virt_as_int(&address);
 }
