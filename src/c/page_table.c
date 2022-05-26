@@ -83,8 +83,8 @@ PML* PML_get_pml1(uint64_t add) {
 	uint16_t pml1_i = (add >> 12) & 0x1FF;
 	// Physical page offset does not matter
 
-	PML* pml3 = &p3_table + pml3_i;// PML_get_add(pml4_i + &p4_table);
-	PML* pml2 = PML_get_add(pml3);
+	PML* pml3 = &p3_table;// PML_get_add(pml4_i + &p4_table);
+	PML* pml2 = PML_get_add(pml3 + pml3_i);
 	PML* pml1 = PML_get_add(pml2 + pml2_i);
 	PML* pml1_entry = pml1 + pml1_i;
 	
