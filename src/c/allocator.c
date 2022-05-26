@@ -8,6 +8,19 @@
 #define nullptr 0
 #define KMALLOC_HEADER_SIZE sizeof(struct KmallocHeader)
 
+/**
+ * When allocating s bytes, we first look at the available pools
+ * We pick the smallest pool that can fit s + KMALLOC_HEADER_SIZE, 
+ *  eg pool_64 if s = 30 and KMALLOC_HEADER_SIZE = 12
+ * 
+ * We then look at the head in the pool. If this pointer is nullptr, it means
+ *  that the pool has no free pages so we must allocate it
+ * 
+ * When we are sure that there is at least one block free in the pool, we pop the
+ *  head of the pool, create a malloc header containing the size and pool address. 
+ * 
+*/
+
 struct KmallocPool pool_64 = {64, 0, 0};
 struct KmallocPool pool_512 = {512, 0, 0};
 struct KmallocPool pool_2048 = {2048, 0, 0};
@@ -29,8 +42,6 @@ void allocate_for_pool(struct KmallocPool* pool) {
             } else // only write the address if prev_node is not the head. Head should point to nullptr
                 *(void**) prev_node = address;
             prev_node = address;
-
-            pool->avail += 1;
         }
 }
 
@@ -91,7 +102,7 @@ void* kmalloc(uint32_t size) {
 
     printkln("Using pool size %d for kmalloc(%d)", pool->block_size, size);
 
-    if(pool->avail == 0) { // allocate another page for it
+    if(pool->head == nullptr) { // allocate another page for it
         printkln("Need to allocate");
         allocate_for_pool(pool);
         return kmalloc(size); // Try again with newly allocated page
@@ -100,7 +111,6 @@ void* kmalloc(uint32_t size) {
     // take the first block of the pool
     void* address = pool->head;
     pool->head = *(void**) address;
-    pool->avail -= 1;
 
     struct KmallocHeader header;
     header.pool = pool;
@@ -154,6 +164,5 @@ void kfree(void* add) {
         
         tail->next = start_address;
         tail->next->next = nullptr; // Set next of the block as nullptr
-        pool->avail += 1;
     }
 }

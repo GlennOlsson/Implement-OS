@@ -5,7 +5,6 @@
 
 struct KmallocPool {
    int block_size;
-   int avail;
    struct FreeList *head;
 } __attribute__((packed));
 
