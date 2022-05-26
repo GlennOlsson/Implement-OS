@@ -141,7 +141,7 @@ void PT_init() {
 // Checks if address can be allocated (called from page fault), and allocate if possible
 // returns 1 if could allocate new page, 0 if not
 uint8_t PT_can_allocate(uint64_t add) {
-	printkln("DEMAND ALLOC %lx", add);
+	// printkln("DEMAND ALLOC %lx", add);
 	PML* pml1_entry = PML_get_pml1(add);
 	
 	MMU_is_allocatable((uint64_t*) add);

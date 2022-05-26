@@ -8,24 +8,17 @@
 #define nullptr 0
 #define KMALLOC_HEADER_SIZE sizeof(struct KmallocHeader)
 
+struct KmallocPool pool_64 = {64, 0, 0};
+struct KmallocPool pool_2048 = {2048, 0, 0};
+
 uint16_t curr_pf_index = 0;
 void* curr_pf;
-
-void MAL_init() {
-    pool_64.max_size = 64 - KMALLOC_HEADER_SIZE;
-    pool_64.avail = 0;
-    pool_64.head = nullptr;
-    
-    pool_2048.max_size = 2048 - KMALLOC_HEADER_SIZE;
-    pool_2048.avail = 0;
-    pool_2048.head = nullptr;
-}
 
 void allocate_for_pool(struct KmallocPool* pool) {
         void* new_pf = MMU_alloc_page();
 
         void* prev_node = pool->head;
-        for(int i = 0; i < PAGE_SIZE; i += (pool->max_size + KMALLOC_HEADER_SIZE)) {
+        for(int i = 0; i < PAGE_SIZE; i += pool->max_size) {
             void* address = new_pf + i;
             if(prev_node == nullptr) { // means head is nullptr
                 pool->head = address;
@@ -48,15 +41,48 @@ void* traverse(struct KmallocPool* pool) {
     return node; // This node will be pointing to nullptr
 }
 
+// allocate potentially multiple consecutive pages
+// Start address will be at first page
+void* kmalloc_big(uint32_t size) {
+    int required_size = size + KMALLOC_HEADER_SIZE;
+
+    void* start = MMU_alloc_page();
+
+    struct KmallocHeader header;
+    header.pool = nullptr;
+    header.size = size;
+
+    *(struct KmallocHeader*) start = header;
+    start += KMALLOC_HEADER_SIZE;
+
+    uint32_t allocated_pages = 1;
+
+    while(required_size > 0) {
+        // Remove size of full page as it can be used if needed. If required_size is less than a page
+        // it does not matter, will just mean that it's the last iteration
+        required_size -= PAGE_SIZE;
+
+        // only want the kmalloc header in the first page
+        MMU_alloc_page();
+
+        allocated_pages += 1;
+    }
+
+    printkln("Size %d required %d pages", size, allocated_pages);
+
+    return start;
+}
+
 void* kmalloc(uint32_t size) {
     struct KmallocPool* pool;
-    if(size <= pool_64.max_size)
+
+    uint32_t required_size = size + KMALLOC_HEADER_SIZE;
+    if(required_size <= pool_64.max_size)
         pool = &pool_64;
-    else
+    else if(required_size <= pool_2048.max_size)
         pool = &pool_2048;
-    
-    printkln("Pool size %d required for malloc of %d bytes", pool->max_size, size);
-    printkln("Using pool %p", pool);
+    else // required size is bigger than biggest pool, needs actual pages
+        return kmalloc_big(size);
 
     if(pool->avail == 0) { // allocate another page for it
         printkln("Need to allocate");
@@ -76,23 +102,47 @@ void* kmalloc(uint32_t size) {
     *(struct KmallocHeader*) address = header;
     address += KMALLOC_HEADER_SIZE;
 
-    printkln("Malloced %p, header at %p", address, (address - KMALLOC_HEADER_SIZE));
-
     return address;
 }
 
-void kfree(void *add) {
+// Actually free the virtual pages too, don't keep in a free list
+// Address is of first page, i.e. start of header
+void kfree_big(void* start_add, struct KmallocHeader* header) {
+    void* address = start_add;
+    int size = header->size;
+
+    uint32_t freed_pages = 0;
+    while(size > 0) {
+        MMU_free_page(address);
+        address += PAGE_SIZE;
+
+        size -= PAGE_SIZE;
+
+        freed_pages += 1;
+    }
+
+    printkln("Big free, %d pages", freed_pages);
+}
+
+void kfree(void* add) {
     void* start_address = add - KMALLOC_HEADER_SIZE;
     struct KmallocHeader* header = start_address;
 
-    int block_size = header->size; // in case bigger than one pool block
+    // If no pool, is a big allocation over potentially multiple pages
+    if(header->pool == nullptr) {
+        kfree_big(add, header);
+        return;
+    }
+     
+    // in case bigger than one pool block
+    // can't be uint as we must see if it goes under 0
+    int block_size = header->size;
+
     struct KmallocPool* pool = header->pool;
 
     struct FreeList* tail = traverse(pool);
 
-    printkln("Block size: %d, pool add: %p, size: %d", block_size, pool, pool->max_size);
     while(block_size > 0) {
-        printkln("Block size: %d", block_size);
         block_size -= pool->max_size;
         
         tail->next = start_address;

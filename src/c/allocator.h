@@ -18,11 +18,6 @@ struct KmallocHeader { // 8 + 4 = 12 bytes
    int size;
 } __attribute__((packed));
 
-struct KmallocPool pool_64;
-struct KmallocPool pool_2048;
-
-void MAL_init();
-
 void* kmalloc(uint32_t size);
 void kfree(void *addr);
 

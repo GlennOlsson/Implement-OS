@@ -43,8 +43,6 @@ void kmain() {
 
 	CON_write_prompt();
 
-	MAL_init();
-
 	// Turn on interrupts just now
 	sti(1);
 
@@ -69,6 +67,29 @@ void kmain() {
 
 	void* add2 = kmalloc(64);
 	printkln("add3: %p, val: %lx", add2, *(uint64_t*) add2);
+
+	// Allocate 5Mb
+	uint32_t size = 5000000;
+	void* big_alloc = kmalloc(size);
+
+	printkln("Write to big allocation");
+	for(int i = 0; i < size; ++i) {
+		*(char*) (big_alloc + i) = 'a';
+	}
+
+	printkln("Verify big allocation writes");
+	for(int i = 0; i < size; ++i) {
+		if(*(char*) (big_alloc + i) != 'a') {
+			printkln("NOT CORRECT FOR i=%d", i);
+		}
+	}
+
+	kfree(big_alloc);
+
+	printkln("Freed alloc, expecting PF at write");
+
+	// Throw PF??
+	*(char*) big_alloc = 50;
 
 	volatile int j = 0;
 	while(!j)
