@@ -58,7 +58,17 @@ void kmain() {
 	// 	printkln("Stack page add: %p", stack_page);
 	// }
 
-	kmalloc(60);
+	void* add = kmalloc(60);
+	*(uint64_t*) add = 0x69;
+
+	printkln("add1: %p, val: %lx", add, *(uint64_t*) add);
+
+	kfree(add);
+	add = kmalloc(64);
+	printkln("add2: %p, val: %lx", add, *(uint64_t*) add);
+
+	void* add2 = kmalloc(64);
+	printkln("add3: %p, val: %lx", add2, *(uint64_t*) add2);
 
 	volatile int j = 0;
 	while(!j)
