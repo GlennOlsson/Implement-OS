@@ -29,7 +29,7 @@
  *  the allocator simply allocates enough pages from the MMU to fit all the bytes, 
  *  and returns the first page address (the rest will be consecutive as the MMU always
  *  returns consecutive addresses). When freed, the pages are also freed in the MMU
- * 
+ *  as there is to pool to save them in
  * 
 */
 
