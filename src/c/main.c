@@ -47,18 +47,18 @@ void kmain() {
 	sti(1);
 
 	// To show how stack addresses differ from heap
-	uint64_t* heap_pages = MMU_alloc_pages(10);
-	for(int i = 0; i < 10; i++) {
-		printkln("Heap page add: %p", heap_pages + (i * 512));
-	}
+	// uint64_t* heap_pages = MMU_alloc_pages(10);
+	// for(int i = 0; i < 10; i++) {
+	// 	printkln("Heap page add: %p", heap_pages + (i * 512));
+	// }
 
-	for(int i = 0; i < 3; ++i) {
-		uint64_t* stack_page = MMU_alloc_stack_page();
-		printkln("Stack page add: %p", stack_page);
-	}
+	// for(int i = 0; i < 3; ++i) {
+	// 	uint64_t* stack_page = MMU_alloc_stack_page();
+	// 	printkln("Stack page add: %p", stack_page);
+	// }
 
 	void* add = kmalloc(60);
-	*(uint64_t*) add = 0x69;
+	*(uint64_t*) add = 0x11;
 
 	printkln("add1: %p, val: %lx", add, *(uint64_t*) add);
 

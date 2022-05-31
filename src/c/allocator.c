@@ -33,9 +33,9 @@
  * 
 */
 
-struct KmallocPool pool_64 = {64, 0, 0};
-struct KmallocPool pool_512 = {512, 0, 0};
-struct KmallocPool pool_2048 = {2048, 0, 0};
+struct KmallocPool pool_64 = {64, 0};
+struct KmallocPool pool_512 = {512, 0};
+struct KmallocPool pool_2048 = {2048, 0};
 
 // To introduce more pools, simply create one above and add it a the appropriate spot in the list below
 // Make sure the list is sorted and that nullptr is in the end
